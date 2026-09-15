@@ -36,13 +36,18 @@ export function AuthProvider({ children }) {
 
   // ── LOGIN: query user_profiles directly, validate domain + role
   const login = async (email, password, domain, role) => {
+    if (!email || !password || !domain || !role) {
+      throw new Error('All fields are required.');
+    }
+    
     const normalizedEmail = email.trim().toLowerCase();
+    const sanitizedPassword = password.trim();
 
     const { data, error } = await supabase
       .from('user_profiles')
       .select('*')
       .eq('email', normalizedEmail)
-      .eq('password_value', password)
+      .eq('password_value', sanitizedPassword)
       .single();
 
     if (error || !data) {
@@ -72,6 +77,9 @@ export function AuthProvider({ children }) {
   // ── REGISTER: insert into user_profiles only
   const register = async ({ fullName, email, password, employeeId, domain, role }) => {
     const normalizedEmail = email.trim().toLowerCase();
+    const normalizedEmpId = employeeId.trim();
+    const normalizedName = fullName.trim();
+    const sanitizedPassword = password.trim();
 
     // Check if email already exists
     const { data: existing } = await supabase
@@ -88,7 +96,7 @@ export function AuthProvider({ children }) {
     const { data: existingEmp } = await supabase
       .from('user_profiles')
       .select('id')
-      .eq('employee_id', employeeId.trim())
+      .eq('employee_id', normalizedEmpId)
       .maybeSingle();
 
     if (existingEmp) {
@@ -98,10 +106,10 @@ export function AuthProvider({ children }) {
     const { data, error } = await supabase
       .from('user_profiles')
       .insert({
-        full_name: fullName.trim(),
-        employee_id: employeeId.trim(),
+        full_name: normalizedName,
+        employee_id: normalizedEmpId,
         email: normalizedEmail,
-        password_value: password,
+        password_value: sanitizedPassword,
         domain,
         role,
         status: 'approved',

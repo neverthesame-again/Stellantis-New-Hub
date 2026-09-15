@@ -11,6 +11,7 @@ const DOMAIN_ROLE_MAP = {
 };
 
 const DOMAINS = Object.keys(DOMAIN_ROLE_MAP);
+const ALL_ROLES = Object.values(DOMAIN_ROLE_MAP).flat();
 
 function MultiSelectDropdown({ label, options, selectedValues, onChange, placeholder, disabled }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,7 +115,7 @@ function PendingApprovalScreen({ profile, onBackToLogin }) {
       <div className="auth-alert info" style={{ maxWidth: '340px', textAlign: 'left' }}>
         <Clock size={15} style={{ flexShrink: 0, marginTop: '1px' }} />
         <span>
-          Access is typically granted within a few seconds. This page will automatically refresh once your account is approved.
+          Access is typically granted within a few minutes. Please try logging in shortly.
         </span>
       </div>
 
@@ -142,25 +143,35 @@ export default function RegisterPage({ onNavigateToLogin }) {
   const [errorMsg, setErrorMsg]         = useState('');
   const [pendingProfile, setPendingProfile] = useState(null); // set → show pending screen
 
-  // Auto-sync role when domains change
-  const [roleOptions, setRoleOptions] = useState([]);
-  
-  useEffect(() => {
-    let combinedRoles = [];
-    domains.forEach(d => {
+  // ── Auto-map roles and domains exactly
+  const handleDomainChange = (newDomains) => {
+    setDomains(newDomains);
+    setErrorMsg('');
+    
+    // Auto-select corresponding roles
+    let newRoles = [];
+    newDomains.forEach(d => {
       if (DOMAIN_ROLE_MAP[d]) {
-        combinedRoles = [...combinedRoles, ...DOMAIN_ROLE_MAP[d]];
+        newRoles = [...newRoles, ...DOMAIN_ROLE_MAP[d]];
       }
     });
-    setRoleOptions(combinedRoles);
+    setRoles(newRoles);
+  };
+
+  const handleRoleChange = (newRoles) => {
+    setRoles(newRoles);
+    setErrorMsg('');
     
-    // Automatically select role if only one domain with one role is checked and nothing is selected
-    if (combinedRoles.length === 1 && roles.length === 0) {
-      setRoles([combinedRoles[0]]);
-    }
-    // Filter out selected roles that are no longer valid for the selected domains
-    setRoles(prevRoles => prevRoles.filter(r => combinedRoles.includes(r)));
-  }, [domains]);
+    // Auto-select corresponding domains
+    let newDomains = [];
+    Object.keys(DOMAIN_ROLE_MAP).forEach(d => {
+      const domainRoles = DOMAIN_ROLE_MAP[d];
+      if (domainRoles.some(r => newRoles.includes(r))) {
+        newDomains.push(d);
+      }
+    });
+    setDomains(newDomains);
+  };
 
   // ── Password validation rules
   const pwRules = [
@@ -172,25 +183,51 @@ export default function RegisterPage({ onNavigateToLogin }) {
   const pwValid = pwRules.every((r) => r.pass);
   const pwsMatch = password === confirmPw;
 
-  const emailInvalid = email.length > 0 && !email.toLowerCase().endsWith('@tcs.com');
+  const emailRegex = /^[^\s@]+@tcs\.com$/;
+  const emailInvalid = email.length > 0 && !emailRegex.test(email.toLowerCase());
+  
+  const fullNameValid = fullName.trim().length >= 2;
+  const employeeIdRegex = /^[a-zA-Z0-9]{5,20}$/;
+  const employeeIdValid = employeeId.trim().length === 0 || employeeIdRegex.test(employeeId.trim());
+
+  const isFormValid = 
+    fullNameValid && 
+    emailRegex.test(email.toLowerCase()) && 
+    pwValid && 
+    pwsMatch && 
+    employeeIdRegex.test(employeeId.trim()) && 
+    domains.length > 0 && 
+    roles.length > 0;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
 
-    // Client-side guards
-    if (!email.toLowerCase().endsWith('@tcs.com')) {
-      setErrorMsg('Only @tcs.com email addresses are permitted on this platform.');
+    if (!fullNameValid) {
+      setErrorMsg('Full name must be at least 2 characters long.');
       return;
     }
+    
+    if (!emailRegex.test(email.toLowerCase())) {
+      setErrorMsg('Please enter a valid @tcs.com email address.');
+      return;
+    }
+
     if (!pwValid) {
       setErrorMsg('Your password does not meet all the requirements listed below.');
       return;
     }
+    
     if (!pwsMatch) {
       setErrorMsg('Passwords do not match. Please re-enter your password.');
       return;
     }
+    
+    if (!employeeIdRegex.test(employeeId.trim())) {
+      setErrorMsg('Employee ID must be alphanumeric and at least 5 characters long.');
+      return;
+    }
+    
     if (domains.length === 0 || roles.length === 0) {
       setErrorMsg('Please select at least one Domain and Role.');
       return;
@@ -408,25 +445,24 @@ export default function RegisterPage({ onNavigateToLogin }) {
               label="Domains"
               options={DOMAINS}
               selectedValues={domains}
-              onChange={(val) => { setDomains(val); setErrorMsg(''); }}
+              onChange={handleDomainChange}
               placeholder="Select Domain(s)…"
             />
 
             {/* Role */}
             <MultiSelectDropdown
               label="Roles"
-              options={roleOptions}
+              options={ALL_ROLES}
               selectedValues={roles}
-              onChange={(val) => { setRoles(val); setErrorMsg(''); }}
-              placeholder={domains.length > 0 ? 'Select Role(s)…' : 'Select Domain First'}
-              disabled={domains.length === 0}
+              onChange={handleRoleChange}
+              placeholder="Select Role(s)…"
             />
 
             {/* Submit */}
             <button
               type="submit"
               className="auth-submit-btn"
-              disabled={submitting}
+              disabled={submitting || !isFormValid}
               style={{ marginTop: '4px' }}
             >
               {submitting

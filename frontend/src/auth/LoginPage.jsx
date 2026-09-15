@@ -215,14 +215,22 @@ export default function LoginPage({ onNavigateToRegister }) {
     }
   }, [domain]);
 
-  const emailInvalid = email.length > 0 && !email.toLowerCase().endsWith('@tcs.com');
+  const emailRegex = /^[^\s@]+@tcs\.com$/;
+  const emailInvalid = email.length > 0 && !emailRegex.test(email.toLowerCase());
+  const passwordInvalid = password.length > 0 && password.trim() === '';
+  const isFormValid = email.length > 0 && !emailInvalid && password.trim().length > 0 && domain && role;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrorMsg('');
 
-    if (!email.toLowerCase().endsWith('@tcs.com')) {
-      setErrorMsg('Only @tcs.com email addresses are permitted on this platform.');
+    if (!emailRegex.test(email.toLowerCase())) {
+      setErrorMsg('Please enter a valid @tcs.com email address.');
+      return;
+    }
+
+    if (password.trim() === '') {
+      setErrorMsg('Password cannot be empty.');
       return;
     }
 
@@ -384,7 +392,7 @@ export default function LoginPage({ onNavigateToRegister }) {
               </div>
 
               {/* Submit */}
-              <button type="submit" className="auth-submit-btn" disabled={submitting}>
+              <button type="submit" className="auth-submit-btn" disabled={submitting || !isFormValid}>
                 {submitting
                   ? <><span className="auth-spinner" />Signing in…</>
                   : 'Sign In to Platform'
