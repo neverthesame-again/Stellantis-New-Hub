@@ -462,7 +462,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
             <button
               type="submit"
               className="auth-submit-btn"
-              disabled={submitting || !isFormValid}
+              disabled={submitting}
               style={{ marginTop: '4px' }}
             >
               {submitting

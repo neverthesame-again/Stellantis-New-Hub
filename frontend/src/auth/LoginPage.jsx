@@ -392,7 +392,7 @@ export default function LoginPage({ onNavigateToRegister }) {
               </div>
 
               {/* Submit */}
-              <button type="submit" className="auth-submit-btn" disabled={submitting || !isFormValid}>
+              <button type="submit" className="auth-submit-btn" disabled={submitting}>
                 {submitting
                   ? <><span className="auth-spinner" />Signing in…</>
                   : 'Sign In to Platform'
