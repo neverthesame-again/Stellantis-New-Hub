@@ -234,6 +234,12 @@ export default function LoginPage({ onNavigateToRegister }) {
     setSubmitting(true);
     try {
       await login(email.trim().toLowerCase(), password, domain, role);
+      
+      // Save selected domain & role to sessionStorage so App.jsx routes correctly
+      sessionStorage.setItem('stellantis_domain', domain);
+      sessionStorage.setItem('stellantis_role', role);
+      sessionStorage.setItem('stellantis_active_tab', 'dashboard');
+      
       // Auth context → App.jsx unmounts this page automatically
     } catch (err) {
       if (err.message === 'PENDING_APPROVAL') {
