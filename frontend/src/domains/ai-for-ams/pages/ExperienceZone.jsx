@@ -27,9 +27,11 @@ import {
   ArrowLeftRight,
   TrendingUp,
   Lock,
-  UserCheck
+  UserCheck,
+  SlidersHorizontal
 } from 'lucide-react';
 import { amsExperienceData } from '../mockData.js';
+import '../../ai-for-ad/product-owner/adModelCatalogue.css';
 
 export default function ExperienceZone() {
   const [data, setData] = useState(amsExperienceData);
@@ -40,10 +42,34 @@ export default function ExperienceZone() {
   const [toastMessage, setToastMessage] = useState(null);
 
   // Filter states
-  const [modelProviderFilter, setModelProviderFilter] = useState('All');
   const [agentLifecycleFilter, setAgentLifecycleFilter] = useState('All');
   const [toolCategoryFilter, setToolCategoryFilter] = useState('All');
   const [subTypeFilter, setSubTypeFilter] = useState('All');
+
+  // Advanced Facet Filtering for Models
+  const ALL_PROVIDERS = ['Anthropic', 'Google', 'OpenAI', 'Mistral AI', 'Meta AI', 'DeepSeek AI', 'Cohere', 'AI21 Labs'];
+  const ALL_CAPABILITIES = [
+    'General Reasoning & Code',
+    'Deep & Complex Reasoning',
+    'Multimodal Telemetry & Vision',
+    'Edge Simulation & Diagnostics'
+  ];
+  const ALL_DEPLOYMENTS = [
+    'Dedicated Sovereign Cloud',
+    'Multi-Tenant Cloud API',
+    'On-Premise Sovereign Cluster',
+    'Private VPC Appliance'
+  ];
+  const ALL_COST_TIERS = [
+    'Economy Compute',
+    'Standard Compute',
+    'Premium Compute'
+  ];
+
+  const [selectedProviders, setSelectedProviders] = useState([]);
+  const [selectedCaps, setSelectedCaps] = useState([]);
+  const [selectedDeployments, setSelectedDeployments] = useState([]);
+  const [selectedCosts, setSelectedCosts] = useState([]);
 
   // Compare models state
   const [compareList, setCompareList] = useState([]);
@@ -180,14 +206,50 @@ export default function ExperienceZone() {
     }
   };
 
-  // Filtered Models
-  const filteredModels = (data.models || []).filter((m) => {
-    const matchesSearch = (m.name || '').toLowerCase().includes(searchQuery.toLowerCase()) || 
-      (m.supportedUseCases || []).some(u => u.toLowerCase().includes(searchQuery.toLowerCase())) ||
-      (m.provider || '').toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesProvider = modelProviderFilter === 'All' || (m.provider || '').toLowerCase().includes(modelProviderFilter.toLowerCase());
-    return matchesSearch && matchesProvider;
-  });
+  // Filtered Models (Advanced Facets)
+  const filteredModels = React.useMemo(() => {
+    return (data.models || []).filter(m => {
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const match = (m.name||'').toLowerCase().includes(q) || 
+          (m.provider||'').toLowerCase().includes(q) ||
+          (m.deployType||'').toLowerCase().includes(q) ||
+          (m.costTier||'').toLowerCase().includes(q) ||
+          (m.supportedUseCases || []).some(u => u.toLowerCase().includes(q));
+        if (!match) return false;
+      }
+      if (selectedProviders.length > 0 && !selectedProviders.includes(m.provider)) return false;
+      if (selectedCaps.length > 0 && !selectedCaps.includes(m.capabilityGroup)) return false;
+      if (selectedDeployments.length > 0 && !selectedDeployments.includes(m.deployType)) return false;
+      if (selectedCosts.length > 0 && !selectedCosts.includes(m.costTier)) return false;
+      return true;
+    });
+  }, [data.models, searchQuery, selectedProviders, selectedCaps, selectedDeployments, selectedCosts]);
+
+  // Dynamic Facet Counter
+  const getDynamicCount = (facetCategory, value) => {
+    return (data.models || []).filter(m => {
+      if (searchQuery.trim()) {
+        const q = searchQuery.toLowerCase();
+        const match = (m.name||'').toLowerCase().includes(q) || (m.provider||'').toLowerCase().includes(q) || (m.deployType||'').toLowerCase().includes(q) || (m.costTier||'').toLowerCase().includes(q);
+        if (!match) return false;
+      }
+      if (facetCategory === 'provider') { if (m.provider !== value) return false; } else if (selectedProviders.length > 0) { if (!selectedProviders.includes(m.provider)) return false; }
+      if (facetCategory === 'capability') { if (m.capabilityGroup !== value) return false; } else if (selectedCaps.length > 0) { if (!selectedCaps.includes(m.capabilityGroup)) return false; }
+      if (facetCategory === 'deployment') { if (m.deployType !== value) return false; } else if (selectedDeployments.length > 0) { if (!selectedDeployments.includes(m.deployType)) return false; }
+      if (facetCategory === 'cost') { if (m.costTier !== value) return false; } else if (selectedCosts.length > 0) { if (!selectedCosts.includes(m.costTier)) return false; }
+      return true;
+    }).length;
+  };
+
+  const handleResetFilters = () => {
+    setSearchQuery('');
+    setSelectedProviders([]);
+    setSelectedCaps([]);
+    setSelectedDeployments([]);
+    setSelectedCosts([]);
+    showToast('Facet filters reset');
+  };
 
   // Filtered Agents
   const filteredAgents = (data.agents || []).filter((a) => {
@@ -329,206 +391,182 @@ export default function ExperienceZone() {
       {/* 1. MODEL CATALOGUE                                        */}
       {/* ========================================================= */}
       {subTab === 'models' && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          
-          {/* Header Action & Filter Bar */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginRight: '4px' }}>
-                Provider:
-              </span>
-              {['All', 'Anthropic', 'Google', 'DeepSeek', 'OpenAI', 'Meta', 'Mistral'].map((prov) => (
-                <button
-                  key={prov}
-                  onClick={() => setModelProviderFilter(prov)}
-                  style={{
-                    padding: '4px 10px',
-                    borderRadius: 'var(--radius-full)',
-                    fontSize: '0.72rem',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    border: modelProviderFilter === prov ? 'none' : '1px solid var(--border-color)',
-                    background: modelProviderFilter === prov ? 'var(--stellantis-accent)' : 'var(--bg-surface)',
-                    color: modelProviderFilter === prov ? '#ffffff' : 'var(--text-secondary)'
-                  }}
-                >
-                  {prov}
-                </button>
-              ))}
-            </div>
-
-            <div style={{ display: 'flex', gap: '8px' }}>
-              {compareList.length >= 2 && (
-                <button
-                  onClick={() => setShowCompareModal(true)}
-                  className="st-btn st-btn-primary"
-                  style={{ fontSize: '0.75rem', padding: '6px 12px', background: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px' }}
-                >
-                  <ArrowLeftRight size={14} /> Compare Selected ({compareList.length})
-                </button>
-              )}
-              <button
-                onClick={() => setShowOnboardModal(true)}
-                className="st-btn st-btn-outline"
-                style={{ fontSize: '0.75rem', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}
-              >
-                <Plus size={14} /> Request New Model Onboarding
+        <div className="ad-models-browse-layout" style={{ marginTop: '0', background: 'transparent' }}>
+          {/* Left Facet Filters Aside */}
+          <aside className="ad-models-facet-aside" style={{ flexShrink: 0 }}>
+            <div className="ad-facet-header">
+              <div className="ad-facet-title">
+                <Filter size={13} />
+                <span>Facet Filters</span>
+              </div>
+              <button onClick={handleResetFilters} className="ad-facet-reset-btn">
+                Reset All
               </button>
             </div>
-          </div>
 
-          {/* Model Cards Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', gap: '16px' }}>
-            {filteredModels.map((model) => {
-              const isCompared = compareList.includes(model.id);
-              return (
-                <div
-                  key={model.id}
-                  className="st-card"
-                  style={{
-                    padding: '18px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '12px',
-                    border: isCompared ? '2px solid #3b82f6' : '1px solid var(--border-color)'
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)' }}>{model.id}</span>
-                      <span style={{ fontSize: '0.68rem', padding: '1px 6px', borderRadius: '4px', background: 'var(--bg-subtle)', color: 'var(--text-secondary)' }}>
-                        {model.modality}
+            {/* 1. Capability Filter */}
+            <div className="ad-facet-section">
+              <div className="ad-facet-section-header"><span>Capability</span></div>
+              <div className="ad-facet-options">
+                {ALL_CAPABILITIES.map(cap => {
+                  const count = getDynamicCount('capability', cap);
+                  const checked = selectedCaps.includes(cap);
+                  return (
+                    <label key={cap} className={`ad-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                      <div className="ad-facet-label-left">
+                        <input type="checkbox" checked={checked} onChange={(e) => {
+                          if (e.target.checked) setSelectedCaps([...selectedCaps, cap]);
+                          else setSelectedCaps(selectedCaps.filter(c => c !== cap));
+                        }} />
+                        <span>{cap}</span>
+                      </div>
+                      <span className="ad-facet-count">{count}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 2. Deployment Type Filter */}
+            <div className="ad-facet-section" style={{ paddingTop: '10px', borderTop: '1px solid var(--border-color, #f1f5f9)' }}>
+              <div className="ad-facet-section-header"><span>Deployment Type</span></div>
+              <div className="ad-facet-options">
+                {ALL_DEPLOYMENTS.map(dep => {
+                  const count = getDynamicCount('deployment', dep);
+                  const checked = selectedDeployments.includes(dep);
+                  return (
+                    <label key={dep} className={`ad-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                      <div className="ad-facet-label-left">
+                        <input type="checkbox" checked={checked} onChange={(e) => {
+                          if (e.target.checked) setSelectedDeployments([...selectedDeployments, dep]);
+                          else setSelectedDeployments(selectedDeployments.filter(d => d !== dep));
+                        }} />
+                        <span>{dep}</span>
+                      </div>
+                      <span className="ad-facet-count">{count}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 3. Cost Tier Filter */}
+            <div className="ad-facet-section" style={{ paddingTop: '10px', borderTop: '1px solid var(--border-color, #f1f5f9)' }}>
+              <div className="ad-facet-section-header"><span>Cost Tier</span></div>
+              <div className="ad-facet-options">
+                {ALL_COST_TIERS.map(tier => {
+                  const count = getDynamicCount('cost', tier);
+                  const checked = selectedCosts.includes(tier);
+                  return (
+                    <label key={tier} className={`ad-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                      <div className="ad-facet-label-left">
+                        <input type="checkbox" checked={checked} onChange={(e) => {
+                          if (e.target.checked) setSelectedCosts([...selectedCosts, tier]);
+                          else setSelectedCosts(selectedCosts.filter(t => t !== tier));
+                        }} />
+                        <span>{tier}</span>
+                      </div>
+                      <span className="ad-facet-count">{count}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* 4. Provider Filter */}
+            <div className="ad-facet-section" style={{ paddingTop: '10px', borderTop: '1px solid var(--border-color, #f1f5f9)' }}>
+              <div className="ad-facet-section-header"><span>Provider</span></div>
+              <div className="ad-facet-options">
+                {ALL_PROVIDERS.map(prov => {
+                  const count = getDynamicCount('provider', prov);
+                  const checked = selectedProviders.includes(prov);
+                  return (
+                    <label key={prov} className={`ad-facet-label ${count === 0 ? 'zero-count' : ''} ${checked ? 'is-checked' : ''}`}>
+                      <div className="ad-facet-label-left">
+                        <input type="checkbox" checked={checked} onChange={(e) => {
+                          if (e.target.checked) setSelectedProviders([...selectedProviders, prov]);
+                          else setSelectedProviders(selectedProviders.filter(p => p !== prov));
+                        }} />
+                        <span>{prov}</span>
+                      </div>
+                      <span className="ad-facet-count">{count}</span>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
+          </aside>
+
+          {/* Main Grid Area */}
+          <div className="ad-models-main-area" style={{ width: '100%' }}>
+            {/* Action Bar */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                Showing {filteredModels.length} Models
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {compareList.length >= 2 && (
+                  <button onClick={() => setShowCompareModal(true)} className="st-btn st-btn-primary" style={{ fontSize: '0.75rem', padding: '6px 12px', background: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <ArrowLeftRight size={14} /> Compare Selected ({compareList.length})
+                  </button>
+                )}
+                <button onClick={() => setShowOnboardModal(true)} className="st-btn st-btn-outline" style={{ fontSize: '0.75rem', padding: '6px 12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Plus size={14} /> Request New Model Onboarding
+                </button>
+              </div>
+            </div>
+
+            {/* Grid */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '16px' }}>
+              {filteredModels.map(model => {
+                const isCompared = compareList.includes(model.id);
+                return (
+                  <div key={model.id} className="st-card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', border: isCompared ? '2px solid #3b82f6' : '1px solid var(--border-color)' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)' }}>{model.id}</span>
+                      </div>
+                      <span className={`st-badge ${model.riskRating === 'High' ? 'badge-high' : model.riskRating === 'Medium' ? 'badge-purple' : 'badge-info'}`}>
+                        {model.riskRating} Risk
                       </span>
                     </div>
-                    <span className={`st-badge ${model.riskRating === 'High' ? 'badge-high' : model.riskRating === 'Medium' ? 'badge-purple' : 'badge-info'}`}>
-                      {model.riskRating} Risk
-                    </span>
-                  </div>
 
-                  <div>
-                    <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>{model.name}</h3>
-                    <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
-                      Provider: <strong>{model.provider}</strong>
-                    </div>
-                  </div>
-
-                  {/* Tech Specs Matrix */}
-                  <div style={{
-                    background: 'var(--bg-surface-secondary)',
-                    borderRadius: '6px',
-                    padding: '10px 12px',
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 1fr',
-                    gap: '8px',
-                    fontSize: '0.74rem'
-                  }}>
                     <div>
-                      <span style={{ color: 'var(--text-muted)' }}>Deployment:</span>
-                      <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.deploymentType}</div>
-                    </div>
-                    <div>
-                      <span style={{ color: 'var(--text-muted)' }}>Latency P95:</span>
-                      <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.latency}</div>
-                    </div>
-                    <div>
-                      <span style={{ color: 'var(--text-muted)' }}>Benchmark:</span>
-                      <div style={{ fontWeight: 700, color: '#10b981' }}>{model.benchmarkScore}</div>
-                    </div>
-                    <div>
-                      <span style={{ color: 'var(--text-muted)' }}>Cost Tier:</span>
-                      <div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.costTier}</div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '4px', textTransform: 'uppercase', fontWeight: 600 }}>
-                      Approved Use Cases:
-                    </div>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
-                      {model.supportedUseCases.map((u, i) => (
-                        <span key={i} className="st-badge badge-purple" style={{ fontSize: '0.68rem' }}>{u}</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-color)', paddingTop: '8px' }}>
-                    <strong style={{ color: 'var(--text-primary)' }}>Data Restrictions:</strong> {model.dataRestrictions}
-                  </div>
-
-                  {/* Actions Bar */}
-                  <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', paddingTop: '4px' }}>
-                    {model.subscribed ? (
-                      <div style={{ display: 'flex', gap: '6px', width: '100%' }}>
-                        <button
-                          onClick={() => handleToggleSubscription(model.id)}
-                          className="st-btn"
-                          style={{
-                            flex: 1,
-                            fontSize: '0.78rem',
-                            background: '#10b981',
-                            color: '#ffffff',
-                            border: '1px solid #059669',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: '6px',
-                            fontWeight: 700
-                          }}
-                        >
-                          <CheckCircle size={14} />
-                          <span>✓ Subscribed to Portfolio</span>
-                        </button>
-                        <button
-                          onClick={() => handleToggleSubscription(model.id)}
-                          className="st-btn st-btn-outline"
-                          style={{
-                            fontSize: '0.75rem',
-                            color: '#ef4444',
-                            borderColor: 'rgba(239, 68, 68, 0.4)',
-                            padding: '6px 10px',
-                            fontWeight: 600
-                          }}
-                        >
-                          Remove
-                        </button>
+                      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>{model.name}</h3>
+                      <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginTop: '2px' }}>
+                        Provider: <strong>{model.provider}</strong>
                       </div>
-                    ) : (
-                      <button
-                        onClick={() => handleToggleSubscription(model.id)}
-                        className="st-btn st-btn-primary"
-                        style={{
-                          flex: 1,
-                          fontSize: '0.78rem',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '6px',
-                          fontWeight: 600
-                        }}
-                      >
-                        <Sparkles size={13} />
-                        <span>+ Subscribe Portfolio</span>
-                      </button>
-                    )}
+                    </div>
 
-                    <button
-                      onClick={() => handleToggleCompare(model.id)}
-                      className="st-btn st-btn-outline"
-                      style={{
-                        fontSize: '0.72rem',
-                        padding: '6px 10px',
-                        color: isCompared ? '#3b82f6' : 'var(--text-secondary)',
-                        borderColor: isCompared ? '#3b82f6' : 'var(--border-color)',
-                        background: isCompared ? 'rgba(59, 130, 246, 0.1)' : 'transparent'
-                      }}
-                      title="Add to comparison"
-                    >
-                      <ArrowLeftRight size={13} />
-                    </button>
+                    <div style={{ background: 'var(--bg-surface-secondary)', borderRadius: '6px', padding: '10px 12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '0.74rem' }}>
+                      <div style={{ gridColumn: '1 / -1' }}><span style={{ color: 'var(--text-muted)' }}>Capability:</span><div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.capabilityGroup}</div></div>
+                      <div><span style={{ color: 'var(--text-muted)' }}>Deploy:</span><div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.deployType}</div></div>
+                      <div><span style={{ color: 'var(--text-muted)' }}>Cost:</span><div style={{ fontWeight: 600, color: 'var(--text-primary)' }}>{model.costTierPrice}</div></div>
+                    </div>
+
+                    <div style={{ fontSize: '0.72rem', color: 'var(--text-secondary)', borderTop: '1px solid var(--border-color)', paddingTop: '8px' }}>
+                      <strong style={{ color: 'var(--text-primary)' }}>Data Restrictions:</strong> {model.dataRestrictions}
+                    </div>
+
+                    {/* Actions Bar */}
+                    <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', paddingTop: '4px' }}>
+                      {model.subscribed ? (
+                        <button onClick={() => handleToggleSubscription(model.id)} className="st-btn" style={{ flex: 1, fontSize: '0.75rem', background: '#10b981', color: '#ffffff', border: '1px solid #059669', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontWeight: 700 }}>
+                          <CheckCircle size={14} /> ✓ Subscribed
+                        </button>
+                      ) : (
+                        <button onClick={() => handleToggleSubscription(model.id)} className="st-btn st-btn-primary" style={{ flex: 1, fontSize: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontWeight: 600 }}>
+                          <Sparkles size={13} /> + Subscribe
+                        </button>
+                      )}
+                      <button onClick={() => handleToggleCompare(model.id)} className="st-btn st-btn-outline" style={{ fontSize: '0.72rem', padding: '6px 10px', color: isCompared ? '#3b82f6' : 'var(--text-secondary)', borderColor: isCompared ? '#3b82f6' : 'var(--border-color)', background: isCompared ? 'rgba(59, 130, 246, 0.1)' : 'transparent' }} title="Add to comparison">
+                        <ArrowLeftRight size={13} />
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
