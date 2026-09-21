@@ -1,0 +1,854 @@
+/* ==========================================================================
+   STELLANTIS AI OPERATING MODEL HUB — MY SUBSCRIPTIONS (PRD §5.6)
+   Automotive Design System Tokens & Flat Uniform Card Grid
+   ========================================================================== */
+
+.ad-subs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Header Card */
+.ad-subs-header-card {
+  background: var(--surface-primary, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ad-subs-header-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ad-subs-header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ad-subs-header-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #0b1a30;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-subs-header-text h2 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ad-subs-header-text p {
+  font-size: 0.75rem;
+  color: var(--text-muted, #64748b);
+  margin: 2px 0 0 0;
+}
+
+/* Top Summary Strip: Level Distribution */
+.ad-subs-summary-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--surface-tertiary, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  font-size: 0.72rem;
+  color: var(--text-secondary, #475569);
+}
+
+.ad-subs-summary-label {
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin-right: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ad-subs-summary-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* Controls Bar: Categories & Level Filters & Search */
+.ad-subs-controls-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--surface-primary, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 14px 18px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.ad-subs-controls-row-1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Category Filter Chips Track */
+.ad-subs-category-track {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.ad-subs-cat-chip {
+  padding: 5px 11px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: var(--surface-tertiary, #f1f5f9);
+  color: var(--text-secondary, #475569);
+  border: 1px solid var(--border-color, #e2e8f0);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.ad-subs-cat-chip:hover {
+  background: #e2e8f0;
+  color: var(--text-primary, #0f172a);
+}
+
+.ad-subs-cat-chip.active {
+  background: #0b1a30;
+  color: #ffffff;
+  border-color: #0b1a30;
+  font-weight: 700;
+}
+
+.ad-subs-cat-chip-count {
+  font-family: monospace;
+  font-size: 0.65rem;
+  opacity: 0.85;
+}
+
+/* Search Box & Level Toggle */
+.ad-subs-controls-row-2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-color, #f1f5f9);
+}
+
+.ad-subs-level-track {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--surface-tertiary, #f1f5f9);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 10px;
+  padding: 3px;
+  flex-wrap: wrap;
+}
+
+.ad-subs-level-btn {
+  padding: 4px 10px;
+  border-radius: 7px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-secondary, #475569);
+  border: none;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-subs-level-btn:hover {
+  color: var(--text-primary, #0f172a);
+}
+
+.ad-subs-level-btn.active {
+  background: #ffffff;
+  color: #0b1a30;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.ad-subs-search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-tertiary, #f8fafc);
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: 10px;
+  padding: 6px 12px;
+  min-width: 240px;
+  flex: 1;
+  max-width: 380px;
+}
+
+.ad-subs-search-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 0.75rem;
+  color: var(--text-primary, #0f172a);
+  outline: none;
+}
+
+.ad-subs-search-input::placeholder {
+  color: var(--text-muted, #94a3b8);
+}
+
+/* Standardized Uniform Card Grid (Flat visual weight) */
+.ad-subs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .ad-subs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .ad-subs-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Subscription Card */
+.ad-sub-card {
+  background: var(--surface-primary, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-xl, 16px);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.ad-sub-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ad-sub-card.expiring {
+  border-color: #fde68a;
+  background: #fffdf5;
+}
+
+.ad-sub-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.ad-sub-card-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.ad-sub-card-title {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: var(--text-primary, #0f172a);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ad-sub-card-meta {
+  font-size: 0.7rem;
+  font-family: monospace;
+  color: var(--text-muted, #64748b);
+  margin-top: 3px;
+}
+
+/* Standardized Color-Coded Corner Tags Palette */
+.ad-corner-tag {
+  font-family: monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.ad-tag-individual {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.ad-tag-team {
+  background: #f0fdfa;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
+}
+
+.ad-tag-project {
+  background: #faf5ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
+}
+
+.ad-tag-portfolio {
+  background: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.ad-tag-enterprise {
+  background: #0b1a30;
+  color: #ffffff;
+  border: 1px solid #334155;
+}
+
+/* Card Body Details */
+.ad-sub-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.74rem;
+  color: var(--text-secondary, #475569);
+  padding: 8px 0;
+  border-top: 1px solid var(--border-color, #f1f5f9);
+  border-bottom: 1px solid var(--border-color, #f1f5f9);
+}
+
+.ad-sub-body-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ad-sub-body-label {
+  font-weight: 600;
+  color: var(--text-muted, #64748b);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-family: monospace;
+}
+
+.ad-sub-body-value {
+  color: var(--text-primary, #0f172a);
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Expiration Pill / Status Badge */
+.ad-sub-status-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 0.7rem;
+}
+
+.ad-sub-expiring-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+  font-weight: 700;
+  font-family: monospace;
+  animation: pulse-amber 2s infinite ease-in-out;
+}
+
+@keyframes pulse-amber {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
+  }
+}
+
+/* Card Action Button Strip */
+.ad-sub-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ad-btn-sub-action {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--surface-primary, #ffffff);
+  border: 1px solid var(--border-color, #cbd5e1);
+  color: var(--text-primary, #1e293b);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-btn-sub-action:hover {
+  background: var(--surface-tertiary, #f8fafc);
+  border-color: #94a3b8;
+}
+
+.ad-btn-sub-upgrade {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-btn-sub-upgrade:hover {
+  background: #dbeafe;
+}
+
+.ad-btn-sub-renew {
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  background: #d97706;
+  color: #ffffff;
+  border: 1px solid #b45309;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s ease;
+}
+
+.ad-btn-sub-renew:hover {
+  background: #b45309;
+}
+
+.ad-btn-sub-unsub {
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-btn-sub-unsub:hover {
+  color: #ef4444;
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+/* ==========================================================================
+   TELEMETRY SLIDE-OVER DRAWER
+   ========================================================================== */
+.ad-subs-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ad-subs-drawer-panel {
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  background: var(--surface-primary, #ffffff);
+  border-left: 1px solid var(--border-color, #e2e8f0);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ad-subs-drawer-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.ad-subs-drawer-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 0.78rem;
+}
+
+.ad-subs-drawer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ad-subs-drawer-section-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted, #64748b);
+}
+
+.ad-subs-burn-gauge {
+  background: var(--surface-tertiary, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-lg, 12px);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ad-subs-burn-bar-track {
+  width: 100%;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.ad-subs-burn-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.ad-subs-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.ad-subs-metric-box {
+  background: var(--surface-tertiary, #f8fafc);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+/* Modals */
+.ad-subs-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.ad-subs-modal-card {
+  background: var(--surface-primary, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: var(--radius-2xl, 20px);
+  max-width: 480px;
+  width: 100%;
+  padding: 22px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   DARK THEME COMPATIBILITY OVERRIDES (PRD §5.6)
+   Automotive Canonical Navy Theme for My Subscriptions
+   ========================================================================== */
+
+[data-theme="dark"] .ad-subs-header-card {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-subs-header-icon {
+  background: #142442;
+  border: 1px solid #244080;
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .ad-subs-header-text h2 {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-header-text p {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-summary-strip {
+  background: #091322;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-subs-summary-label {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-controls-bar {
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-subs-cat-chip {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-subs-cat-chip:hover {
+  background: #1e3562;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-subs-cat-chip.active {
+  background: #1e3a8a;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-subs-controls-row-2 {
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-level-track {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-level-btn {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-level-btn:hover {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-subs-level-btn.active {
+  background: #1e3a8a;
+  color: #ffffff;
+  border: 1px solid #3b82f6;
+}
+
+[data-theme="dark"] .ad-subs-search-box {
+  background: #142442;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-subs-search-input {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-search-input::placeholder {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Subscription Cards in Dark Mode */
+[data-theme="dark"] .ad-sub-card {
+  background: #0d1a30;
+  border-color: #1d3460;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .ad-sub-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .ad-sub-card.expiring {
+  background: #1c1507;
+  border-color: #854d0e;
+}
+
+[data-theme="dark"] .ad-sub-card-title {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-sub-card-meta {
+  color: var(--text-muted, #8ea8d0);
+}
+
+/* Corner Tags in Dark Mode */
+[data-theme="dark"] .ad-tag-individual {
+  background: #0f2040;
+  color: #60a5fa;
+  border-color: #1d3460;
+}
+
+[data-theme="dark"] .ad-tag-team {
+  background: #042f2e;
+  color: #2dd4bf;
+  border-color: #115e59;
+}
+
+[data-theme="dark"] .ad-tag-project {
+  background: #2e1065;
+  color: #c084fc;
+  border-color: #581c87;
+}
+
+[data-theme="dark"] .ad-tag-portfolio {
+  background: #291b05;
+  color: #fbbf24;
+  border-color: #78350f;
+}
+
+[data-theme="dark"] .ad-tag-enterprise {
+  background: #142442;
+  color: #e8f0ff;
+  border-color: #244080;
+}
+
+/* Card Body in Dark Mode */
+[data-theme="dark"] .ad-sub-card-body {
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-sub-body-label {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-sub-body-value {
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-sub-expiring-badge {
+  background: #291b05;
+  color: #fde68a;
+  border-color: #78350f;
+}
+
+/* Card Actions in Dark Mode */
+[data-theme="dark"] .ad-btn-sub-action {
+  background: transparent;
+  border-color: #244080;
+  color: var(--text-secondary, #b8cde8);
+}
+
+[data-theme="dark"] .ad-btn-sub-action:hover {
+  background: #142442;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .ad-btn-sub-upgrade {
+  background: #1e1b4b;
+  border-color: #4f46e5;
+  color: #c7d2fe;
+}
+
+[data-theme="dark"] .ad-btn-sub-upgrade:hover {
+  background: #312e81;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-btn-sub-unsub {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-btn-sub-unsub:hover {
+  color: #f87171;
+  background: #2a0a0a;
+  border-color: #5c1a1a;
+}
+
+/* Slide Drawer & Modals in Dark Mode */
+[data-theme="dark"] .ad-subs-drawer-panel {
+  background: #0d1a30;
+  border-left-color: #244080;
+}
+
+[data-theme="dark"] .ad-subs-drawer-header {
+  background: #091322;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-drawer-body {
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-drawer-section-title {
+  color: var(--text-muted, #8ea8d0);
+}
+
+[data-theme="dark"] .ad-subs-burn-gauge {
+  background: #142442;
+  border-color: #1e3562;
+}
+
+[data-theme="dark"] .ad-subs-burn-bar-track {
+  background: #091322;
+}
+
+[data-theme="dark"] .ad-subs-metric-box {
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-primary, #e8f0ff);
+}
+
+[data-theme="dark"] .ad-subs-modal-card {
+  background: #0d1a30;
+  border-color: #244080;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  color: var(--text-primary, #e8f0ff);
+}

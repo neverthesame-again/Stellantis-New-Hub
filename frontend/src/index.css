@@ -1,0 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
+
+/* ============================================================
+   STELLANTIS DESIGN SYSTEM — DARK NAVY CANONICAL THEME
+   Primary: #0e1e38 (Stellantis Midnight Navy)
+   Accent:  #1a3a6e (Deep Stellantis Blue)
+   Live:    #0284c7 (Operational Action Blue)
+   ============================================================ */
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', var(--font-sans);
+
+  /* ─── Stellantis Navy Light Mode (on white canvas) ─── */
+  --bg-app: #f0f4fa;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-secondary: #f5f8ff;
+  --bg-subtle: #eef2fb;
+  --border-color: #d8e3f7;
+  --border-strong: #b0c4e8;
+
+  --text-primary: #0e1e38;
+  --text-secondary: #3a5080;
+  --text-muted: #6a85b0;
+  --text-white: #ffffff;
+
+  /* Stellantis Brand Navy Palette */
+  --stellantis-navy: #0e1e38;
+  --stellantis-navy-mid: #1a3a6e;
+  --stellantis-blue: #1a3a6e;
+  --stellantis-blue-bright: #0284c7;
+  --stellantis-blue-light: #ddeeff;
+  --stellantis-accent: #1a3a6e;
+  --stellantis-action: #0284c7;
+
+  /* Header always dark navy */
+  --header-bg: #0e1e38;
+  --header-text: #ffffff;
+  --header-border: #1d3460;
+
+  /* Workspace bar */
+  --workspace-bg: #ffffff;
+  --workspace-border: #d8e3f7;
+
+  /* Nav active tab */
+  --nav-active-tab-bg: #0e1e38;
+  --nav-active-tab-border: #0e1e38;
+
+  /* Badges */
+  --badge-critical-bg: #fef2f2;
+  --badge-critical-text: #b91c1c;
+  --badge-critical-border: #fecaca;
+
+  --badge-high-bg: #fffbeb;
+  --badge-high-text: #b45309;
+  --badge-high-border: #fde68a;
+
+  --badge-success-bg: #ecfdf5;
+  --badge-success-text: #047857;
+  --badge-success-border: #a7f3d0;
+
+  --badge-info-bg: #ddeeff;
+  --badge-info-text: #1a3a6e;
+  --badge-info-border: #b3d4f5;
+
+  --badge-purple-bg: #f5f3ff;
+  --badge-purple-text: #6d28d9;
+  --badge-purple-border: #ddd6fe;
+
+  --shadow-sm: 0 1px 3px 0 rgba(14, 30, 56, 0.08);
+  --shadow-md: 0 4px 8px -1px rgba(14, 30, 56, 0.10), 0 2px 4px -2px rgba(14, 30, 56, 0.06);
+  --shadow-lg: 0 10px 20px -3px rgba(14, 30, 56, 0.12), 0 4px 6px -4px rgba(14, 30, 56, 0.06);
+  --shadow-glow: 0 0 20px rgba(26, 58, 110, 0.20);
+  --shadow-header: 0 2px 12px rgba(14, 30, 56, 0.30);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+}
+
+[data-theme="dark"] {
+  /* ─── Stellantis Navy Dark Mode ─── */
+  --bg-app: #060d1c;
+  --bg-surface: #0d1a30;
+  --bg-surface-elevated: #111f38;
+  --bg-surface-secondary: #0f1d34;
+  --bg-subtle: #162240;
+  --border-color: #1d3460;
+  --border-strong: #244080;
+
+  --text-primary: #e8f0ff;
+  --text-secondary: #b8cde8;
+  --text-muted: #8ea8d0;
+
+  --stellantis-navy: #0e1e38;
+  --stellantis-navy-mid: #1a3a6e;
+  --stellantis-blue: #4080d0;
+  --stellantis-blue-bright: #0284c7;
+  --stellantis-blue-light: #0f2040;
+  --stellantis-accent: #60a5fa;
+  --stellantis-action: #0284c7;
+
+  /* Nav active tab in dark mode */
+  --nav-active-tab-bg: #1a3a6e;
+  --nav-active-tab-border: #3b82f6;
+
+  --header-bg: #060d1c;
+  --header-text: #ffffff;
+  --header-border: #0e1e38;
+
+  --workspace-bg: #0d1a30;
+  --workspace-border: #1d3460;
+
+  --badge-critical-bg: #2a0a0a;
+  --badge-critical-text: #f87171;
+  --badge-critical-border: #5c1a1a;
+
+  --badge-high-bg: #2a1500;
+  --badge-high-text: #fbbf24;
+  --badge-high-border: #5c3000;
+
+  --badge-success-bg: #0a2a1a;
+  --badge-success-text: #34d399;
+  --badge-success-border: #0d4025;
+
+  --badge-info-bg: #0a1a3a;
+  --badge-info-text: #7eb8f5;
+  --badge-info-border: #1a3a7a;
+
+  --badge-purple-bg: #1a0a3a;
+  --badge-purple-text: #c084fc;
+  --badge-purple-border: #3a1a6a;
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 25px rgba(26, 58, 110, 0.40);
+  --shadow-header: 0 2px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  font-size: 14px;
+}
+
+/* ─── Animations ─── */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  display: inline-block;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseGlow 2s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+/* ─── App Shell ─── */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  max-width: 1480px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 28px 80px 28px;
+}
+
+/* ─── Cards ─── */
+.st-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.st-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+/* ─── Buttons ─── */
+.st-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.st-btn:focus-visible {
+  outline: 2px solid var(--stellantis-action);
+  outline-offset: 2px;
+}
+
+.st-btn-primary {
+  background: var(--stellantis-navy);
+  color: #ffffff;
+  border-color: var(--stellantis-navy);
+}
+
+.st-btn-primary:hover {
+  background: var(--stellantis-navy-mid);
+  border-color: var(--stellantis-navy-mid);
+  box-shadow: 0 2px 8px rgba(14, 30, 56, 0.35);
+}
+
+.st-btn-action {
+  background: var(--stellantis-action);
+  color: #ffffff;
+  border-color: var(--stellantis-action);
+}
+
+.st-btn-action:hover {
+  background: #0369a1;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+.st-btn-outline {
+  background: transparent;
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.st-btn-outline:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
+
+.st-btn-pill {
+  border-radius: var(--radius-full);
+}
+
+/* ─── Badges ─── */
+.st-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.badge-critical { background: var(--badge-critical-bg); color: var(--badge-critical-text); border-color: var(--badge-critical-border); }
+.badge-high     { background: var(--badge-high-bg);     color: var(--badge-high-text);     border-color: var(--badge-high-border); }
+.badge-success  { background: var(--badge-success-bg);  color: var(--badge-success-text);  border-color: var(--badge-success-border); }
+.badge-info     { background: var(--badge-info-bg);     color: var(--badge-info-text);     border-color: var(--badge-info-border); }
+.badge-purple   { background: var(--badge-purple-bg);   color: var(--badge-purple-text);   border-color: var(--badge-purple-border); }
+.badge-navy     { background: var(--stellantis-navy);   color: #ffffff;                    border-color: var(--stellantis-navy-mid); }
+
+/* Floating widgets (SEL Nexus & AI Assistant) removed per product requirements */
+
+/* ─── Form Inputs ─── */
+input, select, textarea {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--text-primary);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--stellantis-navy-mid);
+  box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.12);
+}
+
+select {
+  appearance: none;
+  cursor: pointer;
+}
+
+option {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .st-btn-primary {
+  background: #1d3f7a;
+  border-color: #2e5ca6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .st-btn-primary:hover {
+  background: #254f96;
+  border-color: #3b74cc;
+}
+
+/* ─── Scrollbars ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ─── Typography utilities ─── */
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.font-display   { font-family: var(--font-display); }
+.uppercase      { text-transform: uppercase; }
+.tracking-wide  { letter-spacing: 0.06em; }

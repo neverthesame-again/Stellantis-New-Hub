@@ -1,0 +1,705 @@
+/* ==========================================================================
+   SEL NEXUS AUTOMATION PIPELINE SUITE
+   Includes 2-Option Flow Modal and Brownfield Modal
+   Stellantis Corporate Theme (Dark Navy / Sky Blue / High Contrast)
+   ========================================================================== */
+
+/* Modal Backdrop Overlay */
+.bf-modal-overlay,
+.ad-nexus-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(11, 26, 48, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100;
+  padding: 16px;
+  animation: bfFadeIn 0.2s ease-out;
+}
+
+/* --------------------------------------------------------------------------
+   1. The 2-Option Flow Modal (Green Field & Application Enhancements)
+   -------------------------------------------------------------------------- */
+.ad-nexus-modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  box-shadow: 0 24px 48px -12px rgba(11, 26, 48, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
+  overflow: hidden;
+  animation: bfScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: auto;
+}
+
+.ad-nexus-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  background-color: #ffffff;
+}
+
+.ad-nexus-modal-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0b1a30;
+  letter-spacing: -0.01em;
+}
+
+.ad-nexus-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ad-nexus-modal-close:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.ad-nexus-modal-body {
+  padding: 32px 36px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.ad-nexus-icon-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.ad-nexus-decor-line {
+  flex: 1;
+  max-width: 80px;
+  height: 2px;
+  background: repeating-linear-gradient(to right, #cbd5e1 0, #cbd5e1 18px, transparent 18px, transparent 26px);
+}
+
+.ad-nexus-center-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background-color: #004884;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(0, 72, 132, 0.28);
+}
+
+.ad-nexus-heading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0b1a30;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px 0;
+}
+
+.ad-nexus-description {
+  font-size: 0.85rem;
+  color: #475569;
+  line-height: 1.55;
+  max-width: 480px;
+  margin: 0 0 28px 0;
+}
+
+.ad-nexus-actions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  width: 100%;
+}
+
+.ad-nexus-action-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  background-color: #004884;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 4px 14px rgba(0, 72, 132, 0.22);
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+  font-family: inherit;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.ad-nexus-action-card:hover {
+  background-color: #00376b;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 72, 132, 0.35);
+}
+
+.ad-nexus-action-card:active {
+  transform: translateY(0);
+}
+
+.ad-nexus-action-icon-box {
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ad-nexus-action-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ad-nexus-action-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.ad-nexus-action-subtitle {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   2. Brownfield Automation Pipeline Modal Form
+   -------------------------------------------------------------------------- */
+.bf-modal-box {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  box-shadow: 0 24px 48px -12px rgba(11, 26, 48, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
+  overflow: hidden;
+  animation: bfScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: auto;
+}
+
+.bf-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 22px;
+  border-bottom: 1px solid #f1f5f9;
+  background-color: #ffffff;
+}
+
+.bf-modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bf-modal-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bf-modal-back-btn:hover {
+  background-color: #f1f5f9;
+  color: #0b1a30;
+}
+
+.bf-modal-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0b1a30;
+  letter-spacing: -0.01em;
+}
+
+.bf-modal-title svg {
+  color: #004884;
+}
+
+.bf-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bf-modal-close:hover {
+  background-color: #f1f5f9;
+  color: #0f172a;
+}
+
+.bf-modal-close:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bf-modal-body {
+  padding: 22px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bf-form-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1e293b;
+  letter-spacing: -0.005em;
+}
+
+.bf-form-input,
+.bf-form-textarea {
+  width: 100%;
+  padding: 9px 13px;
+  border-radius: 9px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 0.82rem;
+  color: #0f172a;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  box-sizing: border-box;
+}
+
+.bf-form-input {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.bf-form-textarea {
+  resize: vertical;
+  min-height: 85px;
+  line-height: 1.45;
+}
+
+.bf-form-input:focus,
+.bf-form-textarea:focus {
+  border-color: #004884;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(0, 72, 132, 0.12);
+}
+
+.bf-form-input:disabled,
+.bf-form-textarea:disabled {
+  background-color: #f1f5f9;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+/* PRD File Upload Styles */
+.bf-upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 22px 16px;
+  border-radius: 12px;
+  border: 2px dashed #cbd5e1;
+  background-color: #f8fafc;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+}
+
+.bf-upload-dropzone:hover,
+.bf-upload-dropzone.dragover {
+  border-color: #004884;
+  background-color: rgba(56, 189, 248, 0.06);
+}
+
+.bf-upload-dropzone-icon {
+  color: #004884;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2px;
+}
+
+.bf-upload-text {
+  font-size: 0.8rem;
+  color: #475569;
+}
+
+.bf-upload-text span {
+  font-weight: 700;
+  color: #004884;
+}
+
+.bf-upload-hint {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.bf-upload-input {
+  display: none;
+}
+
+.bf-upload-file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+}
+
+.bf-upload-file-icon {
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bf-upload-file-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0369a1;
+  word-break: break-all;
+  flex: 1;
+}
+
+.bf-upload-file-remove {
+  background: none;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.bf-upload-file-remove:hover {
+  background-color: rgba(239, 68, 68, 0.12);
+}
+
+/* Feedback Banners */
+.bf-banner {
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.bf-banner.error {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+}
+
+.bf-banner.success {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.bf-tracking-link {
+  color: #0284c7;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.bf-tracking-link:hover {
+  text-decoration: underline;
+}
+
+/* Action Buttons */
+.bf-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid #f1f5f9;
+  margin-top: 4px;
+}
+
+.bf-btn-secondary {
+  padding: 8px 16px;
+  border-radius: 9px;
+  border: 1px solid #cbd5e1;
+  background-color: #ffffff;
+  color: #475569;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.bf-btn-secondary:hover {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.bf-btn-secondary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.bf-btn-primary {
+  padding: 8px 22px;
+  border-radius: 9px;
+  border: none;
+  background-color: #004884;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 72, 132, 0.25);
+  transition: all 0.15s ease;
+}
+
+.bf-btn-primary:hover:not(:disabled) {
+  background-color: #003768;
+  box-shadow: 0 4px 12px rgba(0, 72, 132, 0.35);
+  transform: translateY(-1px);
+}
+
+.bf-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.bf-btn-primary:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   3. Dark Theme Adaptations
+   -------------------------------------------------------------------------- */
+[data-theme="dark"] .ad-nexus-modal-card,
+[data-theme="dark"] .bf-modal-box {
+  background-color: #0d1a30;
+  border-color: #1e3a5f;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55), 0 0 32px rgba(56, 189, 248, 0.16);
+}
+
+[data-theme="dark"] .ad-nexus-modal-header,
+[data-theme="dark"] .bf-modal-header {
+  background-color: #0d1a30;
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] .ad-nexus-modal-title,
+[data-theme="dark"] .bf-modal-title {
+  color: #f1f5f9;
+}
+
+[data-theme="dark"] .bf-modal-title svg {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .ad-nexus-modal-close,
+[data-theme="dark"] .bf-modal-close {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .ad-nexus-modal-close:hover,
+[data-theme="dark"] .bf-modal-close:hover {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .bf-modal-back-btn {
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .bf-modal-back-btn:hover {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-nexus-heading {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .ad-nexus-description {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .ad-nexus-decor-line {
+  background: repeating-linear-gradient(to right, #334155 0, #334155 18px, transparent 18px, transparent 26px);
+}
+
+[data-theme="dark"] .ad-nexus-action-card {
+  background-color: #004884;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .ad-nexus-action-card:hover {
+  background-color: #003b6e;
+}
+
+[data-theme="dark"] .bf-form-label {
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .bf-form-input,
+[data-theme="dark"] .bf-form-textarea {
+  background-color: #081324;
+  border-color: #1e3a5f;
+  color: #f8fafc;
+}
+
+[data-theme="dark"] .bf-form-input:focus,
+[data-theme="dark"] .bf-form-textarea:focus {
+  border-color: #38bdf8;
+  background-color: #0b1a30;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+[data-theme="dark"] .bf-upload-dropzone {
+  background-color: #081324;
+  border-color: #244080;
+}
+
+[data-theme="dark"] .bf-upload-dropzone:hover,
+[data-theme="dark"] .bf-upload-dropzone.dragover {
+  border-color: #38bdf8;
+  background-color: rgba(56, 189, 248, 0.08);
+}
+
+[data-theme="dark"] .bf-upload-dropzone-icon {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .bf-upload-text {
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .bf-upload-text span {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .bf-upload-file {
+  background-color: #102a4e;
+  border-color: #0284c7;
+}
+
+[data-theme="dark"] .bf-upload-file-icon {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .bf-upload-file-name {
+  color: #e0f2fe;
+}
+
+[data-theme="dark"] .bf-banner.error {
+  background-color: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+[data-theme="dark"] .bf-banner.success {
+  background-color: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #86efac;
+}
+
+[data-theme="dark"] .bf-tracking-link {
+  color: #38bdf8;
+}
+
+[data-theme="dark"] .bf-form-actions {
+  border-top-color: #1e293b;
+}
+
+[data-theme="dark"] .bf-btn-secondary {
+  background-color: #0d1a30;
+  border-color: #1e3a5f;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .bf-btn-secondary:hover {
+  background-color: #1e293b;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .bf-btn-primary {
+  background-color: #004884;
+}
+
+[data-theme="dark"] .bf-btn-primary:hover:not(:disabled) {
+  background-color: #003b6e;
+}
+
+/* Animations */
+@keyframes bfFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes bfScaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 540px) {
+  .ad-nexus-actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
