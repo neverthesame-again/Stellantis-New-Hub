@@ -33,13 +33,13 @@ export const INBOX_ITEMS = [
     requestorType: 'human',
     project: 'Release 4.2 Program',
     portfolio: 'L2+ Autonomous Systems Portfolio',
-    requiredDecision: 'Approve or reject a temporary ASIL-D timeout threshold exception (25ms → 35ms) for Balocco test track batch #71029.',
+    requiredDecision: 'Approve or reject a temporary ASIL-D timeout threshold exception (25ms → 35ms) for Northfield test track batch #71029.',
     dueDate: 'Today',
     dueBadgeType: 'critical',
     dueCountdownHours: 4,
     supportingEvidence: [
       { name: 'HIL Test Bench #4 Report — 96% Pass Rate', type: 'doc', format: 'PDF', size: '2.4 MB' },
-      { name: 'Balocco Weather Log — Sensor Rig 3 telemetry', type: 'telemetry', format: 'CSV', size: '18 MB' },
+      { name: 'Northfield Weather Log — Sensor Rig 3 telemetry', type: 'telemetry', format: 'CSV', size: '18 MB' },
       { name: 'ISO 26262 Part 4 Clause 7 Carve-Out Risk Analysis', type: 'compliance', format: 'PDF', size: '1.1 MB' }
     ],
     aiRecommendation: {
@@ -52,7 +52,7 @@ export const INBOX_ITEMS = [
       { date: 'Initial Submission', note: 'First submission by M. Weber — no prior rejection history on this parameter.' }
     ],
     auditTrail: [
-      { timestamp: '2 days ago · 14:22 CET', actor: 'M. Weber (Systems Safety)', action: 'Exception ticket created following Balocco Track Bench #4 run' },
+      { timestamp: '2 days ago · 14:22 CET', actor: 'M. Weber (Systems Safety)', action: 'Exception ticket created following Northfield Track Bench #4 run' },
       { timestamp: 'Yesterday · 10:15 CET', actor: 'Dr. Marco V. (Safety Lead)', action: 'Preliminary safety review completed; counter-signature appended' },
       { timestamp: 'Today · 08:30 CET', actor: 'Workflow Engine', action: 'Routed to Product Manager inbox with Critical Gated priority' }
     ],
@@ -128,14 +128,14 @@ export const INBOX_ITEMS = [
     requestorType: 'system',
     project: 'Release 4.2 Program',
     portfolio: 'L2+ Autonomous Systems Portfolio',
-    requiredDecision: 'Accept the coverage exception with a 24h Balocco track mitigation plan, or block the Release Candidate 2 (RC2) milestone.',
+    requiredDecision: 'Accept the coverage exception with a 24h Northfield track mitigation plan, or block the Release Candidate 2 (RC2) milestone.',
     dueDate: 'Today',
     dueBadgeType: 'critical',
     dueCountdownHours: 6,
     supportingEvidence: [
       { name: 'HIL Coverage Gap Analysis & Uncovered Corner Cases', type: 'doc', format: 'PDF', size: '4.8 MB' },
       { name: 'Sprint 40-42 Coverage Progression Report (78% → 82% → 86%)', type: 'eval', format: 'HTML', size: '1.2 MB' },
-      { name: 'Balocco Physical Track Test Reservation #BT-902', type: 'schedule', format: 'CAL', size: '15 KB' }
+      { name: 'Northfield Physical Track Test Reservation #BT-902', type: 'schedule', format: 'CAL', size: '15 KB' }
     ],
     aiRecommendation: {
       action: 'Conditional Accept with Mitigation',
@@ -368,7 +368,7 @@ export const INBOX_ITEMS = [
     dueBadgeType: 'info',
     dueCountdownHours: 999,
     supportingEvidence: [
-      { name: '7-Day Confidence Drift Telemetry Trend (Balocco Rainy Conditions)', type: 'chart', format: 'JSON', size: '82 KB' },
+      { name: '7-Day Confidence Drift Telemetry Trend (Northfield Rainy Conditions)', type: 'chart', format: 'JSON', size: '82 KB' },
       { name: 'Confusion Matrix & IoU Spread Comparison (v2.4.1 vs v2.4.0)', type: 'eval', format: 'HTML', size: '450 KB' }
     ],
     aiRecommendation: {
@@ -415,7 +415,7 @@ export const INBOX_ITEMS = [
     dueCountdownHours: 48,
     supportingEvidence: [
       { name: 'Execution #AD-71029 Full Telemetry Trace (Identical to Level 6)', type: 'telemetry', format: 'LOG', size: '1.2 MB' },
-      { name: 'Sensor Rig 3 Raw Frame Data (Maserati Grecale Prototype #12)', type: 'sensor', format: 'RAW', size: '45 MB' },
+      { name: 'Sensor Rig 3 Raw Frame Data (Apex Crossover Prototype #12)', type: 'sensor', format: 'RAW', size: '45 MB' },
       { name: 'Doppler Velocity Alignment Log (0.02 m/s variance)', type: 'audit', format: 'CSV', size: '180 KB' }
     ],
     aiRecommendation: {
@@ -425,7 +425,7 @@ export const INBOX_ITEMS = [
       model: 'Fusion Confidence Scorer Agent'
     },
     decisionHistory: [
-      { date: 'Initial Run', note: 'Batch #71029 generated today at 09:14 CET on Balocco Test Track B.' }
+      { date: 'Initial Run', note: 'Batch #71029 generated today at 09:14 CET on Northfield Test Track B.' }
     ],
     auditTrail: [
       { timestamp: 'Today · 09:14:22 CET', actor: 'Sensor Rig 3 (Vehicle 12)', action: 'Telemetry frame captured at 112.4 km/h' },

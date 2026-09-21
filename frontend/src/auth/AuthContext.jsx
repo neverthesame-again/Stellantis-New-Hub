@@ -3,7 +3,7 @@ import { supabase } from '../lib/supabaseClient';
 
 const AuthContext = createContext(null);
 
-const SESSION_KEY = 'stellantis_ai_user';
+const SESSION_KEY = 'aihub_user';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);   // profile row from user_profiles

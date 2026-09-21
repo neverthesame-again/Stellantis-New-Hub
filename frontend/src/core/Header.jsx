@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Sun, Moon, ChevronDown, ShieldCheck, UserCheck } from 'lucide-react';
+import { Sun, Moon, ChevronDown, UserCheck, Sparkles } from 'lucide-react';
 import { useAuth } from '../auth/AuthContext';
 
 const isLight = (theme) => theme === 'light';
@@ -20,23 +20,24 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // In light mode: white header with navy text. In dark mode: deep navy header with white text.
-  const headerBg        = light ? '#ffffff' : '#0e1e38';
-  const headerBorder    = light ? '#e2e8f4' : '#1d3460';
-  const headerShadow    = light ? '0 1px 6px rgba(14,30,56,0.08)' : '0 2px 12px rgba(6,13,28,0.50)';
-  const logoSrc         = light ? '/stellantis-light-1QxnmsD2.svg' : '/stellantis-dark-ww179IYK.svg';
-  const dividerColor    = light ? 'rgba(14,30,56,0.15)' : 'rgba(255,255,255,0.2)';
-  const subtitleColor   = light ? 'rgba(14,30,56,0.45)' : 'rgba(255,255,255,0.50)';
-  const iconBtnBg       = light ? 'rgba(14,30,56,0.06)' : 'rgba(255,255,255,0.10)';
-  const iconBtnBorder   = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.15)';
-  const iconBtnColor    = light ? '#0e1e38' : 'rgba(255,255,255,0.85)';
-  const iconBtnHoverBg  = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.18)';
-  const profileBg       = light ? 'rgba(14,30,56,0.06)' : 'rgba(255,255,255,0.08)';
-  const profileBorder   = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.12)';
-  const profileHoverBg  = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.14)';
-  const nameColor       = light ? '#0e1e38' : '#ffffff';
-  const roleColor       = light ? 'rgba(14,30,56,0.50)' : 'rgba(255,255,255,0.55)';
-  const chevronColor    = light ? 'rgba(14,30,56,0.45)' : 'rgba(255,255,255,0.55)';
+  // Light mode: white header with dark text. Dark mode: black header with white text. Light blue accents in both.
+  const headerBg        = light ? '#ffffff' : '#000000';
+  const headerBorder    = light ? '#d6ebf7' : '#1a2733';
+  const headerShadow    = light ? '0 1px 6px rgba(2,132,199,0.08)' : '0 1px 0 rgba(56,189,248,0.12)';
+  const brandColor      = light ? '#0b1620' : '#ffffff';
+  const brandAccent     = light ? '#0284c7' : '#38bdf8';
+  const dividerColor    = light ? 'rgba(2,132,199,0.20)' : 'rgba(56,189,248,0.25)';
+  const subtitleColor   = light ? 'rgba(11,22,32,0.50)' : 'rgba(255,255,255,0.55)';
+  const iconBtnBg       = light ? 'rgba(2,132,199,0.06)' : 'rgba(56,189,248,0.08)';
+  const iconBtnBorder   = light ? 'rgba(2,132,199,0.18)' : 'rgba(56,189,248,0.20)';
+  const iconBtnColor    = light ? '#0284c7' : '#7dd3fc';
+  const iconBtnHoverBg  = light ? 'rgba(2,132,199,0.12)' : 'rgba(56,189,248,0.16)';
+  const profileBg       = light ? 'rgba(2,132,199,0.05)' : 'rgba(56,189,248,0.06)';
+  const profileBorder   = light ? 'rgba(2,132,199,0.15)' : 'rgba(56,189,248,0.18)';
+  const profileHoverBg  = light ? 'rgba(2,132,199,0.10)' : 'rgba(56,189,248,0.12)';
+  const nameColor       = light ? '#0b1620' : '#ffffff';
+  const roleColor       = light ? 'rgba(11,22,32,0.55)' : 'rgba(255,255,255,0.55)';
+  const chevronColor    = light ? 'rgba(11,22,32,0.45)' : 'rgba(255,255,255,0.55)';
 
   return (
     <header style={{
@@ -54,19 +55,21 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
       transition: 'background 0.2s ease, box-shadow 0.2s ease'
     }}>
 
-      {/* ── Left: Stellantis Logo ── */}
+      {/* ── Left: AI Hub Logo ── */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <img
-          src={logoSrc}
-          alt="Stellantis"
-          style={{
-            height: '24px',
-            width: 'auto',
-            objectFit: 'contain',
-            display: 'block',
-            userSelect: 'none'
-          }}
-        />
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', userSelect: 'none' }}>
+          <div style={{
+            width: '30px', height: '30px', borderRadius: '8px',
+            background: light ? '#e0f2fe' : 'rgba(56,189,248,0.12)',
+            border: `1px solid ${light ? '#bae6fd' : 'rgba(56,189,248,0.35)'}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center'
+          }}>
+            <Sparkles size={16} color={brandAccent} />
+          </div>
+          <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: '1.1rem', color: brandColor, letterSpacing: '-0.01em' }}>
+            AI <span style={{ color: brandAccent }}>Hub</span>
+          </span>
+        </div>
 
         <div style={{ width: '1px', height: '22px', background: dividerColor }} />
         <span style={{
@@ -128,8 +131,8 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
           >
             <div style={{
               width: '30px', height: '30px', borderRadius: '50%',
-              background: 'linear-gradient(135deg, #1a3a6e, #0284c7)',
-              color: '#ffffff', display: 'flex', alignItems: 'center',
+              background: light ? '#0284c7' : '#38bdf8',
+              color: light ? '#ffffff' : '#000000', display: 'flex', alignItems: 'center',
               justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem', flexShrink: 0
             }}>
               {(user?.full_name || 'U').charAt(0).toUpperCase()}
@@ -153,7 +156,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
               <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border-color)' }}>
                 <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '2px' }}>Current Session</div>
                 <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--text-primary)' }}>{user?.full_name || 'User'}</div>
-                <div style={{ fontSize: '0.75rem', color: light ? '#1a3a6e' : '#60a5fa', fontWeight: 600 }}>{user?.email}</div>
+                <div style={{ fontSize: '0.75rem', color: light ? '#0284c7' : '#38bdf8', fontWeight: 600 }}>{user?.email}</div>
               </div>
               <div style={{ padding: '4px' }}>
                 <button

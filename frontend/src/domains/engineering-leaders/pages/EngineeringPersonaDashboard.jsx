@@ -38,7 +38,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
   // Context Selectors (Part A)
   const [selectedBU, setSelectedBU] = useState('sdv-eng');
   const [selectedPortfolio, setSelectedPortfolio] = useState('adas');
-  const [selectedProject, setSelectedProject] = useState('stla-large');
+  const [selectedProject, setSelectedProject] = useState('nova-large');
   const [isPulsing, setIsPulsing] = useState(false);
 
   const selectedBUObj = engineeringPersonaContextData.businessUnits.find((bu) => bu.id === selectedBU) || engineeringPersonaContextData.businessUnits[0];
@@ -69,7 +69,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
 
   const activeConfig =
     engineeringPersonaContextData.projectConfigurations[selectedProject] ||
-    engineeringPersonaContextData.projectConfigurations['stla-large'];
+    engineeringPersonaContextData.projectConfigurations['nova-large'];
 
   const activeLevelData = engineeringDrillDownLevelsData[`level${currentLevel}`] || engineeringDrillDownLevelsData.level1;
 
@@ -87,7 +87,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
       <div className={`ad-context-bar ${isPulsing ? 'ad-pulse-active' : ''}`}>
         {/* User Role Context (Read-Only Badge) */}
         <div className="ad-context-role-badge">
-          <Lock size={13} style={{ color: 'var(--stellantis-action, #0284c7)' }} />
+          <Lock size={13} style={{ color: 'var(--hub-action, #0284c7)' }} />
           <span>{engineeringPersonaContextData.userRole.badgeLabel}</span>
           <span style={{ fontSize: '0.68rem', opacity: 0.7 }}>• Enterprise Tier 1</span>
         </div>
@@ -171,7 +171,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                 className="ad-snap-seg"
                 style={{
                   width: `${(activeConfig.subscriptions.agentsCount / (activeConfig.subscriptions.modelsCount + activeConfig.subscriptions.agentsCount + activeConfig.subscriptions.toolsCount)) * 100}%`,
-                  background: '#8b5cf6'
+                  background: '#06b6d4'
                 }}
               />
               <div
@@ -189,7 +189,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                 {activeConfig.subscriptions.modelsCount} Models
               </span>
               <span className="ad-snap-pill">
-                <Bot size={11} style={{ color: '#8b5cf6' }} />
+                <Bot size={11} style={{ color: '#06b6d4' }} />
                 {activeConfig.subscriptions.agentsCount} Agents
               </span>
               <span className="ad-snap-pill">
@@ -318,7 +318,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
               </span>
               <span className="ad-snap-pill">
                 <CheckCircle2 size={11} style={{ color: '#10b981' }} />
-                STLA Large P2
+                NOVA Large P2
               </span>
             </div>
 
@@ -345,7 +345,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
         <div className="ad-computed-card">
           <div className="ad-computed-header">
             <div className="ad-computed-title-box">
-              <div className="ad-computed-icon-box" style={{ color: '#8b5cf6' }}>
+              <div className="ad-computed-icon-box" style={{ color: '#06b6d4' }}>
                 <FileText size={16} />
               </div>
               <span className="ad-computed-title">Governance Audits</span>
@@ -357,7 +357,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
 
           <div className="ad-computed-body">
             <div className="ad-computed-kpi">
-              <span className="ad-kpi-num" style={{ color: '#8b5cf6' }}>{activeConfig.governance.length}</span>
+              <span className="ad-kpi-num" style={{ color: '#06b6d4' }}>{activeConfig.governance.length}</span>
               <span className="ad-kpi-sub">Compliance Gates Due</span>
             </div>
 
@@ -374,7 +374,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                 </span>
               ))}
               <span className="ad-snap-pill">
-                <CheckCircle2 size={11} style={{ color: '#8b5cf6' }} />
+                <CheckCircle2 size={11} style={{ color: '#06b6d4' }} />
                 UNECE R157
               </span>
             </div>
@@ -446,7 +446,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                     L{lvl} {lvlData.layerTag}
                   </span>
                   {isActive && (
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--stellantis-action, #0284c7)' }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--hub-action, #0284c7)' }} />
                   )}
                 </div>
                 <div className="ad-depth-node-title" title={lvlData.title}>
@@ -504,9 +504,9 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                 disabled={currentLevel === 6}
                 className="ad-lens-step-btn"
                 style={{
-                  background: currentLevel < 6 ? 'var(--stellantis-action, #0284c7)' : undefined,
+                  background: currentLevel < 6 ? 'var(--hub-action, #0284c7)' : undefined,
                   color: currentLevel < 6 ? '#ffffff' : undefined,
-                  borderColor: currentLevel < 6 ? 'var(--stellantis-action, #0284c7)' : undefined
+                  borderColor: currentLevel < 6 ? 'var(--hub-action, #0284c7)' : undefined
                 }}
                 title="Navigate to next operational layer"
               >
@@ -556,7 +556,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
           {currentLevel === 2 && activeLevelData.workflowsList && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                ACTIVE WORKFLOW ROSTER (STLA LARGE SDV PLATFORM PHASE 2):
+                ACTIVE WORKFLOW ROSTER (NOVA LARGE SDV PLATFORM PHASE 2):
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
                 {activeLevelData.workflowsList.map((wf) => (
@@ -566,7 +566,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                       padding: '10px 12px',
                       borderRadius: 'var(--radius-sm)',
                       background: 'var(--bg-surface)',
-                      border: wf.isPrimary ? '2px solid var(--stellantis-action, #0284c7)' : '1px solid var(--border-color)',
+                      border: wf.isPrimary ? '2px solid var(--hub-action, #0284c7)' : '1px solid var(--border-color)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '4px'
@@ -599,7 +599,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                       {idx + 1}. {step.name}
                     </div>
                     <div style={{ color: 'var(--text-secondary)', fontSize: '0.68rem' }}>{step.detail}</div>
-                    <div style={{ color: 'var(--stellantis-action, #0284c7)', fontWeight: 700, fontSize: '0.7rem', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--hub-action, #0284c7)', fontWeight: 700, fontSize: '0.7rem', marginTop: '2px' }}>
                       Latency: {step.latency}
                     </div>
                   </div>
@@ -713,8 +713,8 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                 <pre style={{
                   margin: 0,
                   padding: '10px 14px',
-                  background: '#040b17',
-                  border: '1px solid #1e3562',
+                  background: '#000000',
+                  border: '1px solid #1a2733',
                   borderRadius: 'var(--radius-sm)',
                   fontSize: '0.72rem',
                   fontFamily: 'monospace',
@@ -814,7 +814,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Lock size={20} color="var(--stellantis-action, #0284c7)" />
+                <Lock size={20} color="var(--hub-action, #0284c7)" />
                 <div>
                   <div className="ad-modal-title">Executive Approval Authority &amp; Delegation Matrix</div>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>
@@ -850,7 +850,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
                   Monetary Ceiling: <strong>€1,500,000 CapEx</strong> per individual procurement or cluster allocation.
                 </div>
                 <div style={{ fontSize: '0.72rem', color: '#f59e0b', background: 'rgba(245, 158, 11, 0.1)', padding: '6px 10px', borderRadius: '4px', border: '1px solid rgba(245, 158, 11, 0.25)' }}>
-                  ⚠️ <strong>Safety Carve-Out Protocol:</strong> Per Stellantis Enterprise Policy, any production freeze on ASIL-D microkernel software requires mandatory dual-key co-signature with Dr. H. Becker (Lead Functional Safety Architect).
+                  ⚠️ <strong>Safety Carve-Out Protocol:</strong> Per Enterprise Policy, any production freeze on ASIL-D microkernel software requires mandatory dual-key co-signature with Dr. H. Becker (Lead Functional Safety Architect).
                 </div>
               </div>
 

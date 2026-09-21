@@ -1,5 +1,5 @@
 /**
- * Engineering Leaders Domain — Mock Data
+ * Engineering Leader Domain — Mock Data
  * Persona: Alex — Chief AI Officer / Head of Software Engineering
  * Platform Code: ENG-LEAD
  */
@@ -9,7 +9,7 @@ export const engineeringDashboardData = {
     name: "Alex",
     title: "Chief AI Officer & Head of Software Engineering",
     role: "Chief AI Officer",
-    domain: "Engineering leaders",
+    domain: "Engineering leader",
     platform: "ENG-LEAD",
     shift: "Global Strategy | Active",
     shiftProgress: "85%",
@@ -143,7 +143,7 @@ export const engineeringDashboardData = {
     projects: [
       {
         id: "PRJ-01",
-        name: "STLA SmartCockpit Gen3 Architecture",
+        name: "NOVA SmartCockpit Gen3 Architecture",
         portfolio: "Infotainment & Digital Cockpit",
         phase: "Sprint Execution",
         progress: 74,
@@ -345,7 +345,7 @@ export const engineeringDashboardData = {
     upcomingReleases: [
       {
         id: "REL-2026-42.1",
-        name: "STLA OS Core Hotfix v4.2.1",
+        name: "NOVA OS Core Hotfix v4.2.1",
         tier: "Tier-1 Vehicle OS",
         targetDate: "Tomorrow, 02:00 UTC",
         risk: "Low",
@@ -397,7 +397,7 @@ export const engineeringDashboardData = {
       },
       {
         modelName: "GPT-4o Enterprise",
-        provider: "Azure OpenAI Stellantis Tenant",
+        provider: "Azure OpenAI Private Tenant",
         tokensConsumed: "310M",
         cost: "$45,200",
         sharePct: 32,
@@ -518,7 +518,7 @@ export const engineeringDashboardData = {
 };
 
 /**
- * Workflow Inbox Items for Engineering Leaders
+ * Workflow Inbox Items for Engineering Leader
  * Persona: Alex — Chief AI Officer
  * Categories:
  * 1. New project approvals
@@ -532,7 +532,7 @@ export const engineeringDashboardData = {
 export const engineeringWorkflowInbox = [
   {
     id: "ENG-WF-01",
-    title: "STLA Large Platform SDV Middleware Architecture Phase 2",
+    title: "NOVA Large Platform SDV Middleware Architecture Phase 2",
     type: "New project approvals",
     priority: "P1",
     riskLevel: "High",
@@ -554,7 +554,7 @@ export const engineeringWorkflowInbox = [
       { timestamp: "Sep 12, 10:15 CET", actor: "Dr. H. Becker", action: "Submitted Architecture Charter", comment: "Ready for CAIO sign-off." },
       { timestamp: "Sep 12, 14:30 CET", actor: "Enterprise Architecture Agent", action: "Synthesized Blueprint & Risk Matrix", comment: "Automated gate check: 14/14 criteria met." }
     ],
-    auditTrail: "EARB-STLA-2026-0891 // SHA-256: 4f8b91c... // ISO-26262-READY"
+    auditTrail: "EARB-NOVA-2026-0891 // SHA-256: 4f8b91c... // ISO-26262-READY"
   },
   {
     id: "ENG-WF-02",
@@ -632,7 +632,7 @@ export const engineeringWorkflowInbox = [
       { timestamp: "Sep 12, 16:00 CET", actor: "HIL Automated Test Cluster", action: "Verification Matrix Generated", comment: "Passed 8,950 test assertions." },
       { timestamp: "Sep 13, 07:45 CET", actor: "Safety Certifier Agent", action: "Signed Off ASIL-D Compliance", comment: "Ready for Executive CAIO release authorization." }
     ],
-    auditTrail: "OTA-CANARY-STLA-44.0 // ASIL-D-CERT // A/B-PARTITION-SECURE"
+    auditTrail: "OTA-CANARY-NOVA-44.0 // ASIL-D-CERT // A/B-PARTITION-SECURE"
   },
   {
     id: "ENG-WF-05",
@@ -676,7 +676,7 @@ export const engineeringWorkflowInbox = [
     supportingEvidence: {
       metrics: "Memory heap grows 45MB/hour under continuous high-temperature stress tests until watchdog reboot.",
       impact: "Vehicle production software freeze occurs in 12 days; currently blocks Q4 vehicle homologation sign-off.",
-      riskAssessment: "High risk of schedule delay for STLA SmartCockpit Gen3 start of production (SOP).",
+      riskAssessment: "High risk of schedule delay for NOVA SmartCockpit Gen3 start of production (SOP).",
       rollbackPlan: "Revert to legacy audio HAL v2.8 temporarily if patch cannot be stabilized within 72 hours."
     },
     aiRecommendation: "Approve engineer reassignment immediately. Recommended engineers: J. Laurent (ADAS) and P. Schmidt (Propulsion).",
@@ -796,7 +796,7 @@ export const engineeringExperienceData = {
       },
       limitations: "Lower multi-lingual documentation comprehension than Claude 3.5.",
       approvedUseCases: "Automated HIL regression log analysis, vehicle crash recorder decoding.",
-      dataRestrictions: "Restricted to internal Stellantis engineering networks.",
+      dataRestrictions: "Restricted to internal engineering networks.",
       usagePolicies: "Floating license pool across all European vehicle plant engineering hubs.",
       subscribed: true,
       monthlyConsumptionTokens: "68,200,000",
@@ -804,7 +804,7 @@ export const engineeringExperienceData = {
     },
     {
       id: "MOD-04",
-      name: "OpenAI GPT-4o (Stellantis Private Tenant)",
+      name: "OpenAI GPT-4o (Private Tenant)",
       version: "2024-08-06 Dedicated",
       provider: "OpenAI / Microsoft Azure FedRAMP",
       capability: "Multimodal Vision & Driver Monitoring Validation",
@@ -886,7 +886,7 @@ export const engineeringExperienceData = {
     {
       id: "MOD-07",
       name: "StarCoder2 15B (Embedded C)",
-      version: "Stellantis Quantized INT8",
+      version: "Quantized INT8",
       provider: "BigCode / Micro-Edge Node",
       capability: "Ultra-Low Latency Embedded POSIX C Code Completion",
       modality: "Code",
@@ -943,10 +943,10 @@ export const engineeringExperienceData = {
   agents: [
     {
       id: "AGT-01",
-      name: "STLA-EARB Architecture Blueprint Synthesizer",
+      name: "NOVA-EARB Architecture Blueprint Synthesizer",
       lifecycleStage: "Active",
       domain: "Enterprise Software Architecture",
-      projectType: "STLA Large Platform SDV",
+      projectType: "NOVA Large Platform SDV",
       autonomyLevel: "L3 Semi-Autonomous",
       riskRating: "Medium",
       technology: "LangGraph + Claude 3.5 Sonnet",
@@ -965,7 +965,7 @@ export const engineeringExperienceData = {
         avgDuration: "1.8s",
         costPerRun: "$0.0032"
       },
-      subscribedToProject: "STLA Large SDV Platform Phase 2"
+      subscribedToProject: "NOVA Large SDV Platform Phase 2"
     },
     {
       id: "AGT-02",
@@ -1050,7 +1050,7 @@ export const engineeringExperienceData = {
       name: "OTA Canary Blast Radius Analyzer",
       lifecycleStage: "Experimental",
       domain: "Release & Cloud Fleet Engineering",
-      projectType: "STLA Connected Cloud Platform",
+      projectType: "NOVA Connected Cloud Platform",
       autonomyLevel: "L4 Autonomous",
       riskRating: "High",
       technology: "CrewAI + Mistral Large 2",
@@ -1069,7 +1069,7 @@ export const engineeringExperienceData = {
         avgDuration: "5.4s",
         costPerRun: "$0.0082"
       },
-      subscribedToProject: "STLA Global Fleet Telematics Hub"
+      subscribedToProject: "NOVA Global Fleet Telematics Hub"
     },
     {
       id: "AGT-06",
@@ -1128,7 +1128,7 @@ export const engineeringExperienceData = {
       name: "Classic AUTOSAR XML Parser v1.2",
       lifecycleStage: "Retired",
       domain: "Legacy Tooling",
-      projectType: "Legacy STLA Platform Pre-SDV",
+      projectType: "Legacy NOVA Platform Pre-SDV",
       autonomyLevel: "L1 Copilot",
       riskRating: "Low",
       technology: "Python 3.8 + Local Regex Rulebook",
@@ -1140,14 +1140,14 @@ export const engineeringExperienceData = {
       tools: ["Python ElementTree"],
       modelDependencies: ["None (Rule-based)"],
       permissions: ["Read-only Archive Access"],
-      evaluationResults: "Retired: Superseded by STLA-EARB Architecture Blueprint Synthesizer (AGT-01).",
+      evaluationResults: "Retired: Superseded by NOVA-EARB Architecture Blueprint Synthesizer (AGT-01).",
       executionMetrics: {
         totalRuns: 24000,
         successRate: "99.0% (Historic)",
         avgDuration: "0.4s",
         costPerRun: "$0.00"
       },
-      subscribedToProject: "Archived Platform STLA-2022"
+      subscribedToProject: "Archived Platform NOVA-2022"
     }
   ],
 
@@ -1157,9 +1157,9 @@ export const engineeringExperienceData = {
       id: "TOOL-01",
       name: "GitHub Copilot Enterprise for Automotive",
       category: "Coding assistants",
-      description: "AI-powered paired programming extension fine-tuned on Stellantis POSIX SDV libraries and MISRA-C++ coding guidelines.",
+      description: "AI-powered paired programming extension fine-tuned on Enterprise POSIX SDV libraries and MISRA-C++ coding guidelines.",
       useCases: ["Real-time code synthesis", "Unit test scaffolding", "C++17/20 modernization"],
-      integrationRequirements: "VS Code / CLion plugin; Stellantis Okta SSO authentication; Private VPC egress proxy.",
+      integrationRequirements: "VS Code / CLion plugin; Enterprise Okta SSO authentication; Private VPC egress proxy.",
       licensingInfo: "Enterprise Tier ($39/user/month); 1,200 active enterprise seats allocated.",
       approvedProjectTypes: ["All Software-Defined Vehicle (SDV) Core Repositories"],
       securityClassification: "Confidential",
@@ -1308,11 +1308,11 @@ export const engineeringExperienceData = {
       useCases: ["Regulatory requirement traceability", "Auto-generating architecture specs from code", "Engineering QA chatbot"],
       integrationRequirements: "IBM DOORS NextGen REST API; Atlassian Confluence Enterprise; Qdrant Vector DB.",
       licensingInfo: "Corporate Enterprise License.",
-      approvedProjectTypes: ["All Stellantis Engineering Portfolios"],
+      approvedProjectTypes: ["All Engineering Portfolios"],
       securityClassification: "Internal",
       dataHandlingRestrictions: "Strict role-based document access control; respect project ACLs in vector search.",
       supportOwner: "Knowledge Management & PMO (S. Fontana)",
-      subscriptionProcess: "Available to all Stellantis engineering employees by default.",
+      subscriptionProcess: "Available to all engineering employees by default.",
       usageMetrics: {
         activeUsers: 1450,
         adoptionRate: "92.0%",
@@ -1391,7 +1391,7 @@ export const engineeringExperienceData = {
     },
     {
       id: "SUB-03",
-      entityName: "STLA-EARB Architecture Blueprint Synthesizer",
+      entityName: "NOVA-EARB Architecture Blueprint Synthesizer",
       type: "Agent",
       level: "Portfolio level",
       monthlyUsage: "4,210 execution runs",
@@ -1446,7 +1446,7 @@ export const engineeringExperienceData = {
     },
     {
       id: "SUB-08",
-      entityName: "STLA Large Platform SDV Middleware Phase 2",
+      entityName: "NOVA Large Platform SDV Middleware Phase 2",
       type: "Project",
       level: "Portfolio level",
       monthlyUsage: "38 active engineering squads",
@@ -1539,8 +1539,8 @@ export const engineeringExperienceData = {
         {
           level: 2,
           type: "Project",
-          id: "PRJ-STLA-LARGE",
-          name: "STLA Large Platform SDV Middleware Phase 2",
+          id: "PRJ-NOVA-LARGE",
+          name: "NOVA Large Platform SDV Middleware Phase 2",
           stage: "Sprint 43 (Canary Staging)",
           lead: "C. Dupont",
           milestone: "92% On-Track",
@@ -1654,7 +1654,7 @@ export const engineeringExperienceData = {
           level: 2,
           type: "Project",
           id: "PRJ-SMARTCOCKPIT-G3",
-          name: "STLA SmartCockpit Gen3 Android Automotive",
+          name: "NOVA SmartCockpit Gen3 Android Automotive",
           stage: "Sprint 42 (Pre-homologation)",
           lead: "C. Dupont",
           milestone: "84% In-Progress",
@@ -1671,7 +1671,7 @@ export const engineeringExperienceData = {
                   level: 4,
                   type: "Agent",
                   id: "AGT-01",
-                  name: "STLA-EARB Architecture Blueprint Synthesizer",
+                  name: "NOVA-EARB Architecture Blueprint Synthesizer",
                   autonomy: "L3 Semi-Autonomous",
                   evaluationPassRate: "99.1%",
                   models: [
@@ -1780,7 +1780,7 @@ export const engineeringExperienceData = {
           level: 2,
           type: "Project",
           id: "PRJ-CLOUD-FLEET",
-          name: "STLA Global Telematics Cloud Platform",
+          name: "NOVA Global Telematics Cloud Platform",
           stage: "Production Active",
           lead: "M. Leroux",
           milestone: "98% On-Track",

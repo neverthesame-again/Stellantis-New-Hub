@@ -1,5 +1,5 @@
 # DEVELOPER & AGENT GUIDE
-## AI-Native Engineering Operating Model Hub — Stellantis POC
+## AI-Native Engineering Operating Model Hub — Enterprise POC
 
 > ⚠️ **MANDATORY FIRST READ FOR ALL DEVELOPERS AND AI AGENTS**
 > Any developer or AI agent contributing to this repository **MUST** read and internalize this document before writing, modifying, or generating any code. Failure to follow these guidelines will cause merge conflicts, domain boundary violations, and architectural regressions.
@@ -12,31 +12,32 @@
 |-------|-------|
 | **Product Name** | AI-Native Engineering Operating Model Hub |
 | **Type** | Proof of Concept (POC) — Multi-Persona React + Node.js Application |
-| **Repository** | `Stellantis-New-Hub` |
-| **Primary Users** | Tony (AMS), Alex (Engineering Leaders), Product Owner (AD) |
+| **Repository** | `New-AI-Hub` |
+| **Primary Users** | Tony (AMS), Alex (Engineering Leader), Product Owner (AD) |
 | **Tech Stack** | React 19 + Vite 8 (Frontend) / Node.js + Express (Backend) |
-| **Design System** | Stellantis Midnight Navy (`#0e1e38`) — Dark-first design |
+| **Design System** | Light: white + light blue (`#0284c7`) · Dark: black + light blue (`#38bdf8`) |
 
 ---
 
 ## 2. Repository Folder Architecture
 
 ```
-Stellantis-New-Hub/
+New-AI-Hub/
 ├── README.md
 ├── DEVELOPER_AND_AGENT_GUIDE.md       ← YOU ARE HERE
 ├── frontend/                          ← React + Vite SPA
 │   ├── public/
-│   │   └── stellantis-logo.png        ← Official Stellantis logo
+│   │   └── favicon.svg           ← AI Hub icon
 │   └── src/
 │       ├── main.jsx                   ← React entry point
 │       ├── App.jsx                    ← Root: domain routing & layout shell
 │       ├── index.css                  ← 🔑 DESIGN SYSTEM (global tokens & utilities)
 │       ├── core/                      ← SHARED SHELL — edit only by consensus
 │       │   ├── Header.jsx             ← Top bar (logo, theme, user profile)
-│       │   ├── WorkspaceBar.jsx       ← Domain & Role dropdowns
+│       │   ├── Sidebar.jsx            ← Left navigation: domain/role filters, pages, Experience Zone sub-pages
+│       │   ├── navConfig.js           ← Sidebar page & sub-page definitions per domain
+│       │   ├── WorkspaceBar.jsx       ← Domain/role maps + shared CustomSelect dropdown
 │       │   ├── PersonaHero.jsx        ← Persona context banner & KPIs
-│       │   ├── NavigationTabs.jsx     ← Overview / Workflow Inbox / AI Experience Zone
 │       │   └── FloatingNexus.jsx      ← SEL Nexus drawer + AI Assistant
 │       ├── domains/
 │       │   ├── ai-for-ams/            ← [VISHNU] Application Management Services — Tony
@@ -45,7 +46,7 @@ Stellantis-New-Hub/
 │       │   │       ├── AmsDashboard.jsx
 │       │   │       ├── WorkflowInbox.jsx
 │       │   │       └── ExperienceZone.jsx
-│       │   ├── engineering-leaders/   ← [SREEJA] Engineering Leaders — Alex
+│       │   ├── engineering-leaders/   ← [SREEJA] Engineering Leader — Alex
 │       │   │   └── index.jsx
 │       │   └── ai-for-ad/             ← [LAVANYA] AI for AD — Product Owner
 │       │       └── index.jsx
@@ -73,19 +74,19 @@ Stellantis-New-Hub/
 | Domain | Assigned Developer | Persona | Frontend Directory | Backend Directory |
 |--------|-------------------|---------|-------------------|-------------------|
 | AI for AMS | **Vishnu** | Tony — Head of AMS | `frontend/src/domains/ai-for-ams/` | `backend/src/domains/ai-for-ams/` |
-| Engineering Leaders | **Sreeja** | Alex — Chief AI Officer | `frontend/src/domains/engineering-leaders/` | `backend/src/domains/engineering-leaders/` |
+| Engineering Leader | **Sreeja** | Alex — Chief AI Officer | `frontend/src/domains/engineering-leaders/` | `backend/src/domains/engineering-leaders/` |
 | AI for AD | **Lavanya** | Product Owner | `frontend/src/domains/ai-for-ad/` | `backend/src/domains/ai-for-ad/` |
 
 ### Rules:
 1. **Never create files outside your domain directory** without team consensus.
-2. **Never modify `core/` files** (Header, WorkspaceBar, NavigationTabs, FloatingNexus, App.jsx, index.css) without team alignment. These are **shared shell files** owned by the team lead.
+2. **Never modify `core/` files** (Header, Sidebar, navConfig, WorkspaceBar, FloatingNexus, App.jsx, index.css) without team alignment. These are **shared shell files** owned by the team lead.
 3. **Never import from another developer's domain folder.** Each domain is fully self-contained.
 4. Your domain `index.jsx` is the **single public mount point** that `App.jsx` will call.
 5. Backend routes under your domain are accessed via your API prefix (`/api/ams`, `/api/engineering`, `/api/ad`). Never mount routes under another prefix.
 
 ---
 
-## 4. Design System — Stellantis Midnight Navy
+## 4. Design System — Midnight Navy
 
 > All developers and AI agents must follow this design system **exactly**. Do not introduce arbitrary inline colour values.
 
@@ -93,9 +94,9 @@ Stellantis-New-Hub/
 
 | Token | Light Mode | Dark Mode | Purpose |
 |-------|-----------|-----------|---------|
-| `--stellantis-navy` | `#0e1e38` | `#0e1e38` | Primary brand, headers, active tabs, CTAs |
-| `--stellantis-navy-mid` | `#1a3a6e` | `#1a3a6e` | Hover states, links, secondary actions |
-| `--stellantis-action` | `#0284c7` | `#0284c7` | Operational action, live status indicators |
+| `--hub-navy` | `#0e1e38` | `#0e1e38` | Primary brand, headers, active tabs, CTAs |
+| `--hub-navy-mid` | `#1a3a6e` | `#1a3a6e` | Hover states, links, secondary actions |
+| `--hub-action` | `#0284c7` | `#0284c7` | Operational action, live status indicators |
 | `--bg-app` | `#f0f4fa` | `#060d1c` | Page background |
 | `--bg-surface` | `#ffffff` | `#0d1a30` | Card / panel background |
 | `--border-color` | `#d8e3f7` | `#1d3460` | Default borders |
@@ -117,7 +118,7 @@ The `Header.jsx` component is **permanently dark navy** (`#0e1e38`) regardless o
 | `.badge-critical` | Crimson red | P1 incidents, Critical risk |
 | `.badge-high` | Amber | P2 incidents, High risk |
 | `.badge-success` | Emerald green | Resolved, Approved, Optimal |
-| `.badge-info` | Stellantis blue | Informational, Subscribed |
+| `.badge-info` | Enterprise blue | Informational, Subscribed |
 | `.badge-purple` | Purple | AI/Agent labels, Use Cases |
 | `.badge-navy` | Dark navy | Domain tags, Governance |
 
@@ -132,11 +133,12 @@ The `Header.jsx` component is **permanently dark navy** (`#0e1e38`) regardless o
 
 ### 5.1 Page Layout
 ```
-[Header — 60px, always #0e1e38]
-[main.content — max-width: 1480px, padding: 0 28px 80px]
-  [WorkspaceBar — 1 row, sticky context, domain/role dropdowns]
+[Header — 60px, white (light) / black (dark)]
+[Sidebar — 264px left rail, collapsible to 68px icon rail]
+  [Workspace: Domain & Role dropdowns]
+  [Navigate: Dashboard / Workflow Inbox / AI Experience Zone → domain sub-pages]
+[main.content — max-width: 1480px, padding: 20px 28px 80px]
   [PersonaHero — context banner + KPI row]
-  [NavigationTabs — pill tabs: Overview / Workflow Inbox / AI Experience Zone]
   [Active Page Content — 3-column grid for Dashboard, master-detail for Inbox]
 [Floating: SEL Nexus tab (right edge) + AI Assistant button (bottom right)]
 [Footer — 1 row, centered]
@@ -186,7 +188,7 @@ http://localhost:5000
 | `GET` | `/api/ams/experience` | Returns models, agents, tools, subscriptions |
 | `POST` | `/api/ams/experience/simulate` | Runs agentic simulation. Body: `{ scenario }` |
 
-### 6.3 Engineering Leaders Endpoints (Sreeja)
+### 6.3 Engineering Leader Endpoints (Sreeja)
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `GET` | `/api/engineering/status` | Health check — returns domain status |
@@ -260,7 +262,7 @@ http://localhost:5000
 | Persona | Name | Domain | Developer | Key Objectives |
 |---------|------|--------|-----------|----------------|
 | Head of AMS | Tony | AI for AMS | Vishnu | Incident management, SLA, Problem-to-Change, Automation |
-| Chief AI Officer | Alex | Engineering Leaders | Sreeja | AI governance, model adoption, architecture, SDLC |
+| Chief AI Officer | Alex | Engineering Leader | Sreeja | AI governance, model adoption, architecture, SDLC |
 | Product Owner | — | AI for AD | Lavanya | Epic management, backlog AI, sprint capacity, scope risks |
 
 ---
@@ -299,7 +301,7 @@ GET http://localhost:5000/api/health
 ### 10.1 Branch Strategy
 Each developer works in their domain branch:
 - `feat/vishnu-ams-*` — AI for AMS features
-- `feat/sreeja-engleaders-*` — Engineering Leaders features
+- `feat/sreeja-engleaders-*` — Engineering Leader features
 - `feat/lavanya-ai-for-ad-*` — AI for AD features
 - `main` — Stable integrated branch; merge via PR only
 
@@ -364,7 +366,7 @@ DEVELOPER_AND_AGENT_GUIDE.md            Team Lead (consensus required)
 ## 12. POC Scope Boundaries
 
 ### What's Intentionally Mocked
-- All backend data is mock/synthetic (no real Stellantis systems are connected)
+- All backend data is mock/synthetic (no real Enterprise systems are connected)
 - AI recommendations are pre-scripted (no live LLM calls)
 - The SEL Nexus AI Assistant uses scripted response logic
 - The Sandbox Simulation uses a pre-defined 5-step trace
@@ -383,9 +385,9 @@ DEVELOPER_AND_AGENT_GUIDE.md            Team Lead (consensus required)
 | Role | Name | Domain |
 |------|------|--------|
 | Lead / AMS Domain | Vishnu | AI for AMS — Tony (Head of AMS) |
-| Engineering Leaders Domain | Sreeja | Engineering Leaders — Alex (Chief AI Officer) |
+| Engineering Leader Domain | Sreeja | Engineering Leader — Alex (Chief AI Officer) |
 | AI for AD Domain | Lavanya | AI for AD — Product Owner |
 
 ---
 
-*Last Updated: September 2026 | Stellantis AI-Native Engineering Operating Model Hub POC*
+*Last Updated: September 2026 | AI Hub — AI-Native Engineering Operating Model POC*

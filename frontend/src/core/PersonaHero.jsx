@@ -31,7 +31,9 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
             fontFamily: 'var(--font-display)',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
+            flexWrap: 'wrap',
+            columnGap: '8px',
+            whiteSpace: 'nowrap',
             margin: 0
           }}>
             <span>{selectedDomain}</span>

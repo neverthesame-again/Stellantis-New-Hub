@@ -1,7 +1,7 @@
 /* ==========================================================================
    AI FOR AD — PERSONA DASHBOARD & EXPERIENCE ZONE SUB-TABS
    PRD §5.1 & §5 Master Architecture
-   Strict Zero-Gradient Stellantis Theme • Light & Dark Mode Compatible
+   Strict Zero-Gradient Theme • Light & Dark Mode Compatible
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -19,7 +19,7 @@
   --surface-tertiary: var(--bg-subtle);
   --radius-xl: 16px;
   --radius-2xl: 20px;
-  --shadow-xs: 0 1px 2px rgba(14, 30, 56, 0.05);
+  --shadow-xs: 0 1px 2px rgba(10, 10, 10, 0.05);
 }
 
 [data-theme="dark"] .ad-exp-subtab-bar,
@@ -58,8 +58,8 @@
 }
 
 [data-theme="dark"] .ad-exp-subtab-bar {
-  background: #091322;
-  border-color: #1e3562;
+  background: #050505;
+  border-color: #1a2733;
   box-shadow: none;
 }
 
@@ -85,27 +85,27 @@
 
 .ad-exp-subtab-btn:hover:not(.active) {
   background: var(--bg-surface, #ffffff);
-  color: var(--text-primary, #0f172a);
+  color: var(--text-primary, #0a0a0a);
   border-color: var(--border-color, #e2e8f0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] .ad-exp-subtab-btn:hover:not(.active) {
-  background: #142442;
+  background: #121212;
   color: #ffffff;
-  border-color: #244080;
+  border-color: #25394a;
 }
 
 .ad-exp-subtab-btn.active {
-  background: #0b1a30 !important;
+  background: #0a0a0a !important;
   color: #ffffff !important;
-  border-color: #0b1a30 !important;
-  box-shadow: 0 2px 6px rgba(11, 26, 48, 0.18);
+  border-color: #0a0a0a !important;
+  box-shadow: 0 2px 6px rgba(10, 10, 10, 0.18);
 }
 
 [data-theme="dark"] .ad-exp-subtab-btn.active {
-  background: #1e3a8a !important;
-  border-color: #3b82f6 !important;
+  background: #075985 !important;
+  border-color: #0ea5e9 !important;
   color: #ffffff !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
@@ -132,7 +132,7 @@
 }
 
 [data-theme="dark"] .ad-exp-subtab-btn:not(.active) .ad-exp-subtab-badge {
-  background: #1e293b;
+  background: #171717;
   color: #94a3b8;
 }
 
@@ -204,8 +204,8 @@
 }
 
 [data-theme="dark"] .ad-context-bar {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-context-role-badge {
@@ -225,9 +225,9 @@
 }
 
 [data-theme="dark"] .ad-context-role-badge {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-context-dropdowns {
@@ -258,7 +258,7 @@
   padding: 5px 14px;
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--text-primary, #0f172a);
+  color: var(--text-primary, #0a0a0a);
   background: var(--bg-surface-secondary, #f8fafc);
   border: 1px solid var(--border-color, #cbd5e1);
   border-radius: 9999px;
@@ -269,9 +269,9 @@
 }
 
 [data-theme="dark"] .ad-context-value-pill {
-  background: #091322;
-  border-color: #244080;
-  color: #e8f0ff;
+  background: #050505;
+  border-color: #25394a;
+  color: #e6f6ff;
 }
 
 .ad-context-select-wrapper {
@@ -308,23 +308,23 @@
 }
 
 .ad-context-select-wrapper:hover .ad-context-select-chevron {
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 .ad-context-select:hover,
 .ad-context-select:focus {
-  border-color: var(--stellantis-action, #0284c7);
+  border-color: var(--hub-action, #0284c7);
 }
 
 [data-theme="dark"] .ad-context-select {
-  background: #091322;
-  border-color: #244080;
-  color: #e8f0ff;
+  background: #050505;
+  border-color: #25394a;
+  color: #e6f6ff;
 }
 
 [data-theme="dark"] .ad-context-select:hover,
 [data-theme="dark"] .ad-context-select:focus {
-  border-color: #3b82f6;
+  border-color: #0ea5e9;
 }
 
 @media (max-width: 1024px) {
@@ -374,8 +374,8 @@
 }
 
 [data-theme="dark"] .ad-computed-card {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-computed-card:hover {
@@ -385,7 +385,7 @@
 }
 
 [data-theme="dark"] .ad-computed-card:hover {
-  border-color: #3b82f6;
+  border-color: #0ea5e9;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
@@ -412,14 +412,14 @@
   justify-content: center;
   background: var(--bg-surface-secondary);
   border: 1px solid var(--border-color);
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   flex-shrink: 0;
 }
 
 [data-theme="dark"] .ad-computed-icon-box {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-computed-title {
@@ -468,7 +468,7 @@
 }
 
 [data-theme="dark"] .ad-snap-bar {
-  background: #1c2e4d;
+  background: #1a1a1a;
 }
 
 .ad-snap-seg {
@@ -500,9 +500,9 @@
 }
 
 [data-theme="dark"] .ad-snap-pill {
-  background: #101d36;
-  border-color: #1e3562;
-  color: #b8cde8;
+  background: #0f0f0f;
+  border-color: #1a2733;
+  color: #a9cfe6;
 }
 
 /* Single-line Micro Context */
@@ -529,9 +529,9 @@
   font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
-  background: var(--stellantis-action, #0284c7);
+  background: var(--hub-action, #0284c7);
   color: #ffffff;
-  border: 1px solid var(--stellantis-action, #0284c7);
+  border: 1px solid var(--hub-action, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -567,13 +567,13 @@
 }
 
 [data-theme="dark"] .ad-snap-btn-sec {
-  background: #142442;
-  border-color: #244080;
+  background: #121212;
+  border-color: #25394a;
   color: #ffffff;
 }
 
 [data-theme="dark"] .ad-snap-btn-sec:hover {
-  background: #1b3058;
+  background: #1c1c1c;
 }
 
 .ad-gov-left {
@@ -630,8 +630,8 @@
 }
 
 [data-theme="dark"] .ad-drilldown-wrapper {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-drilldown-header {
@@ -702,26 +702,26 @@
 }
 
 [data-theme="dark"] .ad-depth-node {
-  background: #091322;
-  border-color: #1a2f55;
+  background: #050505;
+  border-color: #1a1a1a;
 }
 
 [data-theme="dark"] .ad-depth-node:hover {
-  border-color: #3b82f6;
-  background: #0f1e38;
+  border-color: #0ea5e9;
+  background: #0a0a0a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .ad-depth-node.active {
   background: var(--bg-surface);
-  border: 2px solid var(--stellantis-action, #0284c7);
+  border: 2px solid var(--hub-action, #0284c7);
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
 }
 
 [data-theme="dark"] .ad-depth-node.active {
-  background: #102142;
-  border-color: #3b82f6;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+  background: #121212;
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
 }
 
 .ad-depth-node-meta {
@@ -743,11 +743,11 @@
 }
 
 .ad-depth-node.active .ad-depth-node-tag {
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 [data-theme="dark"] .ad-depth-node.active .ad-depth-node-tag {
-  color: #60a5fa;
+  color: #38bdf8;
 }
 
 .ad-depth-node-title {
@@ -792,13 +792,13 @@
 }
 
 .ad-depth-node-indicator.indicator-purple {
-  color: #7c3aed;
-  background: rgba(139, 92, 246, 0.12);
+  color: #0891b2;
+  background: rgba(6, 182, 212, 0.12);
 }
 
 [data-theme="dark"] .ad-depth-node-indicator.indicator-purple {
-  color: #a78bfa;
-  background: rgba(139, 92, 246, 0.2);
+  color: #22d3ee;
+  background: rgba(6, 182, 212, 0.2);
 }
 
 .ad-depth-node-indicator.indicator-warning {
@@ -824,8 +824,8 @@
 }
 
 [data-theme="dark"] .ad-lens-stage {
-  background: #091322;
-  border-color: #1e3562;
+  background: #050505;
+  border-color: #1a2733;
 }
 
 .ad-lens-header {
@@ -851,14 +851,14 @@
   justify-content: center;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   flex-shrink: 0;
 }
 
 [data-theme="dark"] .ad-lens-icon-box {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-lens-controls {
@@ -883,8 +883,8 @@
 }
 
 .ad-lens-step-btn:hover:not(:disabled) {
-  border-color: var(--stellantis-action, #0284c7);
-  color: var(--stellantis-action, #0284c7);
+  border-color: var(--hub-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 .ad-lens-step-btn:disabled {
@@ -893,14 +893,14 @@
 }
 
 [data-theme="dark"] .ad-lens-step-btn {
-  background: #101d36;
-  border-color: #1e3562;
+  background: #0f0f0f;
+  border-color: #1a2733;
   color: #e2e8f0;
 }
 
 [data-theme="dark"] .ad-lens-step-btn:hover:not(:disabled) {
-  border-color: #3b82f6;
-  color: #60a5fa;
+  border-color: #0ea5e9;
+  color: #38bdf8;
 }
 
 .ad-lens-metrics-grid {
@@ -932,8 +932,8 @@
 }
 
 [data-theme="dark"] .ad-lens-metric-card {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 .ad-lens-metric-label {
@@ -983,8 +983,8 @@
 }
 
 [data-theme="dark"] .ad-portfolio-item {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 /* Visual Diagnostic: Level 3 Pipeline Topology */
@@ -1011,8 +1011,8 @@
 }
 
 [data-theme="dark"] .ad-pipeline-step {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 [data-theme="dark"] .ad-metric-tile-val.warning { color: #fbbf24; }
@@ -1027,7 +1027,7 @@
 .ad-featured-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  border-left: 4px solid var(--stellantis-action, #0284c7);
+  border-left: 4px solid var(--hub-action, #0284c7);
   border-radius: var(--radius-md);
   padding: 16px 18px;
   cursor: pointer;
@@ -1040,18 +1040,18 @@
 
 .ad-featured-card:hover {
   transform: translateY(-2px);
-  border-color: var(--stellantis-action, #0284c7);
+  border-color: var(--hub-action, #0284c7);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="dark"] .ad-featured-card {
-  background: #101f3b;
-  border-color: #244080;
-  border-left: 4px solid #3b82f6;
+  background: #101010;
+  border-color: #25394a;
+  border-left: 4px solid #0ea5e9;
 }
 
 [data-theme="dark"] .ad-featured-card:hover {
-  border-color: #3b82f6;
+  border-color: #0ea5e9;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -1067,13 +1067,13 @@
   padding: 2px 8px;
   border-radius: 9999px;
   background: rgba(2, 132, 199, 0.12);
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   width: fit-content;
 }
 
 [data-theme="dark"] .ad-featured-badge {
-  background: rgba(59, 130, 246, 0.2);
-  color: #60a5fa;
+  background: rgba(14, 165, 233, 0.2);
+  color: #38bdf8;
 }
 
 .ad-featured-title {
@@ -1112,7 +1112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   flex-shrink: 0;
   transition: transform 0.15s ease;
 }
@@ -1122,9 +1122,9 @@
 }
 
 [data-theme="dark"] .ad-featured-arrow {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 /* Telemetry Readout Box (Level 6) */
@@ -1139,8 +1139,8 @@
 }
 
 [data-theme="dark"] .ad-telemetry-box {
-  background: #091322;
-  border-color: #1d3460;
+  background: #050505;
+  border-color: #1a2733;
 }
 
 .ad-telemetry-grid {
@@ -1160,8 +1160,8 @@
 }
 
 [data-theme="dark"] .ad-telemetry-item {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 .ad-telemetry-label {
@@ -1195,9 +1195,9 @@
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-  background: var(--stellantis-action, #0284c7);
+  background: var(--hub-action, #0284c7);
   color: #ffffff;
-  border: 1px solid var(--stellantis-action, #0284c7);
+  border: 1px solid var(--hub-action, #0284c7);
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -1230,8 +1230,8 @@
 }
 
 [data-theme="dark"] .ad-btn-sec {
-  background: #142442;
-  border-color: #244080;
+  background: #121212;
+  border-color: #25394a;
   color: #ffffff;
 }
 
@@ -1289,8 +1289,8 @@
 }
 
 [data-theme="dark"] .ad-modal-dialog {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -1355,7 +1355,7 @@
 }
 
 [data-theme="dark"] .ad-modal-table th {
-  background: #142442;
+  background: #121212;
 }
 
 .ad-modal-table td {

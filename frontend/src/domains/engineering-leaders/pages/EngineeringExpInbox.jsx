@@ -49,7 +49,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
   const [activeDelegateModal, setActiveDelegateModal] = useState(null);
   const [selectedDelegate, setSelectedDelegate] = useState('Dr. H. Becker (Lead Functional Safety Architect)');
   const [activeCoSignModal, setActiveCoSignModal] = useState(false);
-  const [coSignPin, setCoSignPin] = useState('STLA-CAIO-2026');
+  const [coSignPin, setCoSignPin] = useState('NOVA-CAIO-2026');
   const [activeRejectModal, setActiveRejectModal] = useState(null);
   const [rejectionReason, setRejectionReason] = useState('Safety margin does not satisfy ISO 26262 Part 6 Clause 7 tolerance.');
   const [activeRevisionModal, setActiveRevisionModal] = useState(false);
@@ -176,9 +176,9 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
                 fontWeight: 700,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
-                background: isActive ? 'var(--stellantis-navy)' : 'var(--bg-surface)',
+                background: isActive ? 'var(--hub-navy)' : 'var(--bg-surface)',
                 color: isActive ? '#ffffff' : 'var(--text-secondary)',
-                border: isActive ? '1px solid var(--stellantis-navy)' : '1px solid var(--border-color)',
+                border: isActive ? '1px solid var(--hub-navy)' : '1px solid var(--border-color)',
                 transition: 'all 0.15s ease'
               }}
             >
@@ -209,7 +209,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
               style={{
                 background: 'var(--bg-surface)',
                 border: item.urgencyLane === 'critical' ? '1px solid rgba(239, 68, 68, 0.4)' : '1px solid var(--border-color)',
-                borderLeft: item.urgencyLane === 'critical' ? '4px solid #ef4444' : '4px solid var(--stellantis-action)',
+                borderLeft: item.urgencyLane === 'critical' ? '4px solid #ef4444' : '4px solid var(--hub-action)',
                 borderRadius: 'var(--radius-md)',
                 padding: '16px 18px',
                 display: 'flex',
@@ -272,7 +272,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
                 gap: '12px'
               }}>
                 <div>
-                  <strong style={{ color: 'var(--stellantis-action)' }}>Required Decision: </strong>
+                  <strong style={{ color: 'var(--hub-action)' }}>Required Decision: </strong>
                   <span>{item.requiredDecision}</span>
                   <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', marginTop: '3px' }}>
                     Requestor: <strong>{item.requestor}</strong>
@@ -287,7 +287,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
                     gap: '4px',
                     background: 'transparent',
                     border: 'none',
-                    color: 'var(--stellantis-action)',
+                    color: 'var(--hub-action)',
                     fontSize: '0.72rem',
                     fontWeight: 700,
                     cursor: 'pointer',
@@ -302,8 +302,8 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
               {/* Supporting Evidence Expandable Drawer */}
               {isExpanded && item.supportingEvidence && (
                 <div style={{
-                  background: '#040b17',
-                  border: '1px solid #1e3562',
+                  background: '#000000',
+                  border: '1px solid #1a2733',
                   borderRadius: 'var(--radius-sm)',
                   padding: '12px 14px',
                   display: 'flex',
@@ -319,7 +319,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
                   <pre style={{
                     margin: 0,
                     padding: '8px 10px',
-                    background: '#020617',
+                    background: '#000000',
                     borderRadius: '4px',
                     color: '#a5f3fc',
                     fontFamily: 'monospace',
@@ -499,7 +499,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
             </div>
             <div className="ad-modal-body">
               <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
-                You are executing a Tier-1 production gate freeze for <strong>STLA Large SDV Platform Phase 2</strong>.
+                You are executing a Tier-1 production gate freeze for <strong>NOVA Large SDV Platform Phase 2</strong>.
                 Dual-key co-signature is mandated with Dr. H. Becker (Lead Safety Architect).
               </div>
               <div>
@@ -597,7 +597,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <UserCheck size={18} color="#8b5cf6" />
+                <UserCheck size={18} color="#06b6d4" />
                 <span className="ad-modal-title">Delegate Decision Authority</span>
               </div>
               <button onClick={() => setActiveDelegateModal(null)} className="ad-modal-close"><X size={16} /></button>
@@ -705,7 +705,7 @@ export default function EngineeringExpInbox({ onInspectLevel6 }) {
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Eye size={18} color="#8b5cf6" />
+                <Eye size={18} color="#06b6d4" />
                 <span className="ad-modal-title">Cryptographic Audit Trail ({activeAuditModal.id})</span>
               </div>
               <button onClick={() => setActiveAuditModal(null)} className="ad-modal-close"><X size={16} /></button>

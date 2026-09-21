@@ -18,7 +18,7 @@ export default function StoryDoctorModal({ isOpen, onClose, onApplyStoryEnhancem
         {/* Header */}
         <div className="ad-modal-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Wand2 size={18} color="var(--stellantis-action)" />
+            <Wand2 size={18} color="var(--hub-action)" />
             <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
               AI Story Doctor: INVEST Acceptance Criteria Refinement
             </h3>

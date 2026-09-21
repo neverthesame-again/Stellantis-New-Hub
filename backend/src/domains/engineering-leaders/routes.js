@@ -4,7 +4,7 @@ import { engineeringDashboardData, engineeringWorkflowInbox, engineeringExperien
 const router = express.Router();
 
 /**
- * Domain: Engineering Leaders
+ * Domain: Engineering Leader
  * Persona: Alex - Chief AI Officer / Head of Software Engineering
  * Endpoints:
  * - GET  /api/engineering/status
@@ -27,10 +27,10 @@ let currentExperienceData = JSON.parse(JSON.stringify(engineeringExperienceData)
 
 router.get("/status", (req, res) => {
   res.json({
-    domain: "Engineering Leaders",
+    domain: "Engineering Leader",
     persona: "Alex - Chief AI Officer",
     owner: "Alex",
-    message: "Engineering Leaders API route operational.",
+    message: "Engineering Leader API route operational.",
     status: "healthy",
     timestamp: new Date().toISOString()
   });
@@ -307,7 +307,7 @@ router.post("/dashboard/reset", (req, res) => {
   currentDashboardData = JSON.parse(JSON.stringify(engineeringDashboardData));
   currentWorkflowItems = JSON.parse(JSON.stringify(engineeringWorkflowInbox));
   currentExperienceData = JSON.parse(JSON.stringify(engineeringExperienceData));
-  res.json({ success: true, message: "Engineering Leaders data reset to defaults." });
+  res.json({ success: true, message: "Engineering Leader data reset to defaults." });
 });
 
 export default router;

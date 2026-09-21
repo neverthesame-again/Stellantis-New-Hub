@@ -1,0 +1,211 @@
+/* ─── App layout: sidebar + content ─── */
+.app-body {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+}
+
+.app-body .main-content {
+  min-width: 0;
+  padding-top: 20px;
+}
+
+/* ─── Sidebar ─── */
+.hub-sidebar {
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  width: 264px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 12px;
+  background: var(--bg-surface);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: width 0.2s ease, padding 0.2s ease;
+  z-index: 40;
+}
+
+.hub-sidebar.collapsed {
+  width: 68px;
+  padding: 16px 10px;
+  align-items: center;
+}
+
+.hub-sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 100%;
+}
+
+.hub-sidebar-section + .hub-sidebar-section {
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.hub-sidebar-heading {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 10px 8px;
+}
+
+.hub-sidebar-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.hub-sidebar-filters label {
+  font-size: 0.74rem !important;
+}
+
+/* Items */
+.hub-sidebar-item,
+.hub-sidebar-subitem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 9px;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.hub-sidebar-item {
+  padding: 9px 10px;
+  font-size: 0.86rem;
+}
+
+.hub-sidebar.collapsed .hub-sidebar-item,
+.hub-sidebar.collapsed .hub-sidebar-subitem {
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.hub-sidebar-item:hover,
+.hub-sidebar-subitem:hover {
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+}
+
+.hub-sidebar-item.active {
+  background: var(--hub-action);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(2, 132, 199, 0.28);
+}
+
+.hub-sidebar-item:focus-visible,
+.hub-sidebar-subitem:focus-visible {
+  outline: 2px solid var(--hub-accent);
+  outline-offset: 1px;
+}
+
+.hub-sidebar-label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hub-sidebar-chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  opacity: 0.8;
+}
+
+.hub-sidebar-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 10px;
+  text-align: center;
+  background: var(--bg-subtle);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+
+.hub-sidebar-item.active .hub-sidebar-badge {
+  background: rgba(255, 255, 255, 0.22);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.hub-sidebar-badge.subtle {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+.hub-sidebar-dot {
+  position: absolute;
+  top: 7px;
+  right: 12px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hub-blue-bright);
+}
+
+/* Sub-pages (AI Experience Zone) */
+.hub-sidebar-sub {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin: 4px 0 6px 19px;
+  padding-left: 10px;
+  border-left: 1.5px solid var(--border-color);
+}
+
+.hub-sidebar-sub.collapsed {
+  margin: 2px 0 4px;
+  padding: 4px 0 0;
+  border-left: none;
+  border-top: 1px dashed var(--border-color);
+}
+
+.hub-sidebar-subitem {
+  padding: 7px 10px;
+  font-size: 0.82rem;
+}
+
+.hub-sidebar-subitem.active {
+  background: var(--badge-info-bg);
+  color: var(--hub-accent);
+  border-color: var(--badge-info-border);
+}
+
+.hub-sidebar-subitem.active .hub-sidebar-badge.subtle {
+  color: var(--hub-accent);
+}
+
+.hub-sidebar-footer {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+}
+
+/* Narrow screens: keep the sidebar as an icon rail */
+@media (max-width: 900px) {
+  .hub-sidebar:not(.collapsed) {
+    position: fixed;
+    left: 0;
+    box-shadow: var(--shadow-lg);
+  }
+}

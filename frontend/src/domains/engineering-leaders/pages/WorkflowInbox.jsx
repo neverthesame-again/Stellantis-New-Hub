@@ -58,21 +58,21 @@ export default function WorkflowInbox() {
       label: 'All Decisions',
       count: items.length,
       icon: Filter,
-      color: 'var(--stellantis-accent, #1a3a6e)'
+      color: 'var(--hub-accent, #0369a1)'
     },
     {
       id: 'New project approvals',
       label: 'New project approvals',
       count: items.filter(i => i.type === 'New project approvals').length,
       icon: Briefcase,
-      color: '#3b82f6'
+      color: '#0ea5e9'
     },
     {
       id: 'Model, agent, and tool subscription requests',
       label: 'Model, agent, & tool subscriptions',
       count: items.filter(i => i.type.toLowerCase().includes('subscription')).length,
       icon: Cpu,
-      color: '#8b5cf6'
+      color: '#06b6d4'
     },
     {
       id: 'Governance exceptions',
@@ -100,7 +100,7 @@ export default function WorkflowInbox() {
       label: 'Escalations from projects',
       count: items.filter(i => i.type.toLowerCase().includes('escalation')).length,
       icon: Zap,
-      color: '#ec4899'
+      color: '#22d3ee'
     },
     {
       id: 'Portfolio-level recommendations',
@@ -334,7 +334,7 @@ export default function WorkflowInbox() {
               <span style={{
                 fontSize: '0.7rem',
                 fontWeight: 700,
-                background: 'var(--stellantis-accent)',
+                background: 'var(--hub-accent)',
                 color: '#ffffff',
                 padding: '1px 7px',
                 borderRadius: '10px'
@@ -366,7 +366,7 @@ export default function WorkflowInbox() {
                   onClick={() => setSelectedItem(item)}
                   style={{
                     background: isSelected ? 'var(--bg-surface-secondary)' : 'var(--bg-surface)',
-                    border: isSelected ? '2px solid var(--stellantis-accent)' : '1px solid var(--border-color)',
+                    border: isSelected ? '2px solid var(--hub-accent)' : '1px solid var(--border-color)',
                     borderRadius: 'var(--radius-md)',
                     padding: '14px',
                     cursor: 'pointer',
@@ -375,13 +375,13 @@ export default function WorkflowInbox() {
                     gap: '8px',
                     transition: 'all 0.15s ease',
                     boxShadow: isSelected ? 'var(--shadow-sm)' : 'none',
-                    borderLeft: item.priority === 'P1' ? '4px solid #ef4444' : (item.priority === 'P2' ? '4px solid #f59e0b' : '4px solid #3b82f6'),
+                    borderLeft: item.priority === 'P1' ? '4px solid #ef4444' : (item.priority === 'P2' ? '4px solid #f59e0b' : '4px solid #0ea5e9'),
                     boxSizing: 'border-box'
                   }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{item.id}</span>
+                      <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--hub-action)' }}>{item.id}</span>
                       <span style={{
                         fontSize: '0.68rem',
                         fontWeight: 600,
@@ -460,7 +460,7 @@ export default function WorkflowInbox() {
             <div style={{ borderBottom: '1px solid var(--border-color)', paddingBottom: '14px', flexShrink: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>
+                  <span style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--hub-action)' }}>
                     {selectedItem.id}
                   </span>
                   <span style={{
@@ -620,7 +620,7 @@ export default function WorkflowInbox() {
                   {(selectedItem.decisionHistory || []).map((h, i) => (
                     <div key={i} style={{ display: 'flex', gap: '8px', background: 'var(--bg-surface)', border: '1px solid var(--border-color)', padding: '6px 10px', borderRadius: '4px', fontSize: '0.74rem', alignItems: 'center' }}>
                       <span style={{ fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{h.timestamp}</span>
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 600, whiteSpace: 'nowrap' }}>[{h.actor}]</span>
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 600, whiteSpace: 'nowrap' }}>[{h.actor}]</span>
                       <span style={{ color: 'var(--text-secondary)', flex: 1 }}>{h.action} {h.comment ? <em>— {h.comment}</em> : ''}</span>
                     </div>
                   ))}
@@ -760,8 +760,8 @@ export default function WorkflowInbox() {
                   boxShadow: 'var(--shadow-sm)'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--stellantis-navy)', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Sparkles size={14} color="var(--stellantis-action)" />
+                    <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--hub-navy)', textTransform: 'uppercase', letterSpacing: '0.04em', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <Sparkles size={14} color="var(--hub-action)" />
                       Executive Decision Sign-off • Alex (Chief AI Officer)
                     </span>
                     <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 500 }}>
@@ -790,7 +790,7 @@ export default function WorkflowInbox() {
                         boxSizing: 'border-box',
                         transition: 'border-color 0.15s ease'
                       }}
-                      onFocus={(e) => e.target.style.borderColor = 'var(--stellantis-action)'}
+                      onFocus={(e) => e.target.style.borderColor = 'var(--hub-action)'}
                       onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
                     />
                   </div>

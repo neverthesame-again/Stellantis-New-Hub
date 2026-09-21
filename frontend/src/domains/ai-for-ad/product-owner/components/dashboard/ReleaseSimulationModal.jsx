@@ -25,7 +25,7 @@ export default function ReleaseSimulationModal({ isOpen, onClose, onApplySimulat
         {/* Header */}
         <div className="ad-modal-header">
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Play size={18} color="var(--stellantis-action)" />
+            <Play size={18} color="var(--hub-action)" />
             <h3 style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
               Release Impact Simulation Engine
             </h3>
@@ -98,7 +98,7 @@ export default function ReleaseSimulationModal({ isOpen, onClose, onApplySimulat
             />
             <div>
               <div style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-                Waive HIL 90% threshold for Balocco closed-course track trial (+3%)
+                Waive HIL 90% threshold for Northfield closed-course track trial (+3%)
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px' }}>
                 Grants provisional approval while nightly regression rerun executes on Rig 1.
@@ -127,7 +127,7 @@ export default function ReleaseSimulationModal({ isOpen, onClose, onApplySimulat
                 Inject Synthetic LiDAR emulator stream into regression suite (+2%)
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px' }}>
-                Supplements delayed hardware stream with validated virtual Balocco road telemetry.
+                Supplements delayed hardware stream with validated virtual Northfield road telemetry.
               </div>
             </div>
           </label>

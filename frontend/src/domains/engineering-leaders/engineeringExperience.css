@@ -1,7 +1,7 @@
 /* ==========================================================================
    ENGINEERING LEADERS — AI EXPERIENCE ZONE SUB-TABS (PRD 5.1 - 5.6)
    Matches AI for AD Peer-Level Sub-Tabs Architecture
-   Strict Zero-Gradient Stellantis Theme • Light & Dark Mode Compatible
+   Strict Zero-Gradient Theme • Light & Dark Mode Compatible
    ========================================================================== */
 
 .eng-exp-subtab-bar {
@@ -19,8 +19,8 @@
 }
 
 [data-theme="dark"] .eng-exp-subtab-bar {
-  background: #091322;
-  border-color: #1e3562;
+  background: #050505;
+  border-color: #1a2733;
   box-shadow: none;
 }
 
@@ -54,27 +54,27 @@
 
 .eng-exp-subtab-btn:hover:not(.active) {
   background: var(--bg-surface, #ffffff);
-  color: var(--text-primary, #0f172a);
+  color: var(--text-primary, #0a0a0a);
   border-color: var(--border-color, #e2e8f0);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 [data-theme="dark"] .eng-exp-subtab-btn:hover:not(.active) {
-  background: #142442;
+  background: #121212;
   color: #ffffff;
-  border-color: #244080;
+  border-color: #25394a;
 }
 
 .eng-exp-subtab-btn.active {
-  background: var(--stellantis-navy, #0b1a30) !important;
+  background: var(--hub-navy, #0a0a0a) !important;
   color: #ffffff !important;
-  border-color: var(--stellantis-navy, #0b1a30) !important;
-  box-shadow: 0 2px 6px rgba(11, 26, 48, 0.18);
+  border-color: var(--hub-navy, #0a0a0a) !important;
+  box-shadow: 0 2px 6px rgba(10, 10, 10, 0.18);
 }
 
 [data-theme="dark"] .eng-exp-subtab-btn.active {
-  background: #1e3a8a !important;
-  border-color: #3b82f6 !important;
+  background: #075985 !important;
+  border-color: #0ea5e9 !important;
   color: #ffffff !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
@@ -165,8 +165,8 @@
 
 [data-theme="dark"] .ad-context-bar,
 [data-theme="dark"] .eng-context-bar {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-context-role-badge, .eng-context-role-badge {
@@ -187,9 +187,9 @@
 
 [data-theme="dark"] .ad-context-role-badge,
 [data-theme="dark"] .eng-context-role-badge {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-context-dropdowns, .eng-context-dropdowns {
@@ -220,7 +220,7 @@
   padding: 5px 14px;
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--text-primary, #0f172a);
+  color: var(--text-primary, #0a0a0a);
   background: var(--bg-surface-secondary, #f8fafc);
   border: 1px solid var(--border-color, #cbd5e1);
   border-radius: 9999px;
@@ -232,9 +232,9 @@
 
 [data-theme="dark"] .ad-context-value-pill,
 [data-theme="dark"] .eng-context-value-pill {
-  background: #091322;
-  border-color: #244080;
-  color: #e8f0ff;
+  background: #050505;
+  border-color: #25394a;
+  color: #e6f6ff;
 }
 
 .ad-context-select-wrapper, .eng-context-select-wrapper {
@@ -272,28 +272,28 @@
 
 .ad-context-select-wrapper:hover .ad-context-select-chevron,
 .eng-context-select-wrapper:hover .eng-context-select-chevron {
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 .ad-context-select:hover,
 .ad-context-select:focus,
 .eng-context-select:hover,
 .eng-context-select:focus {
-  border-color: var(--stellantis-action, #0284c7);
+  border-color: var(--hub-action, #0284c7);
 }
 
 [data-theme="dark"] .ad-context-select,
 [data-theme="dark"] .eng-context-select {
-  background: #091322;
-  border-color: #244080;
-  color: #e8f0ff;
+  background: #050505;
+  border-color: #25394a;
+  color: #e6f6ff;
 }
 
 [data-theme="dark"] .ad-context-select:hover,
 [data-theme="dark"] .ad-context-select:focus,
 [data-theme="dark"] .eng-context-select:hover,
 [data-theme="dark"] .eng-context-select:focus {
-  border-color: #3b82f6;
+  border-color: #0ea5e9;
 }
 
 /* --------------------------------------------------------------------------
@@ -332,8 +332,8 @@
 
 [data-theme="dark"] .ad-computed-card,
 [data-theme="dark"] .eng-computed-card {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-computed-card:hover,
@@ -345,7 +345,7 @@
 
 [data-theme="dark"] .ad-computed-card:hover,
 [data-theme="dark"] .eng-computed-card:hover {
-  border-color: #3b82f6;
+  border-color: #0ea5e9;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
@@ -371,15 +371,15 @@
   justify-content: center;
   background: var(--bg-surface-secondary);
   border: 1px solid var(--border-color);
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   flex-shrink: 0;
 }
 
 [data-theme="dark"] .ad-computed-icon-box,
 [data-theme="dark"] .eng-computed-icon-box {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-computed-title, .eng-computed-title {
@@ -427,7 +427,7 @@
 
 [data-theme="dark"] .ad-snap-bar,
 [data-theme="dark"] .eng-snap-bar {
-  background: #1c2e4d;
+  background: #1a1a1a;
 }
 
 .ad-snap-seg, .eng-snap-seg {
@@ -459,9 +459,9 @@
 
 [data-theme="dark"] .ad-snap-pill,
 [data-theme="dark"] .eng-snap-pill {
-  background: #101d36;
-  border-color: #1e3562;
-  color: #b8cde8;
+  background: #0f0f0f;
+  border-color: #1a2733;
+  color: #a9cfe6;
 }
 
 .ad-snap-context, .eng-snap-context {
@@ -486,9 +486,9 @@
   font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
-  background: var(--stellantis-action, #0284c7);
+  background: var(--hub-action, #0284c7);
   color: #ffffff;
-  border: 1px solid var(--stellantis-action, #0284c7);
+  border: 1px solid var(--hub-action, #0284c7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -527,8 +527,8 @@
 
 [data-theme="dark"] .ad-snap-btn-sec,
 [data-theme="dark"] .eng-snap-btn-sec {
-  background: #142442;
-  border-color: #244080;
+  background: #121212;
+  border-color: #25394a;
   color: #ffffff;
 }
 
@@ -548,8 +548,8 @@
 
 [data-theme="dark"] .ad-drilldown-wrapper,
 [data-theme="dark"] .eng-drilldown-wrapper {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
 }
 
 .ad-drilldown-header, .eng-drilldown-header {
@@ -621,29 +621,29 @@
 
 [data-theme="dark"] .ad-depth-node,
 [data-theme="dark"] .eng-depth-node {
-  background: #091322;
-  border-color: #1a2f55;
+  background: #050505;
+  border-color: #1a1a1a;
 }
 
 [data-theme="dark"] .ad-depth-node:hover,
 [data-theme="dark"] .eng-depth-node:hover {
-  border-color: #3b82f6;
-  background: #0f1e38;
+  border-color: #0ea5e9;
+  background: #0a0a0a;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .ad-depth-node.active,
 .eng-depth-node.active {
   background: var(--bg-surface);
-  border: 2px solid var(--stellantis-action, #0284c7);
+  border: 2px solid var(--hub-action, #0284c7);
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.15);
 }
 
 [data-theme="dark"] .ad-depth-node.active,
 [data-theme="dark"] .eng-depth-node.active {
-  background: #102142;
-  border-color: #3b82f6;
-  box-shadow: 0 4px 14px rgba(59, 130, 246, 0.25);
+  background: #121212;
+  border-color: #0ea5e9;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
 }
 
 .ad-depth-node-meta, .eng-depth-node-meta {
@@ -666,12 +666,12 @@
 
 .ad-depth-node.active .ad-depth-node-tag,
 .eng-depth-node.active .eng-depth-node-tag {
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 [data-theme="dark"] .ad-depth-node.active .ad-depth-node-tag,
 [data-theme="dark"] .eng-depth-node.active .eng-depth-node-tag {
-  color: #60a5fa;
+  color: #38bdf8;
 }
 
 .ad-depth-node-title, .eng-depth-node-title {
@@ -721,8 +721,8 @@
 
 .ad-depth-node-indicator.indicator-purple,
 .eng-depth-node-indicator.indicator-purple {
-  color: #7c3aed;
-  background: rgba(139, 92, 246, 0.12);
+  color: #0891b2;
+  background: rgba(6, 182, 212, 0.12);
 }
 
 .ad-depth-node-indicator.indicator-warning,
@@ -745,8 +745,8 @@
 
 [data-theme="dark"] .ad-lens-stage,
 [data-theme="dark"] .eng-lens-stage {
-  background: #091322;
-  border-color: #1e3562;
+  background: #050505;
+  border-color: #1a2733;
 }
 
 .ad-lens-header, .eng-lens-header {
@@ -772,15 +772,15 @@
   justify-content: center;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  color: var(--stellantis-action, #0284c7);
+  color: var(--hub-action, #0284c7);
   flex-shrink: 0;
 }
 
 [data-theme="dark"] .ad-lens-icon-box,
 [data-theme="dark"] .eng-lens-icon-box {
-  background: #142442;
-  border-color: #244080;
-  color: #60a5fa;
+  background: #121212;
+  border-color: #25394a;
+  color: #38bdf8;
 }
 
 .ad-lens-controls, .eng-lens-controls {
@@ -806,8 +806,8 @@
 
 .ad-lens-step-btn:hover:not(:disabled),
 .eng-lens-step-btn:hover:not(:disabled) {
-  border-color: var(--stellantis-action, #0284c7);
-  color: var(--stellantis-action, #0284c7);
+  border-color: var(--hub-action, #0284c7);
+  color: var(--hub-action, #0284c7);
 }
 
 .ad-lens-step-btn:disabled,
@@ -818,8 +818,8 @@
 
 [data-theme="dark"] .ad-lens-step-btn,
 [data-theme="dark"] .eng-lens-step-btn {
-  background: #101d36;
-  border-color: #1e3562;
+  background: #0f0f0f;
+  border-color: #1a2733;
   color: #e2e8f0;
 }
 
@@ -853,8 +853,8 @@
 
 [data-theme="dark"] .ad-lens-metric-card,
 [data-theme="dark"] .eng-lens-metric-card {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 .ad-lens-metric-label, .eng-lens-metric-label {
@@ -901,8 +901,8 @@
 
 [data-theme="dark"] .ad-portfolio-item,
 [data-theme="dark"] .eng-portfolio-item {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 .ad-pipeline-flow, .eng-pipeline-flow {
@@ -929,8 +929,8 @@
 
 [data-theme="dark"] .ad-pipeline-step,
 [data-theme="dark"] .eng-pipeline-step {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 /* Telemetry Readout Box (Level 6) */
@@ -946,8 +946,8 @@
 
 [data-theme="dark"] .ad-telemetry-box,
 [data-theme="dark"] .eng-telemetry-box {
-  background: #091322;
-  border-color: #1d3460;
+  background: #050505;
+  border-color: #1a2733;
 }
 
 .ad-telemetry-grid, .eng-telemetry-grid {
@@ -968,8 +968,8 @@
 
 [data-theme="dark"] .ad-telemetry-item,
 [data-theme="dark"] .eng-telemetry-item {
-  background: #0d1a30;
-  border-color: #1e3562;
+  background: #0a0a0a;
+  border-color: #1a2733;
 }
 
 .ad-telemetry-label, .eng-telemetry-label {
@@ -1017,8 +1017,8 @@
 
 [data-theme="dark"] .ad-modal-dialog,
 [data-theme="dark"] .eng-modal-dialog {
-  background: #0d1a30;
-  border-color: var(--border-strong, #244080);
+  background: #0a0a0a;
+  border-color: var(--border-strong, #25394a);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
@@ -1085,7 +1085,7 @@
 
 [data-theme="dark"] .ad-modal-table th,
 [data-theme="dark"] .eng-modal-table th {
-  background: #142442;
+  background: #121212;
 }
 
 .ad-modal-table td,
@@ -1129,8 +1129,8 @@
 }
 
 [data-theme="dark"] .eng-models-facet-aside {
-  background: #0e1f3a;
-  border-color: #1e3562;
+  background: #0c0c0c;
+  border-color: #1a2733;
   box-shadow: none;
 }
 
@@ -1158,7 +1158,7 @@
   cursor: pointer;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--stellantis-action, #0d6efd);
+  color: var(--hub-action, #0284c7);
   padding: 0;
   line-height: 1;
   transition: opacity 0.15s;
@@ -1183,7 +1183,7 @@
 .eng-facet-section-header {
   font-size: 0.74rem;
   font-weight: 800;
-  color: var(--text-primary, #0f172a);
+  color: var(--text-primary, #0a0a0a);
   margin-bottom: 8px;
 }
 
@@ -1209,12 +1209,12 @@
 }
 
 .eng-facet-label.is-checked {
-  background: rgba(13, 110, 253, 0.07);
+  background: rgba(2, 132, 199, 0.07);
 }
 
 [data-theme="dark"] .eng-facet-label:hover,
 [data-theme="dark"] .eng-facet-label.is-checked {
-  background: rgba(59, 130, 246, 0.1);
+  background: rgba(14, 165, 233, 0.1);
 }
 
 .eng-facet-label.zero-count {
@@ -1226,7 +1226,7 @@
   align-items: center;
   gap: 8px;
   font-size: 0.76rem;
-  color: var(--stellantis-action, #0d6efd);
+  color: var(--hub-action, #0284c7);
   font-weight: 500;
   flex: 1;
   min-width: 0;
@@ -1234,7 +1234,7 @@
 }
 
 .eng-facet-label-left input[type="checkbox"] {
-  accent-color: var(--stellantis-action, #0d6efd);
+  accent-color: var(--hub-action, #0284c7);
   width: 13px;
   height: 13px;
   flex-shrink: 0;
@@ -1256,7 +1256,7 @@
 }
 
 [data-theme="dark"] .eng-facet-count {
-  background: #1e3562;
+  background: #1a2733;
   color: #94a3b8;
 }
 

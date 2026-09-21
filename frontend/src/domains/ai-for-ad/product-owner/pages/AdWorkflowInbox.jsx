@@ -1006,7 +1006,7 @@ export default function AdWorkflowInbox() {
                 <div>
                   <strong style={{ color: 'var(--text-primary)' }}>Why this needs you:</strong>{' '}
                   <span style={{ color: 'var(--text-secondary)' }}>
-                    Synthesized from Balocco fleet rain track incident #4192. Touches Euro NCAP pedestrian braking logic.
+                    Synthesized from Northfield fleet rain track incident #4192. Touches Euro NCAP pedestrian braking logic.
                   </span>
                 </div>
                 <span className="st-badge badge-success" style={{ fontSize: '0.7rem' }}>
@@ -1023,7 +1023,7 @@ export default function AdWorkflowInbox() {
                     </span>
                     <button
                       onClick={() => toggleDrawer('story-1', 'editStory')}
-                      style={{ background: 'none', border: 'none', color: 'var(--stellantis-action)', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '3px' }}
+                      style={{ background: 'none', border: 'none', color: 'var(--hub-action)', fontSize: '0.72rem', fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '3px' }}
                     >
                       <Edit3 size={11} /> {activeDrawers['story-1'] === 'editStory' ? 'Close Editor' : 'Edit Inline'}
                     </button>
@@ -1070,10 +1070,10 @@ export default function AdWorkflowInbox() {
                     Attached Draft Acceptance Criteria (Gherkin)
                   </div>
                   <div className="ad-gherkin-snippet">
-                    <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Pedestrian sudden curb entry under rain spray<br />
-                    &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> the vehicle is operating in Highway Pilot L2+ at 65 km/h<br />
-                    &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> front camera confidence drops below 40% due to rain spray occlusion<br />
-                    &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>And</span> 4D Imaging Radar identifies a pedestrian Doppler velocity vector &gt;= 1.2 m/s<br />
+                    <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Pedestrian sudden curb entry under rain spray<br />
+                    &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> the vehicle is operating in Highway Pilot L2+ at 65 km/h<br />
+                    &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> front camera confidence drops below 40% due to rain spray occlusion<br />
+                    &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>And</span> 4D Imaging Radar identifies a pedestrian Doppler velocity vector &gt;= 1.2 m/s<br />
                     &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> trigger brake pre-fill pressure within 80ms<br />
                     &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>And</span> maintain false positive alarm rate &lt; 0.01 per 1,000 km
                   </div>
@@ -1279,16 +1279,16 @@ export default function AdWorkflowInbox() {
                 ) : (
                   !enhancedAC['ac-1'] ? (
                     <div className="ad-gherkin-snippet">
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Evasive steer assist on dry asphalt<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> vehicle travels between 50-80 km/h on dry asphalt roadway<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> driver steering wheel torque input exceeds 4.5 Nm within 120ms<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Evasive steer assist on dry asphalt<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> vehicle travels between 50-80 km/h on dry asphalt roadway<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> driver steering wheel torque input exceeds 4.5 Nm within 120ms<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> electric power steering motor shall amplify torque by 25%
                     </div>
                   ) : (
                     <div className="ad-gherkin-snippet" style={{ border: '1px solid var(--badge-success-border)' }}>
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Evasive steer assist on low-friction snow/ice (surface &mu; &lt; 0.3)<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> vehicle wheel speed differential detects slippery surface condition (&mu; &lt; 0.3)<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> evasive steer torque is requested exceeding 4.5 Nm<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Evasive steer assist on low-friction snow/ice (surface &mu; &lt; 0.3)<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> vehicle wheel speed differential detects slippery surface condition (&mu; &lt; 0.3)<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> evasive steer torque is requested exceeding 4.5 Nm<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> clamp electric steer motor assist amplification to max 12%<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>And</span> trigger differential ESC yaw counter-torque within 15ms to avert spinout
                     </div>
@@ -1470,16 +1470,16 @@ export default function AdWorkflowInbox() {
                 ) : (
                   !enhancedAC['ac-2'] ? (
                     <div className="ad-gherkin-snippet">
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Matrix LED glare suppression on straight flat motorway<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> vehicle travels at 110 km/h with active adaptive matrix headlights<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> oncoming vehicle headlamps are detected at 450m on level road<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Matrix LED glare suppression on straight flat motorway<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> vehicle travels at 110 km/h with active adaptive matrix headlights<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> oncoming vehicle headlamps are detected at 450m on level road<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> shade matrix LED sectors 4-8 within 40ms to avoid dazzle
                     </div>
                   ) : (
                     <div className="ad-gherkin-snippet" style={{ border: '1px solid var(--badge-success-border)' }}>
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Matrix LED glare suppression on uphill motorway crests (gradient &gt; 6%)<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> vehicle pitch sensor detects incline grade &gt; 6% approaching vertical road crest<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> oncoming HGV cabin height is detected exceeding 2.2m above roadway plane<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Matrix LED glare suppression on uphill motorway crests (gradient &gt; 6%)<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> vehicle pitch sensor detects incline grade &gt; 6% approaching vertical road crest<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> oncoming HGV cabin height is detected exceeding 2.2m above roadway plane<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> pre-emptively tilt matrix beam cutoff downward by 2.4 degrees within 25ms<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>And</span> log 0 lux illuminance spill into opposing driver eye box (UNECE R149 compliant)
                     </div>
@@ -1661,16 +1661,16 @@ export default function AdWorkflowInbox() {
                 ) : (
                   !enhancedAC['ac-3'] ? (
                     <div className="ad-gherkin-snippet">
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Adjacent passenger car lane cut-in deceleration smoothing<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> ego vehicle travels in ACC Highway Pilot mode at 90 km/h<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> adjacent four-wheeled passenger vehicle crosses lane divider within 15m<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Adjacent passenger car lane cut-in deceleration smoothing<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> ego vehicle travels in ACC Highway Pilot mode at 90 km/h<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> adjacent four-wheeled passenger vehicle crosses lane divider within 15m<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> modulate regenerative braking with deceleration ramp capped at 1.5 m/s³
                     </div>
                   ) : (
                     <div className="ad-gherkin-snippet" style={{ border: '1px solid var(--badge-success-border)' }}>
-                      <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>Scenario:</span> Motorcycle lane-splitting cut-in deceleration smoothing<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>Given</span> ego vehicle travels in dense traffic below 60 km/h<br />
-                      &nbsp;&nbsp;<span style={{ color: '#2563eb', fontWeight: 700 }}>When</span> 4D radar identifies single-track Doppler cluster crossing lane divider within 8m<br />
+                      <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>Scenario:</span> Motorcycle lane-splitting cut-in deceleration smoothing<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>Given</span> ego vehicle travels in dense traffic below 60 km/h<br />
+                      &nbsp;&nbsp;<span style={{ color: '#0284c7', fontWeight: 700 }}>When</span> 4D radar identifies single-track Doppler cluster crossing lane divider within 8m<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>Then</span> trigger soft brake deceleration ramp of 0.8 m/s³ within 60ms<br />
                       &nbsp;&nbsp;<span style={{ color: 'var(--badge-success-text)', fontWeight: 700 }}>And</span> maintain passenger comfort without nuisance jerk while keeping 1.2s headway
                     </div>
@@ -1814,7 +1814,7 @@ export default function AdWorkflowInbox() {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ArrowRight size={22} style={{ color: 'var(--stellantis-action)' }} />
+                  <ArrowRight size={22} style={{ color: 'var(--hub-action)' }} />
                 </div>
 
                 <div style={{
@@ -1823,7 +1823,7 @@ export default function AdWorkflowInbox() {
                   borderRadius: 'var(--radius-md)',
                   padding: '10px 14px'
                 }}>
-                  <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--stellantis-action)' }}>
+                  <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--hub-action)' }}>
                     AI Proposed Rank
                   </div>
                   <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
@@ -1947,7 +1947,7 @@ export default function AdWorkflowInbox() {
                     <span className="st-badge badge-success">✓ {itemStatuses['prio-2']?.label || 'Fast-Tracked in Jira Sprint 43'}</span>
                   </div>
                   <span className="ad-card-resolved-desc">
-                    Fast-tracked from Rank #14 to Rank #3 (+11 spots) • Balocco track homologation unblocked.
+                    Fast-tracked from Rank #14 to Rank #3 (+11 spots) • Northfield track homologation unblocked.
                   </span>
                 </div>
               </div>
@@ -2006,7 +2006,7 @@ export default function AdWorkflowInbox() {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <ArrowRight size={22} style={{ color: 'var(--stellantis-action)' }} />
+                  <ArrowRight size={22} style={{ color: 'var(--hub-action)' }} />
                 </div>
 
                 <div style={{
@@ -2015,14 +2015,14 @@ export default function AdWorkflowInbox() {
                   borderRadius: 'var(--radius-md)',
                   padding: '10px 14px'
                 }}>
-                  <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--stellantis-action)' }}>
+                  <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--hub-action)' }}>
                     AI Proposed Rank
                   </div>
                   <div style={{ fontSize: '0.9rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
                     {customRankInputs['prio-2'] ? `Custom Rank ${customRankInputs['prio-2']} in Sprint 43` : 'Fast-Track to Rank #3 in Sprint 43 (+11)'}
                   </div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--badge-success-text)', fontWeight: 600, marginTop: '2px' }}>
-                    Unblocks Balocco track homologation
+                    Unblocks Northfield track homologation
                   </div>
                 </div>
               </div>
@@ -2074,7 +2074,7 @@ export default function AdWorkflowInbox() {
                   borderRadius: 'var(--radius-md)',
                   border: '1px solid var(--border-color)'
                 }}>
-                  "Euro NCAP 2026 protocol audit window opens in Sprint 44. Currently, AD-119 sits at Rank #14, scheduled behind non-safety Comfort Park Assist features. Fast-tracking AD-119 to Rank #3 ensures firmware release 4.2 contains calibrated IR/RGB nighttime cyclist bounding boxes prior to physical vehicle track testing at the Balocco Proving Ground, eliminating a 3-week homologation freeze."
+                  "Euro NCAP 2026 protocol audit window opens in Sprint 44. Currently, AD-119 sits at Rank #14, scheduled behind non-safety Comfort Park Assist features. Fast-tracking AD-119 to Rank #3 ensures firmware release 4.2 contains calibrated IR/RGB nighttime cyclist bounding boxes prior to physical vehicle track testing at the Northfield Proving Ground, eliminating a 3-week homologation freeze."
                 </p>
               </div>
 
@@ -2558,7 +2558,7 @@ export default function AdWorkflowInbox() {
                     <span className="st-badge badge-success">✓ €2.4M Payment Milestone Gate Released</span>
                   </div>
                   <span className="ad-card-resolved-desc">
-                    Commercial SLA verified against Balocco Proving Ground trials (2.1s reaction time passed). Invoiced to OEM partner.
+                    Commercial SLA verified against Northfield Proving Ground trials (2.1s reaction time passed). Invoiced to OEM partner.
                   </span>
                 </div>
               </div>
@@ -2597,10 +2597,10 @@ export default function AdWorkflowInbox() {
                 <div className="ad-card-resolved-info">
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                     <span className="ad-card-resolved-title">OEM Commercial Acceptance: Lane Change SLA</span>
-                    <span className="st-badge badge-high">📡 Balocco Telemetry Pull Active (Pending Data)</span>
+                    <span className="st-badge badge-high">📡 Northfield Telemetry Pull Active (Pending Data)</span>
                   </div>
                   <span className="ad-card-resolved-desc">
-                    Additional 24h raw vehicle sensor logs requested from Balocco Proving Ground to confirm reaction SLA stability under rainy road conditions.
+                    Additional 24h raw vehicle sensor logs requested from Northfield Proving Ground to confirm reaction SLA stability under rainy road conditions.
                   </span>
                 </div>
               </div>
@@ -2624,10 +2624,10 @@ export default function AdWorkflowInbox() {
                   <X size={12} /> Flag Discrepancy
                 </button>
                 <button
-                  onClick={() => showToast('Priority reminder dispatched to Balocco Test Operations Team!')}
+                  onClick={() => showToast('Priority reminder dispatched to Northfield Test Operations Team!')}
                   className="ad-btn-action-secondary"
                 >
-                  <Send size={12} /> Ping Balocco Ops
+                  <Send size={12} /> Ping Northfield Ops
                 </button>
               </div>
             </div>
@@ -2672,7 +2672,7 @@ export default function AdWorkflowInbox() {
                   gap: '6px'
                 }}>
                   <div style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: 'var(--text-muted)' }}>
-                    Evidence Gathered from Balocco Proving Ground
+                    Evidence Gathered from Northfield Proving Ground
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
                     <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Average trial reaction time across 4,200 simulated maneuvers:</span>
@@ -2694,7 +2694,7 @@ export default function AdWorkflowInbox() {
                     <Check size={13} /> Confirm Assumption &amp; Release Milestone
                   </button>
                   <button
-                    onClick={() => handleStatusChange('val-1', { type: 'telemetry_requested' }, 'Fleet telemetry pull request dispatched to Balocco Proving Ground!')}
+                    onClick={() => handleStatusChange('val-1', { type: 'telemetry_requested' }, 'Fleet telemetry pull request dispatched to Northfield Proving Ground!')}
                     className="ad-btn-action-secondary"
                   >
                     Request Additional Fleet Telemetry
@@ -2835,7 +2835,7 @@ export default function AdWorkflowInbox() {
                     Evidence Gathered from Cabin Fleet Trials
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                    <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Average detection latency across 1,800 Balocco cabin sessions:</span>
+                    <span style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>Average detection latency across 1,800 Northfield cabin sessions:</span>
                     <span className="font-mono" style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--badge-success-text)' }}>0.84s (Passed SLA)</span>
                   </div>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
@@ -2854,7 +2854,7 @@ export default function AdWorkflowInbox() {
                     <Check size={13} /> Confirm Assumption &amp; Release Milestone
                   </button>
                   <button
-                    onClick={() => handleStatusChange('val-2', { type: 'telemetry_requested' }, 'Cabin fleet telemetry pull dispatched to Balocco Proving Ground!')}
+                    onClick={() => handleStatusChange('val-2', { type: 'telemetry_requested' }, 'Cabin fleet telemetry pull dispatched to Northfield Proving Ground!')}
                     className="ad-btn-action-secondary"
                   >
                     Request Additional Fleet Telemetry

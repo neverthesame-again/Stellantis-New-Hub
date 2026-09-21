@@ -18,7 +18,7 @@ export default function RoadmapHorizonCard({ data }) {
               style={{
                 width: '3px',
                 height: `${bar * 2.5 + 2}px`,
-                background: isActive ? (isAmber ? '#f59e0b' : 'var(--stellantis-action, #0284c7)') : 'var(--border-color)',
+                background: isActive ? (isAmber ? '#f59e0b' : 'var(--hub-action, #0284c7)') : 'var(--border-color)',
                 borderRadius: '1px'
               }}
             />
@@ -32,11 +32,11 @@ export default function RoadmapHorizonCard({ data }) {
     now: {
       badge: 'Active Cadence',
       title: 'Sprint 42–43 Active Delivery Horizon',
-      accentColor: 'var(--stellantis-action, #0284c7)',
+      accentColor: 'var(--hub-action, #0284c7)',
       borderColor: 'var(--border-color)',
       bg: 'var(--bg-surface-secondary)',
       metrics: [
-        { label: 'Milestone Gate', val: 'Release v3.4', sub: 'Oct 15, 2026', subColor: '#60a5fa' },
+        { label: 'Milestone Gate', val: 'Release v3.4', sub: 'Oct 15, 2026', subColor: '#38bdf8' },
         { label: 'Committed Scope', val: '64 Story Points', sub: '42 SP Completed (65%)', subColor: '#34d399' },
         { label: 'AI Confidence', val: '94% On Track', sub: 'Safety loop verified', subColor: '#34d399' },
         { label: 'Risk Blocker', val: '1 Active Blocker', sub: 'LiDAR SDK Emulator ON', subColor: '#fbbf24' }
@@ -46,14 +46,14 @@ export default function RoadmapHorizonCard({ data }) {
     next: {
       badge: 'Q4 2026 Horizon',
       title: 'Q4 2026 Euro NCAP 2026 Track Certification',
-      accentColor: '#8b5cf6',
+      accentColor: '#06b6d4',
       borderColor: 'var(--border-color)',
       bg: 'var(--bg-surface-secondary)',
       metrics: [
-        { label: 'Target Release', val: 'Release v4.0', sub: 'Dec 18, 2026', subColor: '#c084fc' },
-        { label: 'Estimated Scope', val: '86 Story Points', sub: 'In Backlog Refinement', subColor: '#c084fc' },
+        { label: 'Target Release', val: 'Release v4.0', sub: 'Dec 18, 2026', subColor: '#67e8f9' },
+        { label: 'Estimated Scope', val: '86 Story Points', sub: 'In Backlog Refinement', subColor: '#67e8f9' },
         { label: 'AI Confidence', val: '88% High', sub: 'HIL simulation ready', subColor: '#34d399' },
-        { label: 'Hardware Target', val: 'Orin SoC (INT8)', sub: 'Latency budget 15ms', subColor: '#60a5fa' }
+        { label: 'Hardware Target', val: 'Orin SoC (INT8)', sub: 'Latency budget 15ms', subColor: '#38bdf8' }
       ],
       commitments: 'Vision Transformer v2 BEV model (AD-201), Continental ARS548 HD Radar integration (AD-204), Dual-Channel Steer-by-Wire Redundancy (AD-208).'
     },
@@ -64,12 +64,12 @@ export default function RoadmapHorizonCard({ data }) {
       borderColor: 'var(--border-color)',
       bg: 'var(--bg-surface-secondary)',
       metrics: [
-        { label: 'Target Launch', val: 'STLA AutoDrive L3', sub: 'Q2 2027 Scale', subColor: 'var(--text-primary)' },
+        { label: 'Target Launch', val: 'NOVA AutoDrive L3', sub: 'Q2 2027 Scale', subColor: 'var(--text-primary)' },
         { label: 'Architecture Runway', val: '140+ Story Points', sub: 'R&D Exploration phase', subColor: 'var(--text-secondary)' },
         { label: 'AI Confidence', val: '82% Feasibility', sub: 'Sim synthetic test valid', subColor: '#34d399' },
         { label: 'Safety Envelope', val: '130 km/h ODD', sub: 'Hands-off driver monitor', subColor: 'var(--text-primary)' }
       ],
-      commitments: '4D Volumetric Occupancy Grid & Neural Path Prediction (AD-308), Solid-State LiDAR production clustering (AD-305), STLA AutoDrive L3 Highway Pilot (AD-301).'
+      commitments: '4D Volumetric Occupancy Grid & Neural Path Prediction (AD-308), Solid-State LiDAR production clustering (AD-305), NOVA AutoDrive L3 Highway Pilot (AD-301).'
     }
   };
 
@@ -148,7 +148,7 @@ export default function RoadmapHorizonCard({ data }) {
       },
       later: {
         id: 'AD-301',
-        title: 'STLA AutoDrive L3 Pilot',
+        title: 'NOVA AutoDrive L3 Pilot',
         status: 'Roadmap',
         badgeClass: 'st-badge badge-info',
         details: 'Hands-off 130 km/h highway pilot with driver monitoring supervisor.'
@@ -185,7 +185,7 @@ export default function RoadmapHorizonCard({ data }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--stellantis-action)'
+              color: 'var(--hub-action)'
             }}>
               <Compass size={18} />
             </div>
@@ -232,9 +232,9 @@ export default function RoadmapHorizonCard({ data }) {
               width: '100%',
               padding: '6px 10px',
               borderRadius: '8px',
-              border: activeHorizon === 'now' ? '1.5px solid var(--stellantis-action, #0284c7)' : '1px solid var(--border-color)',
+              border: activeHorizon === 'now' ? '1.5px solid var(--hub-action, #0284c7)' : '1px solid var(--border-color)',
               background: activeHorizon === 'now' ? 'var(--bg-subtle)' : 'var(--bg-surface)',
-              color: activeHorizon === 'now' ? 'var(--stellantis-action, #0284c7)' : 'var(--text-primary)',
+              color: activeHorizon === 'now' ? 'var(--hub-action, #0284c7)' : 'var(--text-primary)',
               cursor: 'pointer',
               fontSize: '0.68rem',
               fontWeight: 800,
@@ -249,7 +249,7 @@ export default function RoadmapHorizonCard({ data }) {
               fontSize: '0.60rem',
               padding: '1px 5px',
               borderRadius: '4px',
-              background: activeHorizon === 'now' ? 'var(--stellantis-action)' : 'var(--border-color)',
+              background: activeHorizon === 'now' ? 'var(--hub-action)' : 'var(--border-color)',
               color: activeHorizon === 'now' ? '#ffffff' : 'var(--text-secondary)',
               fontWeight: 700
             }}>
@@ -271,9 +271,9 @@ export default function RoadmapHorizonCard({ data }) {
               width: '100%',
               padding: '6px 10px',
               borderRadius: '8px',
-              border: activeHorizon === 'next' ? '1.5px solid #8b5cf6' : '1px solid var(--border-color)',
+              border: activeHorizon === 'next' ? '1.5px solid #06b6d4' : '1px solid var(--border-color)',
               background: activeHorizon === 'next' ? 'var(--bg-subtle)' : 'var(--bg-surface)',
-              color: activeHorizon === 'next' ? '#a78bfa' : 'var(--text-primary)',
+              color: activeHorizon === 'next' ? '#22d3ee' : 'var(--text-primary)',
               cursor: 'pointer',
               fontSize: '0.68rem',
               fontWeight: 800,
@@ -288,7 +288,7 @@ export default function RoadmapHorizonCard({ data }) {
               fontSize: '0.60rem',
               padding: '1px 5px',
               borderRadius: '4px',
-              background: activeHorizon === 'next' ? '#8b5cf6' : 'var(--border-color)',
+              background: activeHorizon === 'next' ? '#06b6d4' : 'var(--border-color)',
               color: activeHorizon === 'next' ? '#ffffff' : 'var(--text-secondary)',
               fontWeight: 700
             }}>
@@ -364,7 +364,7 @@ export default function RoadmapHorizonCard({ data }) {
                 onClick={() => setSelectedItem(row.now)}
                 style={{
                   background: 'var(--bg-surface)',
-                  border: `1px solid ${selectedItem?.id === row.now.id ? 'var(--stellantis-action, #0284c7)' : (activeHorizon === 'now' ? 'var(--stellantis-action, #0284c7)' : (row.now.isRisk ? '#f59e0b' : 'var(--border-color)'))}`,
+                  border: `1px solid ${selectedItem?.id === row.now.id ? 'var(--hub-action, #0284c7)' : (activeHorizon === 'now' ? 'var(--hub-action, #0284c7)' : (row.now.isRisk ? '#f59e0b' : 'var(--border-color)'))}`,
                   borderRadius: '8px',
                   padding: '7px 10px',
                   display: 'flex',
@@ -375,7 +375,7 @@ export default function RoadmapHorizonCard({ data }) {
                   width: '100%',
                   boxSizing: 'border-box',
                   minWidth: 0,
-                  boxShadow: activeHorizon === 'now' ? '0 0 0 1px var(--stellantis-action)' : 'var(--shadow-sm)',
+                  boxShadow: activeHorizon === 'now' ? '0 0 0 1px var(--hub-action)' : 'var(--shadow-sm)',
                   transition: 'all 0.15s ease'
                 }}
                 title={row.now.details}
@@ -406,7 +406,7 @@ export default function RoadmapHorizonCard({ data }) {
                 onClick={() => setSelectedItem(row.next)}
                 style={{
                   background: 'var(--bg-surface)',
-                  border: `1px solid ${selectedItem?.id === row.next.id ? '#8b5cf6' : (activeHorizon === 'next' ? '#8b5cf6' : (row.next.isWarning ? '#f59e0b' : 'var(--border-color)'))}`,
+                  border: `1px solid ${selectedItem?.id === row.next.id ? '#06b6d4' : (activeHorizon === 'next' ? '#06b6d4' : (row.next.isWarning ? '#f59e0b' : 'var(--border-color)'))}`,
                   borderRadius: '8px',
                   padding: '7px 10px',
                   display: 'flex',
@@ -417,7 +417,7 @@ export default function RoadmapHorizonCard({ data }) {
                   width: '100%',
                   boxSizing: 'border-box',
                   minWidth: 0,
-                  boxShadow: activeHorizon === 'next' ? '0 0 0 1px #8b5cf6' : 'var(--shadow-sm)',
+                  boxShadow: activeHorizon === 'next' ? '0 0 0 1px #06b6d4' : 'var(--shadow-sm)',
                   transition: 'all 0.15s ease'
                 }}
                 title={row.next.details}
@@ -583,7 +583,7 @@ export default function RoadmapHorizonCard({ data }) {
             alignItems: 'center',
             justifyContent: 'space-between',
             background: 'var(--bg-surface)',
-            border: '1.5px solid var(--stellantis-action, #0284c7)',
+            border: '1.5px solid var(--hub-action, #0284c7)',
             borderRadius: '8px',
             padding: '8px 14px',
             fontSize: '0.72rem',
@@ -591,7 +591,7 @@ export default function RoadmapHorizonCard({ data }) {
             boxShadow: '0 2px 6px rgba(2, 132, 199, 0.1)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontWeight: 800, color: 'var(--stellantis-action)' }}>{selectedItem.id}:</span>
+              <span style={{ fontWeight: 800, color: 'var(--hub-action)' }}>{selectedItem.id}:</span>
               <strong style={{ color: 'var(--text-primary)' }}>{selectedItem.title}</strong>
               <span style={{ color: 'var(--text-secondary)' }}>&ndash; {selectedItem.details}</span>
             </div>

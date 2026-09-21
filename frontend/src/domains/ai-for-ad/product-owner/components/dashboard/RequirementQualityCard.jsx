@@ -52,10 +52,10 @@ export default function RequirementQualityCard({ data, onOpenStoryDoctorModal })
         {data.indices.map((idx, i) => {
           const themes = [
             {
-              topBorder: '3px solid #2563eb',
-              labelColor: '#60a5fa',
-              deltaColor: '#60a5fa',
-              barActive: '#2563eb'
+              topBorder: '3px solid #0284c7',
+              labelColor: '#38bdf8',
+              deltaColor: '#38bdf8',
+              barActive: '#0284c7'
             },
             {
               topBorder: '3px solid #10b981',
@@ -64,10 +64,10 @@ export default function RequirementQualityCard({ data, onOpenStoryDoctorModal })
               barActive: '#10b981'
             },
             {
-              topBorder: '3px solid #8b5cf6',
-              labelColor: '#c084fc',
-              deltaColor: '#c084fc',
-              barActive: '#8b5cf6'
+              topBorder: '3px solid #06b6d4',
+              labelColor: '#67e8f9',
+              deltaColor: '#67e8f9',
+              barActive: '#06b6d4'
             }
           ];
           const theme = themes[i % themes.length];
@@ -139,7 +139,7 @@ export default function RequirementQualityCard({ data, onOpenStoryDoctorModal })
                 style={{
                   background: 'var(--bg-surface-secondary)',
                   border: '1px solid var(--border-color)',
-                  borderLeft: isInfo ? '3px solid #3b82f6' : '3px solid #10b981',
+                  borderLeft: isInfo ? '3px solid #0ea5e9' : '3px solid #10b981',
                   borderRadius: '8px',
                   padding: '11px 14px',
                   display: 'flex',

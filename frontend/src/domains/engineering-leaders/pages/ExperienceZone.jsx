@@ -18,7 +18,7 @@ import { engineeringExperienceData } from '../mockData.js';
 import '../engineeringExperience.css';
 
 /**
- * AI Experience Zone — Engineering Leaders
+ * AI Experience Zone — Engineering Leader
  * Persona: Alex — Chief AI Officer / Head of Software Engineering
  * Peer-Level Sub-Tabs Architecture for PRD Section 5 (5.1 - 5.6)
  * 
@@ -30,9 +30,12 @@ import '../engineeringExperience.css';
  * 5. 5.5 AI Tools Catalogue (10 Engineering Disciplines & Integration Specs)
  * 6. 5.6 My Subscriptions (Consolidated Subscriptions across 5 Grant Levels & 8 Entity Types)
  */
-export default function ExperienceZone() {
+export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTabChange }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const [activeSubTab, setActiveSubTab] = useState('persona');
+  // Sub-page is driven by the sidebar when controlled; falls back to local state
+  const [localSubTab, setLocalSubTab] = useState('persona');
+  const activeSubTab = controlledSubTab ?? localSubTab;
+  const setActiveSubTab = onSubTabChange ?? setLocalSubTab;
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -55,15 +58,6 @@ export default function ExperienceZone() {
       });
   }, []);
 
-  // Peer-Level Sub-Tabs matching PRD Section 5
-  const SUB_TABS = [
-    { id: 'persona', label: 'Persona Dashboard', icon: Sliders, badge: '9' },
-    { id: 'inbox', label: 'Workflow Inbox', icon: Inbox, badge: '7' },
-    { id: 'models', label: 'Model Catalogue', icon: Cpu, badge: '8' },
-    { id: 'agents', label: 'Agent & Workflows', icon: Bot, badge: '8', title: 'Agent and Agentic Workflow Catalogue' },
-    { id: 'tools', label: 'AI Tools Catalogue', icon: Wrench, badge: '10' },
-    { id: 'subscriptions', label: 'My Subscriptions', icon: BookmarkCheck, badge: `${data?.mySubscriptions?.length || 14}` },
-  ];
 
   // Model Subscription Toggle
   const handleToggleModelSubscription = async (modelId) => {
@@ -155,7 +149,7 @@ export default function ExperienceZone() {
   };
 
   // Agent Subscription Toggle
-  const handleSubscribeAgent = async (agentId, projectName = 'STLA Large SDV Platform Phase 2', explicitState) => {
+  const handleSubscribeAgent = async (agentId, projectName = 'NOVA Large SDV Platform Phase 2', explicitState) => {
     const targetAgent = (data?.agents || []).find(a => a.id === agentId) || (engineeringExperienceData?.agents || []).find(a => a.id === agentId);
     if (!targetAgent) return;
 
@@ -301,28 +295,6 @@ export default function ExperienceZone() {
           <span>{toastMessage}</span>
         </div>
       )}
-
-      {/* PEER-LEVEL SUB-TABS NAVIGATION BAR (Matches AI for AD Master Architecture) */}
-      <nav className="eng-exp-subtab-bar" aria-label="AI Experience Zone Subcategories">
-        {SUB_TABS.map((tab) => {
-          const isActive = activeSubTab === tab.id;
-          const Icon = tab.icon;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveSubTab(tab.id)}
-              className={`eng-exp-subtab-btn ${isActive ? 'active' : ''}`}
-              title={tab.title || tab.label}
-            >
-              <Icon size={14} style={{ opacity: isActive ? 1 : 0.7, flexShrink: 0 }} />
-              <span className="eng-exp-subtab-text">{tab.label}</span>
-              {tab.badge && (
-                <span className="eng-exp-subtab-badge">{tab.badge}</span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
 
       {/* =========================================================
           SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)

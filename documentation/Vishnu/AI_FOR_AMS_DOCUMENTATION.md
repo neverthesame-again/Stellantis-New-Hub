@@ -3,19 +3,19 @@
 > **Domain:** AI for AMS  
 > **Persona:** Tony — Head of AMS  
 > **Platform Code:** `AMS-OPS`  
-> **Repository:** `Stellantis-New-Hub`
+> **Repository:** `New-AI-Hub`
 
 ---
 
 ## 1. Executive Summary
 
-This document details all architectural, UI/UX, functional, and data model implementations delivered for the **AI for AMS** domain within the Stellantis AI-Native Engineering Operating Model Hub. 
+This document details all architectural, UI/UX, functional, and data model implementations delivered for the **AI for AMS** domain within the AI Hub — AI-Native Engineering Operating Model. 
 
 The implementation fulfills **100% of the capabilities** defined in the specification for Tony (Head of AMS), featuring:
 1. **Executive Operations Dashboard** (Full telemetry, recurring clusters, stability, SLAs, debt, and ROI).
 2. **Unified Workflow Inbox** (Approvals, reviews, recommendations, exceptions, and escalations with live decision auditing).
 3. **Comprehensive AI Experience Zone** (Model catalogue with comparison, agent workflows with contracts, 10 AI tool categories, subscription manager across 5 tiers, and interactive digital twin sandbox simulation).
-4. **Authentic Stellantis Design System** (Adaptive light/dark mode logo, clean badges, right-aligned status telemetry, and zero numerical prefixes).
+4. **Authentic Enterprise Design System** (Adaptive light/dark mode logo, clean badges, right-aligned status telemetry, and zero numerical prefixes).
 
 ---
 
@@ -25,8 +25,8 @@ The implementation fulfills **100% of the capabilities** defined in the specific
 - **Right-Aligned Live Telemetry Pane**: Positioned the operational telemetry chips (`4 Active Clusters`, `12 Pending Problem Records`, `Tier-1 Services Healthy`) cleanly at the far-right edge of the workspace header.
 - **Universal Operational Health**: Replaced static regional tags with dynamic `Tier-1 Services Healthy` status.
 - **Header Branding**:
-  - Embedded the official Stellantis corporate logo with automatic contrast switching: high-contrast dark version on light mode, and crisp white version on dark mode.
-  - Linked official Stellantis favicon icon.
+  - AI Hub wordmark in the header adapts to light and dark mode.
+  - Linked the AI Hub favicon icon.
 - **Role Isolation**: Cleaned the persona selector to generic enterprise roles without hardcoded developer names.
 
 ### 2.2 Numerical Prefix Removal
@@ -96,11 +96,11 @@ A multi-dimensional catalogue and simulation suite for managing AI models, agent
   - `MOD-002`: Claude-3.5-Sonnet-Enterprise (Anthropic / AWS Bedrock)
   - `MOD-003`: CodeLlama-AMS-Refactor (Meta / On-Prem Turin)
   - `MOD-004`: Mistral-Large-2-Ops (Mistral AI / Private Cloud)
-  - `MOD-005`: Incident-Triage-Embeddings-v2 (Stellantis AI Labs)
+  - `MOD-005`: Incident-Triage-Embeddings-v2 (AI Labs)
   - `MOD-006`: SQL-Autonomous-Query-Optimizer (Oracle / Azure US-East)
 - **Technical Specifications**: Provider, Modality, Deployment Architecture, Latency P95, Benchmark Score, Cost Tier, Approved Use Cases, and Data Handling Restrictions.
 - **Interactive Capabilities**:
-  - Provider filter pills (`All`, `Meta`, `Anthropic`, `Oracle`, `Stellantis AI Labs`).
+  - Provider filter pills (`All`, `Meta`, `Anthropic`, `Oracle`, `AI Labs`).
   - Search query filtering.
   - **Side-by-Side Model Comparison**: Select up to 3 models for modal comparison across 8 technical attributes.
   - **Model Onboarding Request Modal**: Form to request new HuggingFace / cloud models.

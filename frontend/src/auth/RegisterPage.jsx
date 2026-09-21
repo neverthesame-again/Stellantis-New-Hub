@@ -6,7 +6,7 @@ import './auth.css';
 // ── Domain → Role mapping (mirrors WorkspaceBar)
 const DOMAIN_ROLE_MAP = {
   'AI for AMS':          ['Head of AMS'],
-  'Engineering leaders': ['Chief AI Officer'],
+  'Engineering leader': ['Chief AI Officer'],
   'AI for AD':           ['Product Owner'],
 };
 
@@ -51,7 +51,7 @@ function MultiSelectDropdown({ label, options, selectedValues, onChange, placeho
       {isOpen && !disabled && (
         <div style={{
           position: 'absolute', top: '100%', left: 0, marginTop: '4px', zIndex: 10, width: '100%',
-          background: 'var(--bg-surface, #ffffff)', border: '1px solid var(--border-color, #e2e8f4)',
+          background: 'var(--bg-surface, #ffffff)', border: '1px solid var(--border-color, #dbeef9)',
           borderRadius: '8px', padding: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
         }}>
           {options.length === 0 ? <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', padding: '4px' }}>No options available</div> : options.map(opt => (
@@ -60,7 +60,7 @@ function MultiSelectDropdown({ label, options, selectedValues, onChange, placeho
                 type="checkbox" 
                 checked={selectedValues.includes(opt)} 
                 onChange={() => handleToggle(opt)} 
-                style={{ cursor: 'pointer', accentColor: '#1a3a6e' }}
+                style={{ cursor: 'pointer', accentColor: '#0369a1' }}
               />
               {opt}
             </label>
@@ -77,7 +77,7 @@ function MultiSelectDropdown({ label, options, selectedValues, onChange, placeho
 const FEATURES = [
   { icon: '💻', cls: 'icon-ad',    text: <><strong>AI for AD:</strong> Workspaces for Product Owner &amp; Developer</> },
   { icon: '🔧', cls: 'icon-ams',   text: <><strong>AI for AMS:</strong> Incident &amp; problem desks for Support Engineer &amp; Software Engineer</> },
-  { icon: '🛡️', cls: 'icon-infra', text: <><strong>Engineering leaders:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy</> }
+  { icon: '🛡️', cls: 'icon-infra', text: <><strong>Engineering leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy</> }
 ];
 
 // ── Pending Approval Screen (shown after successful registration)
@@ -102,7 +102,7 @@ function PendingApprovalScreen({ profile, onBackToLogin }) {
       <h2 className="auth-pending-title">Registration Submitted</h2>
 
       <p className="auth-pending-message">
-        Thank you for registering on the Stellantis AI Platform. Your account is currently under review by the platform administrator.
+        Thank you for registering on the AI Hub. Your account is currently under review by the platform administrator.
         <br /><br />
         Please check back shortly — your workspace will be ready once access has been granted.
       </p>
@@ -254,7 +254,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>Stellantis AI Platform</span>
+              <span>AI Hub</span>
             </div>
             <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
             <p className="auth-left-subtext">
@@ -287,7 +287,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
         <div className="auth-left">
           <div className="auth-platform-badge">
             <div className="auth-platform-dot" />
-            <span>Stellantis AI Platform</span>
+            <span>AI Hub</span>
           </div>
 
           <div>
@@ -309,7 +309,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
 
         {/* ── Right Panel ── */}
         <div className="auth-right">
-          <h2 className="auth-form-title">Stellantis AI Platform</h2>
+          <h2 className="auth-form-title">AI Hub</h2>
           <p className="auth-form-subtitle">Create your account</p>
 
           {errorMsg && (

@@ -20,7 +20,7 @@ export default function BacklogHealthCard({ data }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: 'var(--stellantis-accent)'
+              color: 'var(--hub-accent)'
             }}>
               <Layers size={18} />
             </div>
@@ -99,7 +99,7 @@ export default function BacklogHealthCard({ data }) {
           <div style={{
             background: 'var(--bg-surface-secondary)',
             border: '1px solid var(--border-color)',
-            borderTop: '3px solid #8b5cf6',
+            borderTop: '3px solid #06b6d4',
             borderRadius: '10px',
             padding: '12px 6px',
             display: 'flex',
@@ -109,7 +109,7 @@ export default function BacklogHealthCard({ data }) {
             boxShadow: 'var(--shadow-sm)',
             transition: 'transform 0.15s ease'
           }}>
-            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#a78bfa', letterSpacing: '0.04em' }}>
+            <span style={{ fontSize: '0.68rem', fontWeight: 800, color: '#22d3ee', letterSpacing: '0.04em' }}>
               GHERKIN
             </span>
             <span style={{ fontSize: '1.45rem', fontWeight: 800, fontFamily: 'var(--font-display)', color: 'var(--text-primary)', lineHeight: 1.1 }}>
@@ -213,7 +213,7 @@ export default function BacklogHealthCard({ data }) {
           gap: '4px'
         }}>
           <span>Flow:</span>
-          <span style={{ color: 'var(--stellantis-action, #0284c7)' }}>2.1x</span>
+          <span style={{ color: 'var(--hub-action, #0284c7)' }}>2.1x</span>
         </div>
       </div>
     </div>

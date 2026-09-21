@@ -166,12 +166,12 @@ const INITIAL_SUBSCRIPTIONS = [
     level: 'Portfolio',
     tagClass: 'ad-tag-portfolio',
     scope: 'L2+ Autonomous Systems Portfolio',
-    quotaReadout: 'Balocco Test Benches #1–#4',
+    quotaReadout: 'Northfield Test Benches #1–#4',
     telemetry: '4 Hardware-in-the-Loop Rigs Connected',
     status: 'Active • Enterprise Site License',
     isExpiring: false,
     burnPct: 86,
-    details: 'Hardware-in-the-loop test execution engine for automated Balocco simulation runs.'
+    details: 'Hardware-in-the-loop test execution engine for automated Northfield simulation runs.'
   },
   {
     id: 'sub-tool-3',
@@ -297,7 +297,7 @@ const INITIAL_SUBSCRIPTIONS = [
     category: 'Governance',
     level: 'Enterprise',
     tagClass: 'ad-tag-enterprise',
-    scope: 'Stellantis Group-Wide Directive',
+    scope: 'Group-Wide Directive',
     quotaReadout: 'EU Frankfurt On-Prem Sovereign Boundary',
     telemetry: 'Prohibits confidential vehicle telemetry egress to public clouds',
     status: 'Enforced • Corporate AI Safety',
@@ -315,7 +315,7 @@ const INITIAL_SUBSCRIPTIONS = [
     tagClass: 'ad-tag-project',
     scope: 'Release 4.2 Program',
     quotaReadout: '86% HIL Coverage • 91% Go Probability',
-    telemetry: 'Live automated synchronization with CI/CD and Balocco rig',
+    telemetry: 'Live automated synchronization with CI/CD and Northfield rig',
     status: 'Live Sync • Automated',
     isExpiring: false,
     burnPct: 91,
@@ -333,7 +333,7 @@ const INITIAL_SUBSCRIPTIONS = [
     status: 'Live Sync • Weekly',
     isExpiring: false,
     burnPct: 87,
-    details: 'Executive compliance overview auditing ISO 26262, UNECE R157, and Stellantis standards.'
+    details: 'Executive compliance overview auditing ISO 26262, UNECE R157, and enterprise standards.'
   },
   {
     id: 'sub-dash-3',
@@ -341,7 +341,7 @@ const INITIAL_SUBSCRIPTIONS = [
     category: 'Dashboard',
     level: 'Enterprise',
     tagClass: 'ad-tag-enterprise',
-    scope: 'Stellantis Central AI Office',
+    scope: 'Central AI Office',
     quotaReadout: 'Group-wide compute telemetry',
     telemetry: 'Monthly token consumption, GPU cluster utilization, and cost quotas',
     status: 'Live Sync • Monthly',
@@ -487,7 +487,7 @@ export default function AdMySubscriptions() {
                 marginLeft: '8px',
                 padding: '2px 8px',
                 borderRadius: '6px',
-                background: '#3b82f6',
+                background: '#0ea5e9',
                 color: '#ffffff',
                 fontWeight: 700,
                 border: 'none',
@@ -789,7 +789,7 @@ export default function AdMySubscriptions() {
                 <div className="ad-subs-burn-gauge">
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.75rem' }}>
                     <strong style={{ color: 'var(--text-primary)' }}>Monthly Token / Capacity Burn</strong>
-                    <span style={{ fontFamily: 'monospace', fontWeight: 800, color: drawerItem.burnPct > 75 ? '#b45309' : '#1d4ed8' }}>
+                    <span style={{ fontFamily: 'monospace', fontWeight: 800, color: drawerItem.burnPct > 75 ? '#b45309' : '#0369a1' }}>
                       {drawerItem.burnPct}%
                     </span>
                   </div>
@@ -798,7 +798,7 @@ export default function AdMySubscriptions() {
                       className="ad-subs-burn-bar-fill"
                       style={{
                         width: `${drawerItem.burnPct}%`,
-                        background: drawerItem.burnPct > 75 ? '#f59e0b' : '#3b82f6'
+                        background: drawerItem.burnPct > 75 ? '#f59e0b' : '#0ea5e9'
                       }}
                     />
                   </div>
@@ -929,7 +929,7 @@ export default function AdMySubscriptions() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.78rem' }}>
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
-                Submit a capacity adjustment request to the Stellantis AI Governance Office:
+                Submit a capacity adjustment request to the AI Governance Office:
               </p>
 
               <div>

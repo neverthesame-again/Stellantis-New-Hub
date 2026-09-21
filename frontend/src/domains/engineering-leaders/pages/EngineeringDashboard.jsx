@@ -163,12 +163,12 @@ export default function EngineeringDashboard() {
           position: 'fixed',
           bottom: '24px',
           right: '24px',
-          background: 'var(--stellantis-navy)',
+          background: 'var(--hub-navy)',
           color: '#ffffff',
           padding: '14px 22px',
           borderRadius: 'var(--radius-md)',
           boxShadow: 'var(--shadow-lg)',
-          border: '1px solid var(--stellantis-action)',
+          border: '1px solid var(--hub-action)',
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
@@ -216,7 +216,7 @@ export default function EngineeringDashboard() {
       <div className="st-card" style={{ padding: '18px 20px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Compass size={18} color="var(--stellantis-action)" />
+            <Compass size={18} color="var(--hub-action)" />
             <h3 style={{ fontSize: '0.88rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)', margin: 0 }}>
               Primary Strategic Objectives — Chief AI Officer Mandate
             </h3>
@@ -247,7 +247,7 @@ export default function EngineeringDashboard() {
             >
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                  <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>
+                  <span style={{ fontSize: '0.7rem', fontWeight: 800, color: 'var(--hub-action)' }}>
                     {obj.id}
                   </span>
                   <span className={obj.statusBadge} style={{ fontSize: '0.68rem', padding: '1px 6px', borderRadius: '10px', fontWeight: 700 }}>
@@ -272,7 +272,7 @@ export default function EngineeringDashboard() {
                     style={{
                       height: '100%',
                       width: `${obj.progress}%`,
-                      background: obj.progress > 85 ? '#10b981' : 'var(--stellantis-action)',
+                      background: obj.progress > 85 ? '#10b981' : 'var(--hub-action)',
                       borderRadius: '3px'
                     }}
                   />
@@ -300,7 +300,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Layers size={18} color="var(--stellantis-action)" />
+                <Layers size={18} color="var(--hub-action)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   1. Portfolio Health
                 </h3>
@@ -336,7 +336,7 @@ export default function EngineeringDashboard() {
                   padding: '3px 8px',
                   borderRadius: '4px',
                   border: '1px solid var(--border-color)',
-                  background: selectedPortfolio === 'ALL' ? 'var(--stellantis-navy)' : 'var(--bg-subtle)',
+                  background: selectedPortfolio === 'ALL' ? 'var(--hub-navy)' : 'var(--bg-subtle)',
                   color: selectedPortfolio === 'ALL' ? '#ffffff' : 'var(--text-primary)',
                   cursor: 'pointer'
                 }}
@@ -353,7 +353,7 @@ export default function EngineeringDashboard() {
                     padding: '3px 8px',
                     borderRadius: '4px',
                     border: '1px solid var(--border-color)',
-                    background: selectedPortfolio === p.id ? 'var(--stellantis-navy)' : 'var(--bg-subtle)',
+                    background: selectedPortfolio === p.id ? 'var(--hub-navy)' : 'var(--bg-subtle)',
                     color: selectedPortfolio === p.id ? '#ffffff' : 'var(--text-primary)',
                     cursor: 'pointer',
                     whiteSpace: 'nowrap'
@@ -412,7 +412,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Briefcase size={18} color="#8b5cf6" />
+                <Briefcase size={18} color="#06b6d4" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   2. Project Delivery Status
                 </h3>
@@ -459,7 +459,7 @@ export default function EngineeringDashboard() {
                     <span style={{ fontWeight: 700 }}>{proj.progress}%</span>
                   </div>
                   <div style={{ height: '5px', width: '100%', background: 'var(--border-color)', borderRadius: '3px', overflow: 'hidden' }}>
-                    <div style={{ height: '100%', width: `${proj.progress}%`, background: proj.status === 'Attention Required' ? '#f59e0b' : 'var(--stellantis-action)', borderRadius: '3px' }} />
+                    <div style={{ height: '100%', width: `${proj.progress}%`, background: proj.status === 'Attention Required' ? '#f59e0b' : 'var(--hub-action)', borderRadius: '3px' }} />
                   </div>
                 </div>
                 <div style={{ fontSize: '0.66rem', color: 'var(--text-muted)' }}>
@@ -484,7 +484,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Cpu size={18} color="var(--stellantis-action)" />
+                <Cpu size={18} color="var(--hub-action)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   3. AI Adoption & Autonomy
                 </h3>
@@ -497,11 +497,11 @@ export default function EngineeringDashboard() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '6px', marginBottom: '6px' }}>
               <div style={{ background: 'var(--bg-subtle)', padding: '6px', borderRadius: '4px' }}>
                 <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>AI-Assisted Commits</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{autonomy.aiAssistedCommits}</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--hub-action)' }}>{autonomy.aiAssistedCommits}</div>
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '6px', borderRadius: '4px' }}>
                 <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>Autonomous PRs</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#8b5cf6' }}>{autonomy.autonomousPrGenerationRate}</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#06b6d4' }}>{autonomy.autonomousPrGenerationRate}</div>
               </div>
             </div>
 
@@ -562,7 +562,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <TrendingUp size={18} color="var(--stellantis-action)" />
+                <TrendingUp size={18} color="var(--hub-action)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   4. Engineering Productivity
                 </h3>
@@ -649,7 +649,7 @@ export default function EngineeringDashboard() {
                 <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>{quality.defectVolumeBySeverity?.p2Major}</div>
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '5px', borderRadius: '4px' }}>
-                <div style={{ fontSize: '0.62rem', color: '#3b82f6', fontWeight: 700 }}>P3 Min</div>
+                <div style={{ fontSize: '0.62rem', color: '#0ea5e9', fontWeight: 700 }}>P3 Min</div>
                 <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>{quality.defectVolumeBySeverity?.p3Minor}</div>
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '5px', borderRadius: '4px' }}>
@@ -665,7 +665,7 @@ export default function EngineeringDashboard() {
             {quality.qualityPillars?.map((pil, idx) => (
               <div key={idx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.72rem', padding: '4px 0', borderBottom: '1px solid var(--border-color)' }}>
                 <span style={{ color: 'var(--text-primary)' }}>{pil.name}</span>
-                <span style={{ fontWeight: 700, color: 'var(--stellantis-action)' }}>{pil.score}</span>
+                <span style={{ fontWeight: 700, color: 'var(--hub-action)' }}>{pil.score}</span>
               </div>
             ))}
 
@@ -695,7 +695,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Clock size={18} color="var(--stellantis-action)" />
+                <Clock size={18} color="var(--hub-action)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   6. Release Frequency & Cycle
                 </h3>
@@ -712,7 +712,7 @@ export default function EngineeringDashboard() {
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '6px', borderRadius: '4px' }}>
                 <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>MTTD</div>
-                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{releases.meanTimeToDeploy}</div>
+                <div style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--hub-action)' }}>{releases.meanTimeToDeploy}</div>
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '6px', borderRadius: '4px' }}>
                 <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>Rollback</div>
@@ -769,7 +769,7 @@ export default function EngineeringDashboard() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <DollarSign size={18} color="var(--stellantis-action)" />
+                <DollarSign size={18} color="var(--hub-action)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--text-primary)', margin: 0 }}>
                   7. AI Cost & Consumption
                 </h3>
@@ -786,7 +786,7 @@ export default function EngineeringDashboard() {
                 <span style={{ color: 'var(--text-muted)' }}>Budget: {cost.monthlyBudget}</span>
               </div>
               <div style={{ height: '6px', width: '100%', background: 'var(--border-color)', borderRadius: '3px', overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: cost.budgetUtilization, background: 'var(--stellantis-action)', borderRadius: '3px' }} />
+                <div style={{ height: '100%', width: cost.budgetUtilization, background: 'var(--hub-action)', borderRadius: '3px' }} />
               </div>
             </div>
           </div>
@@ -809,7 +809,7 @@ export default function EngineeringDashboard() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <span style={{ fontWeight: 700, fontSize: '0.75rem', color: 'var(--text-primary)' }}>{m.modelName.split(' ')[0]} {m.modelName.split(' ')[1]}</span>
-                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{m.cost} ({m.sharePct}%)</span>
+                  <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--hub-action)' }}>{m.cost} ({m.sharePct}%)</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.66rem', color: 'var(--text-muted)' }}>
                   <span>{m.provider.split('/')[0]}</span>
@@ -869,7 +869,7 @@ export default function EngineeringDashboard() {
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <span style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{ex.id} • {ex.squad}</span>
+                  <span style={{ fontSize: '0.68rem', fontWeight: 800, color: 'var(--hub-action)' }}>{ex.id} • {ex.squad}</span>
                   <span className={ex.severityBadge} style={{ fontSize: '0.62rem', padding: '1px 5px', borderRadius: '6px', fontWeight: 700 }}>{ex.severity}</span>
                 </div>
                 <div style={{ fontSize: '0.76rem', fontWeight: 700, color: 'var(--text-primary)' }}>{ex.title}</div>
@@ -922,7 +922,7 @@ export default function EngineeringDashboard() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-secondary)' }}>
                 <span>Target: {outcomes.annualSavingsTarget}</span>
-                <span style={{ fontWeight: 700, color: 'var(--stellantis-action)' }}>{outcomes.savingsAchievementPct}</span>
+                <span style={{ fontWeight: 700, color: 'var(--hub-action)' }}>{outcomes.savingsAchievementPct}</span>
               </div>
               <div style={{ height: '5px', width: '100%', background: 'var(--border-color)', borderRadius: '3px', overflow: 'hidden' }}>
                 <div style={{ height: '100%', width: outcomes.savingsAchievementPct, background: '#10b981', borderRadius: '3px' }} />
@@ -939,14 +939,14 @@ export default function EngineeringDashboard() {
               </div>
               <div style={{ background: 'var(--bg-subtle)', padding: '8px', borderRadius: '4px' }}>
                 <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Time to Market</div>
-                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{outcomes.timeToMarketAcceleration}</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--hub-action)' }}>{outcomes.timeToMarketAcceleration}</div>
               </div>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '2px' }}>
               {outcomes.strategicValuePillars?.map((p, idx) => (
                 <div key={idx} style={{ fontSize: '0.68rem', padding: '3px 0', borderBottom: '1px solid var(--border-color)' }}>
-                  <strong style={{ color: 'var(--text-primary)' }}>{p.pillar}:</strong> <span style={{ color: 'var(--stellantis-action)' }}>{p.metric}</span>
+                  <strong style={{ color: 'var(--text-primary)' }}>{p.pillar}:</strong> <span style={{ color: 'var(--hub-action)' }}>{p.metric}</span>
                 </div>
               ))}
             </div>
@@ -971,7 +971,7 @@ export default function EngineeringDashboard() {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: 'rgba(14, 30, 56, 0.75)',
+          backgroundColor: 'rgba(10, 10, 10, 0.75)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -1006,7 +1006,7 @@ export default function EngineeringDashboard() {
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'var(--hub-action)' }}>
                 {selectedException.id}
               </span>
               <span className={selectedException.severityBadge} style={{ fontSize: '0.7rem', padding: '2px 8px', borderRadius: '10px', fontWeight: 700 }}>

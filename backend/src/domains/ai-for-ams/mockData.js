@@ -76,7 +76,7 @@ export const amsDashboardData = {
       id: "CLUSTER-883",
       title: "Vehicle Telematics GPS Ingestion Packet Drops",
       affectedService: "Fleet Edge Telemetry Pipeline",
-      portfolio: "Stellantis Cloud Platform",
+      portfolio: "Enterprise Cloud Platform",
       frequency: "19 occurrences in 5 days",
       impactLevel: "Elevated",
       rootCauseSummary: "UDP buffer saturation during regional 4G reconnect surges",
@@ -227,7 +227,7 @@ export const amsWorkflowInbox = [
     riskLevel: "Critical",
     requestor: "AMS Self-Healing Orchestrator (Agent-KafkaOps-L4)",
     originatingSystem: "Datadog / PagerDuty / Kubernetes Operator",
-    project: "Stellantis Connected Vehicle Telematics",
+    project: "Enterprise Connected Vehicle Telematics",
     portfolio: "Connected Customer Core",
     requiredDecision: "Approve Autonomous Production Pod Scaler & Partition Shuffler",
     dueDate: "Immediate (12 mins remaining)",
@@ -244,7 +244,7 @@ export const amsWorkflowInbox = [
       { timestamp: "10:14 AM", actor: "Agent-KafkaOps", action: "Detected lag anomaly and generated remediation plan" },
       { timestamp: "10:15 AM", actor: "PolicyEngine", action: "Flagged action as High-Risk Production Tier-1 change; escalated to Tony (Head of AMS)" }
     ],
-    auditTrail: "SHA256: 9bfa482ce... Verification status: Verified by Stellantis AI SecOps policy #SEC-882"
+    auditTrail: "SHA256: 9bfa482ce... Verification status: Verified by AI SecOps policy #SEC-882"
   },
   {
     id: "WF-INB-102",
@@ -309,7 +309,7 @@ export const amsWorkflowInbox = [
     requestor: "Telemetry Anomaly Detector",
     originatingSystem: "Dynatrace Davis AI",
     project: "Fleet Edge Telemetry Pipeline",
-    portfolio: "Stellantis Cloud Platform",
+    portfolio: "Enterprise Cloud Platform",
     requiredDecision: "Apply Adaptive Rate Limiter & Edge Buffering Rule",
     dueDate: "Today, 6:00 PM CET",
     status: "Pending Action",
@@ -342,7 +342,7 @@ export const amsWorkflowInbox = [
     confidence: "98.1%",
     supportingEvidence: {
       metrics: "Lock wait time exceeded 180 seconds. 42 downstream order services queued.",
-      impact: "Warehouse packing lines at Mirafiori plant temporarily halted.",
+      impact: "Warehouse packing lines at Riverside plant temporarily halted.",
       pastExecutions: "Target query confirmed to be an unindexed ad-hoc analytics query from read-write master.",
       rollbackPlan: "Analytics session will receive standard timeout; read query can be retried on read-replica."
     },
@@ -403,7 +403,7 @@ export const amsWorkflowInbox = [
       { timestamp: "11:20 AM", actor: "Agent-JiraSync", action: "Synthesized acceptance criteria & PR draft from PRB-4092" },
       { timestamp: "11:25 AM", actor: "Architecture Guard", action: "Passed automated security & scalability gate #SEC-914" }
     ],
-    auditTrail: "SHA256: 34e89bb01... Linked Jira Epic: JIRA-STLA-4029 • Architectural Review Approved"
+    auditTrail: "SHA256: 34e89bb01... Linked Jira Epic: JIRA-NOVA-4029 • Architectural Review Approved"
   }
 ];
 
@@ -753,7 +753,7 @@ export const amsExperienceData = {
       securityClassification: "Restricted - No customer personal data in prompts",
       dataHandlingRestrictions: "Zero retention policy; enterprise privacy filter active",
       supportOwner: "Alex / Chief AI Officer Team",
-      subscriptionProcess: "Manager approval via Stellantis ServiceDesk Portal",
+      subscriptionProcess: "Manager approval via Enterprise ServiceDesk Portal",
       adoptionRate: "78% engineer adoption in AMS dev squad",
       status: "Approved & Operational"
     },
@@ -844,7 +844,7 @@ export const amsExperienceData = {
       description: "GenAI search across Confluence, Jira, ServiceNow, Slack, and code repositories.",
       useCases: "Instant SOP and runbook discovery during active P1 triage, post-mortem research",
       integrationRequirements: "Okta SSO, Google Workspace, Jira/ServiceNow enterprise connectors",
-      licensing: "Enterprise Site License (All Stellantis IT & Engineering)",
+      licensing: "Enterprise Site License (All IT & Engineering)",
       approvedProjects: ["Company-Wide Access"],
       securityClassification: "Internal General",
       dataHandlingRestrictions: "Strict ACL inheritance; users only see documents they have rights to",

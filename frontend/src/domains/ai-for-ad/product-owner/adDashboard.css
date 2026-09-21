@@ -74,7 +74,7 @@
 }
 
 .ad-card:hover {
-  border-color: var(--border-strong, #b0c4e8);
+  border-color: var(--border-strong, #b3dcf2);
   box-shadow: var(--shadow-md);
 }
 
@@ -221,7 +221,7 @@
 .ad-prog-bar-fill {
   width: 100%;
   border-radius: 4px;
-  background: #3b82f6;
+  background: #0ea5e9;
   min-height: 4px;
   transition: height 0.3s ease;
 }
@@ -276,7 +276,7 @@
   bottom: 0 !important;
   width: 100vw !important;
   height: 100vh !important;
-  background: rgba(14, 30, 56, 0.7) !important;
+  background: rgba(10, 10, 10, 0.7) !important;
   backdrop-filter: blur(6px) !important;
   z-index: 99999 !important;
   display: flex !important;
@@ -319,7 +319,7 @@
   bottom: 24px;
   right: 24px;
   z-index: 1100;
-  background: var(--stellantis-navy);
+  background: var(--hub-navy);
   color: #ffffff;
   padding: 12px 20px;
   border-radius: var(--radius-md);
