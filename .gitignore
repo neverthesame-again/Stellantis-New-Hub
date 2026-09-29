@@ -2,3 +2,9 @@ node_modules/
 dist/
 .env
 *.local
+
+# Claude & local editor configs
+.claude/
+
+# Documentation - Lavanya
+documentation/lavanya/
