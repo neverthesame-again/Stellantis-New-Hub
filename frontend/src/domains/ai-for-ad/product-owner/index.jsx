@@ -11,7 +11,7 @@ import AdExperienceZone from './pages/AdExperienceZone';
  * Strict Role Isolation Boundary:
  * Mounts tab components (dashboard, inbox, experience) for the Product Owner role.
  */
-export default function ProductOwnerRole({ activeTab = 'dashboard', onTabChange }) {
+export default function ProductOwnerRole({ activeTab = 'dashboard', onTabChange, activeSubTab, onSubTabChange }) {
   if (activeTab === 'dashboard') {
     return <AdDashboard onNavigateToInbox={() => onTabChange && onTabChange('inbox')} />;
   }
@@ -21,7 +21,7 @@ export default function ProductOwnerRole({ activeTab = 'dashboard', onTabChange 
   }
 
   if (activeTab === 'experience') {
-    return <AdExperienceZone onNavigateToInbox={() => onTabChange && onTabChange('inbox')} />;
+    return <AdExperienceZone activeSubTab={activeSubTab} onSubTabChange={onSubTabChange} onNavigateToInbox={() => onTabChange && onTabChange('inbox')} />;
   }
 
   return <AdDashboard onNavigateToInbox={() => onTabChange && onTabChange('inbox')} />;

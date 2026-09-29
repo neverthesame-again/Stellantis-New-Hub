@@ -31,8 +31,7 @@ import '../adPersonaDashboard.css';
  * 5. AI Tools Catalogue (23 Tools Across 10 Engineering Lifecycle Disciplines)
  * 6. My Subscriptions (20 Active Subscriptions Across 5 Inheritance Levels)
  */
-export default function AdExperienceZone({ onNavigateToInbox }) {
-  const [activeSubTab, setActiveSubTab] = useState('persona');
+export default function AdExperienceZone({ activeSubTab, onSubTabChange, onNavigateToInbox }) {
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
 
   const SUB_TABS = [
@@ -46,33 +45,14 @@ export default function AdExperienceZone({ onNavigateToInbox }) {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      {/* Sub-Tabs Navigation Track */}
-      <nav className="ad-exp-subtab-bar" aria-label="AI Experience Zone Subcategories">
-        {SUB_TABS.map((tab) => {
-          const isActive = activeSubTab === tab.id;
-          const Icon = tab.icon;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveSubTab(tab.id)}
-              className={`ad-exp-subtab-btn ${isActive ? 'active' : ''}`}
-            >
-              <Icon size={14} style={{ opacity: isActive ? 1 : 0.7 }} />
-              <span>{tab.label}</span>
-              {tab.badge && (
-                <span className="ad-exp-subtab-badge">{tab.badge}</span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
+
 
       {/* SUB-TAB 1: PERSONA DASHBOARD (Fully Implemented) */}
       {activeSubTab === 'persona' && (
         <AdPersonaDashboard
           initialLevel={targetDrillDownLevel}
-          onNavigateToInbox={() => setActiveSubTab('inbox')}
-          onNavigateToSubscriptions={() => setActiveSubTab('subscriptions')}
+          onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
+          onNavigateToSubscriptions={() => { if (onSubTabChange) onSubTabChange('subscriptions'); }}
         />
       )}
 
@@ -81,7 +61,7 @@ export default function AdExperienceZone({ onNavigateToInbox }) {
         <AdPmWorkflowInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
-            setActiveSubTab('persona');
+            if (onSubTabChange) onSubTabChange('persona');
           }}
         />
       )}
@@ -94,10 +74,10 @@ export default function AdExperienceZone({ onNavigateToInbox }) {
       {/* SUB-TAB 4: AGENT & WORKFLOW CATALOGUE (Product Manager, AI for AD) */}
       {activeSubTab === 'agents' && (
         <AdAgentWorkflowCatalogue
-          onNavigateToInbox={() => setActiveSubTab('inbox')}
+          onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
           onNavigateToTrace={() => {
             setTargetDrillDownLevel(6);
-            setActiveSubTab('persona');
+            if (onSubTabChange) onSubTabChange('persona');
           }}
         />
       )}

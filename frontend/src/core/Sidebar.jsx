@@ -21,12 +21,10 @@ export default function Sidebar({
 
   const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value));
   const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;
-  // Every role the user can act as, across their domains — picking one switches domain too
-  const allRoles = displayDomains.flatMap(d =>
-    (DOMAIN_ROLE_MAP[d.value] || []).map(opt => ({ ...opt, subtitle: `${d.label} • ${opt.subtitle}` }))
-  );
-  const availableRoles = allRoles.filter(opt => allowedRoles.includes(opt.value));
-  const displayRoles = availableRoles.length > 0 ? availableRoles : (DOMAIN_ROLE_MAP[selectedDomain] || []);
+  // Roles specifically for the selected domain
+  const domainRoles = DOMAIN_ROLE_MAP[selectedDomain] || [];
+  const availableDomainRoles = domainRoles.filter(opt => allowedRoles.includes(opt.value));
+  const displayRoles = availableDomainRoles.length > 0 ? availableDomainRoles : domainRoles;
 
   const DomainIcon = DOMAIN_OPTIONS.find(d => d.value === selectedDomain)?.icon;
   const subPages = EXPERIENCE_SUBPAGES[selectedDomain] || [];

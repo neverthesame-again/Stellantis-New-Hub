@@ -30,9 +30,8 @@ import '../engineeringExperience.css';
  * 5. 5.5 AI Tools Catalogue (10 Engineering Disciplines & Integration Specs)
  * 6. 5.6 My Subscriptions (Consolidated Subscriptions across 5 Grant Levels & 8 Entity Types)
  */
-export default function ExperienceZone() {
+export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const [activeSubTab, setActiveSubTab] = useState('persona');
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -302,27 +301,7 @@ export default function ExperienceZone() {
         </div>
       )}
 
-      {/* PEER-LEVEL SUB-TABS NAVIGATION BAR (Matches AI for AD Master Architecture) */}
-      <nav className="eng-exp-subtab-bar" aria-label="AI Experience Zone Subcategories">
-        {SUB_TABS.map((tab) => {
-          const isActive = activeSubTab === tab.id;
-          const Icon = tab.icon;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveSubTab(tab.id)}
-              className={`eng-exp-subtab-btn ${isActive ? 'active' : ''}`}
-              title={tab.title || tab.label}
-            >
-              <Icon size={14} style={{ opacity: isActive ? 1 : 0.7, flexShrink: 0 }} />
-              <span className="eng-exp-subtab-text">{tab.label}</span>
-              {tab.badge && (
-                <span className="eng-exp-subtab-badge">{tab.badge}</span>
-              )}
-            </button>
-          );
-        })}
-      </nav>
+
 
       {/* =========================================================
           SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)
@@ -330,8 +309,8 @@ export default function ExperienceZone() {
       {activeSubTab === 'persona' && (
         <EngineeringPersonaDashboard
           initialLevel={targetDrillDownLevel}
-          onNavigateToInbox={() => setActiveSubTab('inbox')}
-          onNavigateToSubscriptions={() => setActiveSubTab('subscriptions')}
+          onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
+          onNavigateToSubscriptions={() => { if (onSubTabChange) onSubTabChange('subscriptions'); }}
         />
       )}
 
@@ -342,7 +321,7 @@ export default function ExperienceZone() {
         <EngineeringExpInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
-            setActiveSubTab('persona');
+            if (onSubTabChange) onSubTabChange('persona');
           }}
         />
       )}
@@ -368,7 +347,7 @@ export default function ExperienceZone() {
           onSubscribeAgent={handleSubscribeAgent}
           onInspectTrace={() => {
             setTargetDrillDownLevel(6);
-            setActiveSubTab('persona');
+            if (onSubTabChange) onSubTabChange('persona');
           }}
           showToast={showToast}
         />

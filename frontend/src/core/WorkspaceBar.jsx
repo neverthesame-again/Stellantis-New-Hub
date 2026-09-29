@@ -180,7 +180,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             width: fullWidth ? '100%' : 'auto',
             padding: '7px 12px 7px 12px',
             background: isOpen ? 'var(--bg-subtle)' : 'var(--bg-surface)',
-            border: isOpen ? '1.5px solid var(--hub-action)' : '1.5px solid var(--border-color)',
+            border: isOpen ? '1.5px solid var(--stellantis-action)' : '1.5px solid var(--border-color)',
             borderRadius: '9px',
             cursor: 'pointer',
             boxShadow: isOpen ? '0 0 0 3px rgba(2, 132, 199, 0.18)' : 'var(--shadow-sm)',
@@ -203,7 +203,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
             {SelectedIcon && (
-              <SelectedIcon size={15} color="var(--hub-action)" style={{ flexShrink: 0 }} />
+              <SelectedIcon size={15} color="var(--stellantis-action)" style={{ flexShrink: 0 }} />
             )}
             <span style={{
               fontSize: '0.85rem',
@@ -234,7 +234,9 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             position: 'absolute',
             top: 'calc(100% + 6px)',
             ...(fullWidth ? { left: 0 } : { right: 0 }),
-            minWidth: '270px',
+            minWidth: fullWidth ? '100%' : '270px',
+            width: fullWidth ? '100%' : 'auto',
+            boxSizing: 'border-box',
             background: 'var(--bg-surface-elevated)',
             border: '1px solid var(--border-color)',
             borderRadius: '12px',
@@ -262,7 +264,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                     borderRadius: '8px',
                     cursor: 'pointer',
                     background: isSelected ? 'var(--badge-info-bg)' : 'transparent',
-                    color: isSelected ? 'var(--hub-action)' : 'var(--text-primary)',
+                    color: isSelected ? 'var(--stellantis-action)' : 'var(--text-primary)',
                     transition: 'all 0.12s ease',
                     marginBottom: '2px'
                   }}
@@ -285,14 +287,14 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                         justifyContent: 'center',
                         flexShrink: 0
                       }}>
-                        <OptionIcon size={15} color={isSelected ? 'var(--hub-action)' : 'var(--text-secondary)'} />
+                        <OptionIcon size={15} color={isSelected ? 'var(--stellantis-action)' : 'var(--text-secondary)'} />
                       </div>
                     )}
                     <div>
                       <div style={{
                         fontWeight: isSelected ? 700 : 600,
                         fontSize: '0.84rem',
-                        color: isSelected ? 'var(--hub-action)' : 'var(--text-primary)'
+                        color: isSelected ? 'var(--stellantis-action)' : 'var(--text-primary)'
                       }}>
                         {option.label}
                       </div>
@@ -307,10 +309,6 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                       )}
                     </div>
                   </div>
-
-                  {isSelected && (
-                    <Check size={15} color="#10b981" style={{ flexShrink: 0, marginLeft: '8px' }} />
-                  )}
                 </div>
               );
             })}

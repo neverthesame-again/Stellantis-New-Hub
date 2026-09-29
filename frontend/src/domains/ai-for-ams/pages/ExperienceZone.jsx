@@ -33,9 +33,9 @@ import {
 import { amsExperienceData } from '../mockData.js';
 import '../../ai-for-ad/product-owner/adModelCatalogue.css';
 
-export default function ExperienceZone() {
+export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
   const [data, setData] = useState(amsExperienceData);
-  const [subTab, setSubTab] = useState('models'); // 'models', 'agents', 'tools', 'subscriptions', 'sandbox'
+  const subTab = activeSubTab || 'models'; // Fallback to 'models'
   const [searchQuery, setSearchQuery] = useState('');
   const [simulationRunning, setSimulationRunning] = useState(false);
   const [simulationProgress, setSimulationProgress] = useState(null);
@@ -313,55 +313,7 @@ export default function ExperienceZone() {
         borderBottom: '1px solid var(--border-color)',
         paddingBottom: '14px'
       }}>
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          {[
-            { id: 'models', label: 'Model Catalogue', icon: Cpu, count: data.models.length },
-            { id: 'agents', label: 'Agent & Workflows', icon: Bot, count: data.agents.length },
-            { id: 'tools', label: 'AI Tools Catalogue', icon: Wrench, count: data.tools.length },
-            { id: 'subscriptions', label: 'My Subscriptions', icon: BookmarkCheck, count: data.mySubscriptions.length },
-            { id: 'sandbox', label: 'Interactive Sandbox Simulation', icon: Play, count: null }
-          ].map((tab) => {
-            const isActive = subTab === tab.id;
-            const Icon = tab.icon;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => {
-                  setSubTab(tab.id);
-                  setSearchQuery('');
-                }}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '8px 16px',
-                  borderRadius: 'var(--radius-md)',
-                  fontSize: '0.82rem',
-                  fontWeight: 700,
-                  cursor: 'pointer',
-                  border: isActive ? '1px solid var(--stellantis-accent)' : '1px solid var(--border-color)',
-                  background: isActive ? 'var(--badge-info-bg)' : 'var(--bg-surface)',
-                  color: isActive ? 'var(--stellantis-accent)' : 'var(--text-secondary)',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                <Icon size={16} />
-                <span>{tab.label}</span>
-                {tab.count !== null && (
-                  <span style={{
-                    fontSize: '0.7rem',
-                    padding: '1px 6px',
-                    borderRadius: '10px',
-                    background: isActive ? 'var(--stellantis-accent)' : 'var(--bg-subtle)',
-                    color: isActive ? '#ffffff' : 'var(--text-primary)'
-                  }}>
-                    {tab.count}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
+
 
         {/* Global search within Experience Zone */}
         {subTab !== 'sandbox' && (
@@ -680,7 +632,7 @@ export default function ExperienceZone() {
                 <div style={{ display: 'flex', gap: '8px', marginTop: 'auto', paddingTop: '4px' }}>
                   <button
                     onClick={() => {
-                      setSubTab('sandbox');
+                      if (onSubTabChange) onSubTabChange('sandbox');
                       handleSimulate();
                     }}
                     className="st-btn st-btn-primary"
