@@ -70,7 +70,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Autonomous Driving, ADAS, and SDV Platform embedded programs.',
     dataRestrictions: 'EU Sovereign On-Premise telemetry; zero external model training. Code tokens processed in Frankfurt VPC.',
     ownerName: 'M. Rossi (Embedded Tooling Lead)',
-    ownerEmail: 'm.rossi@aihub.io',
+    ownerEmail: 'm.rossi@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Team Lead Seat Approval (Pending Review)',
@@ -96,9 +96,9 @@ const TOOLS_DATA = [
     integrations: 'GitLab CI, Clang-Tidy plugin, QNX Neutrino toolchain, Jenkins Automotive.',
     licensing: 'Floating developer pool license (AD Embedded Core BU).',
     approvedProjects: 'All ASIL-C and ASIL-D autonomous driving software modules.',
-    dataRestrictions: 'All analysis executed on local build runners; no code snippet leaves the corporate intranet.',
+    dataRestrictions: 'All analysis executed on local build runners; no code snippet leaves Stellantis intranet.',
     ownerName: 'L. Bianchi (Software Quality Lead)',
-    ownerEmail: 'l.bianchi@aihub.io',
+    ownerEmail: 'l.bianchi@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Safety Manager Review (1-2 days)',
@@ -126,7 +126,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Next-Gen Perception R&D, Level 3 Highway Chauffeur programs.',
     dataRestrictions: 'Strictly restricted to authorized NVIDIA Orin target hardware sandbox environments.',
     ownerName: 'A. Novotny (Compute Optimization Lead)',
-    ownerEmail: 'a.novotny@aihub.io',
+    ownerEmail: 'a.novotny@stellantis.com',
     stepper: {
       step1: 'Complete (Captured via Portal)',
       step2: 'Compute Architecture Board Approval',
@@ -139,24 +139,24 @@ const TOOLS_DATA = [
     id: 'hil_orchestrator',
     categoryId: 'testing',
     title: 'HIL Test Orchestrator',
-    edition: 'Northfield & Westbrook Rigs 1–4 · v4.1',
+    edition: 'Balocco & Vélizy Rigs 1–4 · v4.1',
     security: 'internal',
     securityLabel: 'Internal Only',
     highlightTitle: 'Powers 86% HIL Coverage Metric',
     highlightDesc: 'Automates HIL test bench scheduling across physical test racks, aggregating pass/fail logs against ASIL-D requirements.',
     metrics: '6 of 8 AD programs active (340 runs/sprint)',
-    description: 'Automates HIL test bench scheduling, aggregates pass/fail results across physical test rigs (Rigs 1–4 in Northfield & Westbrook), and flags test coverage gaps against ASIL-D safety requirements.',
+    description: 'Automates HIL test bench scheduling, aggregates pass/fail results across physical test rigs (Rigs 1–4 in Balocco & Vélizy), and flags test coverage gaps against ASIL-D safety requirements.',
     useCases: [
       'Orchestrates automated nightly regression test suites across physical HIL test racks 1–4.',
       'Direct source of truth for the 86% HIL Simulation Coverage metric on Release Readiness dashboards.',
       'Automatic ASIL-D traceability mapping for Euro NCAP active safety protocol test cases.'
     ],
-    integrations: 'HIL Test Bench Controller REST API (Rigs 1–4 in Northfield & Westbrook), Jenkins CI/CD pipeline webhooks, dSPACE & NI testbed buses.',
+    integrations: 'HIL Test Bench Controller REST API (Rigs 1–4 in Balocco & Vélizy), Jenkins CI/CD pipeline webhooks, dSPACE & NI testbed buses.',
     licensing: 'Enterprise site license, funded centrally under Systems Engineering Tools budget.',
     approvedProjects: 'Safety-critical Autonomous Driving programs only (ASIL-B and above).',
     dataRestrictions: 'Raw telemetry and hardware test logs must remain within EU sovereign data centers per ISO 26262 traceability requirements.',
     ownerName: 'J. Fischer (Systems Engineering Tooling Lead)',
-    ownerEmail: 'j.fischer@aihub.io',
+    ownerEmail: 'j.fischer@stellantis.com',
     stepper: {
       step1: 'Complete (Captured via PM portal)',
       step2: 'Systems Engineering Approval (Capacity check on Rigs 1–4)',
@@ -181,10 +181,10 @@ const TOOLS_DATA = [
     ],
     integrations: 'VectorCAST Embedded, Vector DaVinci Configurator, Polarion ALM, Jira.',
     licensing: 'Per-seat site subscription (Systems Safety Engineering BU).',
-    approvedProjects: 'All ASIL-D software projects across NOVA Large & Medium platforms.',
+    approvedProjects: 'All ASIL-D software projects across STLA Large & Medium platforms.',
     dataRestrictions: 'Test models and coverage archives stored in dedicated ISO 26262 audit vault.',
     ownerName: 'E. Becker (Software Safety & Verification Lead)',
-    ownerEmail: 'e.becker@aihub.io',
+    ownerEmail: 'e.becker@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Verification Lead Approval',
@@ -195,11 +195,11 @@ const TOOLS_DATA = [
     id: 'scenariosynth_pro',
     categoryId: 'testing',
     title: 'ScenarioSynth Pro',
-    edition: 'Northfield Proving Ground Simulator · v3.0',
+    edition: 'Balocco Proving Ground Simulator · v3.0',
     security: 'public',
     securityLabel: 'Public',
     highlightTitle: 'Generates 1,200 Virtual Traffic Scenarios',
-    highlightDesc: 'Synthesizes high-risk edge cases (cut-ins, blinding glare, ghost braking) from physical Northfield proving ground telemetry.',
+    highlightDesc: 'Synthesizes high-risk edge cases (cut-ins, blinding glare, ghost braking) from physical Balocco proving ground telemetry.',
     metrics: '35 / 40 licenses used (87%)',
     description: 'Generative physics-based scenario generator synthesizing millions of photorealistic virtual sensor feeds to stress-test Level 2+ perception algorithms.',
     useCases: [
@@ -212,7 +212,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Level 2+ and Level 3 Automated Driving programs.',
     dataRestrictions: 'Synthetic scenario assets cleared for open collaborative research and tier-1 vendor testing.',
     ownerName: 'D. Klein (Simulation & Virtual Verification Lead)',
-    ownerEmail: 'd.klein@aihub.io',
+    ownerEmail: 'd.klein@stellantis.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'Simulation Cluster Allocation Check',
@@ -233,16 +233,16 @@ const TOOLS_DATA = [
     metrics: '12 teams active (42 ECU service graphs)',
     description: 'Auto-generates dependency diagrams, SOA service graphs, and latency risk bounds by analyzing Bazel build trees and AUTOSAR adaptive manifests.',
     useCases: [
-      'Automatic dependency topology generation for NOVA Brain service-oriented architecture.',
+      'Automatic dependency topology generation for STLA Brain service-oriented architecture.',
       'ECU communication latency bottleneck detection across SOME/IP and DDS bridges.',
       'Architectural drift detection against formal system design specifications.'
     ],
     integrations: 'Enterprise Architect REST sync, GitHub dependency graph, Bazel build graph analyzer.',
     licensing: 'Enterprise domain license (Global Software Architecture Office).',
     approvedProjects: 'All AUTOSAR Adaptive, SOA & SDV Architecture initiatives.',
-    dataRestrictions: 'Internal network only; proprietary ECU architectural schematics.',
+    dataRestrictions: 'Internal Stellantis network only; proprietary ECU architectural schematics.',
     ownerName: 'C. Dupont (Global Architecture Office Lead)',
-    ownerEmail: 'c.dupont@aihub.io',
+    ownerEmail: 'c.dupont@stellantis.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Architecture Domain Review (Pending)',
@@ -253,7 +253,7 @@ const TOOLS_DATA = [
     id: 'autosar_schemagen',
     categoryId: 'architecture',
     title: 'AUTOSAR SchemaGen',
-    edition: 'NOVA Brain SOA Interface Synthesizer · v3.2',
+    edition: 'STLA Brain SOA Interface Synthesizer · v3.2',
     security: 'internal',
     securityLabel: 'Internal Only',
     highlightTitle: 'ARXML & SOME/IP Interface Synthesizer',
@@ -267,10 +267,10 @@ const TOOLS_DATA = [
     ],
     integrations: 'Vector DaVinci Developer, IBM Rhapsody, GitLab CI ARXML schema linter.',
     licensing: 'Corporate engineering license (Central Software Organization).',
-    approvedProjects: 'NOVA Brain, NOVA AutoDrive, and SmartCockpit programs.',
+    approvedProjects: 'STLA Brain, STLA AutoDrive, and SmartCockpit programs.',
     dataRestrictions: 'Interface contracts restricted to internal vehicle network security groups.',
     ownerName: 'V. Laurent (Interface Governance Lead)',
-    ownerEmail: 'v.laurent@aihub.io',
+    ownerEmail: 'v.laurent@stellantis.com',
     stepper: {
       step1: 'Complete (Submitted)',
       step2: 'SOA Governance Board Sign-Off',
@@ -295,12 +295,12 @@ const TOOLS_DATA = [
       'Cryptographic signature validation and secure boot certificate check.',
       'Virtual ECU staging and automated deployment gate orchestration.'
     ],
-    integrations: 'GitHub Actions, Jenkins, Artifactory, Enterprise OTA Flash Server, HSM Key Vault.',
+    integrations: 'GitHub Actions, Jenkins, Artifactory, Stellantis OTA Flash Server, HSM Key Vault.',
     licensing: 'Central DevOps platform license (Free for all internal AD teams).',
     approvedProjects: 'All Vehicle Software Integration & OTA Flash Programs.',
     dataRestrictions: 'Firmware binaries strictly locked to EU Sovereign Artifact Registry.',
     ownerName: 'D. Weber (DevOps Platforms Core Lead)',
-    ownerEmail: 'd.weber@aihub.io',
+    ownerEmail: 'd.weber@stellantis.com',
     stepper: {
       step1: 'Complete (Automated)',
       step2: 'CI/CD Target Cluster Validation',
@@ -315,7 +315,7 @@ const TOOLS_DATA = [
     security: 'internal',
     securityLabel: 'Internal Only',
     highlightTitle: 'Multi-Target Hardware Bench Automation',
-    highlightDesc: 'Orchestrates rapid parallel flashing and health verification across physical test benches in Northfield, Turin, and Auburn Hills.',
+    highlightDesc: 'Orchestrates rapid parallel flashing and health verification across physical test benches in Balocco, Turin, and Auburn Hills.',
     metrics: '38 teams active (620 hardware flash cycles/wk)',
     description: 'High-speed flashing orchestration system interfacing with Vector CANoe and Lauterbach debuggers to reliably provision physical vehicle ECUs in CI pipelines.',
     useCases: [
@@ -324,11 +324,11 @@ const TOOLS_DATA = [
       'Bench health telemetry streaming and hardware fault isolation.'
     ],
     integrations: 'Lauterbach TRACE32, Vector VN1630, Jenkins Hardware Agent, Artifactory.',
-    licensing: 'Hardware bench site license pool (Northfield & Westbrook labs).',
+    licensing: 'Hardware bench site license pool (Balocco & Vélizy labs).',
     approvedProjects: 'Autonomous Driving integration test benches and pre-series prototypes.',
     dataRestrictions: 'Firmware images decrypted inside secure hardware module at flash time.',
     ownerName: 'G. Morales (Hardware Bench Operations)',
-    ownerEmail: 'g.morales@aihub.io',
+    ownerEmail: 'g.morales@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Lab Hardware Rig Assignment',
@@ -358,7 +358,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Production Vision, Radar, and Trajectory Planning AI models.',
     dataRestrictions: 'Compliant with UNECE R156 software update & model monitoring traceability.',
     ownerName: 'S. Mehta (MLOps Operations Lead)',
-    ownerEmail: 's.mehta@aihub.io',
+    ownerEmail: 's.mehta@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Telemetry Ingest Validation',
@@ -375,7 +375,7 @@ const TOOLS_DATA = [
     highlightTitle: 'In-Vehicle SOME/IP & CAN Packet Inspector',
     highlightDesc: 'Zero-overhead telemetry tap detecting communication jitter, frame drops, and payload corruption on high-speed vehicle Ethernet buses.',
     metrics: '29 teams active (3.2B packets inspected/day)',
-    description: 'Passive in-vehicle telemetry inspector running lightweight eBPF probes on NOVA Brain gateway ECUs to capture microscopic network anomalies.',
+    description: 'Passive in-vehicle telemetry inspector running lightweight eBPF probes on STLA Brain gateway ECUs to capture microscopic network anomalies.',
     useCases: [
       'Latency spike detection during high-bandwidth camera-to-fusion transmission.',
       'SOME/IP message deserialization error tracking across distributed vehicle domains.',
@@ -386,7 +386,7 @@ const TOOLS_DATA = [
     approvedProjects: 'High-speed Ethernet and AD sensor bus validation programs.',
     dataRestrictions: 'Raw packet logs scrubbed of GPS locations and vehicle VIN identifiers.',
     ownerName: 'T. Richter (Vehicle Network Architecture Lead)',
-    ownerEmail: 't.richter@aihub.io',
+    ownerEmail: 't.richter@stellantis.com',
     stepper: {
       step1: 'Complete (Submitted)',
       step2: 'Network Security Audit',
@@ -403,11 +403,11 @@ const TOOLS_DATA = [
     security: 'restricted',
     securityLabel: 'Restricted',
     highlightTitle: 'Perception Data Lake & 50K Pedestrian Dataset',
-    highlightDesc: 'Extracts, filters, and anonymizes raw camera-radar point cloud streams from Northfield proving ground runs, packaging training batches.',
+    highlightDesc: 'Extracts, filters, and anonymizes raw camera-radar point cloud streams from Balocco proving ground runs, packaging training batches.',
     metrics: '50K-frame pedestrian dataset pipeline (8 Active Sensor Suites)',
     description: 'High-throughput perception data lake and ETL pipeline managing the 50K-frame pedestrian dataset, raw radar point-clouds, and multi-sensor synchronization.',
     useCases: [
-      'High-resolution perception data ingestion from Northfield proving ground test drives.',
+      'High-resolution perception data ingestion from Balocco proving ground test drives.',
       '50K pedestrian dataset pipeline management with automated bbox annotations.',
       'Synthetic data augmentation and scenario extraction for edge-case simulation.'
     ],
@@ -416,7 +416,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Level 2+ and Level 3 Perception & Sensor Fusion R&D.',
     dataRestrictions: 'GDPR pedestrian facial/license-plate anonymization mandatory; restricted access boundary.',
     ownerName: 'L. Chen (Perception Data Engineering Lead)',
-    ownerEmail: 'l.chen@aihub.io',
+    ownerEmail: 'l.chen@stellantis.com',
     stepper: {
       step1: 'Complete (Logged)',
       step2: 'Data Protection & GDPR Compliance Review',
@@ -444,7 +444,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Level 3 Automated Highway Drive and Urban Pilot R&D.',
     dataRestrictions: 'Strict sovereign boundary enforcement; raw LIDAR point clouds cannot leave EU.',
     ownerName: 'H. Berg (LiDAR & Sensor Infrastructure Lead)',
-    ownerEmail: 'h.berg@aihub.io',
+    ownerEmail: 'h.berg@stellantis.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Storage Budget & Quota Sign-Off',
@@ -461,20 +461,20 @@ const TOOLS_DATA = [
     security: 'internal',
     securityLabel: 'Internal Only',
     highlightTitle: 'Legacy AUTOSAR Classic → Adaptive Refactor',
-    highlightDesc: 'Parses legacy C ECU firmware and generates modern C++17 wrappers compliant with NOVA Brain SOA communication contracts.',
+    highlightDesc: 'Parses legacy C ECU firmware and generates modern C++17 wrappers compliant with STLA Brain SOA communication contracts.',
     metrics: '8 teams active (34 legacy stacks refactored)',
     description: 'Automated legacy AUTOSAR classic to adaptive migration engine. Converts legacy C codebases and OSEK configurations into C++17 adaptive services.',
     useCases: [
-      'Legacy ECU firmware migration into NOVA Brain adaptive service modules.',
+      'Legacy ECU firmware migration into STLA Brain adaptive service modules.',
       'Automated ARXML model translation between AUTOSAR 4.2 and AUTOSAR Adaptive R20.',
       'Automated test wrapper generation for regression safety verification.'
     ],
     integrations: 'Vector DaVinci, EB tresos, Artop C++ code transform plugins.',
     licensing: 'Per-repository modernization grant.',
-    approvedProjects: 'Legacy ECU platform porting, NOVA Brain migration programs.',
+    approvedProjects: 'Legacy ECU platform porting, STLA Brain migration programs.',
     dataRestrictions: 'Source code remains strictly within isolated on-premise container runner.',
     ownerName: 'P. Becker (Embedded Core Modernization Lead)',
-    ownerEmail: 'p.becker@aihub.io',
+    ownerEmail: 'p.becker@stellantis.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'Legacy ECU Compatibility Review',
@@ -489,7 +489,7 @@ const TOOLS_DATA = [
     security: 'internal',
     securityLabel: 'Internal Only',
     highlightTitle: 'OSEK Task to POSIX Thread Refactoring',
-    highlightDesc: 'Refactors legacy micro-controller OS task schedules into POSIX multi-threaded service contracts for NOVA Brain Linux nodes.',
+    highlightDesc: 'Refactors legacy micro-controller OS task schedules into POSIX multi-threaded service contracts for STLA Brain Linux nodes.',
     metrics: '11 teams active (28 ECU controllers modernized)',
     description: 'AI code refactoring engine that automatically inspects cyclic task configurations, memory maps, and interrupt handlers in legacy C code, generating POSIX compliant C++17 services.',
     useCases: [
@@ -499,10 +499,10 @@ const TOOLS_DATA = [
     ],
     integrations: 'Vector DaVinci Developer, GCC/Clang tooling, CMake build modernizer.',
     licensing: 'Central Vehicle Software Modernization Fund.',
-    approvedProjects: 'Powertrain and Chassis Gateway migration to NOVA Brain.',
+    approvedProjects: 'Powertrain and Chassis Gateway migration to STLA Brain.',
     dataRestrictions: 'Proprietary ECU legacy firmware kept strictly on on-premise compilation servers.',
     ownerName: 'K. Lindholm (Core Architecture Migration)',
-    ownerEmail: 'k.lindholm@aihub.io',
+    ownerEmail: 'k.lindholm@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Platform Engineering Assessment',
@@ -528,11 +528,11 @@ const TOOLS_DATA = [
       'Automated compliance audit readiness reports for ISO 26262 Part 3, 4, 6.'
     ],
     integrations: 'Confluence, Jira, PTC Integrity, Polarion ALM, SharePoint DMS.',
-    licensing: 'Enterprise Knowledge Site License.',
+    licensing: 'Stellantis Enterprise Knowledge Site License.',
     approvedProjects: 'All Systems Engineering, NCAP & ISO 26262 programs.',
     dataRestrictions: 'Role-based access control (RBAC) enforced per safety classification tier.',
     ownerName: 'A. Kowalski (Engineering Knowledge Lead)',
-    ownerEmail: 'a.kowalski@aihub.io',
+    ownerEmail: 'a.kowalski@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-verified)',
       step2: 'Department Scope Assignment',
@@ -556,11 +556,11 @@ const TOOLS_DATA = [
       'Instant audit-trail diffing between baseline releases.'
     ],
     integrations: 'Siemens Polarion ALM, IBM Rational DOORS, Jira Safety, Confluence.',
-    licensing: 'Enterprise Engineering Systems license (All systems engineers).',
+    licensing: 'Enterprise Engineering Systems license (All Stellantis systems engineers).',
     approvedProjects: 'All active car programs with safety-relevant electronic systems.',
     dataRestrictions: 'Controlled safety documentation; export watermarking enforced.',
     ownerName: 'M. Fournier (Functional Safety Compliance Director)',
-    ownerEmail: 'm.fournier@aihub.io',
+    ownerEmail: 'm.fournier@stellantis.com',
     stepper: {
       step1: 'Complete (Logged)',
       step2: 'Project Safety Manager Endorsement',
@@ -590,7 +590,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All connected, software-defined vehicle (SDV) and ADAS ECU projects.',
     dataRestrictions: 'Scan results are strictly classified Confidential; access restricted to designated Security & Compliance role holders.',
     ownerName: 'R. Kapoor (Product Security Team Lead)',
-    ownerEmail: 'r.kapoor@aihub.io',
+    ownerEmail: 'r.kapoor@stellantis.com',
     stepper: {
       step1: 'Complete (Request Submitted)',
       step2: 'Security Team Review & Threat Assessment (In Progress)',
@@ -618,7 +618,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All connected vehicle architectures, Telematics Box (T-Box), and Gateway ECUs.',
     dataRestrictions: 'Vulnerability exploit payloads classified Secret; strictly sandboxed hardware rigs.',
     ownerName: 'N. Zhao (Cybersecurity Testing Lead)',
-    ownerEmail: 'n.zhao@aihub.io',
+    ownerEmail: 'n.zhao@stellantis.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Chief Security Officer Authorization',
@@ -641,12 +641,12 @@ const TOOLS_DATA = [
       'Certificate expiry tracking and automated renewal for connected fleet PKI infrastructures.',
       'Zero-trust cryptographic gating for production software binary releases.'
     ],
-    integrations: 'HashiCorp Vault, Enterprise PKI Infrastructure, Lauterbach HSM debugger.',
+    integrations: 'HashiCorp Vault, Stellantis PKI Infrastructure, Lauterbach HSM debugger.',
     licensing: 'Central Security Infrastructure allocation.',
     approvedProjects: 'All vehicle ECUs implementing Secure Boot, SecOC, or OTA capabilities.',
     dataRestrictions: 'Cryptographic keys never exposed; only public certificates and validation attestations processed.',
     ownerName: 'O. Dubois (Vehicle Cryptography Lead)',
-    ownerEmail: 'o.dubois@aihub.io',
+    ownerEmail: 'o.dubois@stellantis.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'PKI Security Group Approval',
@@ -676,7 +676,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Software & AD Product Backlog Management teams.',
     dataRestrictions: 'Internal confidential product backlogs and release roadmap milestones.',
     ownerName: 'E. Marchetti (Agile Product Operations Lead)',
-    ownerEmail: 'e.marchetti@aihub.io',
+    ownerEmail: 'e.marchetti@stellantis.com',
     stepper: {
       step1: 'Complete (PM Portal)',
       step2: 'Agile PM Lead Endorsement',
@@ -704,7 +704,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Autonomous Driving Release Programs (Release 4.2, Release 3.4).',
     dataRestrictions: 'Aggregated sprint analytics only; personal developer performance data scrubbed.',
     ownerName: 'M. Santoro (Product Delivery Director)',
-    ownerEmail: 'm.santoro@aihub.io',
+    ownerEmail: 'm.santoro@stellantis.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Program PM Lead Sign-Off',
@@ -811,18 +811,18 @@ export default function AdAiToolsCatalogue() {
 
   const handleCopyGuideSnippet = () => {
     if (!guideModalTool) return;
-    const snippet = `# AI Hub CI/CD Pipeline Integration: ${guideModalTool.title}
+    const snippet = `# Stellantis CI/CD Pipeline Integration: ${guideModalTool.title}
 # Environment: EU-Frankfurt Sovereign Cluster (ISO 26262 Gate)
 tool_integration:
   name: "${guideModalTool.title}"
   version: "${guideModalTool.edition}"
-  endpoint: "https://tools.aihub.internal/v1/${guideModalTool.id}/webhook"
-  auth_header: "Bearer \${AIHUB_TOOL_TOKEN}"
+  endpoint: "https://tools.ad.stellantis.internal/v1/${guideModalTool.id}/webhook"
+  auth_header: "Bearer \${STELLANTIS_TOOL_TOKEN}"
   compliance_check:
     enabled: true
     block_on_violation: true
     telemetry_egress: "PROHIBITED"
-  target_cluster: "hil-rig-northfield-01"
+  target_cluster: "hil-rig-balocco-01"
   security_tier: "${guideModalTool.security.toUpperCase()}"`;
 
     navigator.clipboard?.writeText(snippet);
@@ -1143,7 +1143,7 @@ tool_integration:
                 <span className="ad-tools-drawer-label">Designated Support Owner</span>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 14px', borderRadius: '10px', backgroundColor: 'var(--bg-subtle)', border: '1px solid var(--border-color)' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--bg-surface-elevated, #0a0a0a)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 800, border: '1px solid var(--border-color)' }}>
+                    <div style={{ width: '32px', height: '32px', borderRadius: '50%', backgroundColor: 'var(--bg-surface-elevated, #0b1a30)', color: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.72rem', fontWeight: 800, border: '1px solid var(--border-color)' }}>
                       {activeDrawerTool.ownerName.charAt(0)}
                     </div>
                     <div>
@@ -1233,7 +1233,7 @@ tool_integration:
                   <option value="Release 4.2 Program (ASIL-D)">Release 4.2 Program (ASIL-D Level 2+)</option>
                   <option value="Next-Gen Perception R&D (Radar-Vision)">Next-Gen Perception R&D (Radar-Vision Fusion)</option>
                   <option value="Release 3.4 Maintenance (Highway Assist)">Release 3.4 Maintenance (Highway Assist)</option>
-                  <option value="NOVA Brain SDV Platform v2">NOVA Brain SDV Platform v2</option>
+                  <option value="STLA Brain SDV Platform v2">STLA Brain SDV Platform v2</option>
                   <option value="Urban Pilot L3 Pilot Initiative">Urban Pilot L3 Pilot Initiative</option>
                 </select>
               </div>
@@ -1297,7 +1297,7 @@ tool_integration:
               <div>
                 <h3 className="ad-tools-modal-title">{guideModalTool.title} Integration Guide</h3>
                 <span style={{ fontSize: '0.7rem', color: '#64748b' }}>
-                  AI Hub CI/CD Pipeline &amp; Webhook Setup
+                  Stellantis CI/CD Pipeline &amp; Webhook Setup
                 </span>
               </div>
               <button onClick={() => setGuideModalTool(null)} className="ad-tools-drawer-close">
@@ -1306,23 +1306,23 @@ tool_integration:
             </div>
 
             <div className="ad-tools-modal-body">
-              <div style={{ fontSize: '0.74rem', color: '#27323a' }}>
-                Add the following configuration to your project&apos;s <code>.aihub-ci.yml</code> or Bazel workspace configuration:
+              <div style={{ fontSize: '0.74rem', color: '#334155' }}>
+                Add the following configuration to your project&apos;s <code>.stellantis-ci.yml</code> or Bazel workspace configuration:
               </div>
 
               <div className="ad-tools-code-block">
-{`# AI Hub CI/CD Pipeline Integration: ${guideModalTool.title}
+{`# Stellantis CI/CD Pipeline Integration: ${guideModalTool.title}
 # Environment: EU-Frankfurt Sovereign Cluster (ISO 26262 Gate)
 tool_integration:
   name: "${guideModalTool.title}"
   version: "${guideModalTool.edition}"
-  endpoint: "https://tools.aihub.internal/v1/${guideModalTool.id}/webhook"
-  auth_header: "Bearer \${AIHUB_TOOL_TOKEN}"
+  endpoint: "https://tools.ad.stellantis.internal/v1/${guideModalTool.id}/webhook"
+  auth_header: "Bearer \${STELLANTIS_TOOL_TOKEN}"
   compliance_check:
     enabled: true
     block_on_violation: true
     telemetry_egress: "PROHIBITED"
-  target_cluster: "hil-rig-northfield-01"
+  target_cluster: "hil-rig-balocco-01"
   security_tier: "${guideModalTool.security.toUpperCase()}"`}
               </div>
 
@@ -1362,7 +1362,7 @@ tool_integration:
               <div>
                 <h3 className="ad-tools-modal-title">Propose New Engineering Tool</h3>
                 <span style={{ fontSize: '0.7rem', color: '#64748b' }}>
-                  Submit candidate software for Automotive Toolchain onboarding
+                  Submit candidate software for Stellantis Automotive Toolchain onboarding
                 </span>
               </div>
               <button onClick={() => setIsNewToolModalOpen(false)} className="ad-tools-drawer-close">
@@ -1402,7 +1402,7 @@ tool_integration:
                 <label className="ad-tools-form-label">Vendor or Open-Source Origin</label>
                 <input
                   type="text"
-                  placeholder="e.g. Vector Informatik, NVIDIA, Internal R&D"
+                  placeholder="e.g. Vector Informatik, NVIDIA, Internal Stellantis R&D"
                   value={newToolVendor}
                   onChange={(e) => setNewToolVendor(e.target.value)}
                   className="ad-tools-form-input"

@@ -20,7 +20,7 @@ export default function FeatureStatusCard({ data }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#06b6d4'
+              color: '#8b5cf6'
             }}>
               <GitBranch size={18} />
             </div>

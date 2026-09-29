@@ -6,7 +6,7 @@ import './auth.css';
 // ── Domain → Role mapping (mirrors WorkspaceBar)
 const DOMAIN_ROLE_MAP = {
   'AI for AMS':          ['Head of AMS'],
-  'Engineering leader': ['Chief AI Officer'],
+  'Engineering leaders': ['Chief AI Officer'],
   'AI for AD':           ['Product Owner'],
 };
 
@@ -26,7 +26,7 @@ const FEATURES = [
   {
     icon: '🛡️',
     cls: 'icon-infra',
-    text: <><strong>Engineering leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
+    text: <><strong>Engineering leaders:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
   },
 ];
 
@@ -244,9 +244,9 @@ export default function LoginPage({ onNavigateToRegister }) {
       await login(email.trim().toLowerCase(), password, domain, role);
       
       // Save selected domain & role to sessionStorage so App.jsx routes correctly
-      sessionStorage.setItem('aihub_domain', domain);
-      sessionStorage.setItem('aihub_role', role);
-      sessionStorage.setItem('aihub_active_tab', 'dashboard');
+      sessionStorage.setItem('stellantis_domain', domain);
+      sessionStorage.setItem('stellantis_role', role);
+      sessionStorage.setItem('stellantis_active_tab', 'dashboard');
       
       // Auth context → App.jsx unmounts this page automatically
     } catch (err) {
@@ -271,13 +271,13 @@ export default function LoginPage({ onNavigateToRegister }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>AI Hub</span>
+              <span>Stellantis AI Platform</span>
             </div>
 
             <div>
               <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
               <p className="auth-left-subtext">
-                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across the AI Hub.
+                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across Stellantis Enterprise AI.
               </p>
             </div>
 
@@ -293,7 +293,7 @@ export default function LoginPage({ onNavigateToRegister }) {
 
           {/* ── Right Panel ── */}
           <div className="auth-right">
-            <h2 className="auth-form-title">AI Hub</h2>
+            <h2 className="auth-form-title">Stellantis AI Platform</h2>
             <p className="auth-form-subtitle">Sign in using your TCS credentials</p>
 
             {errorMsg && (

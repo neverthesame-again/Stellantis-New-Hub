@@ -90,7 +90,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
       }}>
         <div>
           <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Wrench size={18} color="var(--hub-action, #0284c7)" />
+            <Wrench size={18} color="var(--stellantis-action, #0284c7)" />
             <span>AI Tools Catalogue</span>
             <span className="st-badge badge-info" style={{ fontSize: '0.65rem' }}>
               {toolsList.length} Tools Across 10 Disciplines
@@ -111,7 +111,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
           </div>
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '0.66rem', color: 'var(--text-muted)', fontWeight: 700 }}>ENGINEERING SQUADS COVERED</div>
-            <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--hub-action, #0284c7)' }}>48 / 48 Squads</div>
+            <div style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--stellantis-action, #0284c7)' }}>48 / 48 Squads</div>
           </div>
         </div>
       </div>
@@ -139,8 +139,8 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
                 borderRadius: '20px',
                 fontSize: '0.74rem',
                 fontWeight: isSelected ? 700 : 500,
-                border: isSelected ? '1px solid var(--hub-action, #0284c7)' : '1px solid var(--border-color)',
-                background: isSelected ? 'var(--hub-action, #0284c7)' : 'var(--bg-surface)',
+                border: isSelected ? '1px solid var(--stellantis-action, #0284c7)' : '1px solid var(--border-color)',
+                background: isSelected ? 'var(--stellantis-action, #0284c7)' : 'var(--bg-surface)',
                 color: isSelected ? '#ffffff' : 'var(--text-secondary)',
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',
@@ -207,7 +207,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--hub-action, #0284c7)' }}>{tool.id}</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--stellantis-action, #0284c7)' }}>{tool.id}</span>
                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>• {tool.category}</span>
                   </div>
                   <h4 style={{ fontSize: '1.02rem', fontWeight: 800, margin: '2px 0 0 0', color: 'var(--text-primary)' }}>
@@ -276,7 +276,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
                 </div>
                 <div>
                   <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.65rem' }}>HOURS SAVED</span>
-                  <strong style={{ color: 'var(--hub-action, #0284c7)' }}>{hoursSaved}</strong>
+                  <strong style={{ color: 'var(--stellantis-action, #0284c7)' }}>{hoursSaved}</strong>
                 </div>
               </div>
 
@@ -295,7 +295,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
                   style={{
                     background: 'transparent',
                     border: '1px solid var(--border-color)',
-                    color: 'var(--hub-action, #0284c7)',
+                    color: 'var(--stellantis-action, #0284c7)',
                     borderRadius: '4px',
                     padding: '5px 10px',
                     fontSize: '0.72rem',
@@ -316,7 +316,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
                     if (showToast) showToast(`Tool "${tool.name}" subscription status updated.`);
                   }}
                   style={{
-                    background: tool.subscribed ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--hub-action, #0284c7)',
+                    background: tool.subscribed ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--stellantis-action, #0284c7)',
                     color: tool.subscribed ? '#10b981' : '#ffffff',
                     border: tool.subscribed ? '1px solid #10b981' : 'none',
                     borderRadius: '4px',
@@ -344,7 +344,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '640px' }}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Wrench size={20} color="var(--hub-action, #0284c7)" />
+                <Wrench size={20} color="var(--stellantis-action, #0284c7)" />
                 <div>
                   <span className="ad-modal-title">{selectedToolDetails.name}</span>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
@@ -397,7 +397,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
               <div style={{ background: 'var(--bg-surface-secondary)', padding: '10px', borderRadius: '6px' }}>
                 <div style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-muted)' }}>DATA HANDLING & SOVEREIGN RESTRICTIONS</div>
                 <div style={{ fontSize: '0.76rem', color: 'var(--text-primary)', marginTop: '2px' }}>
-                  {selectedToolDetails.dataHandlingRestrictions || 'Processed inside Enterprise sovereign data boundary; zero external training.'}
+                  {selectedToolDetails.dataHandlingRestrictions || 'Processed inside Stellantis sovereign data boundary; zero external training.'}
                 </div>
               </div>
 

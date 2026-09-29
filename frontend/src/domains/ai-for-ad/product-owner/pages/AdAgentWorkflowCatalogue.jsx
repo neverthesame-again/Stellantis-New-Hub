@@ -71,7 +71,7 @@ const INITIAL_AGENTS = [
     evalResults: [
       { metric: 'Detection Precision', val: '94.2%', delta: '+1.2pt vs Baseline' },
       { metric: 'Mean Inference Latency', val: '11.4 ms', delta: 'Deterministic Target < 15ms' },
-      { metric: 'Ghost Echo Rejection', val: '98.1%', delta: 'Northfield Proving Ground Certified' }
+      { metric: 'Ghost Echo Rejection', val: '98.1%', delta: 'Balocco Proving Ground Certified' }
     ]
   },
   // 2. ACTIVE #2
@@ -121,13 +121,13 @@ const INITIAL_AGENTS = [
       { label: 'Hardware Fidelity', val: '91.4%', note: 'Point Cloud Match' },
       { label: 'Approval Status', val: 'Pending', note: 'Awaiting PM Sign-off' }
     ],
-    dependencies: ['High-Fidelity Vehicle Dynamics Model', 'Northfield Synthetic Sim Engine'],
+    dependencies: ['High-Fidelity Vehicle Dynamics Model', 'Balocco Synthetic Sim Engine'],
     notice: 'Governance Restriction: Must be approved via Workflow Inbox before running on production HIL testbeds. Ties to Workflow Inbox Item 6.',
     purpose: 'Generates high-fidelity synthetic sensor telemetry to unblock downstream perception testing during hardware supplier delays.',
     owner: 'Simulation & Emulation Engineering Group',
-    inputs: 'Simulated Northfield road telemetry, weather scenario matrices, synthetic LiDAR ray-tracing.',
+    inputs: 'Simulated Balocco road telemetry, weather scenario matrices, synthetic LiDAR ray-tracing.',
     outputs: 'Emulated 3D LiDAR point cloud stream, synchronization heartbeat.',
-    tools: 'Northfield Proving Ground Synthetic Sim Engine, PointCloud Synthesizer',
+    tools: 'Balocco Proving Ground Synthetic Sim Engine, PointCloud Synthesizer',
     permissions: 'Execution blocked in production until Governance Sign-Off in Workflow Inbox.',
     evalResults: [
       { metric: 'Mitigation Rate', val: '75.0%', delta: '3 of 4 Trials Successful' },
@@ -153,12 +153,12 @@ const INITIAL_AGENTS = [
       { label: 'ISO 26262 Gate', val: 'In Review', note: 'Part 3 Audit' }
     ],
     dependencies: ['DeepSeek-R1 Automotive', 'CarSim Proving Ground Engine'],
-    notice: 'Gated Sandbox: Execution restricted to air-gapped Northfield Rig #4 until Functional Safety Lead co-signs ISO 26262 compliance ticket.',
+    notice: 'Gated Sandbox: Execution restricted to air-gapped Balocco Rig #4 until Functional Safety Lead co-signs ISO 26262 compliance ticket.',
     purpose: 'Continuous adversarial probing of vehicle trajectory splines to identify emergency braking threshold edge cases.',
     owner: 'Autonomous Driving Controls Squad',
     inputs: 'Vehicle trajectory splines, steering angle telemetry, synthetic actor velocity vectors.',
     outputs: 'Kinematic instability reports, safety margin violation timestamps, deceleration gradient logs.',
-    tools: 'CarSim 2026.1, DeepSeek-R1 Automotive Math Solver, Northfield Proving Ground Telemetry Ingest',
+    tools: 'CarSim 2026.1, DeepSeek-R1 Automotive Math Solver, Balocco Proving Ground Telemetry Ingest',
     permissions: 'Air-gapped HIL cluster access only; read-only vehicle dynamics loop.',
     evalResults: [
       { metric: 'Adversarial F1 Score', val: '89.2%', delta: 'Tested across 1,800 scenarios' },
@@ -213,11 +213,11 @@ const INITIAL_AGENTS = [
       { label: 'Gate Integrity', val: '86% HIL', note: 'Below 90% Target' },
       { label: 'Audit Status', val: 'Suspended', note: 'Ticket #EXC-402' }
     ],
-    dependencies: ['Northfield Rig #4 Telemetry Webhook', 'Jenkins Release Pipeline'],
-    notice: 'Suspended: Northfield HIL Telemetry Sync Drift. Temporarily suspended pending Orin NPU hardware clock calibration review (Inbox Item 3).',
+    dependencies: ['Balocco Rig #4 Telemetry Webhook', 'Jenkins Release Pipeline'],
+    notice: 'Suspended: Balocco HIL Telemetry Sync Drift. Temporarily suspended pending Orin NPU hardware clock calibration review (Inbox Item 3).',
     purpose: 'Aggregates multi-source test verification data into holistic release gate readiness indices.',
     owner: 'Release Operations & Program Management',
-    inputs: 'GitHub PR telemetry, Northfield HIL simulation bench metrics, Jira blocker tickets.',
+    inputs: 'GitHub PR telemetry, Balocco HIL simulation bench metrics, Jira blocker tickets.',
     outputs: 'Release Readiness percentage score, blocker alert notifications, ISO 26262 audit compliance checklist.',
     tools: 'Rule-based evaluation engine, ML anomaly detector, CI/CD webhooks',
     permissions: 'Read-only access to CI/CD pipelines, HIL test results, and release dashboard.',
@@ -796,7 +796,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                               borderRadius: '4px',
                               background: 'var(--surface-tertiary, #f1f5f9)',
                               border: '1px solid var(--border-color, #e2e8f0)',
-                              color: 'var(--text-primary, #171717)',
+                              color: 'var(--text-primary, #1e293b)',
                               fontWeight: 600
                             }}
                           >
@@ -1184,7 +1184,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                         <div style={{ fontWeight: 700, color: 'var(--text-primary)' }}>{res.metric}</div>
                         <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', fontFamily: 'monospace' }}>{res.delta}</div>
                       </div>
-                      <span style={{ fontFamily: 'monospace', fontWeight: 800, fontSize: '1rem', color: '#0369a1' }}>
+                      <span style={{ fontFamily: 'monospace', fontWeight: 800, fontSize: '1rem', color: '#4338ca' }}>
                         {res.val}
                       </span>
                     </div>
@@ -1284,7 +1284,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           <div className="ad-agent-modal-card" onClick={(e) => e.stopPropagation()}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid var(--border-color)', paddingBottom: '12px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#0a0a0a', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#0b1a30', color: '#818cf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <Plus size={18} />
                 </div>
                 <div>
@@ -1299,7 +1299,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.78rem' }}>
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
-                Initiate onboarding for a new candidate agent or multi-agent orchestration pipeline under AI Safety Board directives:
+                Initiate onboarding for a new candidate agent or multi-agent orchestration pipeline under Stellantis AI Safety Board directives:
               </p>
 
               <div>

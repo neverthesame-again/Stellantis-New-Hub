@@ -33,16 +33,10 @@ import {
 import { amsExperienceData } from '../mockData.js';
 import '../../ai-for-ad/product-owner/adModelCatalogue.css';
 
-export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
+export default function ExperienceZone() {
   const [data, setData] = useState(amsExperienceData);
-  // Sub-page is driven by the sidebar when controlled; falls back to local state
-  const [localSubTab, setLocalSubTab] = useState('models'); // 'models', 'agents', 'tools', 'subscriptions', 'sandbox'
-  const subTab = activeSubTab ?? localSubTab;
-  const setSubTab = onSubTabChange ?? setLocalSubTab;
+  const [subTab, setSubTab] = useState('models'); // 'models', 'agents', 'tools', 'subscriptions', 'sandbox'
   const [searchQuery, setSearchQuery] = useState('');
-
-  // Reset search whenever the sub-page changes
-  useEffect(() => { setSearchQuery(''); }, [subTab]);
   const [simulationRunning, setSimulationRunning] = useState(false);
   const [simulationProgress, setSimulationProgress] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
@@ -292,7 +286,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
           position: 'fixed',
           bottom: '24px',
           right: '24px',
-          background: 'var(--hub-accent)',
+          background: 'var(--stellantis-accent)',
           color: '#ffffff',
           padding: '12px 20px',
           borderRadius: '8px',
@@ -309,16 +303,66 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
         </div>
       )}
 
-      {/* Sub-page toolbar (navigation lives in the sidebar) */}
+      {/* Sub-tab Navigation (NO numerical prefixes) */}
       <div style={{
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'space-between',
         flexWrap: 'wrap',
         gap: '12px',
         borderBottom: '1px solid var(--border-color)',
         paddingBottom: '14px'
       }}>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+          {[
+            { id: 'models', label: 'Model Catalogue', icon: Cpu, count: data.models.length },
+            { id: 'agents', label: 'Agent & Workflows', icon: Bot, count: data.agents.length },
+            { id: 'tools', label: 'AI Tools Catalogue', icon: Wrench, count: data.tools.length },
+            { id: 'subscriptions', label: 'My Subscriptions', icon: BookmarkCheck, count: data.mySubscriptions.length },
+            { id: 'sandbox', label: 'Interactive Sandbox Simulation', icon: Play, count: null }
+          ].map((tab) => {
+            const isActive = subTab === tab.id;
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setSubTab(tab.id);
+                  setSearchQuery('');
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '8px 16px',
+                  borderRadius: 'var(--radius-md)',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  border: isActive ? '1px solid var(--stellantis-accent)' : '1px solid var(--border-color)',
+                  background: isActive ? 'var(--badge-info-bg)' : 'var(--bg-surface)',
+                  color: isActive ? 'var(--stellantis-accent)' : 'var(--text-secondary)',
+                  transition: 'all 0.15s ease'
+                }}
+              >
+                <Icon size={16} />
+                <span>{tab.label}</span>
+                {tab.count !== null && (
+                  <span style={{
+                    fontSize: '0.7rem',
+                    padding: '1px 6px',
+                    borderRadius: '10px',
+                    background: isActive ? 'var(--stellantis-accent)' : 'var(--bg-subtle)',
+                    color: isActive ? '#ffffff' : 'var(--text-primary)'
+                  }}>
+                    {tab.count}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
         {/* Global search within Experience Zone */}
         {subTab !== 'sandbox' && (
           <div style={{ position: 'relative', minWidth: '240px' }}>
@@ -462,7 +506,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
               </div>
               <div style={{ display: 'flex', gap: '8px' }}>
                 {compareList.length >= 2 && (
-                  <button onClick={() => setShowCompareModal(true)} className="st-btn st-btn-primary" style={{ fontSize: '0.75rem', padding: '6px 12px', background: '#0ea5e9', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <button onClick={() => setShowCompareModal(true)} className="st-btn st-btn-primary" style={{ fontSize: '0.75rem', padding: '6px 12px', background: '#3b82f6', display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <ArrowLeftRight size={14} /> Compare Selected ({compareList.length})
                   </button>
                 )}
@@ -477,7 +521,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
               {filteredModels.map(model => {
                 const isCompared = compareList.includes(model.id);
                 return (
-                  <div key={model.id} className="st-card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', border: isCompared ? '2px solid #0ea5e9' : '1px solid var(--border-color)' }}>
+                  <div key={model.id} className="st-card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px', border: isCompared ? '2px solid #3b82f6' : '1px solid var(--border-color)' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <span style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)' }}>{model.id}</span>
@@ -515,7 +559,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                           <Sparkles size={13} /> + Subscribe
                         </button>
                       )}
-                      <button onClick={() => handleToggleCompare(model.id)} className="st-btn st-btn-outline" style={{ fontSize: '0.72rem', padding: '6px 10px', color: isCompared ? '#0ea5e9' : 'var(--text-secondary)', borderColor: isCompared ? '#0ea5e9' : 'var(--border-color)', background: isCompared ? 'rgba(14, 165, 233, 0.1)' : 'transparent' }} title="Add to comparison">
+                      <button onClick={() => handleToggleCompare(model.id)} className="st-btn st-btn-outline" style={{ fontSize: '0.72rem', padding: '6px 10px', color: isCompared ? '#3b82f6' : 'var(--text-secondary)', borderColor: isCompared ? '#3b82f6' : 'var(--border-color)', background: isCompared ? 'rgba(59, 130, 246, 0.1)' : 'transparent' }} title="Add to comparison">
                         <ArrowLeftRight size={13} />
                       </button>
                     </div>
@@ -558,7 +602,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                   fontWeight: 600,
                   cursor: 'pointer',
                   border: agentLifecycleFilter === st.id ? 'none' : '1px solid var(--border-color)',
-                  background: agentLifecycleFilter === st.id ? 'var(--hub-accent)' : 'var(--bg-surface)',
+                  background: agentLifecycleFilter === st.id ? 'var(--stellantis-accent)' : 'var(--bg-surface)',
                   color: agentLifecycleFilter === st.id ? '#ffffff' : 'var(--text-secondary)'
                 }}
               >
@@ -618,7 +662,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                 <div style={{ background: 'var(--bg-surface-secondary)', padding: '10px 12px', borderRadius: '6px', fontSize: '0.74rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
                   <div><strong>Inputs:</strong> <span style={{ color: 'var(--text-secondary)' }}>{agent.inputs}</span></div>
                   <div><strong>Outputs:</strong> <span style={{ color: 'var(--text-secondary)' }}>{agent.outputs}</span></div>
-                  <div><strong>Model Dependency:</strong> <span style={{ color: 'var(--hub-accent)', fontWeight: 600 }}>{agent.modelDependencies}</span></div>
+                  <div><strong>Model Dependency:</strong> <span style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{agent.modelDependencies}</span></div>
                   <div><strong>Outcomes / SLA:</strong> <span style={{ color: '#10b981', fontWeight: 600 }}>{agent.metrics}</span></div>
                 </div>
 
@@ -692,7 +736,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   border: toolCategoryFilter === cat ? 'none' : '1px solid var(--border-color)',
-                  background: toolCategoryFilter === cat ? 'var(--hub-accent)' : 'var(--bg-surface)',
+                  background: toolCategoryFilter === cat ? 'var(--stellantis-accent)' : 'var(--bg-surface)',
                   color: toolCategoryFilter === cat ? '#ffffff' : 'var(--text-secondary)'
                 }}
               >
@@ -712,7 +756,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
 
                 <div>
                   <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0 }}>{tool.name}</h3>
-                  <div style={{ fontSize: '0.75rem', color: 'var(--hub-accent)', fontWeight: 700, marginTop: '2px' }}>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--stellantis-accent)', fontWeight: 700, marginTop: '2px' }}>
                     {tool.category}
                   </div>
                 </div>
@@ -784,7 +828,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                   fontWeight: 600,
                   cursor: 'pointer',
                   border: subTypeFilter === t ? 'none' : '1px solid var(--border-color)',
-                  background: subTypeFilter === t ? 'var(--hub-accent)' : 'var(--bg-surface)',
+                  background: subTypeFilter === t ? 'var(--stellantis-accent)' : 'var(--bg-surface)',
                   color: subTypeFilter === t ? '#ffffff' : 'var(--text-secondary)'
                 }}
               >
@@ -918,7 +962,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
             </div>
             <div>
               <span style={{ color: 'var(--text-muted)' }}>Autonomous Runbook:</span>
-              <div style={{ fontWeight: 700, color: 'var(--hub-accent)' }}>Kafka Partition Auto-Heal</div>
+              <div style={{ fontWeight: 700, color: 'var(--stellantis-accent)' }}>Kafka Partition Auto-Heal</div>
             </div>
             <div>
               <span style={{ color: 'var(--text-muted)' }}>Safety Guardrails:</span>
@@ -935,7 +979,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.74rem', color: 'var(--text-muted)' }}>
                 <span>Autonomous Agent Orchestration Progress</span>
-                <span style={{ color: 'var(--hub-accent)', fontWeight: 700 }}>
+                <span style={{ color: 'var(--stellantis-accent)', fontWeight: 700 }}>
                   Step {simulationProgress?.step || 1} of 5
                 </span>
               </div>
@@ -943,7 +987,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
                 <div style={{
                   width: `${((simulationProgress?.step || 1) / 5) * 100}%`,
                   height: '100%',
-                  background: 'var(--hub-accent)',
+                  background: 'var(--stellantis-accent)',
                   borderRadius: '3px',
                   transition: 'width 0.4s ease'
                 }} />
@@ -953,9 +997,9 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
 
           {/* Live Execution Console */}
           <div style={{
-            background: '#070707',
+            background: '#0a0d14',
             color: '#e2e8f0',
-            border: '1px solid #171717',
+            border: '1px solid #1e293b',
             borderRadius: 'var(--radius-md)',
             padding: '18px',
             fontFamily: 'SFMono-Regular, Menlo, Monaco, Consolas, monospace',
@@ -971,7 +1015,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
               alignItems: 'center',
               justifyContent: 'space-between',
               color: '#64748b',
-              borderBottom: '1px solid #171717',
+              borderBottom: '1px solid #1e293b',
               paddingBottom: '8px',
               fontSize: '0.74rem'
             }}>
@@ -1060,7 +1104,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
           <div className="st-card animate-fade-in" style={{ maxWidth: '850px', width: '100%', padding: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <ArrowLeftRight size={20} color="#0ea5e9" />
+                <ArrowLeftRight size={20} color="#3b82f6" />
                 <h3 style={{ fontSize: '1.1rem', fontWeight: 700, margin: 0 }}>Side-by-Side Model Comparison</h3>
               </div>
               <button
@@ -1141,7 +1185,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
           <div className="st-card animate-fade-in" style={{ maxWidth: '520px', width: '100%', padding: '24px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Plus size={18} color="var(--hub-accent)" />
+                <Plus size={18} color="var(--stellantis-accent)" />
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0 }}>Request New Model Onboarding</h3>
               </div>
               <button

@@ -54,7 +54,7 @@ export default function WorkflowInbox() {
       label: 'All Items', 
       count: items.length, 
       icon: Filter,
-      color: 'var(--hub-accent)'
+      color: 'var(--stellantis-accent)'
     },
     { 
       id: 'Incident pattern recommendations', 
@@ -62,7 +62,7 @@ export default function WorkflowInbox() {
       shortLabel: 'Pattern Recommendations',
       count: items.filter(i => i.type.toLowerCase().includes('pattern')).length, 
       icon: TrendingUp,
-      color: '#0ea5e9'
+      color: '#3b82f6'
     },
     { 
       id: 'Problem records requiring review', 
@@ -78,7 +78,7 @@ export default function WorkflowInbox() {
       shortLabel: 'Feature Change Requests',
       count: items.filter(i => i.type.toLowerCase().includes('feature')).length, 
       icon: GitPullRequest,
-      color: '#06b6d4'
+      color: '#8b5cf6'
     },
     { 
       id: 'Brownfield pipeline initiation requests', 
@@ -110,7 +110,7 @@ export default function WorkflowInbox() {
       shortLabel: 'Governance Exceptions',
       count: items.filter(i => i.type.toLowerCase().includes('governance')).length, 
       icon: ShieldCheck,
-      color: '#0ea5e9'
+      color: '#6366f1'
     }
   ];
 
@@ -290,7 +290,7 @@ export default function WorkflowInbox() {
                 onClick={() => setSelectedItem(item)}
                 style={{
                   background: isSelected ? 'var(--bg-surface-secondary)' : 'var(--bg-surface)',
-                  border: isSelected ? '2px solid var(--hub-accent)' : '1px solid var(--border-color)',
+                  border: isSelected ? '2px solid var(--stellantis-accent)' : '1px solid var(--border-color)',
                   borderRadius: 'var(--radius-md)',
                   padding: '14px',
                   cursor: 'pointer',

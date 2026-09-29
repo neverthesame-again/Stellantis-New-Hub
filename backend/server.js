@@ -20,7 +20,7 @@ app.use((req, res, next) => {
 // 1. AI for AMS (Tony - Head of AMS)
 app.use("/api/ams", amsRouter);
 
-// 2. Engineering Leader (Alex - Chief AI Officer)
+// 2. Engineering Leaders (Alex - Chief AI Officer)
 app.use("/api/engineering", engineeringRouter);
 
 // 3. AI for AD (Product Owner)
@@ -33,7 +33,7 @@ app.get("/api/health", (req, res) => {
     application: "AI-Native Engineering Operating Model Hub",
     activeDomains: [
       { id: "ai-for-ams", name: "AI for AMS", owner: "Tony", persona: "Tony - Head of AMS", path: "/api/ams" },
-      { id: "engineering-leaders", name: "Engineering Leader", owner: "Alex", persona: "Alex - Chief AI Officer", path: "/api/engineering" },
+      { id: "engineering-leaders", name: "Engineering Leaders", owner: "Alex", persona: "Alex - Chief AI Officer", path: "/api/engineering" },
       { id: "ai-for-ad", name: "AI for AD", owner: "Product Owner", persona: "Product Owner", path: "/api/ad" }
     ],
     timestamp: new Date().toISOString()

@@ -85,7 +85,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
       <div className={`ad-context-bar ${isPulsing ? 'ad-pulse-active' : ''}`}>
         {/* User Role Context (Read-Only Badge) */}
         <div className="ad-context-role-badge">
-          <Lock size={13} style={{ color: 'var(--hub-action, #0284c7)' }} />
+          <Lock size={13} style={{ color: 'var(--stellantis-action, #0284c7)' }} />
           <span>{personaContextData.userRole.badgeLabel}</span>
           <span style={{ fontSize: '0.68rem', opacity: 0.7 }}>• Tier 2</span>
         </div>
@@ -168,7 +168,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                 className="ad-snap-seg"
                 style={{
                   width: `${(activeConfig.subscriptions.agentsCount / (activeConfig.subscriptions.modelsCount + activeConfig.subscriptions.agentsCount + activeConfig.subscriptions.toolsCount)) * 100}%`,
-                  background: '#06b6d4'
+                  background: '#8b5cf6'
                 }}
               />
               <div
@@ -186,7 +186,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                 {activeConfig.subscriptions.modelsCount} Models
               </span>
               <span className="ad-snap-pill">
-                <Bot size={11} style={{ color: '#06b6d4' }} />
+                <Bot size={11} style={{ color: '#8b5cf6' }} />
                 {activeConfig.subscriptions.agentsCount} Agents
               </span>
               <span className="ad-snap-pill">
@@ -358,7 +358,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
         <div className="ad-computed-card">
           <div className="ad-computed-header">
             <div className="ad-computed-title-box">
-              <div className="ad-computed-icon-box" style={{ color: '#06b6d4' }}>
+              <div className="ad-computed-icon-box" style={{ color: '#8b5cf6' }}>
                 <FileText size={16} />
               </div>
               <span className="ad-computed-title">Governance Audits</span>
@@ -370,7 +370,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
 
           <div className="ad-computed-body">
             <div className="ad-computed-kpi">
-              <span className="ad-kpi-num" style={{ color: '#06b6d4' }}>{activeConfig.governance.length}</span>
+              <span className="ad-kpi-num" style={{ color: '#8b5cf6' }}>{activeConfig.governance.length}</span>
               <span className="ad-kpi-sub">Compliance Gates Due</span>
             </div>
 
@@ -388,7 +388,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                 </span>
               ))}
               <span className="ad-snap-pill">
-                <CheckCircle2 size={11} style={{ color: '#06b6d4' }} />
+                <CheckCircle2 size={11} style={{ color: '#8b5cf6' }} />
                 UNECE R157
               </span>
             </div>
@@ -461,7 +461,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                     L{lvl} {lvlData.layerTag}
                   </span>
                   {isActive && (
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--hub-action, #0284c7)' }} />
+                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--stellantis-action, #0284c7)' }} />
                   )}
                 </div>
                 <div className="ad-depth-node-title" title={lvlData.title}>
@@ -520,9 +520,9 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                 disabled={currentLevel === 6}
                 className="ad-lens-step-btn"
                 style={{
-                  background: currentLevel < 6 ? 'var(--hub-action, #0284c7)' : undefined,
+                  background: currentLevel < 6 ? 'var(--stellantis-action, #0284c7)' : undefined,
                   color: currentLevel < 6 ? '#ffffff' : undefined,
-                  borderColor: currentLevel < 6 ? 'var(--hub-action, #0284c7)' : undefined
+                  borderColor: currentLevel < 6 ? 'var(--stellantis-action, #0284c7)' : undefined
                 }}
                 title="Navigate to next operational layer"
               >
@@ -582,7 +582,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                       padding: '10px 12px',
                       borderRadius: 'var(--radius-sm)',
                       background: 'var(--bg-surface)',
-                      border: wf.isPrimary ? '2px solid var(--hub-action, #0284c7)' : '1px solid var(--border-color)',
+                      border: wf.isPrimary ? '2px solid var(--stellantis-action, #0284c7)' : '1px solid var(--border-color)',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: '4px'
@@ -615,7 +615,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
                       {idx + 1}. {step.name}
                     </div>
                     <div style={{ color: 'var(--text-secondary)', fontSize: '0.68rem' }}>{step.detail}</div>
-                    <div style={{ color: 'var(--hub-action, #0284c7)', fontWeight: 700, fontSize: '0.7rem', marginTop: '2px' }}>
+                    <div style={{ color: 'var(--stellantis-action, #0284c7)', fontWeight: 700, fontSize: '0.7rem', marginTop: '2px' }}>
                       Latency: {step.latency}
                     </div>
                   </div>
@@ -790,7 +790,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
               </table>
 
               <div className="ad-carve-out-alert">
-                <strong>Safety Governance Carve-Out Rule:</strong> In accordance with Corporate Safety Guideline ST-SAF-401, no ASIL-D critical deviation may be sanctioned unilaterally by Product Management without formal counter-signature from Systems Safety Engineering.
+                <strong>Safety Governance Carve-Out Rule:</strong> In accordance with Stellantis Corporate Safety Guideline ST-SAF-401, no ASIL-D critical deviation may be sanctioned unilaterally by Product Management without formal counter-signature from Systems Safety Engineering.
               </div>
             </div>
 

@@ -5,16 +5,16 @@ export default function DeliveryMetricsCard({ data }) {
   if (!data) return null;
   const kpiThemes = [
     {
-      topBorder: '3px solid #0284c7',
-      valColor: '#38bdf8'
+      topBorder: '3px solid #2563eb',
+      valColor: '#60a5fa'
     },
     {
       topBorder: '3px solid #10b981',
       valColor: '#34d399'
     },
     {
-      topBorder: '3px solid #06b6d4',
-      valColor: '#67e8f9'
+      topBorder: '3px solid #8b5cf6',
+      valColor: '#c084fc'
     },
     {
       topBorder: '3px solid #0d9488',
@@ -22,7 +22,7 @@ export default function DeliveryMetricsCard({ data }) {
     }
   ];
 
-  const logBorders = ['#0284c7', '#06b6d4', '#f59e0b'];
+  const logBorders = ['#0284c7', '#8b5cf6', '#f59e0b'];
 
   return (
     <div className="ad-card" id="card-delivery-metrics" style={{ gap: '16px' }}>
@@ -38,7 +38,7 @@ export default function DeliveryMetricsCard({ data }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'var(--hub-action)'
+            color: 'var(--stellantis-action)'
           }}>
             <Cpu size={18} />
           </div>
@@ -102,7 +102,7 @@ export default function DeliveryMetricsCard({ data }) {
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.70rem', color: 'var(--text-muted)', fontWeight: 700 }}>
             <span>Backlog Authoring Breakdown</span>
-            <span style={{ color: 'var(--hub-action)', fontWeight: 800 }}>68% AI Synthesized</span>
+            <span style={{ color: 'var(--stellantis-action)', fontWeight: 800 }}>68% AI Synthesized</span>
           </div>
 
           {/* Segmented Bar */}
@@ -116,7 +116,7 @@ export default function DeliveryMetricsCard({ data }) {
           }}>
             <div style={{ width: `${data.accelerationBreakdown.aiSynthesized}%`, background: '#0284c7' }} title="AI Synthesized: 68%" />
             <div style={{ width: `${data.accelerationBreakdown.humanAuthored}%`, background: '#10b981' }} title="Human Authored: 24%" />
-            <div style={{ width: `${data.accelerationBreakdown.hybridRefined}%`, background: '#06b6d4' }} title="Hybrid: 8%" />
+            <div style={{ width: `${data.accelerationBreakdown.hybridRefined}%`, background: '#8b5cf6' }} title="Hybrid: 8%" />
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.66rem', color: 'var(--text-muted)', fontWeight: 600 }}>
@@ -127,7 +127,7 @@ export default function DeliveryMetricsCard({ data }) {
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981' }} /> Human (24%)
             </span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#06b6d4' }} /> Hybrid (8%)
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8b5cf6' }} /> Hybrid (8%)
             </span>
           </div>
         </div>
@@ -185,7 +185,7 @@ export default function DeliveryMetricsCard({ data }) {
             }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span style={{ fontWeight: 800, color: 'var(--hub-action)' }}>{log.userStory}</span>
+              <span style={{ fontWeight: 800, color: 'var(--stellantis-action)' }}>{log.userStory}</span>
               <span style={{ color: 'var(--text-primary)', fontWeight: 600 }}>{log.action}</span>
             </div>
             <span style={{ color: 'var(--text-muted)', whiteSpace: 'nowrap', fontSize: '0.68rem' }}>

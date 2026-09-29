@@ -1,5 +1,5 @@
 /* ==========================================================================
-   AI HUB — MY SUBSCRIPTIONS (PRD §5.6)
+   STELLANTIS AI OPERATING MODEL HUB — MY SUBSCRIPTIONS (PRD §5.6)
    Automotive Design System Tokens & Flat Uniform Card Grid
    ========================================================================== */
 
@@ -40,7 +40,7 @@
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: #0a0a0a;
+  background: #0b1a30;
   color: #38bdf8;
   display: flex;
   align-items: center;
@@ -51,7 +51,7 @@
 .ad-subs-header-text h2 {
   font-size: 1rem;
   font-weight: 800;
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
   margin: 0;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
 
 .ad-subs-summary-label {
   font-weight: 700;
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
   margin-right: 4px;
   display: flex;
   align-items: center;
@@ -143,13 +143,13 @@
 
 .ad-subs-cat-chip:hover {
   background: #e2e8f0;
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
 }
 
 .ad-subs-cat-chip.active {
-  background: #0a0a0a;
+  background: #0b1a30;
   color: #ffffff;
-  border-color: #0a0a0a;
+  border-color: #0b1a30;
   font-weight: 700;
 }
 
@@ -194,12 +194,12 @@
 }
 
 .ad-subs-level-btn:hover {
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
 }
 
 .ad-subs-level-btn.active {
   background: #ffffff;
-  color: #0a0a0a;
+  color: #0b1a30;
   font-weight: 700;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
@@ -222,7 +222,7 @@
   border: none;
   background: transparent;
   font-size: 0.75rem;
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
   outline: none;
 }
 
@@ -265,7 +265,7 @@
 }
 
 .ad-sub-card:hover {
-  border-color: #7dd3fc;
+  border-color: #93c5fd;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
@@ -289,7 +289,7 @@
 .ad-sub-card-title {
   font-size: 0.92rem;
   font-weight: 800;
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
   margin: 0;
   line-height: 1.3;
 }
@@ -314,9 +314,9 @@
 }
 
 .ad-tag-individual {
-  background: #f0f9ff;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
 }
 
 .ad-tag-team {
@@ -326,9 +326,9 @@
 }
 
 .ad-tag-project {
-  background: #f0fdff;
-  color: #0e7490;
-  border: 1px solid #cffafe;
+  background: #faf5ff;
+  color: #7e22ce;
+  border: 1px solid #e9d5ff;
 }
 
 .ad-tag-portfolio {
@@ -338,9 +338,9 @@
 }
 
 .ad-tag-enterprise {
-  background: #0a0a0a;
+  background: #0b1a30;
   color: #ffffff;
-  border: 1px solid #27323a;
+  border: 1px solid #334155;
 }
 
 /* Card Body Details */
@@ -371,7 +371,7 @@
 }
 
 .ad-sub-body-value {
-  color: var(--text-primary, #0a0a0a);
+  color: var(--text-primary, #0f172a);
   text-align: right;
   font-weight: 500;
 }
@@ -424,7 +424,7 @@
   font-weight: 600;
   background: var(--surface-primary, #ffffff);
   border: 1px solid var(--border-color, #cbd5e1);
-  color: var(--text-primary, #171717);
+  color: var(--text-primary, #1e293b);
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -439,15 +439,15 @@
   border-radius: 8px;
   font-size: 0.7rem;
   font-weight: 700;
-  background: #f0f9ff;
-  color: #0369a1;
-  border: 1px solid #bae6fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .ad-btn-sub-upgrade:hover {
-  background: #e0f2fe;
+  background: #dbeafe;
 }
 
 .ad-btn-sub-renew {
@@ -493,7 +493,7 @@
 .ad-subs-drawer-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(15, 23, 42, 0.45);
   backdrop-filter: blur(2px);
   z-index: 1000;
   display: flex;
@@ -585,7 +585,7 @@
 .ad-subs-modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(2px);
   z-index: 1100;
   display: flex;
@@ -613,69 +613,69 @@
    ========================================================================== */
 
 [data-theme="dark"] .ad-subs-header-card {
-  background: #0a0a0a;
-  border-color: var(--border-strong, #25394a);
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
   box-shadow: none;
 }
 
 [data-theme="dark"] .ad-subs-header-icon {
-  background: #121212;
-  border: 1px solid #25394a;
+  background: #142442;
+  border: 1px solid #244080;
   color: #38bdf8;
 }
 
 [data-theme="dark"] .ad-subs-header-text h2 {
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-subs-header-text p {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 [data-theme="dark"] .ad-subs-summary-strip {
-  background: #050505;
-  border-color: #1a2733;
-  color: var(--text-secondary, #a9cfe6);
+  background: #091322;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
 }
 
 [data-theme="dark"] .ad-subs-summary-label {
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-subs-controls-bar {
-  background: #0a0a0a;
-  border-color: var(--border-strong, #25394a);
+  background: #0d1a30;
+  border-color: var(--border-strong, #244080);
   box-shadow: none;
 }
 
 [data-theme="dark"] .ad-subs-cat-chip {
-  background: #121212;
-  border-color: #1a2733;
-  color: var(--text-secondary, #a9cfe6);
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
 }
 
 [data-theme="dark"] .ad-subs-cat-chip:hover {
-  background: #1a2733;
+  background: #1e3562;
   color: #ffffff;
 }
 
 [data-theme="dark"] .ad-subs-cat-chip.active {
-  background: #075985;
+  background: #1e3a8a;
   color: #ffffff;
-  border-color: #0ea5e9;
+  border-color: #3b82f6;
 }
 
 [data-theme="dark"] .ad-subs-controls-row-2 {
-  border-color: #1a2733;
+  border-color: #1e3562;
 }
 
 [data-theme="dark"] .ad-subs-level-track {
-  background: #050505;
-  border-color: #1a2733;
+  background: #091322;
+  border-color: #1e3562;
 }
 
 [data-theme="dark"] .ad-subs-level-btn {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 [data-theme="dark"] .ad-subs-level-btn:hover {
@@ -683,28 +683,28 @@
 }
 
 [data-theme="dark"] .ad-subs-level-btn.active {
-  background: #075985;
+  background: #1e3a8a;
   color: #ffffff;
-  border: 1px solid #0ea5e9;
+  border: 1px solid #3b82f6;
 }
 
 [data-theme="dark"] .ad-subs-search-box {
-  background: #121212;
-  border-color: #25394a;
+  background: #142442;
+  border-color: #244080;
 }
 
 [data-theme="dark"] .ad-subs-search-input {
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-subs-search-input::placeholder {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 /* Subscription Cards in Dark Mode */
 [data-theme="dark"] .ad-sub-card {
-  background: #0a0a0a;
-  border-color: #1a2733;
+  background: #0d1a30;
+  border-color: #1d3460;
   box-shadow: none;
 }
 
@@ -719,18 +719,18 @@
 }
 
 [data-theme="dark"] .ad-sub-card-title {
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-sub-card-meta {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 /* Corner Tags in Dark Mode */
 [data-theme="dark"] .ad-tag-individual {
-  background: #07202e;
-  color: #38bdf8;
-  border-color: #1a2733;
+  background: #0f2040;
+  color: #60a5fa;
+  border-color: #1d3460;
 }
 
 [data-theme="dark"] .ad-tag-team {
@@ -740,9 +740,9 @@
 }
 
 [data-theme="dark"] .ad-tag-project {
-  background: #083344;
-  color: #67e8f9;
-  border-color: #155e75;
+  background: #2e1065;
+  color: #c084fc;
+  border-color: #581c87;
 }
 
 [data-theme="dark"] .ad-tag-portfolio {
@@ -752,23 +752,23 @@
 }
 
 [data-theme="dark"] .ad-tag-enterprise {
-  background: #121212;
-  color: #e6f6ff;
-  border-color: #25394a;
+  background: #142442;
+  color: #e8f0ff;
+  border-color: #244080;
 }
 
 /* Card Body in Dark Mode */
 [data-theme="dark"] .ad-sub-card-body {
-  border-color: #1a2733;
-  color: var(--text-secondary, #a9cfe6);
+  border-color: #1e3562;
+  color: var(--text-secondary, #b8cde8);
 }
 
 [data-theme="dark"] .ad-sub-body-label {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 [data-theme="dark"] .ad-sub-body-value {
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-sub-expiring-badge {
@@ -780,29 +780,29 @@
 /* Card Actions in Dark Mode */
 [data-theme="dark"] .ad-btn-sub-action {
   background: transparent;
-  border-color: #25394a;
-  color: var(--text-secondary, #a9cfe6);
+  border-color: #244080;
+  color: var(--text-secondary, #b8cde8);
 }
 
 [data-theme="dark"] .ad-btn-sub-action:hover {
-  background: #121212;
+  background: #142442;
   color: #ffffff;
-  border-color: #0ea5e9;
+  border-color: #3b82f6;
 }
 
 [data-theme="dark"] .ad-btn-sub-upgrade {
-  background: #0a1a24;
-  border-color: #0284c7;
-  color: #bae6fd;
+  background: #1e1b4b;
+  border-color: #4f46e5;
+  color: #c7d2fe;
 }
 
 [data-theme="dark"] .ad-btn-sub-upgrade:hover {
-  background: #0c4a6e;
+  background: #312e81;
   color: #ffffff;
 }
 
 [data-theme="dark"] .ad-btn-sub-unsub {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 [data-theme="dark"] .ad-btn-sub-unsub:hover {
@@ -813,42 +813,42 @@
 
 /* Slide Drawer & Modals in Dark Mode */
 [data-theme="dark"] .ad-subs-drawer-panel {
-  background: #0a0a0a;
-  border-left-color: #25394a;
+  background: #0d1a30;
+  border-left-color: #244080;
 }
 
 [data-theme="dark"] .ad-subs-drawer-header {
-  background: #050505;
-  border-color: #1a2733;
+  background: #091322;
+  border-color: #1e3562;
 }
 
 [data-theme="dark"] .ad-subs-drawer-body {
-  background: #0a0a0a;
-  color: var(--text-primary, #e6f6ff);
+  background: #0d1a30;
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-subs-drawer-section-title {
-  color: var(--text-muted, #7fa6bf);
+  color: var(--text-muted, #8ea8d0);
 }
 
 [data-theme="dark"] .ad-subs-burn-gauge {
-  background: #121212;
-  border-color: #1a2733;
+  background: #142442;
+  border-color: #1e3562;
 }
 
 [data-theme="dark"] .ad-subs-burn-bar-track {
-  background: #050505;
+  background: #091322;
 }
 
 [data-theme="dark"] .ad-subs-metric-box {
-  background: #121212;
-  border-color: #1a2733;
-  color: var(--text-primary, #e6f6ff);
+  background: #142442;
+  border-color: #1e3562;
+  color: var(--text-primary, #e8f0ff);
 }
 
 [data-theme="dark"] .ad-subs-modal-card {
-  background: #0a0a0a;
-  border-color: #25394a;
+  background: #0d1a30;
+  border-color: #244080;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  color: var(--text-primary, #e6f6ff);
+  color: var(--text-primary, #e8f0ff);
 }

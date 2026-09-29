@@ -4,14 +4,14 @@ import WorkflowInbox from './pages/WorkflowInbox';
 import ExperienceZone from './pages/ExperienceZone';
 
 /**
- * Domain Module: Engineering Leader
+ * Domain Module: Engineering Leaders
  * Persona: Alex - Chief AI Officer / Head of Software Engineering
  * 
  * Strict Domain Isolation Boundary:
- * Mounts in the main content area based on the sidebar's activeTab.
+ * Mounts strictly below NavigationTabs based on activeTab.
  * Implements Section 5: Common Persona Experience (5.1 - 5.6)
  */
-export default function EngineeringLeadersDomain({ activeTab = 'dashboard', activeSubTab, onSubTabChange }) {
+export default function EngineeringLeadersDomain({ activeTab = 'dashboard' }) {
   if (activeTab === 'dashboard') {
     return <EngineeringDashboard />;
   }
@@ -21,7 +21,7 @@ export default function EngineeringLeadersDomain({ activeTab = 'dashboard', acti
   }
 
   if (activeTab === 'experience') {
-    return <ExperienceZone activeSubTab={activeSubTab} onSubTabChange={onSubTabChange} />;
+    return <ExperienceZone />;
   }
 
   return <EngineeringDashboard />;

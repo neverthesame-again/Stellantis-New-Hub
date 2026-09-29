@@ -258,7 +258,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
           <button
             onClick={() => setShowOnboardModal(true)}
             className="st-btn st-btn-primary"
-            style={{ padding: '8px 14px', fontSize: '0.8rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--hub-action)', border: 'none', color: '#ffffff', cursor: 'pointer' }}
+            style={{ padding: '8px 14px', fontSize: '0.8rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', background: 'var(--stellantis-action)', border: 'none', color: '#ffffff', cursor: 'pointer' }}
           >
             <Plus size={15} /> Request Model Onboarding
           </button>
@@ -411,13 +411,13 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '12px',
-                borderTop: model.riskRating === 'Critical' ? '3px solid #ef4444' : (model.riskRating === 'High' ? '3px solid #f59e0b' : '3px solid #0ea5e9')
+                borderTop: model.riskRating === 'Critical' ? '3px solid #ef4444' : (model.riskRating === 'High' ? '3px solid #f59e0b' : '3px solid #3b82f6')
               }}
             >
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
                 <div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--hub-action)' }}>{model.id}</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--stellantis-action)' }}>{model.id}</span>
                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>• {model.version}</span>
                   </div>
                   <h4 style={{ fontSize: '1.02rem', fontWeight: 800, margin: '2px 0 0 0', color: 'var(--text-primary)' }}>
@@ -481,7 +481,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
                   style={{
                     background: isCompared ? 'var(--badge-info-bg)' : 'transparent',
                     border: '1px solid var(--border-color)',
-                    color: isCompared ? 'var(--hub-action)' : 'var(--text-secondary)',
+                    color: isCompared ? 'var(--stellantis-action)' : 'var(--text-secondary)',
                     borderRadius: '4px',
                     padding: '5px 10px',
                     fontSize: '0.72rem',
@@ -508,7 +508,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
                   <button
                     onClick={() => onToggleSubscription && onToggleSubscription(model.id)}
                     style={{
-                      background: model.subscribed ? 'var(--badge-success-bg)' : 'var(--hub-action)',
+                      background: model.subscribed ? 'var(--badge-success-bg)' : 'var(--stellantis-action)',
                       color: model.subscribed ? '#10b981' : '#ffffff',
                       border: model.subscribed ? '1px solid #10b981' : 'none',
                       borderRadius: '4px',
@@ -544,7 +544,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
           <div className="ad-modal-dialog" style={{ maxWidth: '960px' }} onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <ArrowLeftRight size={20} color="var(--hub-action)" />
+                <ArrowLeftRight size={20} color="var(--stellantis-action)" />
                 <span className="ad-modal-title">Side-by-Side Model Benchmark Comparison ({compareList.length} Models)</span>
               </div>
               <button onClick={() => setShowCompareModal(false)} className="ad-modal-close"><X size={16} /></button>
@@ -648,7 +648,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Plus size={20} color="var(--hub-action)" />
+                <Plus size={20} color="var(--stellantis-action)" />
                 <span className="ad-modal-title">Request Enterprise Model Onboarding</span>
               </div>
               <button onClick={() => setShowOnboardModal(false)} className="ad-modal-close"><X size={16} /></button>
@@ -681,8 +681,8 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
                             fontWeight: 700,
                             borderRadius: '4px',
                             cursor: 'pointer',
-                            border: isSelected ? '1px solid var(--hub-action)' : '1px solid var(--border-color)',
-                            background: isSelected ? 'var(--hub-navy)' : 'var(--bg-surface)',
+                            border: isSelected ? '1px solid var(--stellantis-action)' : '1px solid var(--border-color)',
+                            background: isSelected ? 'var(--stellantis-navy)' : 'var(--bg-surface)',
                             color: isSelected ? '#ffffff' : 'var(--text-primary)',
                             transition: 'all 0.15s ease'
                           }}
@@ -762,7 +762,7 @@ export default function EngineeringModelCatalogue({ models = [], onToggleSubscri
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Cpu size={20} color="var(--hub-action)" />
+                <Cpu size={20} color="var(--stellantis-action)" />
                 <div>
                   <span className="ad-modal-title">{selectedModelDetail.name}</span>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{selectedModelDetail.version} • {selectedModelDetail.provider}</div>
