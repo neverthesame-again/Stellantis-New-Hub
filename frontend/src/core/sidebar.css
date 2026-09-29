@@ -105,14 +105,14 @@
 }
 
 .hub-sidebar-item.active {
-  background: var(--hub-action);
+  background: var(--stellantis-action);
   color: #ffffff;
   box-shadow: 0 3px 10px rgba(2, 132, 199, 0.28);
 }
 
 .hub-sidebar-item:focus-visible,
 .hub-sidebar-subitem:focus-visible {
-  outline: 2px solid var(--hub-accent);
+  outline: 2px solid var(--stellantis-accent);
   outline-offset: 1px;
 }
 
@@ -159,7 +159,7 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--hub-blue-bright);
+  background: var(--stellantis-blue-bright);
 }
 
 /* Sub-pages (AI Experience Zone) */
@@ -186,12 +186,12 @@
 
 .hub-sidebar-subitem.active {
   background: var(--badge-info-bg);
-  color: var(--hub-accent);
+  color: var(--stellantis-accent);
   border-color: var(--badge-info-border);
 }
 
 .hub-sidebar-subitem.active .hub-sidebar-badge.subtle {
-  color: var(--hub-accent);
+  color: var(--stellantis-accent);
 }
 
 .hub-sidebar-footer {
