@@ -32,6 +32,7 @@ import '../engineeringExperience.css';
  */
 export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
   const [data, setData] = useState(engineeringExperienceData);
+  const currentSubTab = activeSubTab || 'persona';
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -306,7 +307,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)
           ========================================================= */}
-      {activeSubTab === 'persona' && (
+      {currentSubTab === 'persona' && (
         <EngineeringPersonaDashboard
           initialLevel={targetDrillDownLevel}
           onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
@@ -317,7 +318,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 2: 5.2 WORKFLOW INBOX (Dedicated Experience Zone Console)
           ========================================================= */}
-      {activeSubTab === 'inbox' && (
+      {currentSubTab === 'inbox' && (
         <EngineeringExpInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
@@ -329,7 +330,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 3: 5.3 MODEL CATALOGUE (8 Enterprise Models & Comparisons)
           ========================================================= */}
-      {activeSubTab === 'models' && (
+      {currentSubTab === 'models' && (
         <EngineeringModelCatalogue
           models={data.models}
           onToggleSubscription={handleToggleModelSubscription}
@@ -341,7 +342,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 4: 5.4 AGENT AND AGENTIC WORKFLOW CATALOGUE (8 Registered Agents)
           ========================================================= */}
-      {activeSubTab === 'agents' && (
+      {currentSubTab === 'agents' && (
         <EngineeringAgentCatalogue
           agents={data?.agents || engineeringExperienceData.agents}
           onSubscribeAgent={handleSubscribeAgent}
@@ -356,7 +357,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 5: 5.5 AI TOOLS CATALOGUE (10 Lifecycle Disciplines)
           ========================================================= */}
-      {activeSubTab === 'tools' && (
+      {currentSubTab === 'tools' && (
         <EngineeringToolsCatalogue
           tools={data?.tools || engineeringExperienceData.tools}
           onToggleSubscribeTool={handleToggleSubscribeTool}
@@ -367,7 +368,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 6: 5.6 MY SUBSCRIPTIONS (Consolidated Table across 5 Levels)
           ========================================================= */}
-      {activeSubTab === 'subscriptions' && (
+      {currentSubTab === 'subscriptions' && (
         <EngineeringSubscriptions
           subscriptions={data.mySubscriptions}
           onSubscriptionAction={handleSubscriptionAction}

@@ -36,6 +36,9 @@ export default function Sidebar({
         return;
       }
       setExperienceOpen(true);
+      if ((!activeSubTab || !subPages.some(s => s.id === activeSubTab)) && onSubTabChange && subPages.length > 0) {
+        onSubTabChange(subPages[0].id);
+      }
     }
     onTabChange(id);
   };

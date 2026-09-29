@@ -1,4 +1,17 @@
-import { LayoutDashboard, Inbox, Sparkles, Sliders, Cpu, Bot, Wrench, BookmarkCheck, Play } from 'lucide-react';
+import { 
+  LayoutDashboard, 
+  Inbox, 
+  Sparkles, 
+  Sliders, 
+  Cpu, 
+  Bot, 
+  Wrench, 
+  BookmarkCheck, 
+  Play,
+  PlayCircle,
+  Gauge,
+  Scale
+} from 'lucide-react';
 import { amsExperienceData } from '../domains/ai-for-ams/mockData.js';
 
 // Top-level pages shown in the sidebar for every domain
@@ -10,20 +23,24 @@ export const MAIN_PAGES = [
 
 export const INBOX_COUNTS = {
   'AI for AMS': 7,
+  'Engineering leaders': 3,
   'Engineering leader': 3,
   'AI for AD': 9
 };
 
+const ENG_SUBPAGES = [
+  { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders,       badge: '9' },
+  { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '7' },
+  { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
+  { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: '8' },
+  { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '10' },
+  { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '14' }
+];
+
 // AI Experience Zone sub-pages per domain — the first entry is the default
 export const EXPERIENCE_SUBPAGES = {
-  'Engineering leader': [
-    { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders,       badge: '9' },
-    { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '7' },
-    { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
-    { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: '8' },
-    { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '10' },
-    { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '14' }
-  ],
+  'Engineering leaders': ENG_SUBPAGES,
+  'Engineering leader': ENG_SUBPAGES,
   'AI for AMS': [
     { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: String(amsExperienceData.models.length) },
     { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: String(amsExperienceData.agents.length) },
@@ -36,6 +53,9 @@ export const EXPERIENCE_SUBPAGES = {
     { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '9' },
     { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
     { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: '8' },
+    { id: 'harness',       label: 'AI Harness',         icon: PlayCircle,    badge: '1' },
+    { id: 'evaluation',    label: 'Evaluation Center',  icon: Gauge,         badge: '5' },
+    { id: 'governance',    label: 'Governance Center',  icon: Scale,         badge: '4' },
     { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '23' },
     { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '20' }
   ]

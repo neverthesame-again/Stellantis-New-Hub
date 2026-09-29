@@ -122,12 +122,26 @@ export const DOMAIN_ROLE_MAP = {
   ]
 };
 
+// Ensure both plural and singular forms resolve seamlessly
+DOMAIN_PERSONA_MAP['Engineering leader'] = DOMAIN_PERSONA_MAP['Engineering leaders'];
+DOMAIN_ROLE_MAP['Engineering leader'] = DOMAIN_ROLE_MAP['Engineering leaders'];
+
 /**
  * CustomSelect - Sleek, accessible, enterprise dropdown
  */
 export function CustomSelect({ label, value, onChange, options, minWidth = '180px', fullWidth = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const triggerRef = useRef(null);
+  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
+
+  // Recalculate menu position when opening (for fixed-position mode inside sidebar)
+  useEffect(() => {
+    if (isOpen && fullWidth && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setMenuPos({ top: rect.bottom + 6, left: rect.left });
+    }
+  }, [isOpen, fullWidth]);
 
   // Close when clicking outside or pressing Escape
   useEffect(() => {
@@ -151,6 +165,39 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
   const selectedOption = options.find((opt) => opt.value === value) || options[0];
   const SelectedIcon = selectedOption?.icon;
 
+  const menuStyle = fullWidth
+    ? {
+        position: 'fixed',
+        top: `${menuPos.top}px`,
+        left: `${menuPos.left}px`,
+        minWidth: '280px',
+        width: 'max-content',
+        maxWidth: '340px',
+        boxSizing: 'border-box',
+        background: 'var(--bg-surface-elevated)',
+        border: '1px solid var(--border-color)',
+        borderRadius: '12px',
+        boxShadow: 'var(--shadow-lg)',
+        padding: '6px',
+        zIndex: 9999,
+        animation: 'fadeIn 0.15s ease-out'
+      }
+    : {
+        position: 'absolute',
+        top: 'calc(100% + 6px)',
+        right: 0,
+        minWidth: '270px',
+        width: 'auto',
+        boxSizing: 'border-box',
+        background: 'var(--bg-surface-elevated)',
+        border: '1px solid var(--border-color)',
+        borderRadius: '12px',
+        boxShadow: 'var(--shadow-lg)',
+        padding: '6px',
+        zIndex: 350,
+        animation: 'fadeIn 0.15s ease-out'
+      };
+
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       {label && (
@@ -167,6 +214,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
       <div ref={dropdownRef} style={{ position: 'relative' }}>
         {/* Trigger Button */}
         <button
+          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           style={{
@@ -227,21 +275,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
 
         {/* Floating Custom Menu */}
         {isOpen && (
-          <div style={{
-            position: 'absolute',
-            top: 'calc(100% + 6px)',
-            ...(fullWidth ? { left: 0 } : { right: 0 }),
-            minWidth: fullWidth ? '100%' : '270px',
-            width: fullWidth ? '100%' : 'auto',
-            boxSizing: 'border-box',
-            background: 'var(--bg-surface-elevated)',
-            border: '1px solid var(--border-color)',
-            borderRadius: '12px',
-            boxShadow: 'var(--shadow-lg)',
-            padding: '6px',
-            zIndex: 350,
-            animation: 'fadeIn 0.15s ease-out'
-          }}>
+          <div style={menuStyle}>
             {options.map((option) => {
               const isSelected = option.value === value;
               const OptionIcon = option.icon;

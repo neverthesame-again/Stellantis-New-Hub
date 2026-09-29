@@ -77,15 +77,17 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
       {/* 3-COLUMN EXECUTIVE DASHBOARD GRID */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-        gap: '24px',
-        alignItems: 'start'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+        gap: '20px',
+        alignItems: 'start',
+        width: '100%',
+        minWidth: 0
       }}>
 
         {/* ========================================================= */}
         {/* COLUMN 1: INCIDENTS, MTTD/MTTR & RECURRING CLUSTERS       */}
         {/* ========================================================= */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', minWidth: 0 }}>
           
           {/* 1. Incident Volume and Severity */}
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -313,7 +315,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
         {/* ========================================================= */}
         {/* COLUMN 2: PROBLEM CONVERSION, TECH DEBT & AUTOMATION RATE */}
         {/* ========================================================= */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', minWidth: 0 }}>
           
           {/* 4. Problem-to-change conversion */}
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -521,7 +523,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
         {/* ========================================================= */}
         {/* COLUMN 3: STABILITY, SLA & PRODUCTIVITY / COST REDUCTION  */}
         {/* ========================================================= */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', minWidth: 0 }}>
           
           {/* 6. Application stability */}
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>

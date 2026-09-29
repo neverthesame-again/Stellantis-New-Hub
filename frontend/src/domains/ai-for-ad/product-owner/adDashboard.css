@@ -14,9 +14,11 @@
 /* ─── Decks Grid Layout ─── */
 .ad-deck-1 {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 390px;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 20px;
   align-items: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .ad-deck-1 > * {
@@ -26,35 +28,42 @@
 
 .ad-deck-2 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 20px;
   align-items: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .ad-deck-2 > * {
+  min-width: 0;
   height: 100%;
 }
 
 .ad-deck-3 {
   display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: 24px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 20px;
   align-items: stretch;
+  width: 100%;
+  min-width: 0;
 }
 
 .ad-deck-3 > * {
+  min-width: 0;
   height: 100%;
 }
 
 .ad-deck-4 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 20px;
+  width: 100%;
+  min-width: 0;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1350px) {
   .ad-deck-1,
-  .ad-deck-2,
   .ad-deck-3 {
     grid-template-columns: 1fr;
   }

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Header from './core/Header';
-import WorkspaceBar, { DOMAIN_PERSONA_MAP, DOMAIN_ROLE_MAP } from './core/WorkspaceBar';
+import { DOMAIN_PERSONA_MAP, DOMAIN_ROLE_MAP } from './core/WorkspaceBar';
+import PersonaHero from './core/PersonaHero';
 import Sidebar from './core/Sidebar';
+import { defaultSubPage, EXPERIENCE_SUBPAGES } from './core/navConfig';
 
 // Domain Modules
 import AmsDashboard from './domains/ai-for-ams/pages/AmsDashboard';
@@ -23,9 +25,6 @@ function AuthenticatedApp() {
   const [activeTab, setActiveTab] = useState(() => {
     return sessionStorage.getItem('stellantis_active_tab') || 'dashboard';
   });
-  const [activeSubTab, setActiveSubTab] = useState(() => {
-    return sessionStorage.getItem('stellantis_active_subtab') || null;
-  });
 
   // Parse user's registered domains/roles
   const allowedDomains = user?.domain ? user.domain.split(', ') : ['AI for AMS'];
@@ -40,6 +39,25 @@ function AuthenticatedApp() {
     const saved = sessionStorage.getItem('stellantis_role');
     return saved && allowedRoles.includes(saved) ? saved : allowedRoles[0];
   });
+
+  const [activeSubTab, setActiveSubTab] = useState(() => {
+    return sessionStorage.getItem('stellantis_active_subtab') || defaultSubPage(selectedDomain);
+  });
+
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
+    try {
+      const saved = localStorage.getItem('aihub_sidebar_collapsed');
+      if (saved !== null) return saved === 'true';
+    } catch {}
+    return window.innerWidth < 900;
+  });
+
+  const toggleSidebar = () => {
+    setSidebarCollapsed(prev => {
+      try { localStorage.setItem('aihub_sidebar_collapsed', String(!prev)); } catch {}
+      return !prev;
+    });
+  };
 
   useEffect(() => {
     sessionStorage.setItem('stellantis_active_tab', activeTab);
@@ -61,7 +79,6 @@ function AuthenticatedApp() {
     sessionStorage.setItem('stellantis_role', selectedRole);
   }, [selectedRole]);
 
-
   // Toggle theme and update data-theme attribute on document root
   const toggleTheme = () => {
     const nextTheme = theme === 'light' ? 'dark' : 'light';
@@ -73,20 +90,30 @@ function AuthenticatedApp() {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
-  // When domain changes, automatically sync default role
+  // When domain changes, automatically sync default role and default subpage
   const handleDomainChange = (domain) => {
     setSelectedDomain(domain);
     setActiveTab('dashboard');
-    setActiveSubTab(null);
+    setActiveSubTab(defaultSubPage(domain));
     const persona = DOMAIN_PERSONA_MAP[domain];
     if (persona) {
-      // Find the first allowed role that belongs to this domain
       const validRole = allowedRoles.find(r => DOMAIN_ROLE_MAP[domain]?.some(opt => opt.value === r || opt === r));
       if (validRole) {
         setSelectedRole(validRole);
       } else {
-        setSelectedRole(persona.role); // Fallback
+        setSelectedRole(persona.role);
       }
+    }
+  };
+
+  const handleRoleChange = (role) => {
+    setSelectedRole(role);
+    setActiveTab('dashboard');
+    // If the role belongs to another domain, switch to that domain
+    const targetDomain = Object.keys(DOMAIN_ROLE_MAP).find(d => DOMAIN_ROLE_MAP[d]?.some(opt => opt.value === role || opt === role));
+    if (targetDomain && targetDomain !== selectedDomain) {
+      setSelectedDomain(targetDomain);
+      setActiveSubTab(defaultSubPage(targetDomain));
     }
   };
 
@@ -102,32 +129,36 @@ function AuthenticatedApp() {
         onPersonaChange={handleDomainChange}
       />
 
-      <div style={{ display: 'flex', width: '100%', minHeight: 'calc(100vh - 60px)' }}>
+      <div className="app-body">
         {/* Left Navigation Sidebar */}
         <Sidebar
           selectedDomain={selectedDomain}
           onDomainChange={handleDomainChange}
           selectedRole={selectedRole}
-          onRoleChange={(role) => {
-            setSelectedRole(role);
-            setActiveTab('dashboard');
-            setActiveSubTab(null);
-          }}
+          onRoleChange={handleRoleChange}
           allowedDomains={allowedDomains}
           allowedRoles={allowedRoles}
           activeTab={activeTab}
           onTabChange={setActiveTab}
           activeSubTab={activeSubTab}
           onSubTabChange={setActiveSubTab}
+          collapsed={sidebarCollapsed}
+          onToggleCollapsed={toggleSidebar}
         />
 
-        <main className="main-content" style={{ flex: 1, overflowX: 'hidden' }}>
+        <main className="main-content">
+          {/* Persona Hero Context Banner & High-Level KPIs */}
+          <PersonaHero
+            selectedDomain={selectedDomain}
+            selectedRole={selectedRole}
+          />
+
           {/* DOMAIN ROUTING WITH BOUNDARY ISOLATION */}
           {selectedDomain === 'AI for AMS' && (
             <>
               {activeTab === 'dashboard' && (
                 <AmsDashboard
-                  onNavigateToInbox={() => { setActiveTab('inbox'); setActiveSubTab(null); }}
+                  onNavigateToInbox={() => { setActiveTab('inbox'); }}
                   onNavigateToExperience={() => { setActiveTab('experience'); setActiveSubTab('models'); }}
                 />
               )}
@@ -136,7 +167,7 @@ function AuthenticatedApp() {
             </>
           )}
 
-          {selectedDomain === 'Engineering leaders' && (
+          {(selectedDomain === 'Engineering leaders' || selectedDomain === 'Engineering leader') && (
             <EngineeringLeadersDomain activeTab={activeTab} activeSubTab={activeSubTab} onSubTabChange={setActiveSubTab} />
           )}
 

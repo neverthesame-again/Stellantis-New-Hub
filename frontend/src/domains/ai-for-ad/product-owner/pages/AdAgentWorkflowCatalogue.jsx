@@ -380,6 +380,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
   const [drawerAgent, setDrawerAgent] = useState(null);
   const [subscribeModalAgent, setSubscribeModalAgent] = useState(null);
   const [subscribeProject, setSubscribeProject] = useState('Release 4.2 Program');
+  const [registrationModalOpen, setRegistrationModalOpen] = useState(false);
 
   // Catalogue agents + studio-only agents (registered in the Onboarding Studio, catalogueId === null)
   const agentsList = useMemo(() => [

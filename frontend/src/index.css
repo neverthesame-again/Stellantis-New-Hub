@@ -202,11 +202,12 @@ body {
 }
 
 .main-content {
-  flex: 1;
-  max-width: 1480px;
-  margin: 0 auto;
+  flex: 1 1 0%;
+  min-width: 0;
+  max-width: 100%;
   width: 100%;
-  padding: 0 28px 80px 28px;
+  padding: 20px 24px 80px 24px;
+  box-sizing: border-box;
 }
 
 /* ─── Cards ─── */
@@ -216,6 +217,8 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .st-card:hover {

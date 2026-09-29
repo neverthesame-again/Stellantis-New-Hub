@@ -142,7 +142,8 @@ export default function EngineeringDashboard() {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    gap: '12px'
+    gap: '12px',
+    minWidth: 0
   };
 
   const cardScrollAreaStyle = {
@@ -228,8 +229,10 @@ export default function EngineeringDashboard() {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '12px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+          gap: '12px',
+          width: '100%',
+          minWidth: 0
         }}>
           {objectives.map((obj) => (
             <div
@@ -288,8 +291,10 @@ export default function EngineeringDashboard() {
       {/* ========================================================= */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
-        gap: '20px'
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+        gap: '20px',
+        width: '100%',
+        minWidth: 0
       }}>
 
         {/* --------------------------------------------------------- */}

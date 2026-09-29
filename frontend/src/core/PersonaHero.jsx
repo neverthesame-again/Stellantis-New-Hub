@@ -7,7 +7,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
   const persona = DOMAIN_PERSONA_MAP[selectedDomain] || DOMAIN_PERSONA_MAP['AI for AMS'];
 
   return (
-    <div style={{ marginBottom: '20px' }}>
+    <div style={{ marginBottom: '20px', width: '100%', minWidth: 0, boxSizing: 'border-box' }}>
       {/* Top Banner Card */}
       <div style={{
         background: 'var(--bg-surface)',
@@ -18,12 +18,13 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         alignItems: 'center',
         justifyContent: 'space-between',
         boxShadow: 'var(--shadow-sm)',
-        gap: '20px',
+        gap: '16px',
         width: '100%',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
+        flexWrap: 'wrap'
       }}>
         {/* Left Title & Tagline */}
-        <div style={{ flex: '1 1 auto', minWidth: '300px', maxWidth: '500px' }}>
+        <div style={{ flex: '1 1 280px', minWidth: '220px', maxWidth: '560px' }}>
           <h1 style={{
             fontSize: '1.25rem',
             fontWeight: 700,
@@ -53,40 +54,39 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         <div style={{
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-end',
-          gap: '12px',
-          flexShrink: 0,
-          marginLeft: 'auto'
+          alignItems: 'flex-start',
+          gap: '10px',
+          flex: '0 1 auto',
+          minWidth: 0
         }}>
           {/* Row 1: Platform | Shift | Shift Progress */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
             <div>
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Platform</div>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{persona.platform}</div>
             </div>
 
-            <div style={{ width: '1px', height: '26px', background: 'var(--border-color)' }} />
+            <div style={{ width: '1px', height: '22px', background: 'var(--border-color)' }} />
 
             <div>
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Shift</div>
               <div style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{persona.shift}</div>
             </div>
 
-            <div style={{ width: '1px', height: '26px', background: 'var(--border-color)' }} />
+            <div style={{ width: '1px', height: '22px', background: 'var(--border-color)' }} />
 
             <div>
               <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Shift Progress</div>
               <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>{persona.shiftProgress}</div>
             </div>
-
-            <div style={{ width: '1px', height: '26px', background: 'var(--border-color)' }} />
           </div>
 
           {/* Row 2: Info Chips horizontally in a row */}
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            gap: '8px'
+            gap: '8px',
+            flexWrap: 'wrap'
           }}>
             {persona.infoChips && persona.infoChips.map((chip, i) => (
               <div key={i} style={{
@@ -96,7 +96,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
                 background: chip.bg || 'var(--bg-subtle)',
                 border: `1px solid ${chip.border || 'var(--border-color)'}`,
                 borderRadius: 'var(--radius-full)',
-                padding: '5px 14px',
+                padding: '4px 12px',
                 fontSize: '0.78rem',
                 fontWeight: 700,
                 color: chip.color || 'var(--text-primary)',
@@ -129,7 +129,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         flexWrap: 'wrap',
         gap: '16px'
       }}>
-        <div>
+        <div style={{ flex: '1 1 280px', minWidth: '220px' }}>
           <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
             Good morning, {user?.full_name?.split(' ')[0] || 'User'}
           </h2>
@@ -139,7 +139,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         </div>
 
         {/* Big KPI Metric Boxes */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
           {persona.kpis.map((kpi, idx) => (
             <div
               key={idx}

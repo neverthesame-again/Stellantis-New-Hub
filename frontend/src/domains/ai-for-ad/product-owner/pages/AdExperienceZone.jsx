@@ -40,18 +40,21 @@ import '../adPersonaDashboard.css';
  * Catalogue. All Agent Studio features share state via AgentStudioProvider.
  */
 export default function AdExperienceZone({ activeSubTab, onSubTabChange, onNavigateToInbox }) {
+  const currentSubTab = activeSubTab || 'persona';
   return (
     <AgentStudioProvider onNavigate={onSubTabChange}>
       <ExperienceZoneTabs
-        activeSubTab={activeSubTab}
+        activeSubTab={currentSubTab}
         setActiveSubTab={onSubTabChange}
+        onSubTabChange={onSubTabChange}
         onNavigateToInbox={onNavigateToInbox}
       />
     </AgentStudioProvider>
   );
 }
 
-function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onNavigateToInbox }) {
+function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onSubTabChange, onNavigateToInbox }) {
+  const currentSubTab = activeSubTab || 'persona';
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
   const { agents, harnessRuns } = useAgentStudio();
 
@@ -77,7 +80,7 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onNavigateToInbox }
 
 
       {/* SUB-TAB 1: PERSONA DASHBOARD (Fully Implemented) */}
-      {activeSubTab === 'persona' && (
+      {currentSubTab === 'persona' && (
         <AdPersonaDashboard
           initialLevel={targetDrillDownLevel}
           onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
@@ -86,7 +89,7 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onNavigateToInbox }
       )}
 
       {/* SUB-TAB 2: WORKFLOW INBOX (Product Manager, AI for AD) */}
-      {activeSubTab === 'inbox' && (
+      {currentSubTab === 'inbox' && (
         <AdPmWorkflowInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
@@ -96,12 +99,12 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onNavigateToInbox }
       )}
 
       {/* SUB-TAB 3: MODEL CATALOGUE (Product Manager, AI for AD) */}
-      {activeSubTab === 'models' && (
+      {currentSubTab === 'models' && (
         <AdModelCatalogue />
       )}
 
       {/* SUB-TAB 4: AGENT & WORKFLOW CATALOGUE (Product Manager, AI for AD) */}
-      {activeSubTab === 'agents' && (
+      {currentSubTab === 'agents' && (
         <AdAgentWorkflowCatalogue
           onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
           onNavigateToTrace={() => {
@@ -112,27 +115,27 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onNavigateToInbox }
       )}
 
       {/* SUB-TAB 7: AI HARNESS (F3) */}
-      {activeSubTab === 'harness' && (
+      {currentSubTab === 'harness' && (
         <AdAgentHarness />
       )}
 
       {/* SUB-TAB 8: EVALUATION CENTER (F5) */}
-      {activeSubTab === 'evaluation' && (
+      {currentSubTab === 'evaluation' && (
         <AdAgentEvaluation />
       )}
 
       {/* SUB-TAB 9: GOVERNANCE CENTER (F4) */}
-      {activeSubTab === 'governance' && (
+      {currentSubTab === 'governance' && (
         <AdAgentGovernance />
       )}
 
       {/* SUB-TAB 5: AI TOOLS CATALOGUE (Product Manager, AI for AD) */}
-      {activeSubTab === 'tools' && (
+      {currentSubTab === 'tools' && (
         <AdAiToolsCatalogue />
       )}
 
       {/* SUB-TAB 6: MY SUBSCRIPTIONS (Product Manager, AI for AD) */}
-      {activeSubTab === 'subscriptions' && (
+      {currentSubTab === 'subscriptions' && (
         <AdMySubscriptions />
       )}
     </div>
