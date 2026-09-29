@@ -1430,4 +1430,65 @@
   border-color: #244080;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
   color: var(--text-primary, #e8f0ff);
+
+}
+
+/* ==========================================================================
+   Onboarding Studio integration (F1/F2) — "Onboarding x/9 · stage" badge
+   ========================================================================== */
+.ad-agent-onb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid #bae6fd;
+  background: #f0f9ff;
+  color: #0369a1;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.ad-agent-onb-badge:hover {
+  border-color: #0284c7;
+  background: #e0f2fe;
+}
+
+.ad-agent-onb-badge.is-published {
+  border-color: #a7f3d0;
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.ad-agent-onb-badge.is-published:hover {
+  border-color: #059669;
+}
+
+.ad-agent-onb-badge.is-compact {
+  align-self: flex-start;
+  margin: 2px 0 4px;
+}
+
+[data-theme="dark"] .ad-agent-onb-badge {
+  border-color: rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.1);
+  color: #7dd3fc;
+}
+
+[data-theme="dark"] .ad-agent-onb-badge:hover {
+  border-color: #38bdf8;
+  background: rgba(56, 189, 248, 0.18);
+}
+
+[data-theme="dark"] .ad-agent-onb-badge.is-published {
+  border-color: rgba(52, 211, 153, 0.35);
+  background: rgba(52, 211, 153, 0.1);
+  color: #6ee7b7;
+
 }

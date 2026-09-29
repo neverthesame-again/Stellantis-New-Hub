@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Bot,
   Search,
@@ -6,39 +6,88 @@ import {
   Layers,
   ShieldCheck,
   AlertTriangle,
-  CheckCircle2,
-  ArrowRight,
   ExternalLink,
   X,
-  Sparkles,
-  Clock,
-  Database,
   Lock,
-  FileText,
-  RotateCcw,
-  Check,
-  ChevronRight,
   Info,
   Plus,
-  ChevronDown,
-  Gauge,
-  Cpu,
-  Activity,
-  Zap,
-  Kanban
+  Kanban,
+  Rocket
 } from 'lucide-react';
+import { useAgentStudio } from '../agent-studio/useAgentStudio';
+import AdOnboardingStudio from '../agent-studio/pages/AdOnboardingStudio';
+import { getStage, RUNTIMES, SKILL_LIBRARY, KNOWLEDGE_SOURCES, TOOLS, WORKFLOWS } from '../agent-studio/agentStudioData';
 import '../adAgentCatalogue.css';
 
 // Facet Constants
 const ALL_LIFECYCLES = ['Active', 'Experimental', 'Suspended', 'Retired'];
 const ALL_DOMAINS = [
   'Perception Engineering',
+  'Planning & Control',
+  'Requirements & Functional Safety',
+  'Validation & HIL',
   'Product Management',
   'Supply Chain / Dependency',
   'Release Engineering',
   'Procurement',
   'Diagnostics'
 ];
+
+// Onboarding Studio sub-domain → catalogue domain facet
+const SUBDOMAIN_TO_DOMAIN = {
+  'Perception': 'Perception Engineering',
+  'Planning & Control': 'Planning & Control',
+  'Requirements & Safety': 'Requirements & Functional Safety',
+  'Validation & HIL': 'Validation & HIL',
+  'Release & Operations': 'Release Engineering'
+};
+
+const nameOf = (list, id) => list.find((x) => x.id === id)?.name || id;
+
+/** Maps a studio-only agent (catalogueId === null) to the catalogue card shape. */
+function studioAgentToCard(a) {
+  const stage = getStage(a.stage);
+  const runtime = RUNTIMES.find((r) => r.id === a.runtime.type);
+  const published = a.stage >= 9;
+  const lifecycleStage = a.operationalState === 'Suspended' ? 'Suspended'
+    : a.operationalState === 'Retired' ? 'Retired'
+      : published ? 'Active' : 'Experimental';
+  const ev = a.evaluation;
+  const risk = ['C', 'D'].includes(a.asil) ? 'High Risk' : a.asil === 'QM' ? 'Low Risk' : 'Medium Risk';
+  return {
+    id: a.id,
+    studioOnly: true,
+    name: a.name,
+    type: published ? 'Autonomous Agent' : 'Onboarding Candidate Agent',
+    lifecycleStage,
+    domain: SUBDOMAIN_TO_DOMAIN[a.subDomain] || 'Release Engineering',
+    projectType: a.asil === 'QM' ? 'Non-Safety-Critical' : 'Safety-Critical',
+    autonomy: 'Supervised (Human-in-Loop)',
+    risk,
+    statusBadge: published ? 'Active in Production' : `Onboarding • ${stage.label}`,
+    desc: a.purpose,
+    stamps: [
+      { label: 'Lifecycle', val: `${a.stage}/9`, note: stage.label },
+      { label: 'Eval Score', val: ev ? `${ev.score}/100` : '—', note: ev ? (ev.failed ? 'Below gate' : 'Gate passed') : 'Not evaluated' },
+      { label: 'Runtime', val: runtime?.label || a.runtime.type, note: a.runtime.status === 'connected' ? `${a.runtime.latencyMs} ms` : a.runtime.status }
+    ],
+    dependencies: a.skills.length ? a.skills.map((id) => nameOf(SKILL_LIBRARY, id)) : ['No certified skills bound yet'],
+    notice: published ? null : `Onboarding Studio: stage ${a.stage}/9 (${stage.label}), ASIL ${a.asil}, ${a.program}. Not yet certified — cannot be subscribed until published.`,
+    purpose: a.purpose,
+    owner: a.team,
+    inputs: a.knowledge.length ? a.knowledge.map((id) => nameOf(KNOWLEDGE_SOURCES, id)).join(', ') : 'No knowledge sources bound yet.',
+    outputs: a.workflows.length ? `Mapped workflows: ${a.workflows.map((id) => nameOf(WORKFLOWS, id)).join(', ')}` : 'Not yet mapped to an agentic workflow.',
+    tools: a.tools.length ? a.tools.map((id) => nameOf(TOOLS, id)).join(', ') : 'No tools connected yet.',
+    permissions: `${runtime?.label || a.runtime.type} runtime (${a.runtime.status}) · ${a.tools.length} tool grant(s) · approver ${a.approver || 'unassigned'}`,
+    evalResults: ev
+      ? [
+        { metric: 'Overall Evaluation Score', val: `${ev.score}/100`, delta: ev.failed ? 'Below pass threshold' : 'Pass threshold met' },
+        { metric: 'Safety Compliance', val: String(ev.dims.safety), delta: `ASIL ${a.asil} gate` },
+        { metric: 'Traceability', val: String(ev.dims.traceability), delta: 'ASPICE SWE.1–SWE.6' }
+      ]
+      : [{ metric: 'Evaluation', val: 'Pending', delta: 'Runs in the Evaluation Center at stage 5' }]
+  };
+}
 const ALL_PROJECT_TYPES = ['Safety-Critical', 'Non-Safety-Critical'];
 const ALL_AUTONOMY = ['Supervised (Human-in-Loop)', 'Autonomous', 'Static Rule-Based'];
 
@@ -288,7 +337,29 @@ const INITIAL_AGENTS = [
 
 export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigateToTrace }) {
   // Sub-tabs Navigation
-  const [activeSubtab, setActiveSubtab] = useState('catalog'); // 'catalog' | 'lifecycle'
+  const [activeSubtab, setActiveSubtab] = useState('catalog'); // 'catalog' | 'lifecycle' | 'onboarding'
+  const [registerToken, setRegisterToken] = useState(null);
+
+  // Shared Agent Studio state (F1–F5)
+  const { agents: studioAgents, pendingCatalogueView, consumeCatalogueView, setFocusAgentId } = useAgentStudio();
+
+  // Other Experience Zone tabs deep-link here via navigate({ tab: 'agents', view: 'onboarding', agentId }).
+  // Switch the view during render (no extra effect pass), then consume the request.
+  if (pendingCatalogueView === 'onboarding' && activeSubtab !== 'onboarding') {
+    setActiveSubtab('onboarding');
+  }
+  useEffect(() => {
+    if (pendingCatalogueView === 'onboarding') consumeCatalogueView();
+  }, [pendingCatalogueView, consumeCatalogueView]);
+
+  const openOnboarding = (studioId) => {
+    if (studioId) setFocusAgentId(studioId);
+    setActiveSubtab('onboarding');
+  };
+
+  const studioAgentFor = (card) => (card
+    ? studioAgents.find((s) => s.id === card.id || (s.catalogueId && s.catalogueId === card.id))
+    : null);
 
   // Toast notification state
   const [toastMessage, setToastMessage] = useState(null);
@@ -309,10 +380,34 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
   const [drawerAgent, setDrawerAgent] = useState(null);
   const [subscribeModalAgent, setSubscribeModalAgent] = useState(null);
   const [subscribeProject, setSubscribeProject] = useState('Release 4.2 Program');
-  const [registrationModalOpen, setRegistrationModalOpen] = useState(false);
 
-  // Model & Agent state
-  const [agentsList, setAgentsList] = useState(INITIAL_AGENTS);
+  // Catalogue agents + studio-only agents (registered in the Onboarding Studio, catalogueId === null)
+  const agentsList = useMemo(() => [
+    ...INITIAL_AGENTS,
+    ...studioAgents.filter((a) => !a.catalogueId && !INITIAL_AGENTS.some((c) => c.id === a.id)).map(studioAgentToCard)
+  ], [studioAgents]);
+
+  const lifecycleCounts = useMemo(() => ALL_LIFECYCLES.reduce((acc, s) => {
+    acc[s] = agentsList.filter((a) => a.lifecycleStage === s).length;
+    return acc;
+  }, {}), [agentsList]);
+
+  // "Onboarding x/9 · <stage>" badge for agents tracked in the studio
+  const renderOnboardingBadge = (card, compact = false) => {
+    const s = studioAgentFor(card);
+    if (!s) return null;
+    return (
+      <button
+        type="button"
+        className={`ad-agent-onb-badge ${s.stage >= 9 ? 'is-published' : ''} ${compact ? 'is-compact' : ''}`}
+        onClick={(e) => { e.stopPropagation(); setDrawerAgent(null); openOnboarding(s.id); }}
+        title="Open in Onboarding Studio"
+      >
+        <Rocket size={10} />
+        <span>Onboarding {s.stage}/9 · {getStage(s.stage).label}</span>
+      </button>
+    );
+  };
 
   // Check if any facet filter is active
   const hasActiveFilters = Boolean(
@@ -331,7 +426,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
     setSelectedProjectTypes([]);
     setSelectedAutonomy([]);
     setSortBy('recommended');
-    showToast('Facet filters reset — Showing all 8 agents');
+    showToast(`Facet filters reset — Showing all ${agentsList.length} agents`);
   };
 
   // Dynamic Facet Count Engine (Calculates matching count across all facets in real-time)
@@ -453,7 +548,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
             <h2>
               <span>Agent &amp; Agentic Workflow Catalogue</span>
               <span className="st-badge badge-purple" style={{ fontSize: '0.68rem', fontFamily: 'monospace' }}>
-                {agentsList.length} Registered • 2 Active • 2 Experimental • 2 Suspended • 2 Retired
+                {agentsList.length} Registered • {ALL_LIFECYCLES.map((s) => `${lifecycleCounts[s]} ${s}`).join(' • ')}
               </span>
             </h2>
             <p>Autonomous engineering agents, multi-agent workflows, Performance Passports, and stage-gated governance.</p>
@@ -477,10 +572,20 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
               <Kanban size={14} />
               <span>Lifecycle Board (Kanban)</span>
             </button>
+            <button
+              onClick={() => setActiveSubtab('onboarding')}
+              className={`ad-agents-subtab-btn ${activeSubtab === 'onboarding' ? 'active' : ''}`}
+            >
+              <Rocket size={14} />
+              <span>Onboarding Studio ({studioAgents.length})</span>
+            </button>
           </div>
 
           <button
-            onClick={() => setRegistrationModalOpen(true)}
+            onClick={() => {
+              setRegisterToken(Date.now());
+              setActiveSubtab('onboarding');
+            }}
             className="ad-btn-register"
           >
             <Plus size={14} />
@@ -754,6 +859,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                             {agent.autonomy} • {agent.projectType}
                           </div>
                         </div>
+                        {renderOnboardingBadge(agent)}
                       </div>
 
                       <p className="ad-agent-desc">{agent.desc}</p>
@@ -843,7 +949,15 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                           </>
                         )}
 
-                        {agent.lifecycleStage === 'Experimental' && (
+                        {agent.lifecycleStage === 'Experimental' && (agent.studioOnly ? (
+                          <button
+                            onClick={() => openOnboarding(agent.id)}
+                            className="ad-btn-initiate-approval"
+                          >
+                            <Rocket size={14} />
+                            <span>Continue Onboarding</span>
+                          </button>
+                        ) : (
                           <button
                             onClick={() => handleInitiateApproval(agent)}
                             className="ad-btn-initiate-approval"
@@ -851,7 +965,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                             <ShieldCheck size={14} />
                             <span>Initiate Approval</span>
                           </button>
-                        )}
+                        ))}
 
                         {agent.lifecycleStage === 'Suspended' && (
                           <button
@@ -902,16 +1016,16 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
             </div>
             <div className="ad-kanban-stage-pills">
               <span className="st-badge badge-warning" style={{ fontSize: '0.7rem' }}>
-                Experimental (2)
+                Experimental ({lifecycleCounts.Experimental})
               </span>
               <span className="st-badge badge-success" style={{ fontSize: '0.7rem' }}>
-                Active in Production (2)
+                Active in Production ({lifecycleCounts.Active})
               </span>
               <span className="st-badge badge-danger" style={{ fontSize: '0.7rem' }}>
-                Suspended (2)
+                Suspended ({lifecycleCounts.Suspended})
               </span>
               <span className="st-badge badge-secondary" style={{ fontSize: '0.7rem' }}>
-                Retired (2)
+                Retired ({lifecycleCounts.Retired})
               </span>
             </div>
           </div>
@@ -943,6 +1057,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                       </span>
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
+                    {renderOnboardingBadge(agent, true)}
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
                     <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
@@ -957,11 +1072,11 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                         Passport
                       </button>
                       <button
-                        onClick={() => handleInitiateApproval(agent)}
+                        onClick={() => (agent.studioOnly ? openOnboarding(agent.id) : handleInitiateApproval(agent))}
                         className="ad-btn-initiate-approval"
                         style={{ flex: 1, padding: '4px 8px', fontSize: '0.68rem' }}
                       >
-                        Approval
+                        {agent.studioOnly ? 'Onboarding' : 'Approval'}
                       </button>
                     </div>
                   </div>
@@ -993,6 +1108,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                       </span>
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
+                    {renderOnboardingBadge(agent, true)}
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
                     <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
@@ -1043,6 +1159,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                       </span>
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
+                    {renderOnboardingBadge(agent, true)}
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
                     <div className="ad-kanban-card-metric">
                       <span>{agent.stamps[0].label}: <strong>{agent.stamps[0].val}</strong></span>
@@ -1093,6 +1210,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                       </span>
                     </div>
                     <div className="ad-kanban-card-title">{agent.name}</div>
+                    {renderOnboardingBadge(agent, true)}
                     <div className="ad-kanban-card-desc">{agent.desc}</div>
                     <div className="ad-kanban-card-metric">
                       <span>Decommissioned:</span>
@@ -1124,6 +1242,16 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
       )}
 
       {/* ================================================================= */}
+      {/* SUB-TAB 3: AGENT ONBOARDING STUDIO (F1) + LIFECYCLE TRACKER (F2)  */}
+      {/* ================================================================= */}
+      {activeSubtab === 'onboarding' && (
+        <AdOnboardingStudio
+          registerRequest={registerToken}
+          onRegisterRequestHandled={() => setRegisterToken(null)}
+        />
+      )}
+
+      {/* ================================================================= */}
       {/* PERFORMANCE PASSPORT SLIDE-OVER DRAWER                            */}
       {/* ================================================================= */}
       {drawerAgent && (
@@ -1146,6 +1274,9 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                 <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '2px', fontFamily: 'monospace' }}>
                   {drawerAgent.domain} • {drawerAgent.projectType}
                 </div>
+                {studioAgentFor(drawerAgent) && (
+                  <div style={{ marginTop: '8px' }}>{renderOnboardingBadge(drawerAgent)}</div>
+                )}
               </div>
               <button onClick={() => setDrawerAgent(null)} className="ad-agent-drawer-close-btn">
                 <X size={18} />
@@ -1276,6 +1407,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
         </div>
       )}
 
+
       {/* ================================================================= */}
       {/* AGENT REGISTRATION PORTAL MODAL                                   */}
       {/* ================================================================= */}
@@ -1353,6 +1485,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           </div>
         </div>
       )}
+
 
     </div>
   );

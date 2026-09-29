@@ -1,10 +1,10 @@
-# AI for Engineering Leader — Comprehensive Documentation & Change Log
+# AI for Engineering Leaders — Comprehensive Documentation & Change Log
 
-> **Domain:** AI for Engineering Leader (Enterprise Software & Systems Engineering)  
+> **Domain:** AI for Engineering Leaders (Enterprise Software & Systems Engineering)  
 > **Active Persona:** Alex — Chief AI Officer & Head of Software Engineering  
 > **Platform Code:** `ENG-EXEC` • `CAIO-OPS`  
-> **Target Scope:** NOVA Large Platform SDV • Enterprise AI Engineering Operating Model Hub  
-> **Repository:** `New-AI-Hub`  
+> **Target Scope:** STLA Large Platform SDV • Enterprise AI Engineering Operating Model Hub  
+> **Repository:** `Stellantis-New-Hub`  
 > **Branch:** `sreeja`  
 > **Status:** Production-Ready | Verified Build (0 Errors)
 
@@ -12,20 +12,20 @@
 
 ## 1. Executive Summary
 
-This document serves as the official architecture reference and implementation change log for the **AI for Engineering Leader** domain within the AI Hub — AI-Native Engineering Operating Model.
+This document serves as the official architecture reference and implementation change log for the **AI for Engineering Leaders** domain within the Stellantis AI-Native Engineering Operating Model Hub.
 
-The AI for Engineering Leader domain provides a dedicated executive cockpit and governance console designed specifically for **Alex (Chief AI Officer & Head of Software Engineering)**. It equips executive engineering leadership with:
+The AI for Engineering Leaders domain provides a dedicated executive cockpit and governance console designed specifically for **Alex (Chief AI Officer & Head of Software Engineering)**. It equips executive engineering leadership with:
 1. **Executive Persona Dashboard & 6-Level Operational Depth Pipeline**: Real-time board governance mandates, strategic KPIs, and full vertical drill-down from global vehicle portfolios down to microkernel source contracts and AST latency traces.
 2. **Human-in-the-Loop Workflow Inbox**: Executive decision console managing strictly **7 high-stakes governance items** across project approvals, safety waivers, brownfield migrations, and board escalations with real-time audit logging.
 3. **Comprehensive AI Experience Zone**: Fully integrated suite spanning Foundation Models, Autonomous Automotive Agents, 10 Engineering Lifecycle AI Tool categories, and Consolidated Subscriptions across 5 enterprise tiers.
 4. **Instant Subscription & Onboarding Automation**: Seamless toggle workflows for models, tools, and agents with instant visual state feedback (`+ Subscribe` $\rightarrow$ `✓ Subscribed`), accompanied by pre-filled model onboarding presets.
-5. **Authentic Enterprise Design System**: Zero numerical section prefixes (`PRD §5.1` cleaned), overflow-protected responsive tab navigation, and clean domain isolation following the **Zero Merge Conflicts Architecture**.
+5. **Authentic Stellantis Design System**: Zero numerical section prefixes (`PRD §5.1` cleaned), overflow-protected responsive tab navigation, and clean domain isolation following the **Zero Merge Conflicts Architecture**.
 
 ---
 
 ## 2. Architecture & Domain Isolation
 
-In alignment with Enterprise Hub multi-domain engineering standards, all code for this domain is strictly encapsulated within dedicated domain boundaries:
+In alignment with Stellantis Hub multi-domain engineering standards, all code for this domain is strictly encapsulated within dedicated domain boundaries:
 
 ```
 c:\Users\2878282\sreejanew\
@@ -56,7 +56,7 @@ c:\Users\2878282\sreejanew\
 ## 3. Executive Dashboard & Operational Depth Pipeline
 
 ### 3.1 Primary Strategic Mandates (Chief AI Officer Mandate)
-The master dashboard tracks 4 strategic enterprise transformation goals directly reported to the Enterprise Board of Directors:
+The master dashboard tracks 4 strategic enterprise transformation goals directly reported to the Stellantis Board of Directors:
 
 | Strategic Objective | Current Value | Target | Trend | Executive Impact |
 | :--- | :---: | :---: | :---: | :--- |
@@ -68,7 +68,7 @@ The master dashboard tracks 4 strategic enterprise transformation goals directly
 ### 3.2 6-Level Operational Depth Pipeline
 The CAIO cockpit provides unprecedented vertical observability spanning 6 granular architectural tiers:
 
-* **Level 1 — Global Engineering Portfolios**: Portfolio-level telemetry across vehicle platforms (*NOVA Large SDV, Apex ADAS, Titan EV Autonomous Towing, Summit Recon Offroad Autonomy*).
+* **Level 1 — Global Engineering Portfolios**: Portfolio-level telemetry across vehicle platforms (*STLA Large SDV, Maserati ADAS, Ram REV Autonomous Towing, Jeep Recon Offroad Autonomy*).
 * **Level 2 — Engineering Disciplines**: Cross-functional status across Software Architecture, Verification & HIL, Embedded Systems, and Cloud Fleet Engineering.
 * **Level 3 — Active Engineering Squads**: Squad velocity, code generation throughput, and safety compliance across Turin, Auburn Hills, and Poissy engineering centers.
 * **Level 4 — Work Items & Pull Requests**: Active pull requests evaluated against MISRA-C++ and ISO 26262 ASIL-D safety guardrails.
@@ -90,11 +90,11 @@ Following executive requirements, the inbox strictly maintains **7 decision item
 
 | Ticket ID | Category | Title | Priority | Required Action |
 | :--- | :--- | :--- | :---: | :--- |
-| `ENG-WF-01` | Project Approval | NOVA Large SDV Phase 2 Architecture Sign-Off | Critical | Authorize & Sign Off |
-| `ENG-WF-02` | Governance Exception | Apex ADAS ASIL-D Memory Guard Waiver | Critical | Review Compliance Waiver |
+| `ENG-WF-01` | Project Approval | STLA Large SDV Phase 2 Architecture Sign-Off | Critical | Authorize & Sign Off |
+| `ENG-WF-02` | Governance Exception | Maserati ADAS ASIL-D Memory Guard Waiver | Critical | Review Compliance Waiver |
 | `ENG-WF-03` | Brownfield Pipeline | AUTOSAR Classic to Adaptive AI Migration | Standard | Authorize Autonomous Migration |
 | `ENG-WF-04` | Governance Exception | UNECE R155 Cyber Security Audit Clearance | Critical | Enforce Remediation / Sign Off |
-| `ENG-WF-05` | Project Approval | Titan EV Autonomous Towing Pipeline | Standard | Squad Allocation Sign-Off |
+| `ENG-WF-05` | Project Approval | Ram 1500 REV Autonomous Towing Pipeline | Standard | Squad Allocation Sign-Off |
 | `ENG-WF-06` | Brownfield Pipeline | Flaky HIL Test Auto-Healing Deployment | Standard | Approve Deployment |
 | `ENG-WF-07` | Board Escalation | Cross-ECU Latency Budget Violation Escalation | Critical | Escalate to Executive Board |
 
@@ -102,7 +102,7 @@ Following executive requirements, the inbox strictly maintains **7 decision item
 Clicking any action button immediately executes the decision in both UI state and backend audit logs:
 * **Authorize & Sign Off**: Sets ticket status to **`Authorized`** with a green badge, logs the executive cryptographic signature, and displays an executed confirmation banner.
 * **Reject**: Sets ticket status to **`Rejected`** with a red badge, issuing an immediate remediation directive back to the squad lead.
-* **Escalate to Board**: Sets ticket status to **`Escalated`** with a purple badge, routing the governance packet directly to the Enterprise Board Steering Committee.
+* **Escalate to Board**: Sets ticket status to **`Escalated`** with a purple badge, routing the governance packet directly to the Stellantis Board Steering Committee.
 * **Decision Re-Evaluation**: Provides an instant `Re-evaluate Decision` option to unlock and modify decisions if new telemetry arrives.
 
 ### 4.3 Clean Decision Layout
@@ -129,7 +129,7 @@ A peer-level modular experience zone implementing the full PRD Section 5 enterpr
 
 ### 5.2 Agent & Agentic Workflow Catalogue
 * **8 Registered Autonomous Automotive Agents**:
-  1. `AGT-01`: NOVA-EARB Architecture Blueprint Synthesizer (L3 Semi-Autonomous)
+  1. `AGT-01`: STLA-EARB Architecture Blueprint Synthesizer (L3 Semi-Autonomous)
   2. `AGT-02`: ASIL-D Automated Safety Certifier & Gatekeeper (L3 Semi-Autonomous)
   3. `AGT-03`: AUTOSAR Adaptive C++ Code Generator (L2 Copilot)
   4. `AGT-04`: HIL Test Suite Autonomous Healer (L3 Semi-Autonomous)
@@ -165,10 +165,10 @@ Consolidated entitlement console giving executive leadership unified visibility 
 
 * **Exact 8 PRD Entity Types**:
   1. **Models** (e.g., Claude 3.5 Sonnet, DeepSeek-Coder-V2)
-  2. **Agents** (e.g., NOVA-EARB Synthesizer, ASIL-D Safety Certifier)
+  2. **Agents** (e.g., STLA-EARB Synthesizer, ASIL-D Safety Certifier)
   3. **Agentic workflows** (e.g., HIL Flaky Test Healing Agentic Workflow)
   4. **AI tools** (e.g., GitHub Copilot Enterprise, Vector CANoe AI)
-  5. **Projects** (e.g., NOVA Large Platform SDV Middleware Phase 2)
+  5. **Projects** (e.g., STLA Large Platform SDV Middleware Phase 2)
   6. **Notifications** (e.g., Critical Homologation & Safety OTA Alerts)
   7. **Governance policies** (e.g., ISO-26262 & UNECE R155 Policy)
   8. **Reports and dashboards** (e.g., Executive CAIO DORA & Productivity Master Dashboard)
@@ -180,7 +180,7 @@ Consolidated entitlement console giving executive leadership unified visibility 
 
 ## 6. Backend API Architecture
 
-All endpoints for the Engineering Leader domain are mounted on the Express server under `/api/engineering/*` with zero cross-domain coupling:
+All endpoints for the Engineering Leaders domain are mounted on the Express server under `/api/engineering/*` with zero cross-domain coupling:
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -217,4 +217,4 @@ All endpoints for the Engineering Leader domain are mounted on the Express serve
 * **Remote Tracking**: `origin/sreeja`
 * **Protection Compliance**: `main` branch remained strictly untouched.
 * **Commit**: `70c8d7b` (*feat(engineering-leaders): update persona experience, catalogues, subscriptions, and workflow inbox to PRD specs*)
-* **Repository**: `New-AI-Hub`
+* **Repository**: `https://github.com/neverthesame-again/Stellantis-New-Hub.git`

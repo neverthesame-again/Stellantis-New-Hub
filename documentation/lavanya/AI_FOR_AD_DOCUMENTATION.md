@@ -4,14 +4,14 @@
 > **Active Persona:** Product Owner (Carl Weber)  
 > **Platform Code:** `AD-PO`  
 > **Project Scope:** Release 4.2 Program (ASIL-D Level 2+) • Sprint 42  
-> **Repository:** `New-AI-Hub`  
+> **Repository:** `Stellantis-New-Hub`  
 > **Status:** Production-Ready | Verified Build (0 Errors)
 
 ---
 
 ## 1. Executive Summary
 
-This document serves as the official reference and change log for the **AI for AD** domain within the AI Hub — AI-Native Engineering Operating Model. 
+This document serves as the official reference and change log for the **AI for AD** domain within the Stellantis AI-Native Engineering Operating Model Hub. 
 
 The AI for AD domain provides a specialized, autonomous delivery and requirements management cockpit tailored for automotive systems engineering under ISO 26262 and ASPICE compliance. It features:
 1. **Product Owner Decision Cockpit**: 8 modular dashboard cards providing real-time telemetry across roadmaps, backlog health, delivery velocity, and dependency risks.
@@ -30,9 +30,9 @@ To integrate AI for AD while adhering to the **Zero Merge Conflicts Architecture
 
 | File Path | Component Area | What Changed | Why It Changed (Rationale) | Impact on Other Domains |
 | :--- | :--- | :--- | :--- | :--- |
-| `frontend/src/core/WorkspaceBar.jsx` | Core Navigation | Updated `DOMAIN_PERSONA_MAP['AI for AD']` dictionary entry. | Injected real-time PRD mock data: active platform (`AD-PO`), shift (`Release 4.2 Program \| Sprint 42`), shift progress (`88% Readiness`), concise chips (`3 Critical Gated`, `Release 4.2 Program`, `20 Subscriptions Active`), and KPIs (`RELEASE READINESS: 88%`, `SAFETY COMPLIANCE: 96.4%`). | **Zero impact**: `AI for AMS` and `Engineering leader` blocks remain completely untouched. |
+| `frontend/src/core/WorkspaceBar.jsx` | Core Navigation | Updated `DOMAIN_PERSONA_MAP['AI for AD']` dictionary entry. | Injected real-time PRD mock data: active platform (`AD-PO`), shift (`Release 4.2 Program \| Sprint 42`), shift progress (`88% Readiness`), concise chips (`3 Critical Gated`, `Release 4.2 Program`, `20 Subscriptions Active`), and KPIs (`RELEASE READINESS: 88%`, `SAFETY COMPLIANCE: 96.4%`). | **Zero impact**: `AI for AMS` and `Engineering leaders` blocks remain completely untouched. |
 | `frontend/src/core/PersonaHero.jsx` | Core Header | Redesigned header banner layout to a 2-tier right-aligned structure. | Prevents right-edge overflow on standard laptops (1024px–1366px). Sits Title & Subtitle on left; Row 1 has `Platform \| Shift \| Shift Progress \|`, and Row 2 has the 3 info chips horizontally directly beneath. | **Universal Enhancement**: Applied cleanly across all 3 domains, standardizing header responsiveness. |
-| `frontend/src/App.jsx` | Main Application | 1. Passed `selectedRole={selectedRole}` to `<AiForAdDomain />`.<br>2. Synced inbox badge count to `9`. | 1. Enables multi-role routing within AI for AD when roles switch.<br>2. Aligns notification badge with the 9 active decision tickets in `adPmWorkflowData.js`. | **Zero impact**: Domain boundary isolation preserves AMS and Engineering Leader routing. |
+| `frontend/src/App.jsx` | Main Application | 1. Passed `selectedRole={selectedRole}` to `<AiForAdDomain />`.<br>2. Synced inbox badge count to `9`. | 1. Enables multi-role routing within AI for AD when roles switch.<br>2. Aligns notification badge with the 9 active decision tickets in `adPmWorkflowData.js`. | **Zero impact**: Domain boundary isolation preserves AMS and Engineering Leaders routing. |
 | `frontend/vite.config.js` | Build Toolchain | 1. Added reverse proxy for `/api/automation-agents` to `https://sel-nexus.com`.<br>2. Added `resolve.extensions`. | 1. Eliminates CORS restrictions when invoking Brownfield pipeline APIs.<br>2. Ensures seamless resolution for extensionless JSX imports. | **Zero negative impact**: Facilitates unified enterprise API routing. |
 | `frontend/src/core/FloatingNexus.jsx` | Core Shell | File deleted upon user instruction. | Deactivated floating widget code that was superseded by the in-card SEL Nexus button and modal suite. | **Zero impact**: Zero remaining imports across the codebase. |
 | `backend/server.js` | Backend API Root | Mounted `adRouter` at `/api/ad`. | Exposes REST endpoints for AI for AD dashboard data, release simulations, and backlog auto-enhancement. | **Zero impact**: Mounted independently alongside `/api/ams` and `/api/engineering`. |
@@ -90,7 +90,7 @@ To integrate AI for AD while adhering to the **Zero Merge Conflicts Architecture
 ## 4. AI for AD Architecture Restructuring
 
 ### 4.1 Multi-Role Architectural Vision
-Historically, all files for the Product Owner role were placed directly inside `frontend/src/domains/ai-for-ad/`. As the Enterprise operating model expands, `AI for AD` will incorporate additional engineering roles (e.g., **Lead Architect**, **System Safety Engineer**, **Embedded Software Engineer**).
+Historically, all files for the Product Owner role were placed directly inside `frontend/src/domains/ai-for-ad/`. As the Stellantis operating model expands, `AI for AD` will incorporate additional engineering roles (e.g., **Lead Architect**, **System Safety Engineer**, **Embedded Software Engineer**).
 
 To prevent technical debt and merge conflicts, the domain was restructured into role-specific subfolders.
 
@@ -158,7 +158,7 @@ backend/src/domains/ai-for-ad/
 ## 5. SEL Nexus Automation Suite Details
 
 ### 5.1 Trigger Button
-- Embedded in [`AdAiToolsCatalogue.jsx`](../../frontend/src/domains/ai-for-ad/product-owner/pages/AdAiToolsCatalogue.jsx) inside the AI Tool Engineering Capability header card.
+- Embedded in [`AdAiToolsCatalogue.jsx`](file:///c:/Users/2862390/Desktop/PoC/10.Stellantis/Stellantis-New/Stellantis-New-Hub/frontend/src/domains/ai-for-ad/product-owner/pages/AdAiToolsCatalogue.jsx) inside the AI Tool Engineering Capability header card.
 - Features a glowing ambient border animation (`nexusFlowRotate` 2.2s infinite rotation) with high contrast in both light and dark modes.
 
 ### 5.2 Two-Stage Modal Flow
@@ -179,7 +179,7 @@ backend/src/domains/ai-for-ad/
 ### Phase 1: Core Navigation & Clean Mock Data
 - Removed dropdown icons where inappropriate and standardized ChevronDown indicators.
 - Ensured all personal names (`Lavanya`, `Vishnu`, `Sreeja`) were completely scrubbed across all mock data, component templates, and documentation.
-- Formatted workflow inbox sub-tabs to fill container width with clean rectangular borders matching the Enterprise design system.
+- Formatted workflow inbox sub-tabs to fill container width with clean rectangular borders matching the Stellantis design system.
 
 ### Phase 2: SEL Nexus Button & Modal Flow
 - Implemented `SelNexusModal.jsx`, `BrownfieldModal.jsx`, `SelNexusFlow.jsx`, and `selNexus.css`.

@@ -1,15 +1,15 @@
-# AI Hub — AI-Native Engineering Operating Model
+# Stellantis — AI-Native Engineering Operating Model Hub
 
 > POC | Multi-Persona React + Node.js Application | Conflict-Free Multi-Developer Architecture
 
 ## Overview
-A unified experience for governing, discovering, subscribing to, and operationalizing AI across software engineering and IT operations across the enterprise.
+A unified experience for governing, discovering, subscribing to, and operationalizing AI across software engineering and IT operations at Stellantis.
 
 ## Personas
 | Domain | Persona | Role |
 |--------|---------|------|
 | AI for AMS | Tony | Head of AMS |
-| Engineering Leader | Alex | Chief AI Officer |
+| Engineering Leaders | Alex | Chief AI Officer |
 | AI for AD | Carl Weber | Product Owner |
 
 ## Quick Start

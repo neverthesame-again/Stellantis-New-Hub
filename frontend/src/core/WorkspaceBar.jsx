@@ -31,8 +31,8 @@ export const DOMAIN_PERSONA_MAP = {
       { label: 'AI RESOLUTION', value: '78%', color: '#10b981' }
     ]
   },
-  'Engineering leader': {
-    domain: 'Engineering leader',
+  'Engineering leaders': {
+    domain: 'Engineering leaders',
     role: 'Chief AI Officer',
     userName: 'Alex',
     avatarLetter: 'A',
@@ -42,13 +42,13 @@ export const DOMAIN_PERSONA_MAP = {
     shiftProgress: '85%',
     infoChips: [
       { label: '18 Model Subscriptions', dot: false, bg: 'var(--bg-subtle)', border: 'var(--border-color)', color: 'var(--text-primary)' },
-      { label: '6 Architecture Reviews In-Flight', dot: true, dotColor: '#0ea5e9', bg: 'var(--badge-info-bg)', border: 'var(--badge-info-border)', color: 'var(--badge-info-text)' },
+      { label: '6 Architecture Reviews In-Flight', dot: true, dotColor: '#3b82f6', bg: 'var(--badge-info-bg)', border: 'var(--badge-info-border)', color: 'var(--badge-info-text)' },
       { label: 'Global Strategy Active', dot: true, dotColor: '#10b981', bg: 'var(--badge-success-bg)', border: 'var(--badge-success-border)', color: 'var(--badge-success-text)' }
     ],
     statusText: 'Enterprise Engineering Core - 18 Model Subscriptions - 6 Architecture Reviews in Flight',
     kpis: [
       { label: 'GOVERNANCE COMPLIANCE', value: '96.4%', color: 'var(--text-primary)' },
-      { label: 'MODEL ADOPTION', value: '84%', color: '#0ea5e9' }
+      { label: 'MODEL ADOPTION', value: '84%', color: '#3b82f6' }
     ]
   },
   'AI for AD': {
@@ -62,7 +62,7 @@ export const DOMAIN_PERSONA_MAP = {
     shiftProgress: '88% Readiness',
     infoChips: [
       { label: '3 Critical Gated', dot: true, dotColor: '#ef4444', bg: 'var(--badge-high-bg)', border: 'rgba(239,68,68,0.3)', color: '#ef4444' },
-      { label: 'Release 4.2 Program', dot: true, dotColor: '#06b6d4', bg: 'var(--badge-purple-bg)', border: 'var(--badge-purple-border)', color: 'var(--badge-purple-text)' },
+      { label: 'Release 4.2 Program', dot: true, dotColor: '#8b5cf6', bg: 'var(--badge-purple-bg)', border: 'var(--badge-purple-border)', color: 'var(--badge-purple-text)' },
       { label: '20 Subscriptions Active', dot: true, dotColor: '#10b981', bg: 'var(--badge-success-bg)', border: 'var(--badge-success-border)', color: 'var(--badge-success-text)' }
     ],
     statusText: 'Autonomous Driving L2+ Workspace • Release 4.2 Program • 9 Decisions Pending Triage • 20 AI Subscriptions',
@@ -75,8 +75,8 @@ export const DOMAIN_PERSONA_MAP = {
 
 export const DOMAIN_OPTIONS = [
   {
-    value: 'Engineering leader',
-    label: 'Engineering leader',
+    value: 'Engineering leaders',
+    label: 'Engineering leaders',
     subtitle: 'Architecture & AI Governance',
     icon: Brain
   },
@@ -96,7 +96,7 @@ export const DOMAIN_OPTIONS = [
 
 // Domain-scoped roles — to add a new role, push into the relevant domain's array
 export const DOMAIN_ROLE_MAP = {
-  'Engineering leader': [
+  'Engineering leaders': [
     {
       value: 'Chief AI Officer',
       label: 'Chief AI Officer',
@@ -152,9 +152,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
   const SelectedIcon = selectedOption?.icon;
 
   return (
-    <div style={fullWidth
-      ? { display: 'flex', flexDirection: 'column', gap: '6px', width: '100%' }
-      : { display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
       {label && (
         <label style={{
           fontSize: '0.8rem',
@@ -166,7 +164,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
         </label>
       )}
 
-      <div ref={dropdownRef} style={{ position: 'relative', width: fullWidth ? '100%' : 'auto' }}>
+      <div ref={dropdownRef} style={{ position: 'relative' }}>
         {/* Trigger Button */}
         <button
           type="button"
@@ -177,7 +175,6 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             justifyContent: 'space-between',
             gap: '10px',
             minWidth: minWidth,
-            width: fullWidth ? '100%' : 'auto',
             padding: '7px 12px 7px 12px',
             background: isOpen ? 'var(--bg-subtle)' : 'var(--bg-surface)',
             border: isOpen ? '1.5px solid var(--stellantis-action)' : '1.5px solid var(--border-color)',
@@ -314,6 +311,65 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             })}
           </div>
         )}
+      </div>
+    </div>
+  );
+}
+
+export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedRole, onRoleChange, allowedDomains = [], allowedRoles = [] }) {
+  const handleRoleSelect = (role) => {
+    onRoleChange(role);
+  };
+
+  // Filter available domains based on user's allowed domains
+  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value));
+  
+  // Fallback to all if somehow allowedDomains is empty to prevent crashes
+  const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;
+
+  // Filter available roles based on user's allowed roles
+  const availableRoles = (DOMAIN_ROLE_MAP[selectedDomain] || []).filter(opt => allowedRoles.includes(opt.value));
+  const displayRoles = availableRoles.length > 0 ? availableRoles : (DOMAIN_ROLE_MAP[selectedDomain] || []);
+
+  return (
+    <div style={{
+      background: 'var(--bg-surface)',
+      border: '1px solid var(--border-color)',
+      borderRadius: 'var(--radius-lg)',
+      padding: '12px 24px',
+      margin: '20px 0 16px 0',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      boxShadow: 'var(--shadow-sm)',
+      flexWrap: 'wrap',
+      gap: '12px'
+    }}>
+      {/* Left breadcrumb summary */}
+      <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+        <span style={{ fontWeight: 600, color: 'var(--text-primary)' }}>Active Workspace:</span>{' '}
+        Viewing as <strong style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{selectedRole}</strong>
+      </div>
+
+      {/* Right Selector Dropdowns */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+        {/* Custom Domain Dropdown */}
+        <CustomSelect
+          label="Domain:"
+          value={selectedDomain}
+          onChange={onDomainChange}
+          options={displayDomains}
+          minWidth="170px"
+        />
+
+        {/* Custom Role Dropdown */}
+        <CustomSelect
+          label="Role:"
+          value={selectedRole}
+          onChange={handleRoleSelect}
+          options={displayRoles}
+          minWidth="180px"
+        />
       </div>
     </div>
   );

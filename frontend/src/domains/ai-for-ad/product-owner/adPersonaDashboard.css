@@ -45,7 +45,8 @@
    Rectangular buttons filling 100% width, matching Workflow Inbox Tab style
    -------------------------------------------------------------------------- */
 .ad-exp-subtab-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   align-items: center;
   gap: 6px;
   width: 100%;
@@ -64,7 +65,7 @@
 }
 
 .ad-exp-subtab-btn {
-  flex: 1;
+  flex: 1 1 auto;
   min-width: 0;
   padding: 8px 12px;
   border-radius: var(--radius-md, 8px);

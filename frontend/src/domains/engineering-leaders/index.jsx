@@ -11,7 +11,7 @@ import ExperienceZone from './pages/ExperienceZone';
  * Mounts strictly below NavigationTabs based on activeTab.
  * Implements Section 5: Common Persona Experience (5.1 - 5.6)
  */
-export default function EngineeringLeadersDomain({ activeTab = 'dashboard', activeSubTab, onSubTabChange }) {
+export default function EngineeringLeadersDomain({ activeTab = 'dashboard' }) {
   if (activeTab === 'dashboard') {
     return <EngineeringDashboard />;
   }
@@ -21,7 +21,7 @@ export default function EngineeringLeadersDomain({ activeTab = 'dashboard', acti
   }
 
   if (activeTab === 'experience') {
-    return <ExperienceZone activeSubTab={activeSubTab} onSubTabChange={onSubTabChange} />;
+    return <ExperienceZone />;
   }
 
   return <EngineeringDashboard />;

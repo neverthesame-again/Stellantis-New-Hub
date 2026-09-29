@@ -33,7 +33,7 @@ router.get("/dashboard", (req, res) => {
 
 /**
  * POST /api/ad/simulate-release
- * Simulates waiver of HIL 90% threshold for Northfield track test
+ * Simulates waiver of HIL 90% threshold for Balocco track test
  */
 router.post("/simulate-release", (req, res) => {
   const { grantWaiver, injectSyntheticData } = req.body;

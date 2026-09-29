@@ -118,7 +118,7 @@ export const adDashboardData = {
           },
           {
             id: "AD-301",
-            title: "NOVA AutoDrive L3 Hands-Off Highway Pilot",
+            title: "STLA AutoDrive L3 Hands-Off Highway Pilot",
             swimlane: "Safety Control",
             confidence: 2,
             status: "R&D Architecture",
@@ -235,7 +235,7 @@ export const adDashboardData = {
         name: "ASIL-D Safety Verification",
         status: "PASS",
         badgeClass: "badge-success",
-        details: "Deterministic braking trajectory verified in Northfield loop",
+        details: "Deterministic braking trajectory verified in Balocco loop",
         isPass: true
       },
       {
@@ -305,7 +305,7 @@ export const adDashboardData = {
       supplier: "Tier-1 Perception Hardware Partner",
       delayDays: 3,
       impact: "Blocks physical HIL bench testing on Rig 2 for AD-108 Trajectory Planner",
-      mitigationAction: "Northfield Proving Ground Synthetic LiDAR Ray-Tracing Stream"
+      mitigationAction: "Balocco Proving Ground Synthetic LiDAR Ray-Tracing Stream"
     }
   },
 

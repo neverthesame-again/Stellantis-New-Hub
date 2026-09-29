@@ -10,7 +10,7 @@ import ProductOwnerRole from './product-owner/index.jsx';
  * Strict Domain Isolation Boundary:
  * Mounts strictly below NavigationTabs based on activeTab and selectedRole.
  */
-export default function AiForAdDomain({ activeTab = 'dashboard', onTabChange, selectedRole = 'Product Owner', activeSubTab, onSubTabChange }) {
+export default function AiForAdDomain({ activeTab = 'dashboard', onTabChange, selectedRole = 'Product Owner' }) {
   // Role-based domain dispatching
   switch (selectedRole) {
     case 'Product Owner':
@@ -19,8 +19,6 @@ export default function AiForAdDomain({ activeTab = 'dashboard', onTabChange, se
         <ProductOwnerRole
           activeTab={activeTab}
           onTabChange={onTabChange}
-          activeSubTab={activeSubTab}
-          onSubTabChange={onSubTabChange}
         />
       );
   }
