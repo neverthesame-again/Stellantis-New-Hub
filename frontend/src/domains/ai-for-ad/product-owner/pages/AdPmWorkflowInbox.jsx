@@ -63,7 +63,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
   const [selectedDelegate, setSelectedDelegate] = useState('Dr. Marco V. (Safety Architecture Lead)');
 
   const [activeCoSignModal, setActiveCoSignModal] = useState(false); // Item 1 Co-signature
-  const [coSignPin, setCoSignPin] = useState('NOVA-SAFETY-42');
+  const [coSignPin, setCoSignPin] = useState('STLA-SAFETY-42');
 
   const [activeRejectModal, setActiveRejectModal] = useState(null); // Item 1 & 3 Rejection
   const [rejectionReason, setRejectionReason] = useState('Telemetry shows unmitigated edge variance on track bench.');
@@ -411,7 +411,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
             </span>
           </div>
           <span className="ad-sla-subtext">
-            Release 4.2 Northfield Track Gates: Active Sentinel Sync
+            Release 4.2 Balocco Track Gates: Active Sentinel Sync
           </span>
         </div>
       </div>
@@ -561,7 +561,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <FileText size={18} color="var(--hub-action, #0284c7)" />
+                <FileText size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Tamper-Evident Audit Trail — #{activeAuditModal.id.toUpperCase()}
                 </div>
@@ -608,7 +608,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Send size={18} color="var(--hub-action, #0284c7)" />
+                <Send size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Request Clarifying Evidence
                 </div>
@@ -664,7 +664,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <UserCheck size={18} color="var(--hub-action, #0284c7)" />
+                <UserCheck size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Delegate Gating Decision
                 </div>
@@ -734,7 +734,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
               <div className="ad-modal-notice-box">
                 <ShieldCheck size={16} color="#10b981" />
                 <div>
-                  <strong>Primary Safety Co-Signer Verified:</strong> Dr. Marco V. (Pre-Signed on Northfield Rig 3 Telemetry · Passkey verified).
+                  <strong>Primary Safety Co-Signer Verified:</strong> Dr. Marco V. (Pre-Signed on Balocco Rig 3 Telemetry · Passkey verified).
                 </div>
               </div>
               <div>
@@ -829,7 +829,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <RefreshCw size={18} color="var(--hub-action, #0284c7)" />
+                <RefreshCw size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Send Requirement Back for AI Revision
                 </div>
@@ -1026,7 +1026,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
               <div className="ad-modal-notice-box-danger">
                 <AlertTriangle size={16} color="#ef4444" />
                 <div>
-                  This immediately halts the build pipeline in Jenkins / CI until HIL Simulation Coverage reaches &ge;90%.
+                  This immediately halts the build pipeline in Jenkins / Stellantis CI until HIL Simulation Coverage reaches &ge;90%.
                 </div>
               </div>
             </div>
@@ -1056,7 +1056,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Lightbulb size={18} color="var(--hub-action, #0284c7)" />
+                <Lightbulb size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Sprint Reprioritization Impact Simulation
                 </div>
@@ -1079,7 +1079,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
                   <span className="ad-sim-metric-lbl">Regression Risk to AD-115</span>
                 </div>
                 <div className="ad-sim-metric">
-                  <span className="ad-sim-metric-val" style={{ color: '#06b6d4' }}>+12 SP</span>
+                  <span className="ad-sim-metric-val" style={{ color: '#8b5cf6' }}>+12 SP</span>
                   <span className="ad-sim-metric-lbl">Perception Team Throughput</span>
                 </div>
               </div>
@@ -1187,7 +1187,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Landmark size={18} color="var(--hub-action, #0284c7)" />
+                <Landmark size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Policy Rollback Blast-Radius Risk Analysis
                 </div>
@@ -1235,7 +1235,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Sliders size={18} color="var(--hub-action, #0284c7)" />
+                <Sliders size={18} color="var(--stellantis-action, #0284c7)" />
                 <div className="ad-inbox-modal-title">
                   Configure Model Drift Watchdog Threshold
                 </div>
@@ -1295,7 +1295,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
           <div className="ad-inbox-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-inbox-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Bot size={18} color="#06b6d4" />
+                <Bot size={18} color="#8b5cf6" />
                 <div className="ad-inbox-modal-title">
                   Re-Prompt Synthetic Scenario Generation Agent
                 </div>
@@ -1473,7 +1473,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
                 {item.supportingEvidence.map((doc, idx) => (
                   <div key={idx} className="ad-evidence-item">
                     <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <FileText size={13} color="var(--hub-action, #0284c7)" />
+                      <FileText size={13} color="var(--stellantis-action, #0284c7)" />
                       <span style={{ fontWeight: 600 }}>{doc.name}</span>
                     </span>
                     <span className="st-badge badge-info" style={{ fontSize: '0.62rem' }}>

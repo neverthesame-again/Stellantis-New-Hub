@@ -129,7 +129,7 @@ export default function EngineeringSubscriptions({ subscriptions = [], onSubscri
       }}>
         <div>
           <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <BookmarkCheck size={18} color="var(--hub-action, #0284c7)" />
+            <BookmarkCheck size={18} color="var(--stellantis-action, #0284c7)" />
             <span>My Subscriptions</span>
             <span className="st-badge badge-info" style={{ fontSize: '0.65rem' }}>
               {subscriptions.length} Subscriptions Active

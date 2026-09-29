@@ -118,7 +118,7 @@ export const adDashboardData = {
           },
           {
             id: "AD-301",
-            title: "NOVA AutoDrive L3 Hands-Off Highway Pilot",
+            title: "STLA AutoDrive L3 Hands-Off Highway Pilot",
             swimlane: "Safety Control",
             confidence: 2,
             status: "R&D Architecture",
@@ -209,7 +209,7 @@ export const adDashboardData = {
       percentageDrop: "-69.5%",
       distribution: [
         { bucket: "< 3 days", percentage: 42, count: 28, color: "#10b981" },
-        { bucket: "3–7 days", percentage: 38, count: 25, color: "#0ea5e9" },
+        { bucket: "3–7 days", percentage: 38, count: 25, color: "#3b82f6" },
         { bucket: "7–14 days", percentage: 14, count: 9, color: "#f59e0b" },
         { bucket: "> 14 days", percentage: 6, count: 4, color: "#ef4444" }
       ]
@@ -235,7 +235,7 @@ export const adDashboardData = {
         name: "ASIL-D Safety Verification",
         status: "PASS",
         badgeClass: "badge-success",
-        details: "Deterministic braking trajectory verified in Northfield loop",
+        details: "Deterministic braking trajectory verified in Balocco loop",
         isPass: true
       },
       {
@@ -297,7 +297,7 @@ export const adDashboardData = {
     mitigationApplied: false,
     nodes: [
       { id: "camera", label: "Camera Driver (v2.1)", status: "Operational", color: "#10b981" },
-      { id: "fusion", label: "Radar Fusion (AD-104)", status: "Active", color: "#0ea5e9" },
+      { id: "fusion", label: "Radar Fusion (AD-104)", status: "Active", color: "#3b82f6" },
       { id: "planning", label: "Path Planning (AD-108)", status: "Blocked", color: "#ef4444" }
     ],
     blocker: {
@@ -305,7 +305,7 @@ export const adDashboardData = {
       supplier: "Tier-1 Perception Hardware Partner",
       delayDays: 3,
       impact: "Blocks physical HIL bench testing on Rig 2 for AD-108 Trajectory Planner",
-      mitigationAction: "Northfield Proving Ground Synthetic LiDAR Ray-Tracing Stream"
+      mitigationAction: "Balocco Proving Ground Synthetic LiDAR Ray-Tracing Stream"
     }
   },
 
@@ -314,9 +314,9 @@ export const adDashboardData = {
     status: "Efficiency: High",
     statusType: "success",
     kpis: [
-      { label: "Velocity Multiplier", value: "+3.8x", sub: "vs manual baseline", color: "#0ea5e9" },
+      { label: "Velocity Multiplier", value: "+3.8x", sub: "vs manual baseline", color: "#3b82f6" },
       { label: "Hours Saved", value: "482h", sub: "Sprints 40–42", color: "#10b981" },
-      { label: "PO Acceptance Rate", value: "94.2%", sub: "Accepted without rewrite", color: "#06b6d4" },
+      { label: "PO Acceptance Rate", value: "94.2%", sub: "Accepted without rewrite", color: "#8b5cf6" },
       { label: "Automated Gherkin AC", value: "86%", sub: "INVEST compliant", color: "#0284c7" }
     ],
     accelerationBreakdown: {

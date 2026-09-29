@@ -1,50 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 
 /* ============================================================
-   AI HUB DESIGN SYSTEM
-   Light: white canvas + light blue accents
-   Dark:  black canvas + light blue accents
+   STELLANTIS DESIGN SYSTEM — DARK NAVY CANONICAL THEME
+   Primary: #0e1e38 (Stellantis Midnight Navy)
+   Accent:  #1a3a6e (Deep Stellantis Blue)
+   Live:    #0284c7 (Operational Action Blue)
    ============================================================ */
 
 :root {
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Outfit', var(--font-sans);
 
-  /* ─── Light Mode: white + light blue ─── */
-  --bg-app: #f5fbff;
+  /* ─── Stellantis Navy Light Mode (on white canvas) ─── */
+  --bg-app: #f0f4fa;
   --bg-surface: #ffffff;
   --bg-surface-elevated: #ffffff;
-  --bg-surface-secondary: #f7fbfe;
-  --bg-subtle: #eef7fd;
-  --border-color: #d6ebf7;
-  --border-strong: #b3dcf2;
+  --bg-surface-secondary: #f5f8ff;
+  --bg-subtle: #eef2fb;
+  --border-color: #d8e3f7;
+  --border-strong: #b0c4e8;
 
-  --text-primary: #0b1620;
-  --text-secondary: #3d5566;
-  --text-muted: #6b8394;
+  --text-primary: #0e1e38;
+  --text-secondary: #3a5080;
+  --text-muted: #6a85b0;
   --text-white: #ffffff;
 
-  /* Hub brand palette */
-  --hub-navy: #0284c7;
-  --hub-navy-mid: #0369a1;
-  --hub-blue: #0284c7;
-  --hub-blue-bright: #0ea5e9;
-  --hub-blue-light: #e0f2fe;
-  --hub-accent: #0284c7;
-  --hub-action: #0284c7;
+  /* Stellantis Brand Navy Palette */
+  --stellantis-navy: #0e1e38;
+  --stellantis-navy-mid: #1a3a6e;
+  --stellantis-blue: #1a3a6e;
+  --stellantis-blue-bright: #0284c7;
+  --stellantis-blue-light: #ddeeff;
+  --stellantis-accent: #1a3a6e;
+  --stellantis-action: #0284c7;
 
-  /* Header: white in light mode */
-  --header-bg: #ffffff;
-  --header-text: #0b1620;
-  --header-border: #d6ebf7;
+  /* Header always dark navy */
+  --header-bg: #0e1e38;
+  --header-text: #ffffff;
+  --header-border: #1d3460;
 
   /* Workspace bar */
   --workspace-bg: #ffffff;
-  --workspace-border: #d6ebf7;
+  --workspace-border: #d8e3f7;
 
   /* Nav active tab */
-  --nav-active-tab-bg: #0284c7;
-  --nav-active-tab-border: #0284c7;
+  --nav-active-tab-bg: #0e1e38;
+  --nav-active-tab-border: #0e1e38;
 
   /* Badges */
   --badge-critical-bg: #fef2f2;
@@ -59,19 +60,19 @@
   --badge-success-text: #047857;
   --badge-success-border: #a7f3d0;
 
-  --badge-info-bg: #e0f2fe;
-  --badge-info-text: #0369a1;
-  --badge-info-border: #bae6fd;
+  --badge-info-bg: #ddeeff;
+  --badge-info-text: #1a3a6e;
+  --badge-info-border: #b3d4f5;
 
-  --badge-purple-bg: #ecfeff;
-  --badge-purple-text: #0e7490;
-  --badge-purple-border: #a5f3fc;
+  --badge-purple-bg: #f5f3ff;
+  --badge-purple-text: #6d28d9;
+  --badge-purple-border: #ddd6fe;
 
-  --shadow-sm: 0 1px 3px 0 rgba(2, 132, 199, 0.08);
-  --shadow-md: 0 4px 8px -1px rgba(2, 132, 199, 0.10), 0 2px 4px -2px rgba(2, 132, 199, 0.06);
-  --shadow-lg: 0 10px 20px -3px rgba(2, 132, 199, 0.12), 0 4px 6px -4px rgba(2, 132, 199, 0.06);
-  --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.25);
-  --shadow-header: 0 1px 6px rgba(2, 132, 199, 0.10);
+  --shadow-sm: 0 1px 3px 0 rgba(14, 30, 56, 0.08);
+  --shadow-md: 0 4px 8px -1px rgba(14, 30, 56, 0.10), 0 2px 4px -2px rgba(14, 30, 56, 0.06);
+  --shadow-lg: 0 10px 20px -3px rgba(14, 30, 56, 0.12), 0 4px 6px -4px rgba(14, 30, 56, 0.06);
+  --shadow-glow: 0 0 20px rgba(26, 58, 110, 0.20);
+  --shadow-header: 0 2px 12px rgba(14, 30, 56, 0.30);
 
   --radius-sm: 6px;
   --radius-md: 10px;
@@ -80,37 +81,37 @@
 }
 
 [data-theme="dark"] {
-  /* ─── Dark Mode: black + light blue ─── */
-  --bg-app: #000000;
-  --bg-surface: #0a0a0a;
-  --bg-surface-elevated: #111111;
-  --bg-surface-secondary: #0d0d0d;
-  --bg-subtle: #161616;
-  --border-color: #1a2733;
-  --border-strong: #25394a;
+  /* ─── Stellantis Navy Dark Mode ─── */
+  --bg-app: #060d1c;
+  --bg-surface: #0d1a30;
+  --bg-surface-elevated: #111f38;
+  --bg-surface-secondary: #0f1d34;
+  --bg-subtle: #162240;
+  --border-color: #1d3460;
+  --border-strong: #244080;
 
-  --text-primary: #e6f6ff;
-  --text-secondary: #a9cfe6;
-  --text-muted: #7fa6bf;
+  --text-primary: #e8f0ff;
+  --text-secondary: #b8cde8;
+  --text-muted: #8ea8d0;
 
-  --hub-navy: #0284c7;
-  --hub-navy-mid: #0ea5e9;
-  --hub-blue: #38bdf8;
-  --hub-blue-bright: #38bdf8;
-  --hub-blue-light: #07202e;
-  --hub-accent: #38bdf8;
-  --hub-action: #0284c7;
+  --stellantis-navy: #0e1e38;
+  --stellantis-navy-mid: #1a3a6e;
+  --stellantis-blue: #4080d0;
+  --stellantis-blue-bright: #0284c7;
+  --stellantis-blue-light: #0f2040;
+  --stellantis-accent: #60a5fa;
+  --stellantis-action: #0284c7;
 
   /* Nav active tab in dark mode */
-  --nav-active-tab-bg: #0284c7;
-  --nav-active-tab-border: #38bdf8;
+  --nav-active-tab-bg: #1a3a6e;
+  --nav-active-tab-border: #3b82f6;
 
-  --header-bg: #000000;
+  --header-bg: #060d1c;
   --header-text: #ffffff;
-  --header-border: #1a2733;
+  --header-border: #0e1e38;
 
-  --workspace-bg: #0a0a0a;
-  --workspace-border: #1a2733;
+  --workspace-bg: #0d1a30;
+  --workspace-border: #1d3460;
 
   --badge-critical-bg: #2a0a0a;
   --badge-critical-text: #f87171;
@@ -124,19 +125,19 @@
   --badge-success-text: #34d399;
   --badge-success-border: #0d4025;
 
-  --badge-info-bg: #061a26;
-  --badge-info-text: #7dd3fc;
-  --badge-info-border: #0c3a55;
+  --badge-info-bg: #0a1a3a;
+  --badge-info-text: #7eb8f5;
+  --badge-info-border: #1a3a7a;
 
-  --badge-purple-bg: #04181d;
-  --badge-purple-text: #67e8f9;
-  --badge-purple-border: #0b3a44;
+  --badge-purple-bg: #1a0a3a;
+  --badge-purple-text: #c084fc;
+  --badge-purple-border: #3a1a6a;
 
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
   --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 25px rgba(56, 189, 248, 0.30);
-  --shadow-header: 0 1px 0 rgba(56, 189, 248, 0.12);
+  --shadow-glow: 0 0 25px rgba(26, 58, 110, 0.40);
+  --shadow-header: 0 2px 16px rgba(0, 0, 0, 0.6);
 }
 
 /* ─── Reset & Base ─── */
@@ -242,26 +243,26 @@ body {
 }
 
 .st-btn:focus-visible {
-  outline: 2px solid var(--hub-action);
+  outline: 2px solid var(--stellantis-action);
   outline-offset: 2px;
 }
 
 .st-btn-primary {
-  background: var(--hub-navy);
+  background: var(--stellantis-navy);
   color: #ffffff;
-  border-color: var(--hub-navy);
+  border-color: var(--stellantis-navy);
 }
 
 .st-btn-primary:hover {
-  background: var(--hub-navy-mid);
-  border-color: var(--hub-navy-mid);
-  box-shadow: 0 2px 8px rgba(10, 10, 10, 0.35);
+  background: var(--stellantis-navy-mid);
+  border-color: var(--stellantis-navy-mid);
+  box-shadow: 0 2px 8px rgba(14, 30, 56, 0.35);
 }
 
 .st-btn-action {
-  background: var(--hub-action);
+  background: var(--stellantis-action);
   color: #ffffff;
-  border-color: var(--hub-action);
+  border-color: var(--stellantis-action);
 }
 
 .st-btn-action:hover {
@@ -302,7 +303,7 @@ body {
 .badge-success  { background: var(--badge-success-bg);  color: var(--badge-success-text);  border-color: var(--badge-success-border); }
 .badge-info     { background: var(--badge-info-bg);     color: var(--badge-info-text);     border-color: var(--badge-info-border); }
 .badge-purple   { background: var(--badge-purple-bg);   color: var(--badge-purple-text);   border-color: var(--badge-purple-border); }
-.badge-navy     { background: var(--hub-navy);   color: #ffffff;                    border-color: var(--hub-navy-mid); }
+.badge-navy     { background: var(--stellantis-navy);   color: #ffffff;                    border-color: var(--stellantis-navy-mid); }
 
 /* Floating widgets (SEL Nexus & AI Assistant) removed per product requirements */
 
@@ -319,8 +320,8 @@ input, select, textarea {
 
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: var(--hub-navy-mid);
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+  border-color: var(--stellantis-navy-mid);
+  box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.12);
 }
 
 select {
@@ -334,14 +335,14 @@ option {
 }
 
 [data-theme="dark"] .st-btn-primary {
-  background: #0369a1;
-  border-color: #0284c7;
+  background: #1d3f7a;
+  border-color: #2e5ca6;
   color: #ffffff;
 }
 
 [data-theme="dark"] .st-btn-primary:hover {
-  background: #0284c7;
-  border-color: #0ea5e9;
+  background: #254f96;
+  border-color: #3b74cc;
 }
 
 /* ─── Scrollbars ─── */

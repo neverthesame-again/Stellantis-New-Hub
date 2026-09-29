@@ -145,9 +145,9 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
                 border: '1px solid var(--border-color)',
                 borderRadius: 'var(--radius-md)',
                 padding: '12px 6px',
-                borderTop: '3px solid #0ea5e9'
+                borderTop: '3px solid #3b82f6'
               }}>
-                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0ea5e9' }}>{stats.p3InProgress ?? 14}</div>
+                <div style={{ fontSize: '1.4rem', fontWeight: 800, color: '#3b82f6' }}>{stats.p3InProgress ?? 14}</div>
                 <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)' }}>Moderate P3</div>
                 <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)', marginTop: '2px' }}>SLA &lt;4h</div>
               </div>
@@ -175,7 +175,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Clock size={17} color="#0ea5e9" />
+                <Clock size={17} color="#3b82f6" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>
                   Mean Time to Detect and Resolve
                 </h3>
@@ -254,7 +254,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Layers size={17} color="var(--hub-accent)" />
+                <Layers size={17} color="var(--stellantis-accent)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>
                   Recurring Incident Clusters
                 </h3>
@@ -284,9 +284,9 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
                     padding: '12px',
                     cursor: 'pointer',
                     transition: 'all 0.15s ease',
-                    borderLeft: cluster.impactLevel === 'Critical' ? '4px solid #ef4444' : cluster.impactLevel === 'High' ? '4px solid #f59e0b' : '4px solid #0ea5e9'
+                    borderLeft: cluster.impactLevel === 'Critical' ? '4px solid #ef4444' : cluster.impactLevel === 'High' ? '4px solid #f59e0b' : '4px solid #3b82f6'
                   }}
-                  onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--hub-accent)'}
+                  onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--stellantis-accent)'}
                   onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border-color)'}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
@@ -319,7 +319,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <GitPullRequest size={17} color="var(--hub-accent)" />
+                <GitPullRequest size={17} color="var(--stellantis-accent)" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>
                   Problem-to-change conversion
                 </h3>
@@ -357,7 +357,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
                 >
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <GitPullRequest size={14} color="var(--hub-accent)" />
+                      <GitPullRequest size={14} color="var(--stellantis-accent)" />
                       <span style={{ fontWeight: 700, fontSize: '0.82rem', color: 'var(--text-primary)' }}>{item.id}</span>
                       <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>({item.recurringIncidents} events)</span>
                     </div>
@@ -440,7 +440,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
                 <div style={{ fontSize: '0.66rem', color: 'var(--text-muted)' }}>Runbook Success</div>
               </div>
               <div style={{ background: 'var(--bg-surface-secondary)', padding: '8px 4px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
-                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0ea5e9' }}>62.0%</div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#3b82f6' }}>62.0%</div>
                 <div style={{ fontSize: '0.66rem', color: 'var(--text-muted)' }}>Ticket Deflection</div>
               </div>
               <div style={{ background: 'var(--bg-surface-secondary)', padding: '8px 4px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
@@ -505,7 +505,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
 
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', display: 'flex', justifyContent: 'space-between' }}>
                     <span>Assigned: <strong>{td.targetSquad}</strong></span>
-                    <span style={{ color: 'var(--hub-accent)', fontWeight: 600 }}>{td.status}</span>
+                    <span style={{ color: 'var(--stellantis-accent)', fontWeight: 600 }}>{td.status}</span>
                   </div>
                 </div>
               ))}
@@ -546,7 +546,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
             </div>
 
             <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>
-              Live health telemetry &amp; 30-day incident stability across Tier-1 enterprise platforms.
+              Live health telemetry &amp; 30-day incident stability across Stellantis Tier-1 enterprise platforms.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -587,7 +587,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
           <div className="st-card" style={{ padding: '20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Target size={17} color="#0ea5e9" />
+                <Target size={17} color="#3b82f6" />
                 <h3 style={{ fontSize: '0.86rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-primary)' }}>
                   SLA performance
                 </h3>

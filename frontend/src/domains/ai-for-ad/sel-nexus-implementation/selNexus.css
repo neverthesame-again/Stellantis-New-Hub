@@ -1,7 +1,7 @@
 /* ==========================================================================
    SEL NEXUS AUTOMATION PIPELINE SUITE
    Includes 2-Option Flow Modal and Brownfield Modal
-   Corporate Theme (Dark Navy / Sky Blue / High Contrast)
+   Stellantis Corporate Theme (Dark Navy / Sky Blue / High Contrast)
    ========================================================================== */
 
 /* Modal Backdrop Overlay */
@@ -9,7 +9,7 @@
 .ad-nexus-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(10, 10, 10, 0.65);
+  background-color: rgba(11, 26, 48, 0.65);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
-  box-shadow: 0 24px 48px -12px rgba(10, 10, 10, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 24px 48px -12px rgba(11, 26, 48, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
   overflow: hidden;
   animation: bfScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   margin: auto;
@@ -47,7 +47,7 @@
 .ad-nexus-modal-title {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #0b1a30;
   letter-spacing: -0.01em;
 }
 
@@ -67,7 +67,7 @@
 
 .ad-nexus-modal-close:hover {
   background-color: #f1f5f9;
-  color: #0a0a0a;
+  color: #0f172a;
 }
 
 .ad-nexus-modal-body {
@@ -98,18 +98,18 @@
   width: 68px;
   height: 68px;
   border-radius: 18px;
-  background-color: #0369a1;
+  background-color: #004884;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
-  box-shadow: 0 10px 24px rgba(3, 105, 161, 0.28);
+  box-shadow: 0 10px 24px rgba(0, 72, 132, 0.28);
 }
 
 .ad-nexus-heading {
   font-size: 1.45rem;
   font-weight: 800;
-  color: #0a0a0a;
+  color: #0b1a30;
   letter-spacing: -0.02em;
   margin: 0 0 10px 0;
 }
@@ -135,12 +135,12 @@
   gap: 14px;
   padding: 16px 20px;
   border-radius: 12px;
-  background-color: #0369a1;
+  background-color: #004884;
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #ffffff;
   cursor: pointer;
   text-align: left;
-  box-shadow: 0 4px 14px rgba(3, 105, 161, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 72, 132, 0.22);
   transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
   font-family: inherit;
   text-decoration: none;
@@ -148,9 +148,9 @@
 }
 
 .ad-nexus-action-card:hover {
-  background-color: #075985;
+  background-color: #00376b;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(3, 105, 161, 0.35);
+  box-shadow: 0 8px 22px rgba(0, 72, 132, 0.35);
 }
 
 .ad-nexus-action-card:active {
@@ -194,7 +194,7 @@
   background-color: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
-  box-shadow: 0 24px 48px -12px rgba(10, 10, 10, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
+  box-shadow: 0 24px 48px -12px rgba(11, 26, 48, 0.25), 0 0 32px rgba(56, 189, 248, 0.12);
   overflow: hidden;
   animation: bfScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   margin: auto;
@@ -231,7 +231,7 @@
 
 .bf-modal-back-btn:hover {
   background-color: #f1f5f9;
-  color: #0a0a0a;
+  color: #0b1a30;
 }
 
 .bf-modal-title {
@@ -240,12 +240,12 @@
   gap: 8px;
   font-size: 1rem;
   font-weight: 700;
-  color: #0a0a0a;
+  color: #0b1a30;
   letter-spacing: -0.01em;
 }
 
 .bf-modal-title svg {
-  color: #0369a1;
+  color: #004884;
 }
 
 .bf-modal-close {
@@ -265,7 +265,7 @@
 
 .bf-modal-close:hover {
   background-color: #f1f5f9;
-  color: #0a0a0a;
+  color: #0f172a;
 }
 
 .bf-modal-close:disabled {
@@ -289,7 +289,7 @@
 .bf-form-label {
   font-size: 0.78rem;
   font-weight: 700;
-  color: #171717;
+  color: #1e293b;
   letter-spacing: -0.005em;
 }
 
@@ -301,7 +301,7 @@
   border: 1px solid #cbd5e1;
   background-color: #f8fafc;
   font-size: 0.82rem;
-  color: #0a0a0a;
+  color: #0f172a;
   outline: none;
   font-family: inherit;
   transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
@@ -321,9 +321,9 @@
 
 .bf-form-input:focus,
 .bf-form-textarea:focus {
-  border-color: #0369a1;
+  border-color: #004884;
   background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(3, 105, 161, 0.12);
+  box-shadow: 0 0 0 3px rgba(0, 72, 132, 0.12);
 }
 
 .bf-form-input:disabled,
@@ -351,12 +351,12 @@
 
 .bf-upload-dropzone:hover,
 .bf-upload-dropzone.dragover {
-  border-color: #0369a1;
+  border-color: #004884;
   background-color: rgba(56, 189, 248, 0.06);
 }
 
 .bf-upload-dropzone-icon {
-  color: #0369a1;
+  color: #004884;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -370,7 +370,7 @@
 
 .bf-upload-text span {
   font-weight: 700;
-  color: #0369a1;
+  color: #004884;
 }
 
 .bf-upload-hint {
@@ -490,7 +490,7 @@
 
 .bf-btn-secondary:hover {
   background-color: #f8fafc;
-  color: #0a0a0a;
+  color: #0f172a;
 }
 
 .bf-btn-secondary:disabled {
@@ -502,18 +502,18 @@
   padding: 8px 22px;
   border-radius: 9px;
   border: none;
-  background-color: #0369a1;
+  background-color: #004884;
   color: #ffffff;
   font-size: 0.78rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(3, 105, 161, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 72, 132, 0.25);
   transition: all 0.15s ease;
 }
 
 .bf-btn-primary:hover:not(:disabled) {
-  background-color: #075985;
-  box-shadow: 0 4px 12px rgba(3, 105, 161, 0.35);
+  background-color: #003768;
+  box-shadow: 0 4px 12px rgba(0, 72, 132, 0.35);
   transform: translateY(-1px);
 }
 
@@ -532,15 +532,15 @@
    -------------------------------------------------------------------------- */
 [data-theme="dark"] .ad-nexus-modal-card,
 [data-theme="dark"] .bf-modal-box {
-  background-color: #0a0a0a;
-  border-color: #1a2e3d;
+  background-color: #0d1a30;
+  border-color: #1e3a5f;
   box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.55), 0 0 32px rgba(56, 189, 248, 0.16);
 }
 
 [data-theme="dark"] .ad-nexus-modal-header,
 [data-theme="dark"] .bf-modal-header {
-  background-color: #0a0a0a;
-  border-bottom-color: #171717;
+  background-color: #0d1a30;
+  border-bottom-color: #1e293b;
 }
 
 [data-theme="dark"] .ad-nexus-modal-title,
@@ -559,17 +559,17 @@
 
 [data-theme="dark"] .ad-nexus-modal-close:hover,
 [data-theme="dark"] .bf-modal-close:hover {
-  background-color: #171717;
+  background-color: #1e293b;
   color: #ffffff;
 }
 
 [data-theme="dark"] .bf-modal-back-btn {
-  border-color: #171717;
+  border-color: #1e293b;
   color: #94a3b8;
 }
 
 [data-theme="dark"] .bf-modal-back-btn:hover {
-  background-color: #171717;
+  background-color: #1e293b;
   color: #ffffff;
 }
 
@@ -582,16 +582,16 @@
 }
 
 [data-theme="dark"] .ad-nexus-decor-line {
-  background: repeating-linear-gradient(to right, #27323a 0, #27323a 18px, transparent 18px, transparent 26px);
+  background: repeating-linear-gradient(to right, #334155 0, #334155 18px, transparent 18px, transparent 26px);
 }
 
 [data-theme="dark"] .ad-nexus-action-card {
-  background-color: #0369a1;
-  border-color: #25394a;
+  background-color: #004884;
+  border-color: #244080;
 }
 
 [data-theme="dark"] .ad-nexus-action-card:hover {
-  background-color: #075985;
+  background-color: #003b6e;
 }
 
 [data-theme="dark"] .bf-form-label {
@@ -600,21 +600,21 @@
 
 [data-theme="dark"] .bf-form-input,
 [data-theme="dark"] .bf-form-textarea {
-  background-color: #050505;
-  border-color: #1a2e3d;
+  background-color: #081324;
+  border-color: #1e3a5f;
   color: #f8fafc;
 }
 
 [data-theme="dark"] .bf-form-input:focus,
 [data-theme="dark"] .bf-form-textarea:focus {
   border-color: #38bdf8;
-  background-color: #0a0a0a;
+  background-color: #0b1a30;
   box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
 [data-theme="dark"] .bf-upload-dropzone {
-  background-color: #050505;
-  border-color: #25394a;
+  background-color: #081324;
+  border-color: #244080;
 }
 
 [data-theme="dark"] .bf-upload-dropzone:hover,
@@ -636,7 +636,7 @@
 }
 
 [data-theme="dark"] .bf-upload-file {
-  background-color: #0c2a3d;
+  background-color: #102a4e;
   border-color: #0284c7;
 }
 
@@ -665,26 +665,26 @@
 }
 
 [data-theme="dark"] .bf-form-actions {
-  border-top-color: #171717;
+  border-top-color: #1e293b;
 }
 
 [data-theme="dark"] .bf-btn-secondary {
-  background-color: #0a0a0a;
-  border-color: #1a2e3d;
+  background-color: #0d1a30;
+  border-color: #1e3a5f;
   color: #cbd5e1;
 }
 
 [data-theme="dark"] .bf-btn-secondary:hover {
-  background-color: #171717;
+  background-color: #1e293b;
   color: #ffffff;
 }
 
 [data-theme="dark"] .bf-btn-primary {
-  background-color: #0369a1;
+  background-color: #004884;
 }
 
 [data-theme="dark"] .bf-btn-primary:hover:not(:disabled) {
-  background-color: #075985;
+  background-color: #003b6e;
 }
 
 /* Animations */

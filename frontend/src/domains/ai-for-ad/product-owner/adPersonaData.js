@@ -15,7 +15,7 @@ export const personaContextData = {
   businessUnits: [
     { id: 'ai-for-ad', label: 'AI for AD' },
     { id: 'ai-for-ams', label: 'AI for AMS' },
-    { id: 'eng-leaders', label: 'Engineering Leader' }
+    { id: 'eng-leaders', label: 'Engineering Leaders' }
   ],
 
   portfolios: [
@@ -197,7 +197,7 @@ export const drillDownLevelsData = {
     shortIndicator: '91% Compliance',
     indicatorType: 'success',
     title: 'L2+ Autonomous Systems Portfolio',
-    subtitle: 'Enterprise Portfolio Operations • AI Hub',
+    subtitle: 'Enterprise Portfolio Operations • Stellantis Platform Hub',
     statusBadge: 'Tier 1 Portfolio',
     metrics: [
       { label: 'Governance Compliance', value: '91%', change: '▲ +3pts this quarter', type: 'success' },
@@ -295,7 +295,7 @@ export const drillDownLevelsData = {
     subtitle: 'Anthropic Foundation Model • Fine-Tuned on Automotive Engineering Taxonomies',
     statusBadge: 'Tool-Qualified',
     metrics: [
-      { label: 'Provider', value: 'Anthropic Gateway', subtext: 'Private Sovereign VPC', type: 'neutral' },
+      { label: 'Provider', value: 'Anthropic Gateway', subtext: 'Stellantis Private Sovereign VPC', type: 'neutral' },
       { label: 'Risk Rating', value: 'Low Risk', subtext: 'ISO 26262 Tool Qualification Certified', type: 'success' },
       { label: 'Inference Engine', value: 'TensorRT / FP16', subtext: 'High-throughput enterprise runtime', type: 'success' },
       { label: 'Data Residency', value: 'EU Sovereign', subtext: 'Dedicated Frankfurt & Paris VPCs', type: 'neutral' }
@@ -316,13 +316,13 @@ export const drillDownLevelsData = {
     shortIndicator: 'Passed (0.97 Conf)',
     indicatorType: 'success',
     title: 'Execution #RUN-71029 (Live Verification Trace)',
-    subtitle: 'Real-time telemetry trace • Test Platform: Apex Crossover Prototype #12',
+    subtitle: 'Real-time telemetry trace • Test Platform: Maserati Grecale Prototype #12',
     statusBadge: 'ASIL-D Passed',
     metrics: [
       { label: 'Inference Latency', value: '16.4ms', subtext: 'Budget: 25.0ms (PASS)', type: 'success' },
       { label: 'Verification Score', value: '0.97', subtext: 'Threshold: 0.85 (PASSED)', type: 'success' },
       { label: 'Safety Gate', value: 'ASIL-D Ready', subtext: 'Validated for release integration', type: 'success' },
-      { label: 'Test Platform', value: 'Vehicle #12', subtext: 'Apex Crossover Prototype', type: 'neutral' }
+      { label: 'Test Platform', value: 'Vehicle #12', subtext: 'Maserati Grecale Prototype', type: 'neutral' }
     ],
     telemetryReadout: {
       batchId: 'Verification Batch #RUN-71029',
@@ -364,7 +364,7 @@ export const governanceAuditMatrixData = {
     {
       domain: 'Automated Lane Keeping & Highway Pilot (UNECE R157)',
       scope: 'Driver Monitoring & Transition Demands',
-      pmAuthority: 'Sign off commercial milestone gates up to €500k upon Northfield track sign-off',
+      pmAuthority: 'Sign off commercial milestone gates up to €500k upon Balocco track sign-off',
       coSigner: 'Systems Engineering Director',
       status: 'Gate Scheduled'
     },

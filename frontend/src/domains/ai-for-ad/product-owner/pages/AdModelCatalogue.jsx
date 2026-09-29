@@ -114,7 +114,7 @@ const INITIAL_MODELS = [
     usecases: [
       'Complex safety-case argument generation, ASIL-D hazard analysis, and regulatory dossier preparation.'
     ],
-    dataRestrictions: 'Approved under Enterprise Privacy Shield.',
+    dataRestrictions: 'Approved under Stellantis Enterprise Privacy Shield.',
     policy: 'Access gated for Functional Safety and Systems Leads.'
   },
   {
@@ -190,7 +190,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Available',
     scope: 'Enterprise On-Prem',
-    desc: 'European sovereign frontier foundation model deployed on Enterprise internal Paris & Frankfurt datacenter clusters with complete zero-egress guarantee.',
+    desc: 'European sovereign frontier foundation model deployed on Stellantis internal Paris & Frankfurt datacenter clusters with complete zero-egress guarantee.',
     modality: 'Text • Sovereign On-Prem',
     latency: 'Ultra-Low (<300ms)',
     latencyMs: 280,
@@ -201,13 +201,13 @@ const INITIAL_MODELS = [
       'Requires internal network VPN or high-speed proving ground fiber.'
     ],
     benchmarks: [
-      { metric: 'Automotive C++ Code Review Accuracy', val: '93.1%', note: 'Internal benchmark' },
+      { metric: 'Automotive C++ Code Review Accuracy', val: '93.1%', note: 'Internal Stellantis benchmark' },
       { metric: 'On-Premise Inference Latency', val: '280 ms', note: 'Hardware cluster mean' }
     ],
     usecases: [
       'Confidential telemetry analysis, internal AD-108 patch generation, and sovereign engineering sandbox.'
     ],
-    dataRestrictions: 'EU Sovereign On-Premise Only (Private Data Center). Zero telemetry egress.',
+    dataRestrictions: 'EU Sovereign On-Premise Only (Stellantis Private Data Center). Zero telemetry egress.',
     policy: 'Pre-approved for all engineering tiers under standard enterprise license.'
   },
   {
@@ -221,7 +221,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Approved',
     scope: 'Simulation Bench Scope',
-    desc: 'Fine-tuned open architecture containerized inside Private VPC for high-throughput Northfield proving ground simulation telemetry digestion.',
+    desc: 'Fine-tuned open architecture containerized inside Stellantis Private VPC for high-throughput Balocco proving ground simulation telemetry digestion.',
     modality: 'Text • Private VPC Container',
     latency: 'Ultra-Low (<200ms)',
     latencyMs: 185,
@@ -232,14 +232,14 @@ const INITIAL_MODELS = [
       'Dedicated compute instances must be maintained per test bench.'
     ],
     benchmarks: [
-      { metric: 'HIL Fault Trace Diagnostics', val: '95.6%', note: 'Northfield Rig benchmark' },
+      { metric: 'HIL Fault Trace Diagnostics', val: '95.6%', note: 'Balocco Rig benchmark' },
       { metric: 'Simulation Turnaround Latency', val: '185 ms', note: 'Dedicated VPC runtime' }
     ],
     usecases: [
       'Automated Hardware-in-the-Loop simulation diagnostics and ghost radar echo classification logs.'
     ],
     dataRestrictions: 'Private VPC Appliance with hardware isolation. Complies with ISO 26262 Part 4.',
-    policy: 'Approved for Northfield test bench operators and Autonomous Driving verification engineers.'
+    policy: 'Approved for Balocco test bench operators and Autonomous Driving verification engineers.'
   },
   {
     id: 'deepseek',
@@ -252,7 +252,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Approved',
     scope: 'Proving Ground Cluster',
-    desc: 'Open-weights mathematical reasoning model containerized on internal GPU clusters for automated trajectory calculus, path planning proofs, and physics verification.',
+    desc: 'Open-weights mathematical reasoning model containerized on internal Stellantis GPU clusters for automated trajectory calculus, path planning proofs, and physics verification.',
     modality: 'Text • Sovereign On-Prem',
     latency: 'Medium (~650ms)',
     latencyMs: 650,
@@ -263,13 +263,13 @@ const INITIAL_MODELS = [
       'Requires private cluster GPU node allocation.'
     ],
     benchmarks: [
-      { metric: 'Trajectory Optimization Verification', val: '96.4%', note: 'Internal benchmark' },
+      { metric: 'Trajectory Optimization Verification', val: '96.4%', note: 'Internal Stellantis benchmark' },
       { metric: 'Kinematic Constraint Proof Accuracy', val: '95.1%', note: 'Safety envelope benchmark' }
     ],
     usecases: [
       'Automated trajectory solver verification and kinematic constraint formal proofs.'
     ],
-    dataRestrictions: 'EU Sovereign On-Premise Only (Private Data Center). Zero telemetry egress.',
+    dataRestrictions: 'EU Sovereign On-Premise Only (Stellantis Private Data Center). Zero telemetry egress.',
     policy: 'Approved for AD Controls and Trajectory Planning engineering squads.'
   },
   {
@@ -300,7 +300,7 @@ const INITIAL_MODELS = [
     usecases: [
       'Real-time camera telemetry triage, disengagement video frame captioning, and fast sensor diagnostics.'
     ],
-    dataRestrictions: 'Enterprise Cloud Gateway with automatic PII scrubbing.',
+    dataRestrictions: 'Stellantis Enterprise Cloud Gateway with automatic PII scrubbing.',
     policy: 'Pre-approved for all Perception and Telemetry engineering workflows.'
   }
 ];
@@ -926,11 +926,11 @@ export default function AdModelCatalogue() {
                       <div className="ad-model-attrs-grid">
                         <div>
                           <span className="ad-model-attr-label">Capability:</span>
-                          <span className="ad-model-attr-val" style={{ color: '#0284c7' }}>{model.capabilityGroup}</span>
+                          <span className="ad-model-attr-val" style={{ color: '#2563eb' }}>{model.capabilityGroup}</span>
                         </div>
                         <div>
                           <span className="ad-model-attr-label">Cost Tier:</span>
-                          <span className="ad-model-attr-val" style={{ color: model.costTier === 'Economy Compute' ? '#16a34a' : model.costTier === 'Premium Compute' ? '#0891b2' : '#0284c7' }}>
+                          <span className="ad-model-attr-val" style={{ color: model.costTier === 'Economy Compute' ? '#16a34a' : model.costTier === 'Premium Compute' ? '#9333ea' : '#2563eb' }}>
                             {model.costTier}
                           </span>
                         </div>
@@ -944,7 +944,7 @@ export default function AdModelCatalogue() {
                         </div>
                         <div style={{ gridColumn: 'span 2', paddingTop: '6px', borderTop: '1px solid var(--border-color, #e2e8f0)' }}>
                           <span className="ad-model-attr-label">Scope / Highlight:</span>
-                          <span className="ad-model-attr-val" style={{ color: model.isRestricted ? '#e11d48' : '#075985' }}>
+                          <span className="ad-model-attr-val" style={{ color: model.isRestricted ? '#e11d48' : '#1e40af' }}>
                             {model.scope}
                           </span>
                         </div>
@@ -962,7 +962,7 @@ export default function AdModelCatalogue() {
                               className="ad-model-quota-bar"
                               style={{
                                 width: `${model.monthlyQuota.pct}%`,
-                                background: model.monthlyQuota.pct > 80 ? '#e11d48' : '#0284c7'
+                                background: model.monthlyQuota.pct > 80 ? '#e11d48' : '#2563eb'
                               }}
                             />
                           </div>
@@ -1076,24 +1076,24 @@ export default function AdModelCatalogue() {
                 <line x1="60" y1="200" x2="380" y2="200" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="3 3" />
 
                 {/* Axis Labels */}
-                <text x="220" y="24" textAnchor="middle" fill="#0a0a0a" fontSize="10" fontWeight="bold">Accuracy &amp; Precision</text>
-                <text x="390" y="204" textAnchor="start" fill="#0a0a0a" fontSize="10" fontWeight="bold">Speed &amp; Latency</text>
-                <text x="220" y="385" textAnchor="middle" fill="#0a0a0a" fontSize="10" fontWeight="bold">Cost-Efficiency</text>
-                <text x="50" y="204" textAnchor="end" fill="#0a0a0a" fontSize="10" fontWeight="bold">Safety &amp; ISO 26262</text>
+                <text x="220" y="24" textAnchor="middle" fill="#0f172a" fontSize="10" fontWeight="bold">Accuracy &amp; Precision</text>
+                <text x="390" y="204" textAnchor="start" fill="#0f172a" fontSize="10" fontWeight="bold">Speed &amp; Latency</text>
+                <text x="220" y="385" textAnchor="middle" fill="#0f172a" fontSize="10" fontWeight="bold">Cost-Efficiency</text>
+                <text x="50" y="204" textAnchor="end" fill="#0f172a" fontSize="10" fontWeight="bold">Safety &amp; ISO 26262</text>
 
                 {/* Claude Opus 5 (Purple) */}
-                <polygon points="220,43.2 335.2,200 220,292.8 61.6,200" fill="rgba(8, 145, 178, 0.16)" stroke="#0891b2" strokeWidth="2.5" />
-                <circle cx="220" cy="43.2" r="3.5" fill="#0891b2" />
-                <circle cx="335.2" cy="200" r="3.5" fill="#0891b2" />
-                <circle cx="220" cy="292.8" r="3.5" fill="#0891b2" />
-                <circle cx="61.6" cy="200" r="3.5" fill="#0891b2" />
+                <polygon points="220,43.2 335.2,200 220,292.8 61.6,200" fill="rgba(147, 51, 234, 0.16)" stroke="#9333ea" strokeWidth="2.5" />
+                <circle cx="220" cy="43.2" r="3.5" fill="#9333ea" />
+                <circle cx="335.2" cy="200" r="3.5" fill="#9333ea" />
+                <circle cx="220" cy="292.8" r="3.5" fill="#9333ea" />
+                <circle cx="61.6" cy="200" r="3.5" fill="#9333ea" />
 
                 {/* Claude Sonnet 5 (Blue) */}
-                <polygon points="220,52.8 370.4,200 220,340.8 76,200" fill="rgba(2, 132, 199, 0.16)" stroke="#0284c7" strokeWidth="2.5" />
-                <circle cx="220" cy="52.8" r="3.5" fill="#0284c7" />
-                <circle cx="370.4" cy="200" r="3.5" fill="#0284c7" />
-                <circle cx="220" cy="340.8" r="3.5" fill="#0284c7" />
-                <circle cx="76" cy="200" r="3.5" fill="#0284c7" />
+                <polygon points="220,52.8 370.4,200 220,340.8 76,200" fill="rgba(37, 99, 235, 0.16)" stroke="#2563eb" strokeWidth="2.5" />
+                <circle cx="220" cy="52.8" r="3.5" fill="#2563eb" />
+                <circle cx="370.4" cy="200" r="3.5" fill="#2563eb" />
+                <circle cx="220" cy="340.8" r="3.5" fill="#2563eb" />
+                <circle cx="76" cy="200" r="3.5" fill="#2563eb" />
 
                 {/* Gemini 2.5 Pro (Emerald) */}
                 <polygon points="220,54.4 367.2,200 220,337.6 79.2,200" fill="rgba(5, 150, 105, 0.16)" stroke="#059669" strokeWidth="2" />
@@ -1152,8 +1152,8 @@ export default function AdModelCatalogue() {
               <tbody>
                 <tr>
                   <td style={{ fontWeight: 700 }}>Provider &amp; Model Version</td>
-                  <td style={{ fontWeight: 600, color: '#075985' }}>Anthropic &bull; v5.1</td>
-                  <td style={{ fontWeight: 600, color: '#155e75' }}>Anthropic &bull; v5.0</td>
+                  <td style={{ fontWeight: 600, color: '#1e40af' }}>Anthropic &bull; v5.1</td>
+                  <td style={{ fontWeight: 600, color: '#6b21a8' }}>Anthropic &bull; v5.0</td>
                   <td style={{ fontWeight: 600, color: '#065f46' }}>Google GCP &bull; v2.5</td>
                 </tr>
                 <tr>
@@ -1183,13 +1183,13 @@ export default function AdModelCatalogue() {
                 <tr>
                   <td style={{ fontWeight: 700 }}>Cost Tier</td>
                   <td>Standard Compute</td>
-                  <td style={{ color: '#0e7490', fontWeight: 700 }}>Premium Compute</td>
+                  <td style={{ color: '#7e22ce', fontWeight: 700 }}>Premium Compute</td>
                   <td>Standard Compute</td>
                 </tr>
                 <tr>
                   <td style={{ fontWeight: 700 }}>ISO 26262 Suitability</td>
                   <td>Automated Requirement &amp; Test Drafting</td>
-                  <td style={{ fontWeight: 700, color: '#155e75' }}>ASIL-D Argument Formal Validation</td>
+                  <td style={{ fontWeight: 700, color: '#6b21a8' }}>ASIL-D Argument Formal Validation</td>
                   <td>Disengagement Telemetry &amp; Camera Logs</td>
                 </tr>
                 <tr>
@@ -1253,7 +1253,7 @@ export default function AdModelCatalogue() {
                 <tbody>
                   {filteredRequests.map(req => (
                     <tr key={req.id}>
-                      <td style={{ fontFamily: 'monospace', fontWeight: 700, color: '#0284c7' }}>{req.id}</td>
+                      <td style={{ fontFamily: 'monospace', fontWeight: 700, color: '#2563eb' }}>{req.id}</td>
                       <td style={{ fontWeight: 800, color: 'var(--text-primary)' }}>{req.model}</td>
                       <td>
                         <span className="st-badge badge-info" style={{ fontSize: '0.62rem' }}>{req.type}</span>
@@ -1315,7 +1315,7 @@ export default function AdModelCatalogue() {
             <div className="ad-quota-gauge-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: '8px', borderBottom: '1px solid var(--border-color, #f1f5f9)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#0284c7' }} />
+                  <span style={{ width: '10px', height: '10px', borderRadius: '50%', background: '#2563eb' }} />
                   <strong style={{ fontSize: '0.78rem', color: 'var(--text-primary)' }}>Claude Sonnet 5 &bull; Monthly Quota Burn</strong>
                 </div>
                 <span className="st-badge badge-info" style={{ fontSize: '0.62rem' }}>Project Scoped</span>
@@ -1325,11 +1325,11 @@ export default function AdModelCatalogue() {
                 <span style={{ fontSize: '1.4rem', fontFamily: 'monospace', fontWeight: 800, color: 'var(--text-primary)' }}>
                   620,000 <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', fontWeight: 400 }}>/ 1,000,000 Tokens</span>
                 </span>
-                <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#0284c7', fontSize: '0.78rem' }}>62.0% Used</span>
+                <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#2563eb', fontSize: '0.78rem' }}>62.0% Used</span>
               </div>
 
               <div className="ad-model-quota-track" style={{ height: '8px' }}>
-                <div className="ad-model-quota-bar" style={{ width: '62%', background: '#0284c7' }} />
+                <div className="ad-model-quota-bar" style={{ width: '62%', background: '#2563eb' }} />
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', fontSize: '0.68rem', fontFamily: 'monospace', color: 'var(--text-muted)' }}>
@@ -1430,7 +1430,7 @@ export default function AdModelCatalogue() {
                         <strong style={{ color: 'var(--text-primary)', display: 'block' }}>{bm.metric}</strong>
                         <span style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>{bm.note}</span>
                       </div>
-                      <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#0284c7', fontSize: '0.85rem' }}>{bm.val}</span>
+                      <span style={{ fontFamily: 'monospace', fontWeight: 800, color: '#2563eb', fontSize: '0.85rem' }}>{bm.val}</span>
                     </div>
                   ))}
                 </div>
@@ -1474,7 +1474,7 @@ export default function AdModelCatalogue() {
           <div className="ad-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Cpu size={18} style={{ color: '#0284c7' }} />
+                <Cpu size={18} style={{ color: '#2563eb' }} />
                 <h3 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800 }}>
                   Configure Subscription Scope &bull; {subscribeModalModel.name}
                 </h3>
@@ -1500,9 +1500,9 @@ export default function AdModelCatalogue() {
                       style={{
                         padding: '10px',
                         borderRadius: '10px',
-                        border: subscribeScope === scope ? '2px solid #0284c7' : '1px solid var(--border-color, #cbd5e1)',
-                        background: subscribeScope === scope ? '#f0f9ff' : 'transparent',
-                        color: subscribeScope === scope ? '#0369a1' : 'var(--text-primary)',
+                        border: subscribeScope === scope ? '2px solid #2563eb' : '1px solid var(--border-color, #cbd5e1)',
+                        background: subscribeScope === scope ? '#eff6ff' : 'transparent',
+                        color: subscribeScope === scope ? '#1d4ed8' : 'var(--text-primary)',
                         fontWeight: 700,
                         fontSize: '0.72rem',
                         cursor: 'pointer',
@@ -1555,7 +1555,7 @@ export default function AdModelCatalogue() {
           <div className="ad-modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Plus size={18} style={{ color: '#0284c7' }} />
+                <Plus size={18} style={{ color: '#2563eb' }} />
                 <h3 style={{ margin: 0, fontSize: '0.9rem', fontWeight: 800 }}>
                   Request New Model Onboarding (PRD §5.3)
                 </h3>

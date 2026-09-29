@@ -35,7 +35,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
   const [agentAutonomyFilter, setAgentAutonomyFilter] = useState('All');
   const [subscribeAgentModal, setSubscribeAgentModal] = useState(null);
   const [selectedAgentDetails, setSelectedAgentDetails] = useState(null);
-  const [selectedProjectForAgent, setSelectedProjectForAgent] = useState('NOVA Large SDV Platform Phase 2');
+  const [selectedProjectForAgent, setSelectedProjectForAgent] = useState('STLA Large SDV Platform Phase 2');
   const [subscribedMap, setSubscribedMap] = useState({});
 
   const isAgentSubscribed = (agent) => {
@@ -58,7 +58,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
       [agent.id]: nextStatus
     }));
 
-    const targetProject = agent.subscribedToProject || selectedProjectForAgent || 'NOVA Large SDV Platform Phase 2';
+    const targetProject = agent.subscribedToProject || selectedProjectForAgent || 'STLA Large SDV Platform Phase 2';
     if (onSubscribeAgent) {
       onSubscribeAgent(agent.id, targetProject, nextStatus);
     }
@@ -131,7 +131,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
       }}>
         <div>
           <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Bot size={18} color="var(--hub-action, #0284c7)" />
+            <Bot size={18} color="var(--stellantis-action, #0284c7)" />
             <span>Agent and Agentic Workflow Catalogue</span>
             <span className="st-badge badge-info" style={{ fontSize: '0.65rem' }}>
               {agentsList.length} Autonomous Agents Registered
@@ -237,7 +237,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
           const domainName = agent.domain || agent.targetDiscipline || 'Software Engineering';
           const description = agent.purpose || agent.role || agent.businessFunction || 'Automates automotive SDV workflows';
           const modelsList = Array.isArray(agent.modelDependencies) ? agent.modelDependencies.join(', ') : (agent.primaryFoundationModel || 'Claude 3.5 Sonnet / DeepSeek');
-          const subscribedProject = agent.subscribedToProject || (Array.isArray(agent.subscribedProjects) ? agent.subscribedProjects.join(', ') : 'NOVA Large SDV Platform Phase 2');
+          const subscribedProject = agent.subscribedToProject || (Array.isArray(agent.subscribedProjects) ? agent.subscribedProjects.join(', ') : 'STLA Large SDV Platform Phase 2');
           const isSubscribed = isAgentSubscribed(agent);
 
           return (
@@ -258,7 +258,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
               <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '8px' }}>
                 <div style={{ flex: 1 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--hub-action, #0284c7)' }}>{agent.id}</span>
+                    <span style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--stellantis-action, #0284c7)' }}>{agent.id}</span>
                     <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>• {domainName}</span>
                   </div>
                   <h4 style={{ fontSize: '1.02rem', fontWeight: 800, margin: '2px 0 0 0', color: 'var(--text-primary)' }}>
@@ -358,7 +358,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                     style={{
                       background: 'transparent',
                       border: '1px solid var(--border-color)',
-                      color: 'var(--hub-action, #0284c7)',
+                      color: 'var(--stellantis-action, #0284c7)',
                       borderRadius: '4px',
                       padding: '5px 8px',
                       fontSize: '0.72rem',
@@ -377,7 +377,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                 <button
                   onClick={(e) => handleToggleSubscribe(agent, e)}
                   style={{
-                    background: isSubscribed ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--hub-action, #0284c7)',
+                    background: isSubscribed ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--stellantis-action, #0284c7)',
                     color: isSubscribed ? '#10b981' : '#ffffff',
                     border: isSubscribed ? '1px solid #10b981' : 'none',
                     borderRadius: '4px',
@@ -407,7 +407,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()} style={{ maxWidth: '650px' }}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Bot size={20} color="var(--hub-action, #0284c7)" />
+                <Bot size={20} color="var(--stellantis-action, #0284c7)" />
                 <div>
                   <span className="ad-modal-title">{selectedAgentDetails.name}</span>
                   <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
@@ -501,7 +501,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                   setSelectedAgentDetails(null);
                 }}
                 style={{
-                  background: isAgentSubscribed(selectedAgentDetails) ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--hub-action, #0284c7)',
+                  background: isAgentSubscribed(selectedAgentDetails) ? 'var(--badge-success-bg, #ecfdf5)' : 'var(--stellantis-action, #0284c7)',
                   color: isAgentSubscribed(selectedAgentDetails) ? '#10b981' : '#ffffff',
                   border: isAgentSubscribed(selectedAgentDetails) ? '1px solid #10b981' : 'none',
                   borderRadius: '4px',
@@ -528,7 +528,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
           <div className="ad-modal-dialog" onClick={(e) => e.stopPropagation()}>
             <div className="ad-modal-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Bot size={20} color="var(--hub-action, #0284c7)" />
+                <Bot size={20} color="var(--stellantis-action, #0284c7)" />
                 <div>
                   <span className="ad-modal-title">Subscribe Agent to Project</span>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{subscribeAgentModal.name} ({subscribeAgentModal.id})</div>
@@ -546,10 +546,10 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                     onChange={(e) => setSelectedProjectForAgent(e.target.value)}
                     style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box' }}
                   >
-                    <option value="NOVA Large SDV Platform Phase 2">NOVA Large SDV Platform Phase 2</option>
-                    <option value="Apex GT Electric ADAS v3.4">Apex GT Electric ADAS v3.4</option>
-                    <option value="Titan EV Autonomous Towing">Titan EV Autonomous Towing</option>
-                    <option value="Summit Recon Trail-Rated Offroad Autonomy">Summit Recon Trail-Rated Offroad Autonomy</option>
+                    <option value="STLA Large SDV Platform Phase 2">STLA Large SDV Platform Phase 2</option>
+                    <option value="Maserati GranTurismo Folgore ADAS v3.4">Maserati GranTurismo Folgore ADAS v3.4</option>
+                    <option value="Ram 1500 REV Autonomous Towing">Ram 1500 REV Autonomous Towing</option>
+                    <option value="Jeep Recon Trail-Rated Offroad Autonomy">Jeep Recon Trail-Rated Offroad Autonomy</option>
                   </select>
                 </div>
 

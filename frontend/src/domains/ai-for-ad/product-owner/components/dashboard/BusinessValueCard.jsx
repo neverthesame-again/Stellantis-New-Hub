@@ -9,7 +9,7 @@ export default function BusinessValueCard({ data }) {
       {/* Header */}
       <div className="ad-card-header">
         <div className="ad-card-title-group">
-          <TrendingUp size={18} color="var(--hub-action)" />
+          <TrendingUp size={18} color="var(--stellantis-action)" />
           <h3 className="ad-card-title">Business Value Realization</h3>
         </div>
         <span className="st-badge badge-success">{data.status}</span>
@@ -62,7 +62,7 @@ export default function BusinessValueCard({ data }) {
               <div style={{
                 width: `${data.progressPercentage}%`,
                 height: '100%',
-                background: 'var(--hub-action, #0284c7)',
+                background: 'var(--stellantis-action, #0284c7)',
                 borderRadius: '9999px'
               }} />
             </div>
