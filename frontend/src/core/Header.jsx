@@ -60,7 +60,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
           letterSpacing: '-0.01em',
           userSelect: 'none'
         }}>
-          TCS Ai Operating Engineering Portal
+          AI-Native Engineering Operating Model Hub
         </span>
       </div>
 
