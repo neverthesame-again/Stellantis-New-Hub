@@ -17,8 +17,6 @@ import AdNodeDetailPanel from './AdNodeDetailPanel';
 import AdAgentCoverageCard from './AdAgentCoverageCard';
 import AdDebtProfiler from './AdDebtProfiler';
 import { useAgentStudio } from '../agent-studio/useAgentStudio';
-import AdLiveTelemetry from '../components/live/AdLiveTelemetry';
-import { LIVE_PRESETS } from '../components/live/liveTelemetry';
 import './adKnowledgeFabric.css';
 
 const VIEW = Object.freeze({ FLOW: 'flow', EXPLORE: 'explore' });
@@ -159,8 +157,6 @@ export default function AdKnowledgeFabricPage() {
           <span className="st-badge badge-success" style={{ fontSize: '0.72rem' }}>{AD_SCENARIOS.length} Feature Threads</span>
         </div>
       </div>
-
-      <AdLiveTelemetry title="Knowledge ingestion" metrics={LIVE_PRESETS.knowledge()} />
 
       <AdMemoryCounters counters={memoryCounters} />
 

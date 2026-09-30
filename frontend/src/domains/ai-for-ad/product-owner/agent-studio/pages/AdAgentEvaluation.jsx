@@ -10,8 +10,6 @@ import { RecentRuns, ActivityFeed } from '../components/evaluation/EvalSidebar';
 import PlatformAggregates from '../components/evaluation/PlatformAggregates';
 import RulesTable from '../components/evaluation/RulesTable';
 import RulePackUpload from '../components/evaluation/RulePackUpload';
-import AdLiveTelemetry from '../../components/live/AdLiveTelemetry';
-import { LIVE_PRESETS } from '../../components/live/liveTelemetry';
 import '../adAgentStudio.css';
 import '../adAgentEvaluation.css';
 
@@ -191,8 +189,6 @@ export default function AdAgentEvaluation() {
           </button>
         </div>
       </header>
-
-      <AdLiveTelemetry title="Evaluation pipeline" metrics={LIVE_PRESETS.evaluation(agents)} />
 
       <div className="ad-eval-tabs" role="tablist" aria-label="Evaluation Center sections">
         <button type="button" role="tab" aria-selected={tab === 'evaluations'} className={`ad-eval-tab ${tab === 'evaluations' ? 'is-active' : ''}`} onClick={() => setTab('evaluations')}>
