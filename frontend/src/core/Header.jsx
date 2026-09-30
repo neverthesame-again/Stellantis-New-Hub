@@ -20,24 +20,26 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // In light mode: white header with navy text. In dark mode: deep navy header with white text.
-  const headerBg        = light ? '#ffffff' : '#0e1e38';
-  const headerBorder    = light ? '#e2e8f4' : '#1d3460';
-  const headerShadow    = light ? '0 1px 6px rgba(14,30,56,0.08)' : '0 2px 12px rgba(6,13,28,0.50)';
-  const iconBtnBg       = light ? 'rgba(14,30,56,0.06)' : 'rgba(255,255,255,0.10)';
-  const iconBtnBorder   = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.15)';
-  const iconBtnColor    = light ? '#0e1e38' : 'rgba(255,255,255,0.85)';
-  const iconBtnHoverBg  = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.18)';
-  const profileBg       = light ? 'rgba(14,30,56,0.06)' : 'rgba(255,255,255,0.08)';
-  const profileBorder   = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.12)';
-  const profileHoverBg  = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.14)';
-  const nameColor       = light ? '#0e1e38' : '#ffffff';
-  const roleColor       = light ? 'rgba(14,30,56,0.50)' : 'rgba(255,255,255,0.55)';
-  const chevronColor    = light ? 'rgba(14,30,56,0.45)' : 'rgba(255,255,255,0.55)';
+  // Translucent Glassmorphic Header styling driven by CSS tokens
+  const headerBg        = 'var(--header-bg)';
+  const headerBorder    = 'var(--header-border)';
+  const headerShadow    = 'var(--shadow-header)';
+  const iconBtnBg       = 'var(--bg-subtle)';
+  const iconBtnBorder   = 'var(--border-color)';
+  const iconBtnColor    = 'var(--text-primary)';
+  const iconBtnHoverBg  = 'var(--bg-surface-elevated)';
+  const profileBg       = 'var(--bg-subtle)';
+  const profileBorder   = 'var(--border-color)';
+  const profileHoverBg  = 'var(--bg-surface-elevated)';
+  const nameColor       = 'var(--text-primary)';
+  const roleColor       = 'var(--text-muted)';
+  const chevronColor    = 'var(--text-muted)';
 
   return (
     <header style={{
       background: headerBg,
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       borderBottom: `1px solid ${headerBorder}`,
       padding: '0 28px',
       height: '60px',
@@ -48,7 +50,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
       top: 0,
       zIndex: 50,
       boxShadow: headerShadow,
-      transition: 'background 0.2s ease, box-shadow 0.2s ease'
+      transition: 'background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease'
     }}>
 
       {/* ── Left: Plain text branding (No Logo) ── */}
@@ -130,9 +132,10 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
           {profileDropdownOpen && (
             <div style={{
               position: 'absolute', right: 0, top: 'calc(100% + 8px)', width: '270px',
-              background: 'var(--bg-surface)', border: '1px solid var(--border-color)',
-              borderRadius: '12px', boxShadow: 'var(--shadow-lg)', padding: '8px',
-              zIndex: 200, animation: 'fadeIn 0.15s ease-out'
+              background: 'var(--bg-popover)', border: '1px solid var(--border-color)',
+              backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)',
+              borderRadius: '12px', boxShadow: '0 12px 32px rgba(14, 30, 56, 0.22)', padding: '8px',
+              zIndex: 9999, animation: 'fadeIn 0.15s ease-out'
             }}>
               <div style={{ padding: '10px 14px', borderBottom: '1px solid var(--border-color)' }}>
                 <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: '2px' }}>Current Session</div>

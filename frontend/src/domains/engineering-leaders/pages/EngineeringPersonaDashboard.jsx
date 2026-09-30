@@ -515,7 +515,94 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
         </div>
       </div>
 
+      {/* ================================================================= */}
+      {/* COMPACT SECTION: KNOWLEDGE FABRIC & ARCHITECTURE TECH DEBT        */}
+      {/* ================================================================= */}
+      <div className="st-card" style={{ padding: '16px 20px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <GitMerge size={17} color="var(--stellantis-action, #0284c7)" />
+            <h3 style={{ fontSize: '0.88rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', margin: 0, color: 'var(--text-primary)' }}>
+              Knowledge Fabric &amp; Architecture Tech Debt
+            </h3>
+          </div>
+          <span className="badge-navy" style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '4px' }}>
+            Live Architectural Topology
+          </span>
+        </div>
 
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '14px' }}>
+          
+          {/* Tile 1: Codebase Connection Graph (Repos ↔ Services ↔ Models) */}
+          <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-secondary)' }}>
+              Codebase Connection Graph (Repos ↔ Services ↔ Models)
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', background: 'var(--bg-surface)', padding: '10px', borderRadius: '6px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ flex: 1 }}>
+                <FolderGit2 size={16} color="var(--stellantis-action)" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>48 Repos</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>Git Codebases</div>
+              </div>
+
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 800 }}>↔</div>
+
+              <div style={{ flex: 1 }}>
+                <Layers size={16} color="#8b5cf6" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>12 Services</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>6 SDV ECUs</div>
+              </div>
+
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 800 }}>↔</div>
+
+              <div style={{ flex: 1 }}>
+                <Cpu size={16} color="#10b981" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>4 Models</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>AI Gateways</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+              <span>Graph Lineage: <strong style={{ color: '#10b981' }}>100% Mapped</strong></span>
+              <span>Vehicle Architecture: <strong>STLA Brain v2.4</strong></span>
+            </div>
+          </div>
+
+          {/* Tile 2: Technical Debt Scorecard */}
+          <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-secondary)' }}>
+              Technical Debt Scorecard
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', textAlign: 'center' }}>
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Debt Ratio</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#10b981', margin: '2px 0' }}>12.4%</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--badge-success-text)' }}>Healthy (&lt;15%)</div>
+              </div>
+
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Deprecated APIs</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#f59e0b', margin: '2px 0' }}>14</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>8 due in Q4</div>
+              </div>
+
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Refactor Priority</div>
+                <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--stellantis-action)', margin: '4px 0 2px 0' }}>CAN-Bus V2</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>High Agent ROI</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+              <span>Architectural Drift: <strong style={{ color: '#10b981' }}>Low (2.1%)</strong></span>
+              <span>Target Q4 Remediation: <strong>6 Repos</strong></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
 
       {/* ================================================================= */}
       {/* PART B (LOWER TIER): 6-TIER OPERATIONAL DEPTH & LINEAGE NAVIGATOR */}

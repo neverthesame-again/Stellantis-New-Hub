@@ -11,6 +11,8 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
       {/* Top Banner Card */}
       <div style={{
         background: 'var(--bg-surface)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
         border: '1px solid var(--border-color)',
         borderRadius: 'var(--radius-lg)',
         padding: '16px 24px',
@@ -21,7 +23,8 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
         gap: '16px',
         width: '100%',
         boxSizing: 'border-box',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        transition: 'background 0.3s ease, border-color 0.3s ease'
       }}>
         {/* Left Title & Tagline */}
         <div style={{ flex: '1 1 280px', minWidth: '220px', maxWidth: '560px' }}>

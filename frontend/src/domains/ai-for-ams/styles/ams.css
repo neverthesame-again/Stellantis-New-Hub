@@ -76,39 +76,93 @@
   letter-spacing: 0.05em;
 }
 
-/* ─── Tabs (page-level views) ─── */
+/* ─── Tabs (page-level views: e.g. Live / Trends) ─── */
 .ams-tabbar {
   display: flex;
-  gap: 4px;
-  border-bottom: 1px solid var(--border-color);
-  overflow-x: auto;
+  gap: 6px;
+  border-bottom: 2px solid rgba(27, 40, 120, 0.2);
+  overflow: hidden;
+  margin-bottom: 16px;
+  padding-bottom: 0;
+  scrollbar-width: none;
+}
+
+.ams-tabbar::-webkit-scrollbar {
+  display: none;
+}
+
+[data-theme="dark"] .ams-tabbar {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 
 .ams-tab {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  padding: 9px 14px;
+  gap: 8px;
+  padding: 10px 18px;
   font-family: var(--font-sans);
-  font-size: 0.83rem;
+  font-size: 0.86rem;
   font-weight: 600;
   color: var(--text-secondary);
-  background: none;
+  background: transparent;
   border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
+  border-bottom: 3.5px solid transparent;
+  margin-bottom: -2px;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  border-radius: 8px 8px 0 0;
+  transition: all 0.18s ease;
 }
 
 .ams-tab:hover {
   color: var(--text-primary);
+  background: rgba(27, 40, 120, 0.06);
+}
+
+[data-theme="dark"] .ams-tab:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .ams-tab.is-active {
-  color: var(--stellantis-accent);
-  border-bottom-color: var(--stellantis-accent);
+  color: #1b2878;
+  font-weight: 800;
+  border-bottom: 3.5px solid #1b2878;
+  background: rgba(27, 40, 120, 0.10);
+  box-shadow: 0 2px 8px rgba(27, 40, 120, 0.12);
+}
+
+[data-theme="dark"] .ams-tab.is-active {
+  color: #60a5fa;
+  border-bottom: 3.5px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.16);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.25);
+}
+
+.ams-tab .ams-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(27, 40, 120, 0.08);
+  color: var(--text-primary);
+  border: 1px solid rgba(27, 40, 120, 0.2);
+  min-width: 20px;
+  text-align: center;
+  line-height: 1;
+  transition: all 0.18s ease;
+}
+
+.ams-tab.is-active .ams-count {
+  background: #1b2878;
+  color: #ffffff;
+  border-color: #1b2878;
+}
+
+[data-theme="dark"] .ams-tab.is-active .ams-count {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
 }
 
 .ams-tab:focus-visible,
@@ -142,8 +196,13 @@
   align-items: center;
   gap: 6px;
   overflow-x: auto;
+  scrollbar-width: none;
   padding-bottom: 2px;
   min-width: 0;
+}
+
+.ams-pill-group::-webkit-scrollbar {
+  display: none;
 }
 
 .ams-pill-group-label {

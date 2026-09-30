@@ -31,11 +31,13 @@ export default function Sidebar({
 
   const handleMainClick = (id) => {
     if (id === 'experience') {
+      if (activeTab === 'experience') {
+        setExperienceOpen(!experienceOpen);
+        return;
+      }
       setExperienceOpen(true);
-      if (selectedDomain.includes('Engineering') || !activeSubTab || !subPages.some(s => s.id === activeSubTab)) {
-        if (onSubTabChange && subPages.length > 0) {
-          onSubTabChange(subPages[0].id);
-        }
+      if ((!activeSubTab || !subPages.some(s => s.id === activeSubTab)) && onSubTabChange && subPages.length > 0) {
+        onSubTabChange(subPages[0].id);
       }
     }
     onTabChange(id);
@@ -84,15 +86,7 @@ export default function Sidebar({
                 {!collapsed && <span className="hub-sidebar-label">{page.label}</span>}
                 {!collapsed && badge != null && <span className="hub-sidebar-badge">{badge}</span>}
                 {!collapsed && isExperience && (
-                  <ChevronDown
-                    size={15}
-                    className="hub-sidebar-chevron"
-                    style={{ transform: experienceOpen ? 'rotate(0deg)' : 'rotate(-90deg)' }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setExperienceOpen(prev => !prev);
-                    }}
-                  />
+                  <ChevronDown size={15} className="hub-sidebar-chevron" style={{ transform: experienceOpen ? 'rotate(0deg)' : 'rotate(-90deg)' }} />
                 )}
                 {collapsed && badge != null && <span className="hub-sidebar-dot" />}
               </button>

@@ -29,10 +29,12 @@
   gap: 4px;
   padding: 16px 12px;
   background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
   overflow-x: hidden;
-  transition: width 0.2s ease, padding 0.2s ease;
+  transition: width 0.2s ease, padding 0.2s ease, background 0.3s ease, border-color 0.3s ease;
   z-index: 40;
 }
 
@@ -69,6 +71,8 @@
   flex-direction: column;
   gap: 12px;
   padding: 0 4px;
+  position: relative;
+  z-index: 100;
 }
 
 .hub-sidebar-filters label {

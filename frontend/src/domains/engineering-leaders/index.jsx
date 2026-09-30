@@ -15,15 +15,12 @@ import EngineeringGovernance from './pages/EngineeringGovernance';
  */
 export default function EngineeringLeadersDomain({
   activeTab = 'dashboard',
-  activeSubTab = 'persona',
-  experienceSubTab,
+  experienceSubTab = 'persona',
   onSubTabChange,
   drillDownLevel = 1,
   contextPortfolio,
   contextProject
 }) {
-  const currentSubTab = activeSubTab || experienceSubTab || 'persona';
-
   if (activeTab === 'dashboard') {
     return <EngineeringDashboard />;
   }
@@ -35,7 +32,7 @@ export default function EngineeringLeadersDomain({
   if (activeTab === 'experience') {
     return (
       <ExperienceZone
-        activeSubTab={currentSubTab}
+        activeSubTab={experienceSubTab}
         onSubTabChange={onSubTabChange}
         drillDownLevel={drillDownLevel}
         contextPortfolio={contextPortfolio}
@@ -45,39 +42,11 @@ export default function EngineeringLeadersDomain({
   }
 
   if (activeTab === 'finops') {
-    return (
-      <ExperienceZone
-        activeSubTab="finops"
-        onSubTabChange={onSubTabChange}
-        drillDownLevel={drillDownLevel}
-        contextPortfolio={contextPortfolio}
-        contextProject={contextProject}
-      />
-    );
+    return <EngineeringFinOps />;
   }
 
   if (activeTab === 'governance') {
-    return (
-      <ExperienceZone
-        activeSubTab="governance"
-        onSubTabChange={onSubTabChange}
-        drillDownLevel={drillDownLevel}
-        contextPortfolio={contextPortfolio}
-        contextProject={contextProject}
-      />
-    );
-  }
-
-  if (activeTab === 'knowledge') {
-    return (
-      <ExperienceZone
-        activeSubTab="knowledge"
-        onSubTabChange={onSubTabChange}
-        drillDownLevel={drillDownLevel}
-        contextPortfolio={contextPortfolio}
-        contextProject={contextProject}
-      />
-    );
+    return <EngineeringGovernance />;
   }
 
   return <EngineeringDashboard />;

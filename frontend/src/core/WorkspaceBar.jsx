@@ -132,16 +132,6 @@ DOMAIN_ROLE_MAP['Engineering leader'] = DOMAIN_ROLE_MAP['Engineering leaders'];
 export function CustomSelect({ label, value, onChange, options, minWidth = '180px', fullWidth = false }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const triggerRef = useRef(null);
-  const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
-
-  // Recalculate menu position when opening (for fixed-position mode inside sidebar)
-  useEffect(() => {
-    if (isOpen && fullWidth && triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      setMenuPos({ top: rect.bottom + 6, left: rect.left });
-    }
-  }, [isOpen, fullWidth]);
 
   // Close when clicking outside or pressing Escape
   useEffect(() => {
@@ -165,44 +155,18 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
   const selectedOption = options.find((opt) => opt.value === value) || options[0];
   const SelectedIcon = selectedOption?.icon;
 
-  const menuStyle = fullWidth
-    ? {
-        position: 'fixed',
-        top: `${menuPos.top}px`,
-        left: `${menuPos.left}px`,
-        minWidth: '280px',
-        width: 'max-content',
-        maxWidth: '340px',
-        boxSizing: 'border-box',
-        background: 'var(--bg-surface-elevated)',
-        border: '1px solid var(--border-color)',
-        borderRadius: '12px',
-        boxShadow: 'var(--shadow-lg)',
-        padding: '6px',
-        zIndex: 9999,
-        animation: 'fadeIn 0.15s ease-out'
-      }
-    : {
-        position: 'absolute',
-        top: 'calc(100% + 6px)',
-        right: 0,
-        minWidth: '270px',
-        width: 'auto',
-        boxSizing: 'border-box',
-        background: 'var(--bg-surface-elevated)',
-        border: '1px solid var(--border-color)',
-        borderRadius: '12px',
-        boxShadow: 'var(--shadow-lg)',
-        padding: '6px',
-        zIndex: 350,
-        animation: 'fadeIn 0.15s ease-out'
-      };
-
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: fullWidth ? 'column' : 'row',
+      alignItems: fullWidth ? 'stretch' : 'center',
+      gap: fullWidth ? '4px' : '8px',
+      width: fullWidth ? '100%' : 'auto',
+      position: 'relative'
+    }}>
       {label && (
         <label style={{
-          fontSize: '0.8rem',
+          fontSize: '0.78rem',
           color: 'var(--text-muted)',
           fontWeight: 600,
           letterSpacing: '0.03em'
@@ -211,10 +175,9 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
         </label>
       )}
 
-      <div ref={dropdownRef} style={{ position: 'relative' }}>
+      <div ref={dropdownRef} style={{ position: 'relative', width: fullWidth ? '100%' : 'auto' }}>
         {/* Trigger Button */}
         <button
-          ref={triggerRef}
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           style={{
@@ -222,21 +185,23 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             alignItems: 'center',
             justifyContent: 'space-between',
             gap: '10px',
-            minWidth: minWidth,
-            padding: '7px 12px 7px 12px',
+            width: fullWidth ? '100%' : 'auto',
+            minWidth: fullWidth ? '100%' : minWidth,
+            padding: '8px 12px',
             background: isOpen ? 'var(--bg-subtle)' : 'var(--bg-surface)',
-            border: isOpen ? '1.5px solid var(--stellantis-action)' : '1.5px solid var(--border-color)',
+            border: isOpen ? '1.5px solid var(--stellantis-action)' : '1px solid var(--border-color)',
             borderRadius: '9px',
             cursor: 'pointer',
             boxShadow: isOpen ? '0 0 0 3px rgba(2, 132, 199, 0.18)' : 'var(--shadow-sm)',
             transition: 'all 0.18s ease',
             outline: 'none',
-            textAlign: 'left'
+            textAlign: 'left',
+            boxSizing: 'border-box'
           }}
           onMouseEnter={e => {
             if (!isOpen) {
               e.currentTarget.style.borderColor = 'var(--border-strong)';
-              e.currentTarget.style.background = 'var(--bg-surface-secondary)';
+              e.currentTarget.style.background = 'var(--bg-surface-elevated)';
             }
           }}
           onMouseLeave={e => {
@@ -273,9 +238,25 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
           />
         </button>
 
-        {/* Floating Custom Menu */}
+        {/* Floating Custom Menu directly below the dropdown button */}
         {isOpen && (
-          <div style={menuStyle}>
+          <div style={{
+            position: 'absolute',
+            top: 'calc(100% + 4px)',
+            left: 0,
+            width: fullWidth ? '100%' : 'auto',
+            minWidth: fullWidth ? '100%' : '260px',
+            boxSizing: 'border-box',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            background: 'var(--bg-popover)',
+            border: '1px solid var(--border-color)',
+            borderRadius: '12px',
+            boxShadow: '0 12px 32px rgba(14, 30, 56, 0.25)',
+            padding: '6px',
+            zIndex: 9999,
+            animation: 'fadeIn 0.15s ease-out'
+          }}>
             {options.map((option) => {
               const isSelected = option.value === value;
               const OptionIcon = option.icon;
@@ -368,6 +349,8 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
   return (
     <div style={{
       background: 'var(--bg-surface)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       border: '1px solid var(--border-color)',
       borderRadius: 'var(--radius-lg)',
       padding: '12px 24px',
@@ -377,7 +360,8 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
       justifyContent: 'space-between',
       boxShadow: 'var(--shadow-sm)',
       flexWrap: 'wrap',
-      gap: '12px'
+      gap: '12px',
+      transition: 'background 0.3s ease, border-color 0.3s ease'
     }}>
       {/* Left breadcrumb summary */}
       <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>

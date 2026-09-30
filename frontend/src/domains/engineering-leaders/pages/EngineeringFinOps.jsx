@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   DollarSign,
   TrendingDown,
@@ -26,25 +26,14 @@ import {
   Download,
   Activity,
   Award,
-  Search,
-  Radio
+  Search
 } from 'lucide-react';
-import { initialFinOpsData, generateDynamicFinOpsData } from '../finopsData.js';
+import { initialFinOpsData } from '../finopsData.js';
 
 export default function EngineeringFinOps() {
   const [data, setData] = useState(initialFinOpsData);
-  const [isLiveStream, setIsLiveStream] = useState(true);
   const [activeTab, setActiveTab] = useState('overview'); // 'overview' | 'alerts' | 'tokens' | 'optimizations' | 'efficiency'
   const [alertFilterTab, setAlertFilterTab] = useState('active'); // 'active' | 'history'
-
-  // Dynamic 4-Second Real-Time FinOps Simulation (Realistic variations within $10k budget / ~$7.6k spend)
-  useEffect(() => {
-    if (!isLiveStream) return;
-    const interval = setInterval(() => {
-      setData(prev => generateDynamicFinOpsData(prev));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [isLiveStream]);
 
   // Dimensional Filters
   const [selectedProgram, setSelectedProgram] = useState('All Programs');
@@ -229,34 +218,6 @@ export default function EngineeringFinOps() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-          <button
-            onClick={() => setIsLiveStream(prev => !prev)}
-            title={isLiveStream ? "Click to pause live 4-second stream" : "Click to resume live stream"}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '6px',
-              background: isLiveStream ? 'rgba(16, 185, 129, 0.12)' : 'var(--bg-subtle)',
-              border: `1px solid ${isLiveStream ? 'rgba(16, 185, 129, 0.35)' : 'var(--border-color)'}`,
-              borderRadius: '12px',
-              padding: '4px 10px',
-              fontSize: '0.72rem',
-              fontWeight: 700,
-              color: isLiveStream ? '#10b981' : 'var(--text-muted)',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            <span style={{
-              width: '7px',
-              height: '7px',
-              borderRadius: '50%',
-              background: isLiveStream ? '#10b981' : 'var(--text-muted)',
-              boxShadow: isLiveStream ? '0 0 6px #10b981' : 'none'
-            }} />
-            {isLiveStream ? 'Live (4s)' : 'Paused'}
-          </button>
-
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '0.68rem', color: 'var(--text-muted)' }}>Portfolio Target Cap</div>
             <div style={{ fontSize: '0.95rem', fontWeight: 800, color: 'var(--text-primary)' }}>
@@ -325,7 +286,7 @@ export default function EngineeringFinOps() {
             <span style={{ color: '#10b981', fontWeight: 700 }}>Safe Zone</span>
           </div>
           <div style={{ fontSize: '0.66rem', color: 'var(--text-secondary)' }}>
-            {'$' + Math.max(0, 10000 - parseInt(data.kpis.mtdSpend.replace(/[^0-9]/g, ''))).toLocaleString()} unallocated buffer
+            $37,500 unallocated buffer
           </div>
         </div>
 

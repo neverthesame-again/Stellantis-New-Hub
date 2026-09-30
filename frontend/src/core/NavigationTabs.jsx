@@ -15,6 +15,8 @@ export default function NavigationTabs({ activeTab, onTabChange, inboxCount = 6 
   return (
     <div style={{
       background: 'var(--bg-surface)',
+      backdropFilter: 'blur(16px)',
+      WebkitBackdropFilter: 'blur(16px)',
       border: '1px solid var(--border-color)',
       borderRadius: 'var(--radius-lg)',
       padding: '8px',
@@ -22,7 +24,8 @@ export default function NavigationTabs({ activeTab, onTabChange, inboxCount = 6 
       display: 'flex',
       alignItems: 'center',
       gap: '6px',
-      boxShadow: 'var(--shadow-sm)'
+      boxShadow: 'var(--shadow-sm)',
+      transition: 'background 0.3s ease, border-color 0.3s ease'
     }}>
       {tabs.map((tab) => {
         const isActive = activeTab === tab.id;

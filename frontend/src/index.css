@@ -1,143 +1,155 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap');
 
 /* ============================================================
-   STELLANTIS DESIGN SYSTEM — DARK NAVY CANONICAL THEME
-   Primary: #0e1e38 (Stellantis Midnight Navy)
-   Accent:  #1a3a6e (Deep Stellantis Blue)
-   Live:    #0284c7 (Operational Action Blue)
+   STELLANTIS DESIGN SYSTEM — GLASSMORPHIC HIGH-CONTRAST CANONICAL THEME
+   Derived from reference architecture for Light and Dark modes
    ============================================================ */
 
 :root {
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Outfit', var(--font-sans);
+  --font-sans: 'Urbanist', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Urbanist', 'Outfit', var(--font-sans);
 
-  /* ─── Stellantis Navy Light Mode (on white canvas) ─── */
-  --bg-app: #f0f4fa;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #ffffff;
-  --bg-surface-secondary: #f5f8ff;
-  --bg-subtle: #eef2fb;
-  --border-color: #d8e3f7;
-  --border-strong: #b0c4e8;
+  /* ─── Light Mode Specs (Vibrant Soft Periwinkle Glass Canvas) ─── */
+  --bg-app: linear-gradient(160deg, #dde2ff 0%, #d7ddff 30%, #d6ddff 60%, #d8f2f8 100%);
+  --bg-app-ambient: radial-gradient(ellipse 70% 60% at 5% 0%, #c4caf0 0%, transparent 60%), 
+                    radial-gradient(ellipse 60% 50% at 95% 100%, #adb4da 0%, transparent 60%), 
+                    radial-gradient(ellipse 55% 65% at 65% 15%, #c5cefe 0%, transparent 55%), 
+                    radial-gradient(ellipse 45% 40% at 25% 85%, #c1c8eb 0%, transparent 55%), 
+                    linear-gradient(160deg, #dde2ff 0%, #d7ddff 30%, #d6ddff 60%, #d8f2f8 100%);
+  --bg-surface: rgba(255, 255, 255, 0.3);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.45);
+  --bg-popover: #ffffff;
+  --bg-surface-secondary: #eef3fb;
+  --bg-subtle: #e2eaf7;
+  --border-color: rgba(255, 255, 255, 0.8);
+  --border-strong: rgba(91, 141, 238, 0.45);
 
-  --text-primary: #0e1e38;
-  --text-secondary: #3a5080;
-  --text-muted: #6a85b0;
+  /* High Contrast Text Colors */
+  --text-primary: #1b2878;
+  --text-secondary: #374151;
+  --text-muted: #5b6b84;
   --text-white: #ffffff;
 
-  /* Stellantis Brand Navy Palette */
-  --stellantis-navy: #0e1e38;
-  --stellantis-navy-mid: #1a3a6e;
-  --stellantis-blue: #1a3a6e;
-  --stellantis-blue-bright: #0284c7;
+  /* Stellantis Brand Colors */
+  --stellantis-navy: #1b2878;
+  --stellantis-navy-mid: #1e40af;
+  --stellantis-blue: #2563eb;
+  --stellantis-blue-bright: #3b82f6;
   --stellantis-blue-light: #ddeeff;
-  --stellantis-accent: #1a3a6e;
-  --stellantis-action: #0284c7;
+  --stellantis-accent: #1e40af;
+  --stellantis-action: #2563eb;
 
-  /* Header always dark navy */
-  --header-bg: #0e1e38;
-  --header-text: #ffffff;
-  --header-border: #1d3460;
+  /* Header translucent glass */
+  --header-bg: rgba(255, 255, 255, 0.82);
+  --header-text: #1b2878;
+  --header-border: rgba(255, 255, 255, 0.9);
 
-  /* Workspace bar */
-  --workspace-bg: #ffffff;
-  --workspace-border: #d8e3f7;
+  /* Workspace bar glass */
+  --workspace-bg: rgba(255, 255, 255, 0.75);
+  --workspace-border: rgba(255, 255, 255, 0.85);
 
   /* Nav active tab */
-  --nav-active-tab-bg: #0e1e38;
-  --nav-active-tab-border: #0e1e38;
+  --nav-active-tab-bg: #1b2878;
+  --nav-active-tab-border: #1b2878;
 
   /* Badges */
   --badge-critical-bg: #fef2f2;
-  --badge-critical-text: #b91c1c;
-  --badge-critical-border: #fecaca;
+  --badge-critical-text: #dc2626;
+  --badge-critical-border: #fca5a5;
 
   --badge-high-bg: #fffbeb;
-  --badge-high-text: #b45309;
+  --badge-high-text: #d97706;
   --badge-high-border: #fde68a;
 
   --badge-success-bg: #ecfdf5;
-  --badge-success-text: #047857;
+  --badge-success-text: #059669;
   --badge-success-border: #a7f3d0;
 
-  --badge-info-bg: #ddeeff;
-  --badge-info-text: #1a3a6e;
-  --badge-info-border: #b3d4f5;
+  --badge-info-bg: #eff6ff;
+  --badge-info-text: #1d4ed8;
+  --badge-info-border: #bfdbfe;
 
   --badge-purple-bg: #f5f3ff;
-  --badge-purple-text: #6d28d9;
+  --badge-purple-text: #7c3aed;
   --badge-purple-border: #ddd6fe;
 
-  --shadow-sm: 0 1px 3px 0 rgba(14, 30, 56, 0.08);
-  --shadow-md: 0 4px 8px -1px rgba(14, 30, 56, 0.10), 0 2px 4px -2px rgba(14, 30, 56, 0.06);
-  --shadow-lg: 0 10px 20px -3px rgba(14, 30, 56, 0.12), 0 4px 6px -4px rgba(14, 30, 56, 0.06);
-  --shadow-glow: 0 0 20px rgba(26, 58, 110, 0.20);
-  --shadow-header: 0 2px 12px rgba(14, 30, 56, 0.30);
+  --shadow-sm: 0 4px 16px rgba(27, 40, 120, 0.06);
+  --shadow-md: 0 8px 24px rgba(27, 40, 120, 0.10);
+  --shadow-lg: 0 16px 36px rgba(27, 40, 120, 0.14);
+  --shadow-glow: 0 0 25px rgba(30, 64, 175, 0.20);
+  --shadow-header: 0 4px 20px rgba(27, 40, 120, 0.08);
 
-  --radius-sm: 6px;
+  --radius-sm: 8px;
   --radius-md: 10px;
   --radius-lg: 14px;
   --radius-full: 9999px;
 }
 
-[data-theme="dark"] {
-  /* ─── Stellantis Navy Dark Mode ─── */
-  --bg-app: #060d1c;
-  --bg-surface: #0d1a30;
-  --bg-surface-elevated: #111f38;
-  --bg-surface-secondary: #0f1d34;
-  --bg-subtle: #162240;
-  --border-color: #1d3460;
-  --border-strong: #244080;
+[data-theme="dark"], body.dark-theme, body[data-theme="dark"] {
+  /* ─── Dark Mode Specs (Soft Indigo/Cobalt Glass Canvas) ─── */
+  --bg-app: linear-gradient(160deg, #131d35 0%, #182746 30%, #1e325a 60%, #162544 100%);
+  --bg-app-ambient: radial-gradient(ellipse 80% 60% at 10% 0%, rgba(59, 130, 246, 0.28) 0%, transparent 60%), 
+                    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(37, 99, 235, 0.25) 0%, transparent 60%), 
+                    radial-gradient(ellipse 50% 70% at 70% 20%, rgba(96, 165, 250, 0.18) 0%, transparent 55%), 
+                    radial-gradient(ellipse 40% 40% at 30% 80%, rgba(14, 116, 144, 0.18) 0%, transparent 50%), 
+                    linear-gradient(160deg, #131d35 0%, #182746 30%, #1e325a 60%, #162544 100%);
+  --bg-surface: rgba(255, 255, 255, 0.08);
+  --bg-surface-elevated: rgba(255, 255, 255, 0.14);
+  --bg-popover: #1c2b4e;
+  --bg-surface-secondary: rgba(255, 255, 255, 0.06);
+  --bg-subtle: rgba(255, 255, 255, 0.04);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --border-strong: rgba(96, 165, 250, 0.55);
 
-  --text-primary: #e8f0ff;
-  --text-secondary: #b8cde8;
-  --text-muted: #8ea8d0;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-white: #ffffff;
 
-  --stellantis-navy: #0e1e38;
-  --stellantis-navy-mid: #1a3a6e;
-  --stellantis-blue: #4080d0;
-  --stellantis-blue-bright: #0284c7;
-  --stellantis-blue-light: #0f2040;
-  --stellantis-accent: #60a5fa;
-  --stellantis-action: #0284c7;
+  --stellantis-navy: #2563eb;
+  --stellantis-navy-mid: #3b82f6;
+  --stellantis-blue: #3b82f6;
+  --stellantis-blue-bright: #60a5fa;
+  --stellantis-blue-light: rgba(59, 130, 246, 0.2);
+  --stellantis-accent: #3b82f6;
+  --stellantis-action: #3b82f6;
 
   /* Nav active tab in dark mode */
-  --nav-active-tab-bg: #1a3a6e;
-  --nav-active-tab-border: #3b82f6;
+  --nav-active-tab-bg: linear-gradient(135deg, rgba(37, 99, 235, 0.4), rgba(59, 130, 246, 0.25));
+  --nav-active-tab-border: #60a5fa;
 
-  --header-bg: #060d1c;
+  --header-bg: rgba(19, 29, 53, 0.85);
   --header-text: #ffffff;
-  --header-border: #0e1e38;
+  --header-border: rgba(255, 255, 255, 0.15);
 
-  --workspace-bg: #0d1a30;
-  --workspace-border: #1d3460;
+  --workspace-bg: rgba(24, 37, 67, 0.75);
+  --workspace-border: rgba(255, 255, 255, 0.15);
 
-  --badge-critical-bg: #2a0a0a;
-  --badge-critical-text: #f87171;
-  --badge-critical-border: #5c1a1a;
+  --badge-critical-bg: rgba(229, 0, 125, 0.2);
+  --badge-critical-text: #fb7185;
+  --badge-critical-border: rgba(244, 63, 94, 0.4);
 
-  --badge-high-bg: #2a1500;
-  --badge-high-text: #fbbf24;
-  --badge-high-border: #5c3000;
+  --badge-high-bg: rgba(245, 158, 11, 0.2);
+  --badge-high-text: #fcd34d;
+  --badge-high-border: rgba(251, 191, 36, 0.4);
 
-  --badge-success-bg: #0a2a1a;
-  --badge-success-text: #34d399;
-  --badge-success-border: #0d4025;
+  --badge-success-bg: rgba(16, 185, 129, 0.2);
+  --badge-success-text: #6ee7b7;
+  --badge-success-border: rgba(52, 211, 153, 0.4);
 
-  --badge-info-bg: #0a1a3a;
-  --badge-info-text: #7eb8f5;
-  --badge-info-border: #1a3a7a;
+  --badge-info-bg: rgba(59, 130, 246, 0.2);
+  --badge-info-text: #93c5fd;
+  --badge-info-border: rgba(96, 165, 250, 0.4);
 
-  --badge-purple-bg: #1a0a3a;
-  --badge-purple-text: #c084fc;
-  --badge-purple-border: #3a1a6a;
+  --badge-purple-bg: rgba(99, 102, 241, 0.2);
+  --badge-purple-text: #d8b4fe;
+  --badge-purple-border: rgba(192, 132, 252, 0.4);
 
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.5);
-  --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 25px rgba(26, 58, 110, 0.40);
-  --shadow-header: 0 2px 16px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.25);
+  --shadow-md: 0 8px 32px rgba(15, 23, 42, 0.35);
+  --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.45);
+  --shadow-glow: 0 0 28px rgba(59, 130, 246, 0.3);
+  --shadow-header: 0 4px 24px rgba(15, 23, 42, 0.3);
 }
 
 /* ─── Reset & Base ─── */
@@ -147,15 +159,29 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-app);
+  background: var(--bg-app-ambient);
+  background-color: #d7ddff;
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   font-size: 14px;
+  transition: background 0.4s ease, background-color 0.4s ease, color 0.3s ease;
+}
+
+[data-theme="dark"], body.dark-theme, body[data-theme="dark"] {
+  background-color: #131d35 !important;
+  background-image: var(--bg-app-ambient) !important;
+  background-attachment: fixed !important;
 }
 
 /* ─── Animations ─── */
@@ -204,24 +230,28 @@ body {
 .main-content {
   flex: 1 1 0%;
   min-width: 0;
-  max-width: 100%;
+  max-width: 1480px;
+  margin: 0 auto;
   width: 100%;
-  padding: 20px 24px 80px 24px;
+  padding: 20px 28px 80px 28px;
   box-sizing: border-box;
 }
 
-/* ─── Cards ─── */
-.st-card {
+/* ─── Glassmorphic Cards & Containers ─── */
+.st-card, .glass-card, .glass-panel {
   background: var(--bg-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease, background 0.25s ease, color 0.3s ease;
   min-width: 0;
   box-sizing: border-box;
 }
 
-.st-card:hover {
+.st-card:hover, .glass-card:hover, .glass-panel:hover {
+  background: var(--bg-surface-elevated);
   box-shadow: var(--shadow-md);
   border-color: var(--border-strong);
 }
@@ -235,11 +265,11 @@ body {
   font-family: var(--font-sans);
   font-size: 0.85rem;
   font-weight: 600;
-  padding: 7px 16px;
+  padding: 8px 18px;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   line-height: 1;
   white-space: nowrap;
@@ -259,7 +289,7 @@ body {
 .st-btn-primary:hover {
   background: var(--stellantis-navy-mid);
   border-color: var(--stellantis-navy-mid);
-  box-shadow: 0 2px 8px rgba(14, 30, 56, 0.35);
+  box-shadow: 0 4px 12px rgba(27, 40, 120, 0.30);
 }
 
 .st-btn-action {
@@ -269,23 +299,37 @@ body {
 }
 
 .st-btn-action:hover {
-  background: #0369a1;
-  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+  background: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
 }
 
 .st-btn-outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.1);
   border-color: var(--border-color);
   color: var(--text-primary);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .st-btn-outline:hover {
-  background: var(--bg-subtle);
+  background: var(--bg-surface-elevated);
   border-color: var(--border-strong);
 }
 
 .st-btn-pill {
   border-radius: var(--radius-full);
+}
+
+[data-theme="dark"] .st-btn-primary {
+  background: #1e40af;
+  border-color: #3b82f6;
+  color: #ffffff;
+}
+
+[data-theme="dark"] .st-btn-primary:hover {
+  background: #2563eb;
+  border-color: #60a5fa;
+  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
 }
 
 /* ─── Badges ─── */
@@ -295,7 +339,7 @@ body {
   gap: 4px;
   font-size: 0.72rem;
   font-weight: 700;
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: var(--radius-full);
   border: 1px solid transparent;
   white-space: nowrap;
@@ -308,8 +352,6 @@ body {
 .badge-purple   { background: var(--badge-purple-bg);   color: var(--badge-purple-text);   border-color: var(--badge-purple-border); }
 .badge-navy     { background: var(--stellantis-navy);   color: #ffffff;                    border-color: var(--stellantis-navy-mid); }
 
-/* Floating widgets (SEL Nexus & AI Assistant) removed per product requirements */
-
 /* ─── Form Inputs ─── */
 input, select, textarea {
   font-family: var(--font-sans);
@@ -318,13 +360,14 @@ input, select, textarea {
   background: var(--bg-subtle);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  padding: 8px 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.3s ease;
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--stellantis-navy-mid);
-  box-shadow: 0 0 0 3px rgba(26, 58, 110, 0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.20);
 }
 
 select {
@@ -333,26 +376,15 @@ select {
 }
 
 option {
-  background: var(--bg-surface);
+  background: var(--bg-popover);
   color: var(--text-primary);
 }
 
-[data-theme="dark"] .st-btn-primary {
-  background: #1d3f7a;
-  border-color: #2e5ca6;
-  color: #ffffff;
-}
-
-[data-theme="dark"] .st-btn-primary:hover {
-  background: #254f96;
-  border-color: #3b74cc;
-}
-
 /* ─── Scrollbars ─── */
-::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+::-webkit-scrollbar-thumb { background: rgba(91, 141, 238, 0.35); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--stellantis-blue-bright); }
 
 /* ─── Typography utilities ─── */
 .text-primary   { color: var(--text-primary); }
@@ -361,3 +393,22 @@ option {
 .font-display   { font-family: var(--font-display); }
 .uppercase      { text-transform: uppercase; }
 .tracking-wide  { letter-spacing: 0.06em; }
+
+/* ─── Cross-Browser Glassmorphism Safeguards ─── */
+@supports not (backdrop-filter: blur(1px)) {
+  :root {
+    --bg-surface: rgba(255, 255, 255, 0.88);
+    --bg-surface-elevated: rgba(255, 255, 255, 0.96);
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --workspace-bg: rgba(255, 255, 255, 0.92);
+  }
+  [data-theme="dark"], body.dark-theme, body[data-theme="dark"] {
+    --bg-surface: rgba(19, 29, 53, 0.92);
+    --bg-surface-elevated: rgba(30, 48, 85, 0.95);
+    --header-bg: rgba(19, 29, 53, 0.95);
+    --workspace-bg: rgba(24, 37, 67, 0.92);
+  }
+  .st-card, .glass-card, .glass-panel, .st-btn-outline, header, .app-header, .hub-sidebar, .modal, .popover {
+    background-color: var(--bg-surface);
+  }
+}

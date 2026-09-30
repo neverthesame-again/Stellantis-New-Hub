@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
-  CheckCircle2
+  Sliders,
+  Inbox,
+  Cpu,
+  Bot,
+  Wrench,
+  BookmarkCheck,
+  CheckCircle2,
+  DollarSign,
+  ShieldAlert
 } from 'lucide-react';
 import EngineeringPersonaDashboard from './EngineeringPersonaDashboard';
 import EngineeringExpInbox from './EngineeringExpInbox';
@@ -10,7 +18,6 @@ import EngineeringToolsCatalogue from './EngineeringToolsCatalogue';
 import EngineeringSubscriptions from './EngineeringSubscriptions';
 import EngineeringFinOps from './EngineeringFinOps';
 import EngineeringGovernance from './EngineeringGovernance';
-import EngineeringKnowledgeFabric from './EngineeringKnowledgeFabric';
 import { engineeringExperienceData } from '../mockData.js';
 import '../engineeringExperience.css';
 
@@ -29,13 +36,7 @@ import '../engineeringExperience.css';
  */
 export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTabChange, drillDownLevel: controlledLevel, contextPortfolio, contextProject }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const [internalSubTab, setInternalSubTab] = useState(controlledSubTab || 'persona');
-
-  useEffect(() => {
-    if (controlledSubTab) {
-      setInternalSubTab(controlledSubTab);
-    }
-  }, [controlledSubTab]);
+  const [internalSubTab, setInternalSubTab] = useState('persona');
 
   const activeSubTab = controlledSubTab || internalSubTab;
   const setActiveSubTab = (tab) => {
@@ -97,7 +98,17 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
     return () => window.removeEventListener('stellantis:nav-experience', handleGlobalNav);
   }, []);
 
-
+  // Peer-Level Sub-Tabs matching PRD Section 5
+  const SUB_TABS = [
+    { id: 'persona', label: 'Persona Dashboard', icon: Sliders, badge: '9' },
+    { id: 'inbox', label: 'Workflow Inbox', icon: Inbox, badge: '7' },
+    { id: 'finops', label: 'FinOps and AI Cost', icon: DollarSign, badge: null },
+    { id: 'governance', label: 'Risk & Governance', icon: ShieldAlert, badge: null },
+    { id: 'models', label: 'Model Catalogue', icon: Cpu, badge: '8' },
+    { id: 'agents', label: 'Agent & Workflows', icon: Bot, badge: '8', title: 'Agent and Agentic Workflow Catalogue' },
+    { id: 'tools', label: 'AI Tools Catalogue', icon: Wrench, badge: '10' },
+    { id: 'subscriptions', label: 'My Subscriptions', icon: BookmarkCheck, badge: `${data?.mySubscriptions?.length || 14}` },
+  ];
 
   // Model Subscription Toggle
   const handleToggleModelSubscription = async (modelId) => {
@@ -336,6 +347,28 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
         </div>
       )}
 
+      {/* PEER-LEVEL SUB-TABS NAVIGATION BAR (Matches AI for AD Master Architecture) */}
+      <nav className="eng-exp-subtab-bar" aria-label="AI Experience Zone Subcategories">
+        {SUB_TABS.map((tab) => {
+          const isActive = activeSubTab === tab.id;
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveSubTab(tab.id)}
+              className={`eng-exp-subtab-btn ${isActive ? 'active' : ''}`}
+              title={tab.title || tab.label}
+            >
+              <Icon size={14} style={{ opacity: isActive ? 1 : 0.7, flexShrink: 0 }} />
+              <span className="eng-exp-subtab-text">{tab.label}</span>
+              {tab.badge && (
+                <span className="eng-exp-subtab-badge">{tab.badge}</span>
+              )}
+            </button>
+          );
+        })}
+      </nav>
+
       {/* =========================================================
           SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)
           ========================================================= */}
@@ -418,13 +451,6 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
           ========================================================= */}
       {activeSubTab === 'governance' && (
         <EngineeringGovernance />
-      )}
-
-      {/* =========================================================
-          SUB-TAB 9: KNOWLEDGE FABRIC & ARCHITECTURE TECH DEBT
-          ========================================================= */}
-      {activeSubTab === 'knowledge' && (
-        <EngineeringKnowledgeFabric />
       )}
     </div>
   );
