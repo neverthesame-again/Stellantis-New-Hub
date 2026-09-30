@@ -4,14 +4,16 @@ import {
 } from 'lucide-react';
 import { WORKFLOWS, formatDateTime } from '../../agentStudioData';
 import LifecycleStepper from '../LifecycleStepper';
+import { useAgentStudio } from '../../useAgentStudio';
 import {
   HARNESS_TEMPLATES, RELEASE_RECOMMENDATIONS, bestAgentFor, isHarnessReady, runtimeLabel
 } from './harnessUtils';
 
 const PRIORITY_CLS = { Critical: 'is-critical', High: 'is-warning', Medium: 'is-info' };
 
-export default function HarnessQuickStart({ agents, runs, onOpenSingle, onNavigate, onToast }) {
+export default function HarnessQuickStart({ agents, runs, onOpenSingle, onNavigate }) {
   const [showTemplates, setShowTemplates] = useState(false);
+  const { openWorkflow } = useAgentStudio();
   const ready = useMemo(() => agents.filter(isHarnessReady), [agents]);
 
   const journey = [
@@ -80,12 +82,12 @@ export default function HarnessQuickStart({ agents, runs, onOpenSingle, onNaviga
         <button
           type="button"
           className="ad-hrn-entry"
-          onClick={() => onToast('Multi-agent workflow composer arrives in Phase 2 (F9)')}
+          onClick={() => openWorkflow({ create: true })}
         >
           <span className="ad-hrn-entry-icon is-muted"><Hammer size={20} /></span>
-          <span className="ad-hrn-entry-title">Build from scratch <span className="ad-studio-badge is-purple">Phase 2</span></span>
-          <span className="ad-hrn-entry-text">Compose a multi-agent graph with hand-offs, shared memory and gated approvals.</span>
-          <span className="ad-hrn-entry-cta">Preview <ArrowRight size={13} /></span>
+          <span className="ad-hrn-entry-title">Build from scratch</span>
+          <span className="ad-hrn-entry-text">Compose a multi-agent graph with hand-offs, policy gates and human approvals in the AI Studio playground.</span>
+          <span className="ad-hrn-entry-cta">Open playground <ArrowRight size={13} /></span>
         </button>
       </div>
 

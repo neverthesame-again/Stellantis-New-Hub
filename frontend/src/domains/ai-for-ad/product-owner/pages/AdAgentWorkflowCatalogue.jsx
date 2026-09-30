@@ -12,10 +12,14 @@ import {
   Info,
   Plus,
   Kanban,
-  Rocket
+  Rocket,
+  Workflow
 } from 'lucide-react';
 import { useAgentStudio } from '../agent-studio/useAgentStudio';
 import AdOnboardingStudio from '../agent-studio/pages/AdOnboardingStudio';
+import WorkflowsTab from '../agent-studio/workflows/WorkflowsTab';
+import AdLiveTelemetry from '../components/live/AdLiveTelemetry';
+import { LIVE_PRESETS } from '../components/live/liveTelemetry';
 import { getStage, RUNTIMES, SKILL_LIBRARY, KNOWLEDGE_SOURCES, TOOLS, WORKFLOWS } from '../agent-studio/agentStudioData';
 import '../adAgentCatalogue.css';
 
@@ -337,19 +341,19 @@ const INITIAL_AGENTS = [
 
 export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigateToTrace }) {
   // Sub-tabs Navigation
-  const [activeSubtab, setActiveSubtab] = useState('catalog'); // 'catalog' | 'lifecycle' | 'onboarding'
+  const [activeSubtab, setActiveSubtab] = useState('catalog'); // 'catalog' | 'lifecycle' | 'onboarding' | 'workflows'
   const [registerToken, setRegisterToken] = useState(null);
 
   // Shared Agent Studio state (F1–F5)
-  const { agents: studioAgents, pendingCatalogueView, consumeCatalogueView, setFocusAgentId } = useAgentStudio();
+  const { agents: studioAgents, workflows, pendingCatalogueView, consumeCatalogueView, setFocusAgentId } = useAgentStudio();
 
-  // Other Experience Zone tabs deep-link here via navigate({ tab: 'agents', view: 'onboarding', agentId }).
+  // Other Experience Zone tabs deep-link here via navigate({ tab: 'agents', view: 'onboarding' | 'workflows', agentId }).
   // Switch the view during render (no extra effect pass), then consume the request.
-  if (pendingCatalogueView === 'onboarding' && activeSubtab !== 'onboarding') {
-    setActiveSubtab('onboarding');
+  if ((pendingCatalogueView === 'onboarding' || pendingCatalogueView === 'workflows') && activeSubtab !== pendingCatalogueView) {
+    setActiveSubtab(pendingCatalogueView);
   }
   useEffect(() => {
-    if (pendingCatalogueView === 'onboarding') consumeCatalogueView();
+    if (pendingCatalogueView === 'onboarding' || pendingCatalogueView === 'workflows') consumeCatalogueView();
   }, [pendingCatalogueView, consumeCatalogueView]);
 
   const openOnboarding = (studioId) => {
@@ -547,12 +551,12 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           </div>
           <div className="ad-agents-header-text">
             <h2>
-              <span>Agent Catalogue</span>
+              <span>AI Studio</span>
               <span className="st-badge badge-purple" style={{ fontSize: '0.68rem', fontFamily: 'monospace' }}>
                 {agentsList.length} Registered • {ALL_LIFECYCLES.map((s) => `${lifecycleCounts[s]} ${s}`).join(' • ')}
               </span>
             </h2>
-            <p>Autonomous engineering agents, multi-agent workflows, Performance Passports, and stage-gated governance.</p>
+            <p>Register AD agents, track their lifecycle, browse the catalogue and compose agents into multi-agent workflows.</p>
           </div>
         </div>
 
@@ -564,7 +568,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
               className={`ad-agents-subtab-btn ${activeSubtab === 'catalog' ? 'active' : ''}`}
             >
               <Layers size={14} />
-              <span>All Agents &amp; Workflows ({agentsList.length})</span>
+              <span>Agent Catalogue ({agentsList.length})</span>
             </button>
             <button
               onClick={() => setActiveSubtab('lifecycle')}
@@ -580,6 +584,13 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
               <Rocket size={14} />
               <span>Onboarding Studio ({studioAgents.length})</span>
             </button>
+            <button
+              onClick={() => setActiveSubtab('workflows')}
+              className={`ad-agents-subtab-btn ${activeSubtab === 'workflows' ? 'active' : ''}`}
+            >
+              <Workflow size={14} />
+              <span>Workflows ({workflows.length})</span>
+            </button>
           </div>
 
           <button
@@ -594,6 +605,10 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           </button>
         </div>
       </div>
+
+      {(activeSubtab === 'catalog' || activeSubtab === 'workflows') && (
+        <AdLiveTelemetry title="Agent runtime" metrics={LIVE_PRESETS.studio(studioAgents)} />
+      )}
 
       {/* ================================================================= */}
       {/* SUB-TAB 1: ALL AGENTS & WORKFLOWS (CATALOG VIEW WITH FACETS)       */}
@@ -1251,6 +1266,8 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           onRegisterRequestHandled={() => setRegisterToken(null)}
         />
       )}
+
+      {activeSubtab === 'workflows' && <WorkflowsTab showToast={showToast} />}
 
       {/* ================================================================= */}
       {/* PERFORMANCE PASSPORT SLIDE-OVER DRAWER                            */}

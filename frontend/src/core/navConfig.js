@@ -9,7 +9,8 @@ import {
   BookmarkCheck,
   PlayCircle,
   Gauge,
-  Scale
+  Scale,
+  Network
 } from 'lucide-react';
 import { AMS_EXPERIENCE_SUBPAGES } from '../domains/ai-for-ams/navigation/amsRoutes.js';
 
@@ -46,10 +47,11 @@ export const EXPERIENCE_SUBPAGES = {
     { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders },
     { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '9' },
     { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
-    { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: '8' },
-    { id: 'harness',       label: 'AI Harness',         icon: PlayCircle,    badge: '1' },
+    { id: 'agents',        label: 'AI Studio',          icon: Bot,           badge: '8' },
+    { id: 'harness',      label: 'AI Harness',         icon: PlayCircle,    badge: '1' },
     { id: 'evaluation',    label: 'Evaluation Center',  icon: Gauge,         badge: '5' },
     { id: 'governance',    label: 'Governance Center',  icon: Scale,         badge: '4' },
+    { id: 'knowledge',     label: 'Knowledge Fabric',   icon: Network,       badge: 'SDLC' },
     { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '23' },
     { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '20' }
   ]

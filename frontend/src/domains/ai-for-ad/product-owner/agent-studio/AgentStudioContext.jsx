@@ -13,6 +13,7 @@ import {
   isEvaluationPassing,
   evaluatePolicies
 } from './agentStudioData';
+import { SEED_WORKFLOWS, RUN_STATUS as WF_RUN_STATUS, settleRun } from './workflows/adWorkflowModel';
 
 /**
  * AgentStudioContext — shared state for F1–F5 inside the AI Experience Zone.
@@ -32,6 +33,9 @@ export function AgentStudioProvider({ children, onNavigate }) {
   const [harnessRuns, setHarnessRuns] = useState(SEED_HARNESS_RUNS);
   const [threshold, setThreshold] = useState(DEFAULT_PASS_THRESHOLD);
   const [rules, setRules] = useState(EVAL_RULES);
+  const [workflows, setWorkflows] = useState(SEED_WORKFLOWS);
+  const [workflowRuns, setWorkflowRuns] = useState([]);
+  const [workflowRequest, setWorkflowRequest] = useState(null);
 
   // Cross-tab navigation: which agent to preselect and which catalogue view to open
   const [focusAgentId, setFocusAgentId] = useState(null);
@@ -211,7 +215,7 @@ export function AgentStudioProvider({ children, onNavigate }) {
     const agent = agents.find((a) => a.id === id);
     if (!agent || agent.stage !== 8) return false;
     patchAgent(id, { stage: 9, operationalState: 'Active' });
-    addAudit({ action: 'Agent published', agentId: id, type: 'lifecycle', detail: 'Published to AD runtime and Agent & Workflow Catalogue' });
+    addAudit({ action: 'Agent published', agentId: id, type: 'lifecycle', detail: 'Published to AD runtime and AI Studio' });
     return true;
   }, [agents, patchAgent, addAudit]);
 
@@ -241,12 +245,51 @@ export function AgentStudioProvider({ children, onNavigate }) {
     addAudit({ action: 'Harness run approved', agentId: run?.agentId, actor, type: 'harness', detail: `Run ${runId} released` });
   }, [harnessRuns, addAudit]);
 
+  // ---------------------------------------------------------------- Workflows
+  const saveWorkflow = useCallback((workflow) => {
+    const id = workflow.id || `WF-${Date.now().toString(36).toUpperCase().slice(-5)}`;
+    const ts = nowIso();
+    setWorkflows((prev) => {
+      const existing = prev.find((w) => w.id === id);
+      const saved = { ...existing, ...workflow, id, source: workflow.source || 'Custom', createdAt: existing?.createdAt || workflow.createdAt || ts, updatedAt: ts };
+      return existing ? prev.map((w) => (w.id === id ? saved : w)) : [saved, ...prev];
+    });
+    addAudit({ action: 'Workflow saved', type: 'workflow', detail: `${workflow.name} (${id})` });
+    return id;
+  }, [addAudit]);
+
+  const recordWorkflowRun = useCallback((run) => {
+    setWorkflowRuns((prev) => [run, ...prev.filter((r) => r.id !== run.id)]);
+    addAudit({ action: 'Workflow run started', type: 'workflow', detail: `${run.title} → ${run.status}` });
+  }, [addAudit]);
+
+  /** Approve resumes the run after the gate; reject ends it. Returns the updated run. */
+  const decideWorkflowApproval = useCallback((runId, approve, actor = CURRENT_USER) => {
+    const run = workflowRuns.find((r) => r.id === runId);
+    if (!run || run.status !== WF_RUN_STATUS.AWAITING_APPROVAL) return null;
+    const next = approve
+      ? settleRun({ ...run, approvedStepIndexes: [...run.approvedStepIndexes, run.pendingApprovalIndex], decidedBy: actor }, run.pendingApprovalIndex + 1)
+      : { ...run, status: WF_RUN_STATUS.REJECTED, decidedBy: actor };
+    setWorkflowRuns((prev) => prev.map((r) => (r.id === runId ? next : r)));
+    addAudit({ action: approve ? 'Workflow gate approved' : 'Workflow gate rejected', actor, type: 'workflow', detail: run.title });
+    return next;
+  }, [workflowRuns, addAudit]);
+
   // ---------------------------------------------------------------- navigation
   const navigate = useCallback(({ tab, agentId = null, view = null }) => {
     if (agentId) setFocusAgentId(agentId);
     if (view) setPendingCatalogueView(view);
     if (tab && onNavigate) onNavigate(tab);
   }, [onNavigate]);
+
+  /** Opens AI Studio → Workflows with a saved workflow, or a new one seeded with an agent. */
+  const openWorkflow = useCallback(({ workflowId = null, withAgentId = null, create = false }) => {
+    setWorkflowRequest({ workflowId, withAgentId, create, token: Date.now() });
+    setPendingCatalogueView('workflows');
+    if (onNavigate) onNavigate('agents');
+  }, [onNavigate]);
+
+  const consumeWorkflowRequest = useCallback(() => setWorkflowRequest(null), []);
 
   const consumeCatalogueView = useCallback(() => {
     const v = pendingCatalogueView;
@@ -262,9 +305,13 @@ export function AgentStudioProvider({ children, onNavigate }) {
     runEvaluation, setThreshold, toggleRule, updateRule, addRules,
     decideGovernance, rescanCompliance, issueCertificate, publishAgent,
     recordHarnessRun, updateHarnessRun, approveHarnessRun,
+    workflows, workflowRuns, saveWorkflow, recordWorkflowRun, decideWorkflowApproval,
+    workflowRequest, openWorkflow, consumeWorkflowRequest,
     addAudit,
     focusAgentId, setFocusAgentId, pendingCatalogueView, consumeCatalogueView, navigate
   }), [
+    workflows, workflowRuns, saveWorkflow, recordWorkflowRun, decideWorkflowApproval,
+    workflowRequest, openWorkflow, consumeWorkflowRequest,
     agents, audit, harnessRuns, threshold, rules,
     getAgent, blockersFor, policyChecks, mandatoryFailures,
     registerAgent, updateAgent, verifyRuntime, advanceStage, setStage, setOperationalState,
