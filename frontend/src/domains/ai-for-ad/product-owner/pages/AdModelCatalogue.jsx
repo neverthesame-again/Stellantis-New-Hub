@@ -30,8 +30,6 @@ import {
   HardDrive
 } from 'lucide-react';
 import '../adModelCatalogue.css';
-import AdLiveTelemetry from '../components/live/AdLiveTelemetry';
-import { LIVE_PRESETS } from '../components/live/liveTelemetry';
 
 // Facet Constants
 const ALL_PROVIDERS = ['Anthropic', 'Google', 'OpenAI', 'Mistral AI', 'Meta AI', 'DeepSeek AI'];
@@ -612,8 +610,6 @@ export default function AdModelCatalogue() {
           </button>
         </div>
       </div>
-
-      <AdLiveTelemetry title="Model serving" metrics={LIVE_PRESETS.models()} />
 
       {/* ================================================================= */}
       {/* SUB-TAB 1: BROWSE MODELS (FACET FILTERS + MODEL CARDS)             */}

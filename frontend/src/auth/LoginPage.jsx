@@ -274,13 +274,13 @@ export default function LoginPage({ onNavigateToRegister }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>TCS Ai Operating Engineering Portal</span>
+              <span>AI-Native Engineering Operating Model Hub</span>
             </div>
 
             <div>
               <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
               <p className="auth-left-subtext">
-                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across TCS Ai Operating Engineering Portal.
+                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across AI-Native Engineering Operating Model Hub.
               </p>
             </div>
 
@@ -296,7 +296,7 @@ export default function LoginPage({ onNavigateToRegister }) {
 
           {/* ── Right Panel ── */}
           <div className="auth-right">
-            <h2 className="auth-form-title">TCS Ai Operating Engineering Portal</h2>
+            <h2 className="auth-form-title">AI-Native Engineering Operating Model Hub</h2>
             <p className="auth-form-subtitle">Sign in using your TCS credentials</p>
 
             {errorMsg && (

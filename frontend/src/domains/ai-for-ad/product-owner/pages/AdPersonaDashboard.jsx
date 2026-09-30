@@ -23,8 +23,6 @@ import {
   ChevronDown
 } from 'lucide-react';
 import '../adPersonaDashboard.css';
-import AdLiveTelemetry from '../components/live/AdLiveTelemetry';
-import { LIVE_PRESETS } from '../components/live/liveTelemetry';
 import {
   personaContextData,
   drillDownLevelsData,
@@ -130,8 +128,6 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
           </div>
         </div>
       </div>
-
-      <AdLiveTelemetry title="Program pulse" metrics={LIVE_PRESETS.persona()} />
 
       {/* ================================================================= */}
       {/* PART A (UPPER TIER): 4 COMPUTED READ-OUT WIDGETS (4-IN-A-LINE)    */}

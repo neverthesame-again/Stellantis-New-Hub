@@ -9,8 +9,6 @@ import AuditTrail from '../components/governance/AuditTrail';
 import HarnessApprovals from '../components/governance/HarnessApprovals';
 import GuardrailsRegulations from '../components/governance/GuardrailsRegulations';
 import { isGoverned, sortQueue } from '../components/governance/governanceUtils';
-import AdLiveTelemetry from '../../components/live/AdLiveTelemetry';
-import { LIVE_PRESETS } from '../../components/live/liveTelemetry';
 import '../adAgentStudio.css';
 import '../adAgentGovernance.css';
 
@@ -87,8 +85,6 @@ export default function AdAgentGovernance() {
           </button>
         </div>
       </header>
-
-      <AdLiveTelemetry title="Guardrail activity" metrics={LIVE_PRESETS.governance()} />
 
       <div className="ad-gov-tabs" role="tablist" aria-label="Governance sections">
         {INNER_TABS.map((t) => {

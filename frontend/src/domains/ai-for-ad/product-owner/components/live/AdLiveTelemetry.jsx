@@ -36,7 +36,6 @@ export default function AdLiveTelemetry({ metrics, title = 'Live telemetry', not
         <span className="ad-live-note">
           {note ? `${note} · ` : ''}Live values refresh every {refreshMs / 1000} s
         </span>
-        <span className="st-badge badge-purple ad-live-badge">Simulated telemetry</span>
         <span className="ad-live-updated">Updated {updated}</span>
         <button
           type="button"

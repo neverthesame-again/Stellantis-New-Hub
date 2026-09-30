@@ -1,4 +1,4 @@
-# TCS Ai Operating Engineering Portal
+# AI-Native Engineering Operating Model Hub
 
 > POC | Multi-Persona React + Node.js Application | Conflict-Free Multi-Developer Architecture
 
