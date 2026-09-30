@@ -6,9 +6,7 @@ import Sidebar from './core/Sidebar';
 import { defaultSubPage, EXPERIENCE_SUBPAGES } from './core/navConfig';
 
 // Domain Modules
-import AmsDashboard from './domains/ai-for-ams/pages/AmsDashboard';
-import WorkflowInbox from './domains/ai-for-ams/pages/WorkflowInbox';
-import ExperienceZone from './domains/ai-for-ams/pages/ExperienceZone';
+import AiForAmsDomain from './domains/ai-for-ams/index';
 import EngineeringLeadersDomain from './domains/engineering-leaders/index';
 import AiForAdDomain from './domains/ai-for-ad/index';
 
@@ -155,16 +153,12 @@ function AuthenticatedApp() {
 
           {/* DOMAIN ROUTING WITH BOUNDARY ISOLATION */}
           {selectedDomain === 'AI for AMS' && (
-            <>
-              {activeTab === 'dashboard' && (
-                <AmsDashboard
-                  onNavigateToInbox={() => { setActiveTab('inbox'); }}
-                  onNavigateToExperience={() => { setActiveTab('experience'); setActiveSubTab('models'); }}
-                />
-              )}
-              {activeTab === 'inbox' && <WorkflowInbox />}
-              {activeTab === 'experience' && <ExperienceZone activeSubTab={activeSubTab} onSubTabChange={setActiveSubTab} />}
-            </>
+            <AiForAmsDomain
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              activeSubTab={activeSubTab}
+              onSubTabChange={setActiveSubTab}
+            />
           )}
 
           {(selectedDomain === 'Engineering leaders' || selectedDomain === 'Engineering leader') && (

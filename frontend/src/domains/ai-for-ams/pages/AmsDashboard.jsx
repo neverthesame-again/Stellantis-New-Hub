@@ -1,30 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  AlertTriangle, 
-  CheckCircle2, 
-  Clock, 
-  TrendingDown, 
-  Layers, 
-  Zap, 
-  ArrowRight, 
-  ShieldAlert, 
-  RefreshCw,
+import {
+  AlertTriangle,
+  Clock,
+  Layers,
+  Zap,
+  ShieldAlert,
   GitPullRequest,
-  CheckCircle,
-  ExternalLink,
   Activity,
   DollarSign,
-  Cpu,
-  BarChart3,
   Wrench,
-  ShieldCheck,
-  Target,
-  FileCode,
-  TrendingUp
+  Target
 } from 'lucide-react';
 import { amsDashboardData } from '../mockData.js';
 
-export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience }) {
+/**
+ * AMS KPI dashboard (the "Trends" view of the Dashboard).
+ *
+ * @param {Object} props
+ * @param {() => void} props.onNavigateToInbox
+ * @param {() => void} props.onNavigateToExperience  "Simulate Fix" → AI Harness.
+ * @param {(clusterId: string) => void} [props.onOpenIncident] Open a cluster's incident in the live war room.
+ * @returns {JSX.Element}
+ */
+export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience, onOpenIncident }) {
   const [data, setData] = useState(amsDashboardData);
   const [selectedCluster, setSelectedCluster] = useState(null);
 
@@ -813,16 +811,31 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                   Problem Ticket: <strong>{selectedCluster.problemTicketCreated || 'PRB-4092'}</strong> • Linked CR: <strong>{selectedCluster.changeRequestLinked || 'CR-8921'}</strong>
                 </div>
-                <button
-                  onClick={() => {
-                    setSelectedCluster(null);
-                    onNavigateToInbox();
-                  }}
-                  className="st-btn st-btn-primary"
-                  style={{ fontSize: '0.78rem', padding: '6px 14px' }}
-                >
-                  Approve in Workflow Inbox
-                </button>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  {onOpenIncident && (
+                    <button
+                      onClick={() => {
+                        const clusterId = selectedCluster.id;
+                        setSelectedCluster(null);
+                        onOpenIncident(clusterId);
+                      }}
+                      className="st-btn st-btn-outline"
+                      style={{ fontSize: '0.78rem', padding: '6px 14px' }}
+                    >
+                      Open in war room
+                    </button>
+                  )}
+                  <button
+                    onClick={() => {
+                      setSelectedCluster(null);
+                      onNavigateToInbox();
+                    }}
+                    className="st-btn st-btn-primary"
+                    style={{ fontSize: '0.78rem', padding: '6px 14px' }}
+                  >
+                    Approve in Workflow Inbox
+                  </button>
+                </div>
               </div>
             </div>
           </div>

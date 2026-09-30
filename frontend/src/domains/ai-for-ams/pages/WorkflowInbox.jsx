@@ -1,51 +1,45 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  CheckCircle2, 
-  XCircle, 
-  AlertTriangle, 
-  FileText, 
-  ShieldAlert, 
-  Filter, 
-  Clock, 
-  Sparkles, 
-  ChevronRight, 
-  ArrowUpRight,
+import React, { useState } from 'react';
+import {
+  CheckCircle2,
+  XCircle,
+  AlertTriangle,
+  FileText,
+  ShieldAlert,
+  Filter,
+  Clock,
   ShieldCheck,
-  History,
   Bot,
   Zap,
   TrendingUp,
   GitPullRequest,
-  RefreshCw,
-  Layers,
-  Activity,
-  CheckCircle
+  RefreshCw
 } from 'lucide-react';
-import { amsWorkflowInbox } from '../mockData.js';
+import { useAmsStudio } from '../state/useAmsStudio';
+import { canDecideLinkedApproval } from '../state/amsStudioReducer';
+import { INBOX_DECISION, INBOX_DECISION_STATUS } from '../state/constants';
+import { useAmsNavigation } from '../navigation/useAmsNavigation';
+import { AMS_SUBPAGE } from '../navigation/amsRoutes';
+import { INBOX_LINK_AGENT_APPROVAL, INBOX_LINK_RUN_APPROVAL } from '../model/agentRecords';
+import { RUN_KIND } from '../model/runModel';
+import Toast from '../components/Toast';
+import { useToast } from '../components/useToast';
 
+/**
+ * Workflow Inbox — the single approval queue for AI for AMS. Items and their
+ * decision history live in the AMS studio store, so decisions survive reloads
+ * and other AMS features (harness approvals, RCA hand-offs, governance
+ * approvals) can add items to the same queue.
+ *
+ * @returns {JSX.Element}
+ */
 export default function WorkflowInbox() {
-  const [items, setItems] = useState(amsWorkflowInbox);
+  const { state, actions } = useAmsStudio();
+  const { goToSubPage } = useAmsNavigation();
+  const items = state.inbox;
   const [selectedType, setSelectedType] = useState('All');
-  const [selectedItem, setSelectedItem] = useState(amsWorkflowInbox[0]);
+  const [selectedItemId, setSelectedItemId] = useState(null);
   const [decisionNotes, setDecisionNotes] = useState('');
-  const [notification, setNotification] = useState(null);
-
-  // Fetch from backend if available
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/workflows`)
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.success && json.data) {
-          setItems(json.data);
-          if (json.data.length > 0) {
-            setSelectedItem(json.data[0]);
-          }
-        }
-      })
-      .catch((err) => {
-        console.log('Backend not reached, using local workflows', err);
-      });
-  }, []);
+  const { message, showToast } = useToast(4000);
 
   // 7 explicit categories requested by user
   const categories = [
@@ -118,80 +112,46 @@ export default function WorkflowInbox() {
     ? items 
     : items.filter(i => i.type.toLowerCase().includes(selectedType.toLowerCase()));
 
-  // Ensure an item from the current filtered list is selected
-  useEffect(() => {
-    if (filteredItems.length > 0 && (!selectedItem || !filteredItems.some(i => i.id === selectedItem.id))) {
-      setSelectedItem(filteredItems[0]);
-    }
-  }, [selectedType, filteredItems]);
+  // The selection always resolves to an item in the current filter: the chosen
+  // one when it is visible, otherwise the first. Deriving it (rather than
+  // copying the item into state) keeps the detail pane in step with the store.
+  const selectedItem = filteredItems.find((item) => item.id === selectedItemId) || filteredItems[0] || null;
 
-  const handleAction = async (actionType) => {
+  // Agent production approvals are the same decision as in Evaluate & Approve:
+  // approval needs every policy check to pass and rejection needs a comment.
+  const isAgentApproval = selectedItem?.link?.kind === INBOX_LINK_AGENT_APPROVAL;
+  const pausedRun = selectedItem?.link?.kind === INBOX_LINK_RUN_APPROVAL
+    ? state.runs.find((run) => run.id === selectedItem.link.runId)
+    : null;
+
+  /** Opens the harness run or workflow that raised the selected item. */
+  const openPausedRun = () => {
+    if (pausedRun.kind === RUN_KIND.HARNESS) goToSubPage(AMS_SUBPAGE.HARNESS, { runId: pausedRun.id });
+    else goToSubPage(AMS_SUBPAGE.AGENT_STUDIO, { tab: 'workflows', workflowId: pausedRun.workflowId });
+  };
+  const canApproveAgent = !selectedItem?.link || canDecideLinkedApproval(state, selectedItem, INBOX_DECISION.APPROVE, decisionNotes);
+
+  /**
+   * Records the approver's decision on the selected item.
+   *
+   * @param {'approve' | 'reject' | 'escalate'} decision
+   */
+  const handleAction = (decision) => {
     if (!selectedItem) return;
-
-    try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/ams/workflows/${selectedItem.id}/action`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: actionType, comments: decisionNotes || `Action executed by Tony (Head of AMS)` })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setNotification({ type: 'success', text: `Item ${selectedItem.id} marked as ${data.data.status}` });
-      }
-    } catch (e) {
-      setNotification({ type: 'success', text: `Item ${selectedItem.id} marked as ${actionType.toUpperCase()}` });
+    if (!canDecideLinkedApproval(state, selectedItem, decision, decisionNotes)) {
+      showToast(decision === INBOX_DECISION.REJECT
+        ? 'Add a comment to reject this agent approval.'
+        : 'This item can no longer be approved: it was already decided or a policy check fails.');
+      return;
     }
-
-    const newStatus = actionType === 'approve' ? 'Approved' : actionType === 'reject' ? 'Rejected' : 'Escalated';
-    setItems((prev) =>
-      prev.map((it) =>
-        it.id === selectedItem.id
-          ? {
-              ...it,
-              status: newStatus,
-              decisionHistory: [
-                { timestamp: 'Just now', actor: 'Tony / Head of AMS', action: `${actionType.toUpperCase()}: ${decisionNotes || 'Authorized via AMS Hub'}` },
-                ...it.decisionHistory
-              ]
-            }
-          : it
-      )
-    );
-
-    setSelectedItem((prev) => ({
-      ...prev,
-      status: newStatus,
-      decisionHistory: [
-        { timestamp: 'Just now', actor: 'Tony / Head of AMS', action: `${actionType.toUpperCase()}: ${decisionNotes || 'Authorized via AMS Hub'}` },
-        ...prev.decisionHistory
-      ]
-    }));
-
+    actions.recordInboxDecision(selectedItem.id, decision, decisionNotes);
+    showToast(`Item ${selectedItem.id} marked as ${INBOX_DECISION_STATUS[decision]}`);
     setDecisionNotes('');
-    setTimeout(() => setNotification(null), 4000);
   };
 
   return (
     <div className="animate-fade-in" style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-      
-      {/* Toast notification */}
-      {notification && (
-        <div style={{
-          background: 'var(--badge-success-bg)',
-          color: 'var(--badge-success-text)',
-          border: '1px solid var(--badge-success-border)',
-          borderRadius: '8px',
-          padding: '10px 16px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          fontSize: '0.875rem',
-          fontWeight: 600
-        }}>
-          <CheckCircle2 size={16} />
-          <span>{notification.text}</span>
-        </div>
-      )}
+      <Toast message={message} />
 
       {/* 7-CATEGORY EXECUTIVE WORKFLOW SUMMARY CARDS */}
       <div style={{
@@ -263,13 +223,8 @@ export default function WorkflowInbox() {
         })}
       </div>
 
-      {/* Master-Detail Layout */}
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1.35fr',
-        gap: '20px',
-        alignItems: 'start'
-      }}>
+      {/* Master-detail layout (stacks on narrow screens) */}
+      <div className="ams-inbox-layout">
 
         {/* LEFT: Items List */}
         <div className="st-card" style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px', maxHeight: '850px', overflowY: 'auto' }}>
@@ -287,7 +242,7 @@ export default function WorkflowInbox() {
             return (
               <div
                 key={item.id}
-                onClick={() => setSelectedItem(item)}
+                onClick={() => setSelectedItemId(item.id)}
                 style={{
                   background: isSelected ? 'var(--bg-surface-secondary)' : 'var(--bg-surface)',
                   border: isSelected ? '2px solid var(--stellantis-accent)' : '1px solid var(--border-color)',
@@ -371,6 +326,31 @@ export default function WorkflowInbox() {
               <h2 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)', lineHeight: 1.35 }}>
                 {selectedItem.title}
               </h2>
+              {isAgentApproval && (
+                <div className="ams-callout is-info">
+                  <ShieldCheck size={16} aria-hidden="true" />
+                  <span>
+                    Agent production approval — deciding here also updates the agent in Evaluate &amp; Approve.{' '}
+                    <button
+                      type="button"
+                      className="ams-link-button"
+                      onClick={() => goToSubPage(AMS_SUBPAGE.EVALUATE_APPROVE, { tab: 'approve', agentId: selectedItem.link.agentId })}
+                    >
+                      Open checklist
+                    </button>
+                  </span>
+                </div>
+              )}
+              {pausedRun && (
+                <div className="ams-callout is-info">
+                  <Clock size={16} aria-hidden="true" />
+                  <span>
+                    {pausedRun.kind === RUN_KIND.HARNESS ? 'Harness run' : 'Workflow run'} {pausedRun.id} is paused here —
+                    approving resumes it, rejecting stops it.{' '}
+                    <button type="button" className="ams-link-button" onClick={openPausedRun}>Open run</button>
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Context meta grid */}
@@ -478,7 +458,9 @@ export default function WorkflowInbox() {
             <div style={{ borderTop: '1px solid var(--border-color)', paddingTop: '16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <input
                 type="text"
-                placeholder="Optional decision notes, conditions or constraints..."
+                placeholder={isAgentApproval
+                  ? 'Decision notes (required to reject an agent approval)…'
+                  : 'Optional decision notes, conditions or constraints...'}
                 value={decisionNotes}
                 onChange={(e) => setDecisionNotes(e.target.value)}
                 style={{
@@ -494,7 +476,9 @@ export default function WorkflowInbox() {
 
               <div style={{ display: 'flex', gap: '10px' }}>
                 <button
-                  onClick={() => handleAction('approve')}
+                  onClick={() => handleAction(INBOX_DECISION.APPROVE)}
+                  disabled={!canApproveAgent}
+                  title={canApproveAgent ? undefined : 'Not approvable: the agent is not pending or a policy check fails'}
                   className="st-btn st-btn-primary"
                   style={{ flex: 1.2, background: '#10b981', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px' }}
                 >
@@ -502,7 +486,7 @@ export default function WorkflowInbox() {
                 </button>
 
                 <button
-                  onClick={() => handleAction('reject')}
+                  onClick={() => handleAction(INBOX_DECISION.REJECT)}
                   className="st-btn st-btn-outline"
                   style={{ color: '#ef4444', borderColor: '#ef4444', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px' }}
                 >
@@ -510,7 +494,7 @@ export default function WorkflowInbox() {
                 </button>
 
                 <button
-                  onClick={() => handleAction('escalate')}
+                  onClick={() => handleAction(INBOX_DECISION.ESCALATE)}
                   className="st-btn st-btn-outline"
                   style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', padding: '10px' }}
                 >

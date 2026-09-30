@@ -6,13 +6,12 @@ import {
   Cpu, 
   Bot, 
   Wrench, 
-  BookmarkCheck, 
-  Play,
+  BookmarkCheck,
   PlayCircle,
   Gauge,
   Scale
 } from 'lucide-react';
-import { amsExperienceData } from '../domains/ai-for-ams/mockData.js';
+import { AMS_EXPERIENCE_SUBPAGES } from '../domains/ai-for-ams/navigation/amsRoutes.js';
 
 // Top-level pages shown in the sidebar for every domain
 export const MAIN_PAGES = [
@@ -41,13 +40,8 @@ const ENG_SUBPAGES = [
 export const EXPERIENCE_SUBPAGES = {
   'Engineering leaders': ENG_SUBPAGES,
   'Engineering leader': ENG_SUBPAGES,
-  'AI for AMS': [
-    { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: String(amsExperienceData.models.length) },
-    { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: String(amsExperienceData.agents.length) },
-    { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: String(amsExperienceData.tools.length) },
-    { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: String(amsExperienceData.mySubscriptions.length) },
-    { id: 'sandbox',       label: 'Sandbox Simulation', icon: Play }
-  ],
+  // AMS owns its sub-page list (journey order) in its own domain folder
+  'AI for AMS': AMS_EXPERIENCE_SUBPAGES,
   'AI for AD': [
     { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders },
     { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '9' },
