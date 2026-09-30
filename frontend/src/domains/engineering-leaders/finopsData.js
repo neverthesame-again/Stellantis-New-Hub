@@ -99,7 +99,7 @@ export const initialFinOpsData = {
     {
       id: "MOD-GPT-4O",
       modelName: "GPT-4o Enterprise",
-      provider: "Azure OpenAI TCS Tenant",
+      provider: "Azure OpenAI Stellantis Tenant",
       deploymentType: "Dedicated Sovereign Cloud",
       tokenUsage: "20M",
       inputTokens: "13M",
@@ -529,3 +529,319 @@ export const initialFinOpsData = {
     ]
   }
 };
+
+/**
+ * Generates realistic real-time 4-second dynamic variations for FinOps
+ * Keeps values within the reduced realistic scale ($10,000 budget, ~$7,620-$7,710 spend, ~94.5M-96.2M tokens)
+ * Preserves user interactions (alerts acknowledged/resolved, applied optimizations)
+ */
+export function generateDynamicFinOpsData(prev = initialFinOpsData) {
+  const now = Date.now();
+  const spendOffset = Math.sin(now / 5000) * 38 + ((Math.random() - 0.5) * 16);
+  const mtdSpendNum = Math.round(7650 + spendOffset);
+
+  const tokenOffset = Math.cos(now / 6000) * 0.75 + ((Math.random() - 0.5) * 0.35);
+  const tokenVolumeNum = +(95.0 + tokenOffset).toFixed(1);
+
+  const budgetNum = 10000;
+  const budgetUtilization = ((mtdSpendNum / budgetNum) * 100).toFixed(1) + "%";
+  const projectedEndMonthSpend = "$" + Math.round(mtdSpendNum * 1.1895).toLocaleString();
+  const costPer1MNum = (mtdSpendNum / tokenVolumeNum).toFixed(2);
+  const costPer1MTokens = "$" + costPer1MNum;
+
+  const inputTokensNum = +(tokenVolumeNum * 0.6316).toFixed(1);
+  const outputTokensNum = +(tokenVolumeNum - inputTokensNum).toFixed(1);
+
+  const cacheSavingsNum = Math.round(mtdSpendNum * 0.285);
+  const cacheHitRateNum = (38.2 + (Math.sin(now / 7000) * 0.7) + (Math.random() * 0.2)).toFixed(1) + "%";
+  const efficiencyIndexNum = +(88.3 + (Math.cos(now / 9000) * 0.4)).toFixed(1);
+
+  // Program Breakdown (sums strictly to mtdSpendNum and tokenVolumeNum)
+  const qeSpendNum = Math.round(mtdSpendNum * 0.4575);
+  const qeTokensNum = +(tokenVolumeNum * 0.4632).toFixed(1);
+  const qeCostPer1M = "$" + (qeSpendNum / qeTokensNum).toFixed(2);
+
+  const adSpendNum = Math.round(mtdSpendNum * 0.3464);
+  const adTokensNum = +(tokenVolumeNum * 0.3368).toFixed(1);
+  const adCostPer1M = "$" + (adSpendNum / adTokensNum).toFixed(2);
+
+  const amsSpendNum = mtdSpendNum - qeSpendNum - adSpendNum;
+  const amsTokensNum = +(tokenVolumeNum - qeTokensNum - adTokensNum).toFixed(1);
+  const amsCostPer1M = "$" + (amsSpendNum / amsTokensNum).toFixed(2);
+
+  // Model Breakdown (sums strictly to mtdSpendNum and tokenVolumeNum)
+  const claudeCostNum = Math.round(mtdSpendNum * 0.4771);
+  const claudeTokensNum = +(tokenVolumeNum * 0.2737).toFixed(1);
+
+  const gptCostNum = Math.round(mtdSpendNum * 0.3203);
+  const gptTokensNum = +(tokenVolumeNum * 0.2105).toFixed(1);
+
+  const mistralCostNum = Math.round(mtdSpendNum * 0.1242);
+  const mistralTokensNum = +(tokenVolumeNum * 0.1684).toFixed(1);
+
+  const deepseekCostNum = mtdSpendNum - claudeCostNum - gptCostNum - mistralCostNum;
+  const deepseekTokensNum = +(tokenVolumeNum - claudeTokensNum - gptTokensNum - mistralTokensNum).toFixed(1);
+
+  // Model drilldown mapping
+  const updatedModelCostMix = (prev.modelCostMix || initialFinOpsData.modelCostMix).map(model => {
+    if (model.id === "MOD-CLAUDE-SONNET") {
+      const regCost = Math.round(claudeCostNum * 0.575);
+      const flakyCost = Math.round(claudeCostNum * 0.288);
+      const auditCost = claudeCostNum - regCost - flakyCost;
+      return {
+        ...model,
+        tokenUsage: claudeTokensNum + "M",
+        inputTokens: (claudeTokensNum * 0.654).toFixed(1) + "M",
+        outputTokens: (claudeTokensNum * 0.346).toFixed(1) + "M",
+        cost: "$" + claudeCostNum.toLocaleString(),
+        costSharePct: +((claudeCostNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: "$" + (claudeCostNum / claudeTokensNum).toFixed(2),
+        drilldown: [
+          { agent: "Regression Suite Generation Agent", program: "QE", tokens: (claudeTokensNum * 0.577).toFixed(1) + "M", cost: "$" + regCost.toLocaleString(), sharePct: 57.5 },
+          { agent: "Jira Flaky Test Remediation Agent", program: "QE", tokens: (claudeTokensNum * 0.288).toFixed(1) + "M", cost: "$" + flakyCost.toLocaleString(), sharePct: 28.8 },
+          { agent: "Architecture Compliance Auditor", program: "AD", tokens: (claudeTokensNum * 0.135).toFixed(1) + "M", cost: "$" + auditCost.toLocaleString(), sharePct: 13.7 }
+        ]
+      };
+    }
+    if (model.id === "MOD-GPT-4O") {
+      const staticCost = Math.round(gptCostNum * 0.510);
+      const diagCost = Math.round(gptCostNum * 0.306);
+      const ticketCost = gptCostNum - staticCost - diagCost;
+      return {
+        ...model,
+        tokenUsage: gptTokensNum + "M",
+        inputTokens: (gptTokensNum * 0.650).toFixed(1) + "M",
+        outputTokens: (gptTokensNum * 0.350).toFixed(1) + "M",
+        cost: "$" + gptCostNum.toLocaleString(),
+        costSharePct: +((gptCostNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: "$" + (gptCostNum / gptTokensNum).toFixed(2),
+        drilldown: [
+          { agent: "Static Code Analysis Daemon", program: "QE", tokens: (gptTokensNum * 0.500).toFixed(1) + "M", cost: "$" + staticCost.toLocaleString(), sharePct: 51.0 },
+          { agent: "Telemetry Diagnostic Agent", program: "AD", tokens: (gptTokensNum * 0.300).toFixed(1) + "M", cost: "$" + diagCost.toLocaleString(), sharePct: 30.6 },
+          { agent: "AMS Ticket Resolver Agent", program: "AMS", tokens: (gptTokensNum * 0.200).toFixed(1) + "M", cost: "$" + ticketCost.toLocaleString(), sharePct: 18.4 }
+        ]
+      };
+    }
+    if (model.id === "MOD-MISTRAL-LARGE") {
+      const canCost = Math.round(mistralCostNum * 0.579);
+      const sensorCost = mistralCostNum - canCost;
+      return {
+        ...model,
+        tokenUsage: mistralTokensNum + "M",
+        inputTokens: (mistralTokensNum * 0.625).toFixed(1) + "M",
+        outputTokens: (mistralTokensNum * 0.375).toFixed(1) + "M",
+        cost: "$" + mistralCostNum.toLocaleString(),
+        costSharePct: +((mistralCostNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: "$" + (mistralCostNum / mistralTokensNum).toFixed(2),
+        drilldown: [
+          { agent: "CAN Bus Telemetry Parser", program: "AD", tokens: (mistralTokensNum * 0.594).toFixed(1) + "M", cost: "$" + canCost.toLocaleString(), sharePct: 57.9 },
+          { agent: "Sensor Anomaly Detector", program: "AD", tokens: (mistralTokensNum * 0.406).toFixed(1) + "M", cost: "$" + sensorCost.toLocaleString(), sharePct: 42.1 }
+        ]
+      };
+    }
+    if (model.id === "MOD-DEEPSEEK-CODER") {
+      const ideCost = Math.round(deepseekCostNum * 0.633);
+      const testCost = deepseekCostNum - ideCost;
+      return {
+        ...model,
+        tokenUsage: deepseekTokensNum + "M",
+        inputTokens: (deepseekTokensNum * 0.515).toFixed(1) + "M",
+        outputTokens: (deepseekTokensNum * 0.485).toFixed(1) + "M",
+        cost: "$" + deepseekCostNum.toLocaleString(),
+        costSharePct: +((deepseekCostNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: "$" + (deepseekCostNum / deepseekTokensNum).toFixed(2),
+        drilldown: [
+          { agent: "IDE Auto-Completion Agent", program: "QE", tokens: (deepseekTokensNum * 0.636).toFixed(1) + "M", cost: "$" + ideCost.toLocaleString(), sharePct: 63.3 },
+          { agent: "Boilerplate Unit-Test Synthesizer", program: "QE", tokens: (deepseekTokensNum * 0.364).toFixed(1) + "M", cost: "$" + testCost.toLocaleString(), sharePct: 36.7 }
+        ]
+      };
+    }
+    return model;
+  });
+
+  // Agent costs
+  const updatedAgentCosts = (prev.agentCosts || initialFinOpsData.agentCosts).map(agent => {
+    if (agent.id === "AGT-401") {
+      return {
+        ...agent,
+        tokensConsumed: (claudeTokensNum * 0.577).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(claudeCostNum * 0.575).toLocaleString()
+      };
+    }
+    if (agent.id === "AGT-402") {
+      return {
+        ...agent,
+        tokensConsumed: (gptTokensNum * 0.500).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(gptCostNum * 0.510).toLocaleString()
+      };
+    }
+    if (agent.id === "AGT-403") {
+      return {
+        ...agent,
+        tokensConsumed: (claudeTokensNum * 0.288).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(claudeCostNum * 0.288).toLocaleString()
+      };
+    }
+    if (agent.id === "AGT-404") {
+      return {
+        ...agent,
+        tokensConsumed: (mistralTokensNum * 0.594).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(mistralCostNum * 0.579).toLocaleString()
+      };
+    }
+    if (agent.id === "AGT-405") {
+      return {
+        ...agent,
+        tokensConsumed: (deepseekTokensNum * 0.636).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(deepseekCostNum * 0.633).toLocaleString()
+      };
+    }
+    if (agent.id === "AGT-406") {
+      return {
+        ...agent,
+        tokensConsumed: (gptTokensNum * 0.300).toFixed(1) + "M",
+        monthlySpend: "$" + Math.round(gptCostNum * 0.306).toLocaleString()
+      };
+    }
+    return agent;
+  });
+
+  return {
+    ...prev,
+    kpis: {
+      ...prev.kpis,
+      mtdSpend: "$" + mtdSpendNum.toLocaleString(),
+      budgetUtilization: budgetUtilization,
+      projectedEndMonthSpend: projectedEndMonthSpend,
+      tokenVolume: tokenVolumeNum.toFixed(1) + "M",
+      inputTokens: inputTokensNum.toFixed(1) + "M",
+      outputTokens: outputTokensNum.toFixed(1) + "M",
+      costPer1MTokens: costPer1MTokens,
+      costPer1MDeltaPct: (((+costPer1MNum - 9.80) / 9.80) * 100).toFixed(1) + "%",
+      cacheSavings: "$" + cacheSavingsNum.toLocaleString(),
+      cacheHitRate: cacheHitRateNum,
+      aiEfficiencyIndex: efficiencyIndexNum
+    },
+    programBreakdown: {
+      ...prev.programBreakdown,
+      QE: {
+        ...prev.programBreakdown.QE,
+        spend: "$" + qeSpendNum.toLocaleString(),
+        budgetUtilization: ((qeSpendNum / 4500) * 100).toFixed(1) + "%",
+        tokens: qeTokensNum.toFixed(1) + "M",
+        sharePct: +((qeSpendNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: qeCostPer1M
+      },
+      AD: {
+        ...prev.programBreakdown.AD,
+        spend: "$" + adSpendNum.toLocaleString(),
+        budgetUtilization: ((adSpendNum / 3500) * 100).toFixed(1) + "%",
+        tokens: adTokensNum.toFixed(1) + "M",
+        sharePct: +((adSpendNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: adCostPer1M
+      },
+      AMS: {
+        ...prev.programBreakdown.AMS,
+        spend: "$" + amsSpendNum.toLocaleString(),
+        budgetUtilization: ((amsSpendNum / 2000) * 100).toFixed(1) + "%",
+        tokens: amsTokensNum.toFixed(1) + "M",
+        sharePct: +((amsSpendNum / mtdSpendNum) * 100).toFixed(1),
+        costPer1M: amsCostPer1M
+      }
+    },
+    modelCostMix: updatedModelCostMix,
+    agentCosts: updatedAgentCosts,
+    tokenAnalytics: {
+      ...prev.tokenAnalytics,
+      totalTokensFormatted: tokenVolumeNum.toFixed(1) + "M",
+      totalTokens: (tokenVolumeNum * 1000000).toLocaleString(),
+      inputTokens: `${inputTokensNum}M (${((inputTokensNum / tokenVolumeNum) * 100).toFixed(1)}%)`,
+      outputTokens: `${outputTokensNum}M (${((outputTokensNum / tokenVolumeNum) * 100).toFixed(1)}%)`,
+      monthlyTrends: (prev.tokenAnalytics?.monthlyTrends || initialFinOpsData.tokenAnalytics.monthlyTrends).map(item => {
+        if (item.month === "Sep (MTD)") {
+          return {
+            ...item,
+            tokensNum: Math.round(tokenVolumeNum),
+            tokensFormatted: tokenVolumeNum.toFixed(0) + "M",
+            spend: "$" + mtdSpendNum.toLocaleString(),
+            costPer1M: costPer1MTokens
+          };
+        }
+        return item;
+      })
+    }
+  };
+}
+
+/**
+ * Helper for Box 7 (AI Cost & Model Consumption) dynamic updates
+ */
+export function generateDynamicAiCost(prevCost = {}) {
+  const now = Date.now();
+  const spendOffset = Math.sin(now / 5000) * 38 + ((Math.random() - 0.5) * 16);
+  const mtdSpendNum = Math.round(7650 + spendOffset);
+
+  const tokenOffset = Math.cos(now / 6000) * 0.75 + ((Math.random() - 0.5) * 0.35);
+  const tokenVolumeNum = +(95.0 + tokenOffset).toFixed(1);
+
+  const budgetNum = 10000;
+  const budgetUtilization = ((mtdSpendNum / budgetNum) * 100).toFixed(1) + "%";
+  const projectedEndMonthSpend = "$" + Math.round(mtdSpendNum * 1.1895).toLocaleString();
+
+  const claudeCostNum = Math.round(mtdSpendNum * 0.4771);
+  const claudeTokensNum = +(tokenVolumeNum * 0.2737).toFixed(1);
+
+  const gptCostNum = Math.round(mtdSpendNum * 0.3203);
+  const gptTokensNum = +(tokenVolumeNum * 0.2105).toFixed(1);
+
+  const mistralCostNum = Math.round(mtdSpendNum * 0.1242);
+  const mistralTokensNum = +(tokenVolumeNum * 0.1684).toFixed(1);
+
+  const deepseekCostNum = mtdSpendNum - claudeCostNum - gptCostNum - mistralCostNum;
+  const deepseekTokensNum = +(tokenVolumeNum - claudeTokensNum - gptTokensNum - mistralTokensNum).toFixed(1);
+
+  return {
+    ...prevCost,
+    monthlyBudget: "$10,000",
+    currentSpend: "$" + mtdSpendNum.toLocaleString(),
+    budgetUtilization: budgetUtilization,
+    projectedEndMonthSpend: projectedEndMonthSpend,
+    costPerPullRequest: "$" + ((mtdSpendNum / (tokenVolumeNum * 1000)).toFixed(2)),
+    totalTokensConsumedM: tokenVolumeNum.toFixed(1) + "M",
+    modelBreakdown: [
+      {
+        modelName: "Claude 3.5 Sonnet Enterprise",
+        provider: "Anthropic / AWS Bedrock",
+        tokensConsumed: claudeTokensNum + "M",
+        cost: "$" + claudeCostNum.toLocaleString(),
+        sharePct: Math.round((claudeCostNum / mtdSpendNum) * 100),
+        primaryUsage: "Architectural synthesis, complex refactoring, safety audit"
+      },
+      {
+        modelName: "GPT-4o Enterprise",
+        provider: "Azure OpenAI Stellantis Tenant",
+        tokensConsumed: gptTokensNum + "M",
+        cost: "$" + gptCostNum.toLocaleString(),
+        sharePct: Math.round((gptCostNum / mtdSpendNum) * 100),
+        primaryUsage: "Requirements generation, documentation, code review assistant"
+      },
+      {
+        modelName: "Mistral Large 2 (Private Cloud)",
+        provider: "Private Mistral / Turin On-Prem",
+        tokensConsumed: mistralTokensNum + "M",
+        cost: "$" + mistralCostNum.toLocaleString(),
+        sharePct: Math.round((mistralCostNum / mtdSpendNum) * 100),
+        primaryUsage: "Proprietary CAN telemetry parsing, internal API queries"
+      },
+      {
+        modelName: "DeepSeek Coder / CodeLlama 70B",
+        provider: "Self-Hosted GPU Cluster (Turin)",
+        tokensConsumed: deepseekTokensNum + "M",
+        cost: "$" + deepseekCostNum.toLocaleString(),
+        sharePct: Math.round((deepseekCostNum / mtdSpendNum) * 100),
+        primaryUsage: "Real-time IDE code completion, unit test boilerplates"
+      }
+    ]
+  };
+}
+

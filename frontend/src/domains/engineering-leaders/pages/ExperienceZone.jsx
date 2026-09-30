@@ -10,6 +10,7 @@ import EngineeringToolsCatalogue from './EngineeringToolsCatalogue';
 import EngineeringSubscriptions from './EngineeringSubscriptions';
 import EngineeringFinOps from './EngineeringFinOps';
 import EngineeringGovernance from './EngineeringGovernance';
+import EngineeringKnowledgeFabric from './EngineeringKnowledgeFabric';
 import { engineeringExperienceData } from '../mockData.js';
 import '../engineeringExperience.css';
 
@@ -417,6 +418,13 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
           ========================================================= */}
       {activeSubTab === 'governance' && (
         <EngineeringGovernance />
+      )}
+
+      {/* =========================================================
+          SUB-TAB 9: KNOWLEDGE FABRIC & ARCHITECTURE TECH DEBT
+          ========================================================= */}
+      {activeSubTab === 'knowledge' && (
+        <EngineeringKnowledgeFabric />
       )}
     </div>
   );

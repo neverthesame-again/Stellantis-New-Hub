@@ -29,10 +29,25 @@ import {
   Briefcase
 } from 'lucide-react';
 import { engineeringDashboardData } from '../mockData.js';
+import { generateDynamicAiCost } from '../finopsData.js';
 import EngineeringFinOps from './EngineeringFinOps.jsx';
 
 export default function EngineeringDashboard() {
   const [data, setData] = useState(engineeringDashboardData);
+
+  // Dynamic 4-Second Real-Time FinOps Simulation for Box 7 (AI Cost & Consumption)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setData(prev => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          aiCostAndConsumption: generateDynamicAiCost(prev.aiCostAndConsumption)
+        };
+      });
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
   const [loading, setLoading] = useState(false);
   const [selectedPortfolio, setSelectedPortfolio] = useState('ALL');
   const [selectedException, setSelectedException] = useState(null);
@@ -775,9 +790,15 @@ export default function EngineeringDashboard() {
                   7. AI Cost & Consumption
                 </h3>
               </div>
-              <span className="badge-info" style={{ fontSize: '0.72rem', padding: '2px 8px', borderRadius: '12px', fontWeight: 700 }}>
-                {cost.budgetUtilization} Used
-              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span className="badge-info" style={{ fontSize: '0.72rem', padding: '2px 8px', borderRadius: '12px', fontWeight: 700 }}>
+                  {cost.budgetUtilization} Used
+                </span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', fontSize: '0.65rem', color: '#10b981', fontWeight: 700 }}>
+                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#10b981', boxShadow: '0 0 6px #10b981' }} />
+                  Live (4s)
+                </span>
+              </div>
             </div>
 
             {/* Budget Bar */}
