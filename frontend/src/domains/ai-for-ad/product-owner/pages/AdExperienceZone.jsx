@@ -67,7 +67,7 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onSubTabChange, onN
     { id: 'persona', label: 'Persona Dashboard', icon: Sliders },
     { id: 'inbox', label: 'Workflow Inbox', icon: Inbox, badge: '9' },
     { id: 'models', label: 'Model Catalogue', icon: Cpu, badge: '8' },
-    { id: 'agents', label: 'Agent & Workflow Catalogue', icon: Bot, badge: String(catalogueCount) },
+    { id: 'agents', label: 'Agent Catalogue', icon: Bot, badge: String(catalogueCount) },
     { id: 'harness', label: 'AI Harness', icon: PlayCircle, badge: String(harnessRuns.length) },
     { id: 'evaluation', label: 'Evaluation Center', icon: Gauge, badge: String(evaluatedCount) },
     { id: 'governance', label: 'Governance Center', icon: Scale, badge: pendingApprovals ? String(pendingApprovals) : null },

@@ -8,6 +8,9 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Header & Sub-nav Bar */
@@ -126,6 +129,10 @@
   flex-direction: column;
   gap: 20px;
   align-items: stretch;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
@@ -147,11 +154,12 @@
   gap: 16px;
   font-size: 0.75rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .ad-agents-facet-aside {
-    width: 270px;
+    width: 240px;
     flex-shrink: 0;
   }
 }
@@ -328,11 +336,13 @@
 
 /* Main Area */
 .ad-agents-main-area {
-  flex: 1;
+  flex: 1 1 0%;
   display: flex;
   flex-direction: column;
   gap: 16px;
   min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .ad-agents-search-bar {
@@ -380,14 +390,12 @@
 
 .ad-agents-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: 16px;
-}
-
-@media (min-width: 768px) {
-  .ad-agents-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 /* Agent Performance Passport Card */
@@ -402,6 +410,10 @@
   gap: 16px;
   transition: all 0.2s ease;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .ad-agent-card:hover {
@@ -431,6 +443,7 @@
   justify-content: space-between;
   gap: 8px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .ad-agent-title-row {
@@ -438,6 +451,7 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .ad-agent-title {
@@ -488,7 +502,7 @@
 /* Stamp Matrix Grid */
 .ad-agent-stamp-matrix {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   background: var(--surface-tertiary, #f8fafc);
   border: 1px solid var(--border-color, #e2e8f0);
@@ -496,12 +510,16 @@
   padding: 10px;
   text-align: center;
   margin: 10px 0;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ad-stamp-cell {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .ad-stamp-cell:not(:last-child) {
@@ -513,6 +531,9 @@
   font-size: 0.62rem;
   text-transform: uppercase;
   color: var(--text-muted, #64748b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .ad-stamp-val {
@@ -629,6 +650,10 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ad-kanban-summary-card {
@@ -642,6 +667,7 @@
   justify-content: space-between;
   gap: 16px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-sizing: border-box;
 }
 
 .ad-kanban-stage-pills {
@@ -653,21 +679,13 @@
 
 .ad-kanban-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 16px;
   align-items: flex-start;
-}
-
-@media (min-width: 768px) {
-  .ad-kanban-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1200px) {
-  .ad-kanban-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ad-kanban-column {

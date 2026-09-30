@@ -30,7 +30,7 @@ export default function DependencyRiskCard({ data, onToggleMitigation, isSubmitt
               Dependency &amp; Risk Status
             </h3>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
             <div style={{
               background: 'var(--bg-surface-secondary)',
               color: 'var(--text-secondary)',
