@@ -10,6 +10,8 @@ import RunHistory from '../components/harness/RunHistory';
 import RunDetailDrawer from '../components/harness/RunDetailDrawer';
 import useHarnessRunner from '../components/harness/useHarnessRunner';
 import { isHarnessReady } from '../components/harness/harnessUtils';
+import AdLiveTelemetry from '../../components/live/AdLiveTelemetry';
+import { LIVE_PRESETS } from '../../components/live/liveTelemetry';
 import '../adAgentStudio.css';
 import '../adAgentHarness.css';
 
@@ -61,6 +63,7 @@ export default function AdAgentHarness() {
   }, [focusAgentId, setFocusAgentId]);
 
   const readyAgents = useMemo(() => agents.filter(isHarnessReady), [agents]);
+  const liveMetrics = useMemo(() => LIVE_PRESETS.harness(agents), [agents]);
 
   const kpis = useMemo(() => {
     const finished = harnessRuns.filter((r) => r.status !== 'running' && r.durationMs > 0);
@@ -118,6 +121,8 @@ export default function AdAgentHarness() {
           </button>
         </div>
       </div>
+
+      <AdLiveTelemetry title="Harness runtime" note={`${readyAgents.length} runnable agents`} metrics={liveMetrics} />
 
       {/* KPIs */}
       <div className="ad-studio-kpi-grid">
@@ -180,7 +185,6 @@ export default function AdAgentHarness() {
           runs={harnessRuns}
           onOpenSingle={openSingle}
           onNavigate={navigate}
-          onToast={showToast}
         />
       )}
 

@@ -157,7 +157,7 @@ function PublishPanel({ agent, notify }) {
         <h4><Rocket size={13} /> Publication</h4>
         <span className="ad-studio-badge is-info">Certified</span>
       </div>
-      <p className="ad-studio-muted ad-gov-para">Publishing makes the agent routable in the AD runtime and visible in the Agent &amp; Workflow Catalogue.</p>
+      <p className="ad-studio-muted ad-gov-para">Publishing makes the agent routable in the AD runtime and visible in the AI Studio.</p>
       <button type="button" className="ad-studio-btn is-primary" onClick={publish}><Rocket size={14} /> Publish to AD runtime</button>
     </section>
   );

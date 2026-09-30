@@ -14,6 +14,7 @@ import RuntimeSection from '../components/onboarding/RuntimeSection';
 import { SkillsSection, KnowledgeSection, ToolsSection, WorkflowsSection } from '../components/onboarding/CapabilitySections';
 import { EvaluationPreview, GovernanceSection } from '../components/onboarding/EvalGovernanceSections';
 import { SectionNav } from '../components/onboarding/FormSection';
+import AgentWorkflowsPanel from '../workflows/AgentWorkflowsPanel';
 import {
   draftFromAgent, newRegistrationDraft, sameDraft, sameRuntimeConfig, changedFields,
   validateDraft, normaliseDraft, getRuntime, defaultHealthUrl, isLocked, nextStageOf,
@@ -397,6 +398,8 @@ export default function AdOnboardingStudio({ registerRequest = null, onRegisterR
                 <ToolsSection index={5} selected={draft.tools} onToggle={toggleIn('tools')} />
                 <WorkflowsSection index={6} selected={draft.workflows} agents={agents} selfId={agent?.id} onToggle={toggleIn('workflows')} />
               </fieldset>
+
+              {agent && <AgentWorkflowsPanel agent={agent} />}
 
               <EvaluationPreview index={7} agent={agent} threshold={threshold} onNavigate={agent ? goTo : null} />
               <GovernanceSection

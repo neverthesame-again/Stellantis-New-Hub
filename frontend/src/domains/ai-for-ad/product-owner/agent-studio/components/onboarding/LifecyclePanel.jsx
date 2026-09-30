@@ -139,7 +139,7 @@ export default function LifecyclePanel({
             </>
           ) : (
             <>
-              <div className="ad-onb-ready"><Rocket size={14} /> Published — visible in the Agent &amp; Workflow Catalogue and AD runtime.</div>
+              <div className="ad-onb-ready"><Rocket size={14} /> Published — visible in the AI Studio and AD runtime.</div>
               <div className="ad-onb-lc-actions">
                 <button type="button" className="ad-studio-btn is-accent" onClick={() => onNavigate('harness')}>
                   <PlayCircle size={13} /> Run in AI Harness
