@@ -68,6 +68,18 @@ export default function EngineeringLeadersDomain({
     );
   }
 
+  if (activeTab === 'knowledge') {
+    return (
+      <ExperienceZone
+        activeSubTab="knowledge"
+        onSubTabChange={onSubTabChange}
+        drillDownLevel={drillDownLevel}
+        contextPortfolio={contextPortfolio}
+        contextProject={contextProject}
+      />
+    );
+  }
+
   return <EngineeringDashboard />;
 }
 
