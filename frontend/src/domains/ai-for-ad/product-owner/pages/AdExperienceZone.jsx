@@ -4,7 +4,8 @@ import AdPmWorkflowInbox from './AdPmWorkflowInbox';
 import AdModelCatalogue from './AdModelCatalogue';
 import AdAgentWorkflowCatalogue from './AdAgentWorkflowCatalogue';
 import AdAiToolsCatalogue from './AdAiToolsCatalogue';
-import AdMySubscriptions from './AdMySubscriptions';
+import AdMySubscriptions, { INITIAL_SUBSCRIPTIONS } from './AdMySubscriptions';
+import AdSubscriptionFinOps from '../finops/AdSubscriptionFinOps';
 import { AgentStudioProvider } from '../agent-studio/AgentStudioContext';
 import AdAgentHarness from '../agent-studio/pages/AdAgentHarness';
 import AdAgentEvaluation from '../agent-studio/pages/AdAgentEvaluation';
@@ -18,7 +19,7 @@ import '../adPersonaDashboard.css';
  * Navigation is controlled via the Sidebar.
  */
 export default function AdExperienceZone({ activeSubTab, onSubTabChange, onNavigateToInbox }) {
-  const currentSubTab = activeSubTab || 'persona';
+  const currentSubTab = activeSubTab || 'agents';
   return (
     <AgentStudioProvider onNavigate={onSubTabChange}>
       <ExperienceZoneTabs
@@ -32,7 +33,7 @@ export default function AdExperienceZone({ activeSubTab, onSubTabChange, onNavig
 }
 
 function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onSubTabChange, onNavigateToInbox }) {
-  const [localSubTab, setLocalSubTab] = useState(activeSubTab || 'persona');
+  const [localSubTab, setLocalSubTab] = useState(activeSubTab || 'agents');
   const currentSubTab = activeSubTab || localSubTab;
   const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
 
@@ -44,24 +45,24 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onSubTabChange, onN
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
 
-      {/* SUB-TAB 1: PERSONA DASHBOARD (Fully Implemented) */}
-      {currentSubTab === 'persona' && (
+      {/* SUB-TAB 1: PERSONA DASHBOARD (Hidden for now) */}
+      {/* {currentSubTab === 'persona' && (
         <AdPersonaDashboard
           initialLevel={targetDrillDownLevel}
           onNavigateToInbox={() => { handleSubTabChange('inbox'); }}
           onNavigateToSubscriptions={() => { handleSubTabChange('subscriptions'); }}
         />
-      )}
+      )} */}
 
-      {/* SUB-TAB 2: WORKFLOW INBOX (Product Manager, AI for AD) */}
-      {currentSubTab === 'inbox' && (
+      {/* SUB-TAB 2: WORKFLOW INBOX (Hidden for now) */}
+      {/* {currentSubTab === 'inbox' && (
         <AdPmWorkflowInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
             handleSubTabChange('persona');
           }}
         />
-      )}
+      )} */}
 
       {/* SUB-TAB 3: MODEL CATALOGUE (Product Manager, AI for AD) */}
       {currentSubTab === 'models' && (
@@ -92,6 +93,11 @@ function ExperienceZoneTabs({ activeSubTab, setActiveSubTab, onSubTabChange, onN
       {/* SUB-TAB 9: GOVERNANCE CENTER (F4) */}
       {currentSubTab === 'governance' && (
         <AdAgentGovernance />
+      )}
+
+      {/* SUB-TAB: FINOPS & AI COST (F6) */}
+      {currentSubTab === 'finops' && (
+        <AdSubscriptionFinOps subscriptions={INITIAL_SUBSCRIPTIONS} />
       )}
 
       {/* SUB-TAB: KNOWLEDGE FABRIC (F8 AD ARCHITECTURE) */}
