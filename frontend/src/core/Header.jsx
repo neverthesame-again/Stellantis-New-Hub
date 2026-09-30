@@ -55,7 +55,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
     }}>
 
       {/* ── Left: Stellantis Logo ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexShrink: 0 }}>
         <img
           src={logoSrc}
           alt="Stellantis"
@@ -81,7 +81,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
       </div>
 
       {/* ── Right: Controls ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
 
         {/* Theme Toggle */}
         <button

@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   ShieldAlert,
   Sparkles,
-  ArrowRight,
   Clock,
   CheckCircle2,
   XCircle,
@@ -21,15 +20,129 @@ import {
   FileCode,
   Check,
   Info,
-  ExternalLink
+  ExternalLink,
+  Play,
+  RotateCw
 } from 'lucide-react';
 import { engineeringExperienceData } from '../mockData.js';
+
+// Automated Automotive Test Harness Profiles & Assertion Specs
+const AGENT_HARNESS_SPECS = {
+  'AGT-01': {
+    passed: 99,
+    total: 100,
+    latency: '285ms',
+    steps: [
+      'Ingesting ArchiMate 3.1 & AUTOSAR metamodel contracts',
+      'Executing 100 EARB architecture rule assertions',
+      'Checking cyclic dependency & zonal interface constraints',
+      'Validating deterministic blueprint output serialization'
+    ]
+  },
+  'AGT-02': {
+    passed: 100,
+    total: 100,
+    latency: '460ms',
+    steps: [
+      'Ingesting ISO 26262 Part 6 ASIL-D safety invariants',
+      'Executing memory fault injection & pointer isolation tests',
+      'Auditing formal dual-key signature cryptographic hash',
+      'Certifying zero-tolerance ASIL-D production gate sign-off'
+    ]
+  },
+  'AGT-03': {
+    passed: 97,
+    total: 100,
+    latency: '315ms',
+    steps: [
+      'Parsing ARXML service contracts and SOME/IP bindings',
+      'Synthesizing C++17 adaptive AUTOSAR component skeletons',
+      'Running Clang-Tidy MISRA C++:2023 compliance matrix',
+      'Compiling GoogleTest assertions in sandboxed container'
+    ]
+  },
+  'AGT-04': {
+    passed: 98,
+    total: 100,
+    latency: '390ms',
+    steps: [
+      'Ingesting Vector CANoe HIL test bench digital traces',
+      'Isolating clock jitter & CAN bus arbitration drift',
+      'Generating dynamic CAPL assertion timing patches',
+      'Executing virtual dry-run regression verification'
+    ]
+  },
+  'AGT-05': {
+    passed: 96,
+    total: 100,
+    latency: '420ms',
+    steps: [
+      'Streaming 150k vehicle Kafka telemetry frames',
+      'Evaluating ECU memory volatility & DTC error distribution',
+      'Simulating canary vehicle blast radius & rollback conditions',
+      'Verifying automated rollout gate safety invariants'
+    ]
+  },
+  'AGT-06': {
+    passed: 94,
+    total: 100,
+    latency: '510ms',
+    steps: [
+      'Parsing legacy Simulink block diagrams & Fortran routines',
+      'Translating state space equations to modern C++ classes',
+      'Running IEEE 754 float precision tolerance assertions',
+      'Benchmarking execution cycle time on Turin GPU nodes'
+    ]
+  },
+  'AGT-07': {
+    passed: 99,
+    total: 100,
+    latency: '195ms',
+    steps: [
+      'Ingesting 2.5 kHz high-speed CAN FD bus telemetry frames',
+      'Running temporal anomaly neural detection pipeline',
+      'Evaluating zero-day arbitration ID injection heuristics',
+      'Triggering ISO 21434 vehicle cybersecurity alarm audit'
+    ]
+  },
+  'AGT-08': {
+    passed: 98,
+    total: 100,
+    latency: '260ms',
+    steps: [
+      'Ingesting inverter thermal dissipation & dyno curves',
+      'Running neural calibration gradient optimization loop',
+      'Validating PWM switching frequency safety envelope',
+      'Emitting verified A2L calibration map definitions'
+    ]
+  }
+};
+
+const getHarnessSpec = (agentId) => {
+  if (AGENT_HARNESS_SPECS[agentId]) {
+    return AGENT_HARNESS_SPECS[agentId];
+  }
+  const charCode = agentId ? agentId.charCodeAt(agentId.length - 1) : 0;
+  const passed = 95 + (charCode % 6);
+  const latency = `${220 + ((charCode * 11) % 200)}ms`;
+  return {
+    passed,
+    total: 100,
+    latency,
+    steps: [
+      'Initializing sandboxed ECU test environment & mock services',
+      'Generating synthetic automotive input vectors & boundary cases',
+      'Executing agentic reasoning pipeline & safety assertion checks',
+      'Finalizing performance benchmarks & compliance certificate'
+    ]
+  };
+};
 
 /**
  * PRD §5.4 — Agent and Agentic Workflow Catalogue
  * Automotive Autonomous Agents across 4 Lifecycle States (Active, Experimental, Suspended, Retired) & L1-L4 Autonomy
  */
-export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgent, onInspectTrace, showToast }) {
+export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgent, showToast }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [agentLifecycleFilter, setAgentLifecycleFilter] = useState('All');
   const [agentAutonomyFilter, setAgentAutonomyFilter] = useState('All');
@@ -37,6 +150,144 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
   const [selectedAgentDetails, setSelectedAgentDetails] = useState(null);
   const [selectedProjectForAgent, setSelectedProjectForAgent] = useState('STLA Large SDV Platform Phase 2');
   const [subscribedMap, setSubscribedMap] = useState({});
+  const [showOnboardModal, setShowOnboardModal] = useState(false);
+  const [localAgents, setLocalAgents] = useState([]);
+  const [harnessState, setHarnessState] = useState({});
+
+  const handleRunHarness = (agentId, agentName, e) => {
+    if (e && e.stopPropagation) e.stopPropagation();
+
+    const spec = getHarnessSpec(agentId);
+
+    // Automatic Step 1: Initializing
+    setHarnessState(prev => ({
+      ...prev,
+      [agentId]: {
+        running: true,
+        stepIndex: 1,
+        totalSteps: spec.steps.length,
+        currentStepText: spec.steps[0],
+        progress: 25,
+        result: null
+      }
+    }));
+
+    // Automatic Step 2: Ingesting & Generating
+    setTimeout(() => {
+      setHarnessState(prev => {
+        if (!prev[agentId]?.running) return prev;
+        return {
+          ...prev,
+          [agentId]: {
+            ...prev[agentId],
+            stepIndex: 2,
+            currentStepText: spec.steps[1],
+            progress: 50
+          }
+        };
+      });
+    }, 350);
+
+    // Automatic Step 3: Checking Constraints & MISRA Rules
+    setTimeout(() => {
+      setHarnessState(prev => {
+        if (!prev[agentId]?.running) return prev;
+        return {
+          ...prev,
+          [agentId]: {
+            ...prev[agentId],
+            stepIndex: 3,
+            currentStepText: spec.steps[2],
+            progress: 75
+          }
+        };
+      });
+    }, 700);
+
+    // Automatic Step 4: Finalizing Assertions & Compiling
+    setTimeout(() => {
+      setHarnessState(prev => {
+        if (!prev[agentId]?.running) return prev;
+        return {
+          ...prev,
+          [agentId]: {
+            ...prev[agentId],
+            stepIndex: 4,
+            currentStepText: spec.steps[3],
+            progress: 95
+          }
+        };
+      });
+    }, 1050);
+
+    // Final Completion
+    setTimeout(() => {
+      setHarnessState(prev => ({
+        ...prev,
+        [agentId]: {
+          running: false,
+          stepIndex: 4,
+          progress: 100,
+          result: {
+            passed: spec.passed,
+            total: spec.total,
+            score: `${Math.round((spec.passed / spec.total) * 100)}%`,
+            latency: spec.latency,
+            steps: spec.steps
+          }
+        }
+      }));
+
+      if (showToast) {
+        showToast(`Harness completed for "${agentName}": Passed ${spec.passed}/${spec.total} assertions in ${spec.latency}.`);
+      }
+    }, 1400);
+  };
+  const [onboardForm, setOnboardForm] = useState({
+    name: '',
+    squad: 'Cockpit UX Guild',
+    type: 'Internal Squad',
+    domain: 'Software Engineering',
+    autonomyLevel: 'L2 Semi-Autonomous',
+    primaryModel: 'Claude 3.5 Sonnet Enterprise'
+  });
+
+  const handleOnboardSubmit = (e) => {
+    e.preventDefault();
+    if (!onboardForm.name.trim()) return;
+
+    const newAgent = {
+      id: `AGT-NEW-${Date.now().toString().slice(-3)}`,
+      name: onboardForm.name.trim(),
+      domain: onboardForm.domain,
+      purpose: `Automated ${onboardForm.type} agent for ${onboardForm.squad}`,
+      autonomyLevel: onboardForm.autonomyLevel,
+      lifecycleStage: 'Active',
+      squad: onboardForm.squad,
+      type: onboardForm.type,
+      primaryFoundationModel: onboardForm.primaryModel,
+      subscribed: false,
+      executionMetrics: {
+        totalRuns: 140,
+        successRate: '99.4%',
+        avgDuration: '0.8s'
+      }
+    };
+
+    setLocalAgents(prev => [newAgent, ...prev]);
+    setShowOnboardModal(false);
+    setOnboardForm({
+      name: '',
+      squad: 'Cockpit UX Guild',
+      type: 'Internal Squad',
+      domain: 'Software Engineering',
+      autonomyLevel: 'L2 Semi-Autonomous',
+      primaryModel: 'Claude 3.5 Sonnet Enterprise'
+    });
+    if (showToast) {
+      showToast(`Agent "${newAgent.name}" registered and onboarded into Catalogue!`);
+    }
+  };
 
   const isAgentSubscribed = (agent) => {
     if (!agent) return false;
@@ -73,7 +324,8 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
   };
 
   // Guarantee fallback to mockData if agents prop is empty or loading
-  const agentsList = (agents && agents.length > 0) ? agents : (engineeringExperienceData?.agents || []);
+  const baseList = (agents && agents.length > 0) ? agents : (engineeringExperienceData?.agents || []);
+  const agentsList = [...localAgents, ...baseList];
 
   const filteredAgents = agentsList.filter(a => {
     const stage = a.lifecycleStage || a.lifecycleStatus || 'Active';
@@ -223,6 +475,27 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
             <option value="L3">L3 Conditional Autonomy</option>
             <option value="L4">L4 High Autonomy</option>
           </select>
+
+          <button
+            id="btn-onboard-agent"
+            onClick={() => setShowOnboardModal(true)}
+            style={{
+              padding: '8px 14px',
+              borderRadius: '6px',
+              border: 'none',
+              background: 'var(--stellantis-action, #0284c7)',
+              color: '#ffffff',
+              fontSize: '0.8rem',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              whiteSpace: 'nowrap'
+            }}
+          >
+            <Plus size={15} /> Onboard Agent
+          </button>
         </div>
       </div>
 
@@ -330,6 +603,100 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                 )}
               </div>
 
+              {/* Live Harness Execution & Multi-Step Progress Banner */}
+              {harnessState[agent.id]?.running && (
+                <div style={{
+                  background: 'rgba(2, 132, 199, 0.08)',
+                  border: '1px solid rgba(2, 132, 199, 0.35)',
+                  borderRadius: '6px',
+                  padding: '8px 10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '6px',
+                  marginTop: '4px'
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.70rem' }}>
+                    <span style={{ color: '#0284c7', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <RotateCw size={11} className="animate-spin" />
+                      Step {harnessState[agent.id].stepIndex} of {harnessState[agent.id].totalSteps} Automated Verification
+                    </span>
+                    <span style={{ color: 'var(--text-muted)', fontWeight: 700, fontSize: '0.68rem' }}>
+                      {harnessState[agent.id].progress}%
+                    </span>
+                  </div>
+
+                  {/* Dynamic Progress Bar */}
+                  <div style={{ width: '100%', height: '4px', background: 'var(--border-color)', borderRadius: '2px', overflow: 'hidden' }}>
+                    <div style={{
+                      width: `${harnessState[agent.id].progress}%`,
+                      height: '100%',
+                      background: 'linear-gradient(90deg, #0284c7, #38bdf8)',
+                      transition: 'width 0.3s ease'
+                    }} />
+                  </div>
+
+                  <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', lineHeight: 1.3 }}>
+                    {harnessState[agent.id].currentStepText}...
+                  </div>
+                </div>
+              )}
+
+              {/* Live Harness Completed Results Banner */}
+              {harnessState[agent.id]?.result && !harnessState[agent.id]?.running && (
+                <div style={{
+                  background: 'rgba(16, 185, 129, 0.08)',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '6px',
+                  padding: '6px 10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '5px',
+                  marginTop: '4px'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    fontSize: '0.70rem'
+                  }}>
+                    <span style={{ color: '#10b981', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '5px' }}>
+                      <CheckCircle2 size={12} /> Passed {harnessState[agent.id].result.passed}/{harnessState[agent.id].result.total} test assertions
+                    </span>
+                    <span style={{
+                      color: 'var(--text-primary)',
+                      fontWeight: 700,
+                      background: 'var(--bg-surface)',
+                      border: '1px solid var(--border-color)',
+                      padding: '1px 6px',
+                      borderRadius: '4px',
+                      fontSize: '0.65rem'
+                    }}>
+                      ⚡ {harnessState[agent.id].result.latency}
+                    </span>
+                  </div>
+
+                  {/* Automated steps breakdown */}
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2px',
+                    paddingTop: '4px',
+                    borderTop: '1px dashed rgba(16, 185, 129, 0.25)',
+                    fontSize: '0.64rem',
+                    color: 'var(--text-secondary)'
+                  }}>
+                    {harnessState[agent.id].result.steps && harnessState[agent.id].result.steps.map((st, sIdx) => (
+                      <div key={sIdx} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <CheckCircle2 size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                        <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                          Step {sIdx + 1}: {st}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {/* Actions Footer */}
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '10px', borderTop: '1px solid var(--border-color)', marginTop: 'auto', gap: '6px', flexWrap: 'wrap' }}>
                 <div style={{ display: 'flex', gap: '6px' }}>
@@ -354,24 +721,37 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                   </button>
 
                   <button
-                    onClick={() => onInspectTrace && onInspectTrace()}
+                    id={`btn-harness-${agent.id}`}
+                    onClick={(e) => handleRunHarness(agent.id, agent.name, e)}
+                    disabled={harnessState[agent.id]?.running}
                     style={{
-                      background: 'transparent',
-                      border: '1px solid var(--border-color)',
-                      color: 'var(--stellantis-action, #0284c7)',
+                      background: harnessState[agent.id]?.result ? 'rgba(16, 185, 129, 0.1)' : 'var(--bg-surface-secondary)',
+                      border: harnessState[agent.id]?.result ? '1px solid #10b981' : '1px solid var(--border-color)',
+                      color: harnessState[agent.id]?.result ? '#10b981' : 'var(--stellantis-action, #0284c7)',
                       borderRadius: '4px',
                       padding: '5px 8px',
                       fontSize: '0.72rem',
                       fontWeight: 700,
-                      cursor: 'pointer',
+                      cursor: harnessState[agent.id]?.running ? 'default' : 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '4px'
                     }}
+                    title="Execute test and evaluation harness"
                   >
-                    <span>L6 Trace</span>
-                    <ArrowRight size={11} />
+                    {harnessState[agent.id]?.running ? (
+                      <>
+                        <RotateCw size={11} className="animate-spin" />
+                        <span>Running...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Play size={11} />
+                        <span>{harnessState[agent.id]?.result ? 'Re-run' : 'Run Harness'}</span>
+                      </>
+                    )}
                   </button>
+
                 </div>
 
                 <button
@@ -569,6 +949,107 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
               <div className="ad-modal-footer">
                 <button type="button" onClick={() => setSubscribeAgentModal(null)} className="st-btn st-btn-secondary">Cancel</button>
                 <button type="submit" className="st-btn st-btn-primary">Confirm Project Subscription</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* =========================================================
+          MODAL 3: ONBOARD & REGISTER AGENT MODAL
+          ========================================================= */}
+      {showOnboardModal && (
+        <div className="ad-modal-backdrop" onClick={() => setShowOnboardModal(false)}>
+          <div className="ad-modal-card" style={{ maxWidth: '520px' }} onClick={(e) => e.stopPropagation()}>
+            <div className="ad-modal-header">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Bot size={20} color="var(--stellantis-action, #0284c7)" />
+                <div>
+                  <span className="ad-modal-title">Onboard & Register Agent</span>
+                  <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>Register squad or external partner agent</div>
+                </div>
+              </div>
+              <button onClick={() => setShowOnboardModal(false)} className="ad-modal-close"><X size={16} /></button>
+            </div>
+
+            <form onSubmit={handleOnboardSubmit}>
+              <div className="ad-modal-body" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <div>
+                  <label style={{ fontSize: '0.72rem', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Agent Name *</label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="e.g. AUTOSAR Safety Validator Agent"
+                    value={onboardForm.name}
+                    onChange={(e) => setOnboardForm({ ...onboardForm, name: e.target.value })}
+                    style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box', fontSize: '0.8rem' }}
+                  />
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                  <div>
+                    <label style={{ fontSize: '0.72rem', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Source / Origin:</label>
+                    <select
+                      value={onboardForm.type}
+                      onChange={(e) => setOnboardForm({ ...onboardForm, type: e.target.value })}
+                      style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box', fontSize: '0.8rem' }}
+                    >
+                      <option value="Internal Squad">Internal Squad</option>
+                      <option value="External Partner (Bosch)">External Partner (Bosch)</option>
+                      <option value="External Partner (Harman)">External Partner (Harman)</option>
+                      <option value="Third-Party Vendor">Third-Party Vendor</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: '0.72rem', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Squad / Guild:</label>
+                    <select
+                      value={onboardForm.squad}
+                      onChange={(e) => setOnboardForm({ ...onboardForm, squad: e.target.value })}
+                      style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box', fontSize: '0.8rem' }}
+                    >
+                      <option value="Cockpit UX Guild">Cockpit UX Guild</option>
+                      <option value="Powertrain QA">Powertrain QA</option>
+                      <option value="Telematics Core">Telematics Core</option>
+                      <option value="DevOps & CI/CD">DevOps & CI/CD</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                  <div>
+                    <label style={{ fontSize: '0.72rem', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Autonomy Tier:</label>
+                    <select
+                      value={onboardForm.autonomyLevel}
+                      onChange={(e) => setOnboardForm({ ...onboardForm, autonomyLevel: e.target.value })}
+                      style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box', fontSize: '0.8rem' }}
+                    >
+                      <option value="L1 Copilot / Supervised">L1 Copilot / Supervised</option>
+                      <option value="L2 Semi-Autonomous">L2 Semi-Autonomous</option>
+                      <option value="L3 Conditional Autonomy">L3 Conditional Autonomy</option>
+                      <option value="L4 High Autonomy">L4 High Autonomy</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: '0.72rem', fontWeight: 700, display: 'block', marginBottom: '4px' }}>Primary Model:</label>
+                    <select
+                      value={onboardForm.primaryModel}
+                      onChange={(e) => setOnboardForm({ ...onboardForm, primaryModel: e.target.value })}
+                      style={{ width: '100%', padding: '8px 12px', borderRadius: '6px', border: '1px solid var(--border-color)', background: 'var(--bg-surface)', color: 'var(--text-primary)', boxSizing: 'border-box', fontSize: '0.8rem' }}
+                    >
+                      <option value="Claude 3.5 Sonnet Enterprise">Claude 3.5 Sonnet Enterprise</option>
+                      <option value="DeepSeek Coder V2 (Turin Local)">DeepSeek Coder V2 (Turin)</option>
+                      <option value="GPT-4o Enterprise">GPT-4o Enterprise</option>
+                      <option value="Mistral Large 2 (Private Cloud)">Mistral Large 2 (Private)</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="ad-modal-footer">
+                <button type="button" onClick={() => setShowOnboardModal(false)} className="st-btn st-btn-secondary">Cancel</button>
+                <button type="submit" className="st-btn st-btn-primary">Register & Onboard Agent</button>
               </div>
             </form>
           </div>

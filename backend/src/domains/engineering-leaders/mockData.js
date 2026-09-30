@@ -378,44 +378,44 @@ export const engineeringDashboardData = {
 
   // 7. AI Cost and Model Consumption
   aiCostAndConsumption: {
-    monthlyBudget: "$180,000",
-    currentSpend: "$142,500",
-    budgetUtilization: "79.2%",
-    projectedEndMonthSpend: "$168,000",
-    costPerPullRequest: "$1.42",
-    costPerPrBaseline: "$3.80",
+    monthlyBudget: "$10,000",
+    currentSpend: "$7,650",
+    budgetUtilization: "76.5%",
+    projectedEndMonthSpend: "$9,100",
+    costPerPullRequest: "$0.09",
+    costPerPrBaseline: "$0.24",
     tokenCacheHitRate: "36.4%",
-    totalTokensConsumedM: "1,480M",
+    totalTokensConsumedM: "95M",
     modelBreakdown: [
       {
         modelName: "Claude 3.5 Sonnet Enterprise",
         provider: "Anthropic / AWS Bedrock",
-        tokensConsumed: "420M",
-        cost: "$68,400",
+        tokensConsumed: "26M",
+        cost: "$3,650",
         sharePct: 48,
         primaryUsage: "Architectural synthesis, complex refactoring, safety audit"
       },
       {
         modelName: "GPT-4o Enterprise",
         provider: "Azure OpenAI Stellantis Tenant",
-        tokensConsumed: "310M",
-        cost: "$45,200",
+        tokensConsumed: "20M",
+        cost: "$2,450",
         sharePct: 32,
         primaryUsage: "Requirements generation, documentation, code review assistant"
       },
       {
         modelName: "Mistral Large 2 (Private Cloud)",
         provider: "Private Mistral / Turin On-Prem",
-        tokensConsumed: "240M",
-        cost: "$17,400",
+        tokensConsumed: "16M",
+        cost: "$950",
         sharePct: 12,
         primaryUsage: "Proprietary CAN telemetry parsing, internal API queries"
       },
       {
         modelName: "DeepSeek Coder / CodeLlama 70B",
         provider: "Self-Hosted GPU Cluster (Turin)",
-        tokensConsumed: "510M",
-        cost: "$11,500",
+        tokensConsumed: "33M",
+        cost: "$600",
         sharePct: 8,
         primaryUsage: "Real-time IDE code completion, unit test boilerplates"
       }

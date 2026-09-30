@@ -26,7 +26,8 @@ import '../engineeringExperience.css';
 import {
   engineeringPersonaContextData,
   engineeringDrillDownLevelsData,
-  engineeringGovernanceMatrixData
+  engineeringGovernanceMatrixData,
+  projectDrillDownLevel2
 } from '../mockData.js';
 
 /**
@@ -34,15 +35,38 @@ import {
  * Persona: Alex — Chief AI Officer & Head of Software Engineering
  * High-Assurance Enterprise Governance Cockpit & 6-Level Lineage Navigator
  */
-export default function EngineeringPersonaDashboard({ initialLevel, onNavigateToInbox, onNavigateToSubscriptions }) {
+export default function EngineeringPersonaDashboard({ initialLevel, onNavigateToInbox, onNavigateToSubscriptions, initialPortfolio, initialProject }) {
   // Context Selectors (Part A)
   const [selectedBU, setSelectedBU] = useState('sdv-eng');
-  const [selectedPortfolio, setSelectedPortfolio] = useState('adas');
-  const [selectedProject, setSelectedProject] = useState('stla-large');
+  const [selectedPortfolio, setSelectedPortfolio] = useState(initialPortfolio || 'adas');
+  const [selectedProject, setSelectedProject] = useState(initialProject || 'stla-large');
   const [isPulsing, setIsPulsing] = useState(false);
+
+
+  // Sync initialPortfolio and initialProject when passed from search
+  useEffect(() => {
+    if (initialPortfolio) {
+      setSelectedPortfolio(initialPortfolio);
+      if (!initialProject) {
+        if (initialPortfolio === 'cockpit') setSelectedProject('smartcockpit');
+        else if (initialPortfolio === 'propulsion') setSelectedProject('bms-gen4');
+        else if (initialPortfolio === 'adas') setSelectedProject('stla-large');
+      }
+    }
+  }, [initialPortfolio]);
+
+  useEffect(() => {
+    if (initialProject) {
+      setSelectedProject(initialProject);
+      if (initialProject === 'smartcockpit') setSelectedPortfolio('cockpit');
+      else if (initialProject === 'bms-gen4') setSelectedPortfolio('propulsion');
+      else if (initialProject === 'stla-large' || initialProject === 'maserati-adas') setSelectedPortfolio('adas');
+    }
+  }, [initialProject]);
 
   const selectedBUObj = engineeringPersonaContextData.businessUnits.find((bu) => bu.id === selectedBU) || engineeringPersonaContextData.businessUnits[0];
   const selectedPortfolioObj = engineeringPersonaContextData.portfolios.find((p) => p.id === selectedPortfolio) || engineeringPersonaContextData.portfolios[0];
+  const selectedProjectObj = engineeringPersonaContextData.projectAssignments.find((p) => p.id === selectedProject) || engineeringPersonaContextData.projectAssignments[0];
 
   // 6-Level Drill-Down Navigator (Part B)
   const [currentLevel, setCurrentLevel] = useState(initialLevel || 1);
@@ -54,14 +78,54 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
     }
   }, [initialLevel]);
 
+  // Listen for global nav events to immediately update level, portfolio, and project
+  useEffect(() => {
+    const handleNavEvent = (e) => {
+      const { level, portfolioId, projectId } = e.detail || {};
+      if (level && level >= 1 && level <= 6) {
+        setCurrentLevel(level);
+      }
+      if (portfolioId) {
+        setSelectedPortfolio(portfolioId);
+        if (!projectId) {
+          if (portfolioId === 'cockpit') setSelectedProject('smartcockpit');
+          else if (portfolioId === 'propulsion') setSelectedProject('bms-gen4');
+          else if (portfolioId === 'adas') setSelectedProject('stla-large');
+        }
+      }
+      if (projectId) {
+        setSelectedProject(projectId);
+        if (!portfolioId) {
+          if (projectId === 'smartcockpit') setSelectedPortfolio('cockpit');
+          else if (projectId === 'bms-gen4') setSelectedPortfolio('propulsion');
+          else if (projectId === 'stla-large' || projectId === 'maserati-adas') setSelectedPortfolio('adas');
+        }
+      }
+      setIsPulsing(true);
+      setTimeout(() => setIsPulsing(false), 450);
+    };
+    window.addEventListener('stellantis:nav-experience', handleNavEvent);
+    return () => window.removeEventListener('stellantis:nav-experience', handleNavEvent);
+  }, []);
+
   // Modals
   const [showGovMatrixModal, setShowGovMatrixModal] = useState(false);
   const [showDelegationModal, setShowDelegationModal] = useState(false);
 
   const handleSelectorChange = (type, value) => {
     if (type === 'bu') setSelectedBU(value);
-    if (type === 'portfolio') setSelectedPortfolio(value);
-    if (type === 'project') setSelectedProject(value);
+    if (type === 'portfolio') {
+      setSelectedPortfolio(value);
+      if (value === 'cockpit') setSelectedProject('smartcockpit');
+      else if (value === 'propulsion') setSelectedProject('bms-gen4');
+      else if (value === 'adas') setSelectedProject('stla-large');
+    }
+    if (type === 'project') {
+      setSelectedProject(value);
+      if (value === 'smartcockpit') setSelectedPortfolio('cockpit');
+      else if (value === 'bms-gen4') setSelectedPortfolio('propulsion');
+      else if (value === 'stla-large' || value === 'maserati-adas') setSelectedPortfolio('adas');
+    }
 
     setIsPulsing(true);
     setTimeout(() => setIsPulsing(false), 450);
@@ -71,7 +135,19 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
     engineeringPersonaContextData.projectConfigurations[selectedProject] ||
     engineeringPersonaContextData.projectConfigurations['stla-large'];
 
-  const activeLevelData = engineeringDrillDownLevelsData[`level${currentLevel}`] || engineeringDrillDownLevelsData.level1;
+  // Dynamically compute activeLevelData based on selected portfolio & project
+  let activeLevelData = engineeringDrillDownLevelsData[`level${currentLevel}`] || engineeringDrillDownLevelsData.level1;
+  if (currentLevel === 2 && projectDrillDownLevel2[selectedProject]) {
+    activeLevelData = {
+      ...activeLevelData,
+      ...projectDrillDownLevel2[selectedProject]
+    };
+  } else if (currentLevel === 1) {
+    activeLevelData = {
+      ...activeLevelData,
+      title: `${selectedPortfolioObj.label} Overview (4 Enterprise Portfolios Active)`
+    };
+  }
 
   const goToLevel = (lvl) => {
     if (lvl < 1 || lvl > 6) return;
@@ -82,8 +158,40 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
     <div className="ad-persona-container">
 
       {/* ================================================================= */}
-      {/* PART A (UPPER TIER): CONTEXT SELECTORS                            */}
-      {/* ================================================================= */}
+      {/* Active Navigation Context Bar */}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        background: 'rgba(2, 132, 199, 0.08)',
+        border: '1px solid rgba(2, 132, 199, 0.25)',
+        borderRadius: '8px',
+        padding: '8px 14px',
+        fontSize: '0.80rem',
+        color: 'var(--text-primary)',
+        marginBottom: '12px'
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <span style={{
+            background: '#0284c7',
+            color: '#ffffff',
+            fontSize: '0.68rem',
+            fontWeight: 700,
+            padding: '2px 7px',
+            borderRadius: '4px',
+            textTransform: 'uppercase'
+          }}>
+            Active Context
+          </span>
+          <span>
+            Portfolio: <strong>{selectedPortfolioObj.label}</strong> • Project: <strong>{selectedProjectObj ? selectedProjectObj.label : selectedProject}</strong>
+          </span>
+        </div>
+        <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)' }}>
+          Lineage Navigator: <strong>Level {currentLevel} ({activeLevelData.layerTag})</strong>
+        </span>
+      </div>
+
       <div className={`ad-context-bar ${isPulsing ? 'ad-pulse-active' : ''}`}>
         {/* User Role Context (Read-Only Badge) */}
         <div className="ad-context-role-badge">
@@ -105,9 +213,20 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
           {/* Portfolio */}
           <div className="ad-context-field">
             <span className="ad-context-label">Portfolio:</span>
-            <span className="ad-context-value-pill">
-              {selectedPortfolioObj.label}
-            </span>
+            <div className="ad-context-select-wrapper">
+              <select
+                value={selectedPortfolio}
+                onChange={(e) => handleSelectorChange('portfolio', e.target.value)}
+                className="ad-context-select"
+              >
+                {engineeringPersonaContextData.portfolios.map((p) => (
+                  <option key={p.id} value={p.id}>
+                    {p.label}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown size={13} className="ad-context-select-chevron" />
+            </div>
           </div>
 
           {/* Project Assignment */}
@@ -397,6 +516,95 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
       </div>
 
       {/* ================================================================= */}
+      {/* COMPACT SECTION: KNOWLEDGE FABRIC & ARCHITECTURE TECH DEBT        */}
+      {/* ================================================================= */}
+      <div className="st-card" style={{ padding: '16px 20px', marginBottom: '16px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px', flexWrap: 'wrap', gap: '8px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <GitMerge size={17} color="var(--stellantis-action, #0284c7)" />
+            <h3 style={{ fontSize: '0.88rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em', margin: 0, color: 'var(--text-primary)' }}>
+              Knowledge Fabric &amp; Architecture Tech Debt
+            </h3>
+          </div>
+          <span className="badge-navy" style={{ fontSize: '0.68rem', padding: '2px 8px', borderRadius: '4px' }}>
+            Live Architectural Topology
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '14px' }}>
+          
+          {/* Tile 1: Codebase Connection Graph (Repos ↔ Services ↔ Models) */}
+          <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-secondary)' }}>
+              Codebase Connection Graph (Repos ↔ Services ↔ Models)
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', background: 'var(--bg-surface)', padding: '10px', borderRadius: '6px', border: '1px solid var(--border-color)', textAlign: 'center' }}>
+              <div style={{ flex: 1 }}>
+                <FolderGit2 size={16} color="var(--stellantis-action)" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>48 Repos</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>Git Codebases</div>
+              </div>
+
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 800 }}>↔</div>
+
+              <div style={{ flex: 1 }}>
+                <Layers size={16} color="#8b5cf6" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>12 Services</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>6 SDV ECUs</div>
+              </div>
+
+              <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 800 }}>↔</div>
+
+              <div style={{ flex: 1 }}>
+                <Cpu size={16} color="#10b981" style={{ margin: '0 auto 2px auto' }} />
+                <div style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--text-primary)' }}>4 Models</div>
+                <div style={{ fontSize: '0.64rem', color: 'var(--text-muted)' }}>AI Gateways</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+              <span>Graph Lineage: <strong style={{ color: '#10b981' }}>100% Mapped</strong></span>
+              <span>Vehicle Architecture: <strong>STLA Brain v2.4</strong></span>
+            </div>
+          </div>
+
+          {/* Tile 2: Technical Debt Scorecard */}
+          <div style={{ background: 'var(--bg-subtle)', border: '1px solid var(--border-color)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-secondary)' }}>
+              Technical Debt Scorecard
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '6px', textAlign: 'center' }}>
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Debt Ratio</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#10b981', margin: '2px 0' }}>12.4%</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--badge-success-text)' }}>Healthy (&lt;15%)</div>
+              </div>
+
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Deprecated APIs</div>
+                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#f59e0b', margin: '2px 0' }}>14</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>8 due in Q4</div>
+              </div>
+
+              <div style={{ background: 'var(--bg-surface)', padding: '8px 4px', borderRadius: '6px', border: '1px solid var(--border-color)' }}>
+                <div style={{ fontSize: '0.62rem', color: 'var(--text-muted)' }}>Refactor Priority</div>
+                <div style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--stellantis-action)', margin: '4px 0 2px 0' }}>CAN-Bus V2</div>
+                <div style={{ fontSize: '0.6rem', color: 'var(--text-muted)' }}>High Agent ROI</div>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--text-muted)' }}>
+              <span>Architectural Drift: <strong style={{ color: '#10b981' }}>Low (2.1%)</strong></span>
+              <span>Target Q4 Remediation: <strong>6 Repos</strong></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {/* ================================================================= */}
       {/* PART B (LOWER TIER): 6-TIER OPERATIONAL DEPTH & LINEAGE NAVIGATOR */}
       {/* ================================================================= */}
       <div className="ad-drilldown-wrapper">
@@ -532,22 +740,46 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
           {currentLevel === 1 && activeLevelData.portfolioProjects && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                PORTFOLIO ALLOCATION &amp; GOVERNANCE HEALTH:
+                PORTFOLIO ALLOCATION &amp; GOVERNANCE HEALTH (ACTIVE CONTEXT HIGHLIGHTED):
               </div>
               <div className="ad-portfolio-bars">
-                {activeLevelData.portfolioProjects.map((p, idx) => (
-                  <div key={idx} className="ad-portfolio-item">
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <strong style={{ fontSize: '0.78rem', color: 'var(--text-primary)' }}>{p.name}</strong>
-                      <span className="st-badge badge-info" style={{ fontSize: '0.62rem' }}>{p.gate}</span>
+                {activeLevelData.portfolioProjects.map((p, idx) => {
+                  const isSelected =
+                    (selectedPortfolio === 'adas' && p.name.includes('Autonomous Driving')) ||
+                    (selectedPortfolio === 'cockpit' && p.name.includes('Infotainment')) ||
+                    (selectedPortfolio === 'propulsion' && p.name.includes('Propulsion')) ||
+                    (selectedPortfolio === 'connected-cloud' && p.name.includes('Connected Vehicle'));
+
+                  return (
+                    <div
+                      key={idx}
+                      className="ad-portfolio-item"
+                      style={{
+                        border: isSelected ? '2px solid var(--stellantis-action, #0284c7)' : '1px solid var(--border-color)',
+                        background: isSelected ? 'rgba(2, 132, 199, 0.08)' : 'var(--bg-surface)',
+                        boxShadow: isSelected ? '0 0 14px rgba(2, 132, 199, 0.25)' : 'none',
+                        transition: 'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <strong style={{ fontSize: '0.78rem', color: isSelected ? 'var(--stellantis-action, #0284c7)' : 'var(--text-primary)' }}>
+                          {p.name}
+                        </strong>
+                        {isSelected && (
+                          <span className="st-badge badge-info" style={{ fontSize: '0.62rem', background: '#0284c7', color: '#ffffff' }}>
+                            ★ Active Focus
+                          </span>
+                        )}
+                        <span className="st-badge badge-info" style={{ fontSize: '0.62rem' }}>{p.gate}</span>
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.74rem' }}>
+                        <span style={{ color: '#10b981', fontWeight: 700 }}>Compliance: {p.compliance}</span>
+                        <span style={{ color: 'var(--text-muted)' }}>Budget Spent: {p.budget}</span>
+                        <span className="st-badge badge-success" style={{ fontSize: '0.62rem' }}>Health {p.health}</span>
+                      </div>
                     </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', fontSize: '0.74rem' }}>
-                      <span style={{ color: '#10b981', fontWeight: 700 }}>Compliance: {p.compliance}</span>
-                      <span style={{ color: 'var(--text-muted)' }}>Budget Spent: {p.budget}</span>
-                      <span className="st-badge badge-success" style={{ fontSize: '0.62rem' }}>Health {p.health}</span>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
@@ -556,7 +788,7 @@ export default function EngineeringPersonaDashboard({ initialLevel, onNavigateTo
           {currentLevel === 2 && activeLevelData.workflowsList && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <div style={{ fontSize: '0.72rem', fontWeight: 800, color: 'var(--text-muted)', textTransform: 'uppercase' }}>
-                ACTIVE WORKFLOW ROSTER (STLA LARGE SDV PLATFORM PHASE 2):
+                ACTIVE WORKFLOW ROSTER ({activeLevelData.title.toUpperCase()}):
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '10px' }}>
                 {activeLevelData.workflowsList.map((wf) => (

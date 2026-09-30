@@ -79,6 +79,11 @@ function AuthenticatedApp() {
     }
   };
 
+  const [experienceSubTab, setExperienceSubTab] = useState('persona');
+  const [drillDownLevel, setDrillDownLevel] = useState(1);
+  const [contextPortfolio, setContextPortfolio] = useState(null);
+  const [contextProject, setContextProject] = useState(null);
+
   const currentPersona = DOMAIN_PERSONA_MAP[selectedDomain] || DOMAIN_PERSONA_MAP['AI for AMS'];
 
   return (
@@ -133,7 +138,14 @@ function AuthenticatedApp() {
         )}
 
         {selectedDomain === 'Engineering leaders' && (
-          <EngineeringLeadersDomain activeTab={activeTab} />
+          <EngineeringLeadersDomain
+            activeTab={activeTab}
+            experienceSubTab={experienceSubTab}
+            onSubTabChange={setExperienceSubTab}
+            drillDownLevel={drillDownLevel}
+            contextPortfolio={contextPortfolio}
+            contextProject={contextProject}
+          />
         )}
 
         {selectedDomain === 'AI for AD' && (
