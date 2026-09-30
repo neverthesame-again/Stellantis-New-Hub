@@ -7,8 +7,8 @@ import PageHeader from '../../components/PageHeader';
 import TabBar from '../../components/TabBar';
 import Toast from '../../components/Toast';
 import { useToast } from '../../components/useToast';
-import FinOpsTab from './cost/FinOpsTab';
-import RuntimeTab from './runtime/RuntimeTab';
+import AmsFinOps from './cost/AmsFinOps';
+import RuntimeMonitor from './runtime/RuntimeMonitor';
 import SubscriptionsTable from './SubscriptionsTable';
 
 /** Views of the Monitor & FinOps page. */
@@ -50,8 +50,8 @@ export default function MonitorFinOpsPage() {
       <PageHeader icon={route.icon} title={route.label} summary={route.summary} />
       <TabBar tabs={tabs} activeTab={activeTab} onChange={setActiveTab} ariaLabel="Monitor and FinOps views" idPrefix="ams-monitor-tab" />
       <div role="tabpanel" id="ams-monitor-tab-panel" aria-labelledby={`ams-monitor-tab-${activeTab}`}>
-        {activeTab === MONITOR_TAB.RUNTIME && <RuntimeTab showToast={showToast} />}
-        {activeTab === MONITOR_TAB.COST && <FinOpsTab highlightAgentId={costAgentId} showToast={showToast} />}
+        {activeTab === MONITOR_TAB.RUNTIME && <RuntimeMonitor showToast={showToast} />}
+        {activeTab === MONITOR_TAB.COST && <AmsFinOps highlightAgentId={costAgentId} showToast={showToast} />}
         {activeTab === MONITOR_TAB.SUBSCRIPTIONS && <SubscriptionsTable showToast={showToast} />}
       </div>
       <Toast message={message} />

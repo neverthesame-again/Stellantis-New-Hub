@@ -16,7 +16,7 @@ import React, { useEffect } from 'react';
 import { useAuth } from '../../auth/AuthContext';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import WorkflowInbox from './pages/WorkflowInbox';
-import OpsStudioPage from './pages/ops-studio/OpsStudioPage';
+import OpsStudioOverview from './pages/ops-studio/OpsStudioOverview';
 import AgentStudioPage from './pages/agent-studio/AgentStudioPage';
 import AiHarnessPage from './pages/harness/AiHarnessPage';
 import EvaluateApprovePage from './pages/evaluate-approve/EvaluateApprovePage';
@@ -44,7 +44,7 @@ const AMS_ROLE_LABEL = 'Head of AMS';
 
 /** Page component for each AI Experience Zone sub-page. */
 const SUBPAGE_COMPONENTS = Object.freeze({
-  [AMS_SUBPAGE.OPS_STUDIO]: OpsStudioPage,
+  [AMS_SUBPAGE.OPS_STUDIO]: OpsStudioOverview,
   [AMS_SUBPAGE.AGENT_STUDIO]: AgentStudioPage,
   [AMS_SUBPAGE.HARNESS]: AiHarnessPage,
   [AMS_SUBPAGE.EVALUATE_APPROVE]: EvaluateApprovePage,
