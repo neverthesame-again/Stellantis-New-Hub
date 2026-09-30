@@ -378,44 +378,44 @@ export const engineeringDashboardData = {
 
   // 7. AI Cost and Model Consumption
   aiCostAndConsumption: {
-    monthlyBudget: "$180,000",
-    currentSpend: "$142,500",
-    budgetUtilization: "79.2%",
-    projectedEndMonthSpend: "$168,000",
-    costPerPullRequest: "$1.42",
-    costPerPrBaseline: "$3.80",
+    monthlyBudget: "$10,000",
+    currentSpend: "$7,650",
+    budgetUtilization: "76.5%",
+    projectedEndMonthSpend: "$9,100",
+    costPerPullRequest: "$0.09",
+    costPerPrBaseline: "$0.24",
     tokenCacheHitRate: "36.4%",
-    totalTokensConsumedM: "1,480M",
+    totalTokensConsumedM: "95M",
     modelBreakdown: [
       {
         modelName: "Claude 3.5 Sonnet Enterprise",
         provider: "Anthropic / AWS Bedrock",
-        tokensConsumed: "420M",
-        cost: "$68,400",
+        tokensConsumed: "26M",
+        cost: "$3,650",
         sharePct: 48,
         primaryUsage: "Architectural synthesis, complex refactoring, safety audit"
       },
       {
         modelName: "GPT-4o Enterprise",
-        provider: "Azure OpenAI Stellantis Tenant",
-        tokensConsumed: "310M",
-        cost: "$45,200",
+        provider: "Azure OpenAI TCS Tenant",
+        tokensConsumed: "20M",
+        cost: "$2,450",
         sharePct: 32,
         primaryUsage: "Requirements generation, documentation, code review assistant"
       },
       {
         modelName: "Mistral Large 2 (Private Cloud)",
         provider: "Private Mistral / Turin On-Prem",
-        tokensConsumed: "240M",
-        cost: "$17,400",
+        tokensConsumed: "16M",
+        cost: "$950",
         sharePct: 12,
         primaryUsage: "Proprietary CAN telemetry parsing, internal API queries"
       },
       {
         modelName: "DeepSeek Coder / CodeLlama 70B",
         provider: "Self-Hosted GPU Cluster (Turin)",
-        tokensConsumed: "510M",
-        cost: "$11,500",
+        tokensConsumed: "33M",
+        cost: "$600",
         sharePct: 8,
         primaryUsage: "Real-time IDE code completion, unit test boilerplates"
       }
@@ -792,7 +792,7 @@ export const engineeringExperienceData = {
       },
       limitations: "Lower multi-lingual documentation comprehension than Claude 3.5.",
       approvedUseCases: "Automated HIL regression log analysis, vehicle crash recorder decoding.",
-      dataRestrictions: "Restricted to internal Stellantis engineering networks.",
+      dataRestrictions: "Restricted to internal TCS engineering networks.",
       usagePolicies: "Floating license pool across all European vehicle plant engineering hubs.",
       subscribed: true,
       monthlyConsumptionTokens: "68,200,000",
@@ -800,7 +800,7 @@ export const engineeringExperienceData = {
     },
     {
       id: "MOD-04",
-      name: "OpenAI GPT-4o (Stellantis Private Tenant)",
+      name: "OpenAI GPT-4o (TCS Private Tenant)",
       version: "2024-08-06 Dedicated",
       provider: "OpenAI / Microsoft Azure FedRAMP",
       capability: "Multimodal Vision & Driver Monitoring Validation",
@@ -882,7 +882,7 @@ export const engineeringExperienceData = {
     {
       id: "MOD-07",
       name: "StarCoder2 15B (Embedded C)",
-      version: "Stellantis Quantized INT8",
+      version: "TCS Quantized INT8",
       provider: "BigCode / Micro-Edge Node",
       capability: "Ultra-Low Latency Embedded POSIX C Code Completion",
       modality: "Code",
@@ -1153,9 +1153,9 @@ export const engineeringExperienceData = {
       id: "TOOL-01",
       name: "GitHub Copilot Enterprise for Automotive",
       category: "Coding assistants",
-      description: "AI-powered paired programming extension fine-tuned on Stellantis POSIX SDV libraries and MISRA-C++ coding guidelines.",
+      description: "AI-powered paired programming extension fine-tuned on Enterprise POSIX SDV libraries and MISRA-C++ coding guidelines.",
       useCases: ["Real-time code synthesis", "Unit test scaffolding", "C++17/20 modernization"],
-      integrationRequirements: "VS Code / CLion plugin; Stellantis Okta SSO authentication; Private VPC egress proxy.",
+      integrationRequirements: "VS Code / CLion plugin; TCS Okta SSO authentication; Private VPC egress proxy.",
       licensingInfo: "Enterprise Tier ($39/user/month); 1,200 active enterprise seats allocated.",
       approvedProjectTypes: ["All Software-Defined Vehicle (SDV) Core Repositories"],
       securityClassification: "Confidential",
@@ -1304,11 +1304,11 @@ export const engineeringExperienceData = {
       useCases: ["Regulatory requirement traceability", "Auto-generating architecture specs from code", "Engineering QA chatbot"],
       integrationRequirements: "IBM DOORS NextGen REST API; Atlassian Confluence Enterprise; Qdrant Vector DB.",
       licensingInfo: "Corporate Enterprise License.",
-      approvedProjectTypes: ["All Stellantis Engineering Portfolios"],
+      approvedProjectTypes: ["All Enterprise Engineering Portfolios"],
       securityClassification: "Internal",
       dataHandlingRestrictions: "Strict role-based document access control; respect project ACLs in vector search.",
       supportOwner: "Knowledge Management & PMO (S. Fontana)",
-      subscriptionProcess: "Available to all Stellantis engineering employees by default.",
+      subscriptionProcess: "Available to all engineering employees by default.",
       usageMetrics: {
         activeUsers: 1450,
         adoptionRate: "92.0%",
@@ -1853,6 +1853,8 @@ export const engineeringPersonaContextData = {
   projectAssignments: [
     { id: "stla-large", label: "STLA Large SDV Platform Phase 2" },
     { id: "maserati-adas", label: "Maserati GranTurismo Folgore ADAS v3.4" },
+    { id: "smartcockpit", label: "STLA SmartCockpit Gen3 Android Automotive" },
+    { id: "bms-gen4", label: "Battery Management System Gen4 Air-Gap Pilot" },
     { id: "ram-towing", label: "Ram 1500 REV Autonomous Towing" },
     { id: "jeep-recon", label: "Jeep Recon Trail-Rated Offroad Autonomy" }
   ],
@@ -2042,11 +2044,174 @@ export const engineeringPersonaContextData = {
           title: "Trail-Rated Autonomy Level 2 Sign-off",
           countdownText: "8 days left",
           urgency: "amber",
-          standard: "Stellantis Trail Safety Standard 4.2",
+          standard: "TCS Trail Safety Standard 4.2",
+          verified: false
+        }
+      ]
+    },
+    "smartcockpit": {
+      subscriptions: {
+        modelsCount: 6,
+        agentsCount: 5,
+        toolsCount: 8,
+        models: ["OpenAI GPT-4o", "Claude 3.5 Sonnet"],
+        agents: ["STLA-EARB Architecture Blueprint Synthesizer"],
+        tools: ["Android Studio", "Tekton CI", "SonarQube"]
+      },
+      authority: {
+        safetyTier: "Cockpit Experience Tier 1",
+        monetaryCeiling: "€800,000",
+        carveOutNotice: "AAOS third-party store sandbox isolation approval required.",
+        delegatedLead: "C. Dupont (Lead Infotainment Architect)"
+      },
+      activeTasks: {
+        totalOpen: 5,
+        criticalCount: 2,
+        standardCount: 3,
+        criticalTasks: [
+          {
+            id: "task-cockpit-1",
+            title: "Audio HAL memory jitter SWAT verification · Due in 3h",
+            deadline: "Due in 3h",
+            tier: "Audio HAL Gate",
+            originator: "AAOS Profiler"
+          }
+        ]
+      },
+      governance: [
+        {
+          id: "gov-cockpit-1",
+          title: "Google AAOS Compatibility Test Suite (CTS)",
+          countdownText: "5 days left",
+          urgency: "amber",
+          standard: "Android CDD v14",
+          verified: false
+        }
+      ]
+    },
+    "bms-gen4": {
+      subscriptions: {
+        modelsCount: 5,
+        agentsCount: 6,
+        toolsCount: 7,
+        models: ["DeepSeek-Coder-V2", "Mistral Large 2"],
+        agents: ["CAN-Bus Signal Anomaly & Telemetry Sentinel"],
+        tools: ["MathWorks Simulink", "CANoe Vector", "GitLab CI"]
+      },
+      authority: {
+        safetyTier: "High-Voltage Propulsion Tier 1",
+        monetaryCeiling: "€1,800,000",
+        carveOutNotice: "ASIL-D battery cell thermal run-away sign-off required.",
+        delegatedLead: "A. Moretti (High-Voltage Safety Lead)"
+      },
+      activeTasks: {
+        totalOpen: 4,
+        criticalCount: 2,
+        standardCount: 2,
+        criticalTasks: [
+          {
+            id: "task-bms-1",
+            title: "Cell balancing PWM timing drift anomaly check · Due in 4h",
+            deadline: "Due in 4h",
+            tier: "Thermal Safety Gate",
+            originator: "Turin H100 GPU Sentinel"
+          }
+        ]
+      },
+      governance: [
+        {
+          id: "gov-bms-1",
+          title: "ISO 26262 Part 4 System Safety BMS Sign-off",
+          countdownText: "3 days left",
+          urgency: "amber",
+          standard: "ISO 26262 Part 4",
           verified: false
         }
       ]
     }
+  }
+};
+
+/**
+ * PRD §5.1 — Dynamic Level 2 Project Profiles
+ */
+export const projectDrillDownLevel2 = {
+  "stla-large": {
+    shortTitle: "STLA Large Phase 2",
+    shortIndicator: "Gate RC-1 · 4 Workflows",
+    indicatorType: "neutral",
+    title: "STLA Large SDV Platform Phase 2 Program",
+    subtitle: "Core Microkernel & Autonomous Architecture Gate • Sprints 24–26",
+    statusBadge: "Gate: RC-1 Freeze",
+    metrics: [
+      { label: "Program Milestone", value: "On Track (94%)", subtext: "Target freeze date Oct 14, 2026", type: "success" },
+      { label: "Safety Integrity", value: "ASIL-D Cleared", subtext: "Zero unresolved Sev-1 safety bugs", type: "success" },
+      { label: "Active Workflows", value: "4 Workflows", subtext: "Canary, Traceability, HIL, Build", type: "neutral" },
+      { label: "Top Program Risk", value: "Audio HAL Leak", subtext: "Mitigated by SWAT patch candidate", type: "warning" }
+    ],
+    workflowsList: [
+      { id: "WF-CANARY-OTA", name: "Canary Deployment & Fleet OTA Validation", status: "Active", isPrimary: true, passRate: "98.2%", sla: "99.9%" },
+      { id: "WF-AUTOSAR-TRACE", name: "AUTOSAR Adaptive & MISRA C++ Compliance", status: "Active", passRate: "99.4%", sla: "99.8%" },
+      { id: "WF-HIL-SIM-FUSION", name: "Sensor Fusion Hardware-In-The-Loop Bench", status: "Active", passRate: "96.5%", sla: "98.5%" },
+      { id: "WF-AUDIO-HAL-SWAT", name: "Audio HAL Memory Jitter SWAT Verification", status: "In Review", passRate: "91.0%", sla: "95.0%" }
+    ]
+  },
+  "smartcockpit": {
+    shortTitle: "STLA SmartCockpit G3",
+    shortIndicator: "AAOS 14 · 3 Workflows",
+    indicatorType: "success",
+    title: "STLA SmartCockpit Gen3 Android Automotive Program",
+    subtitle: "NextGen Android Automotive OS Gen3 middleware & Enterprise App Store runtime",
+    statusBadge: "Gate: Pre-homologation",
+    metrics: [
+      { label: "AAOS Integration", value: "98.4% CTS Pass", subtext: "Google Android CDD v14 verified", type: "success" },
+      { label: "Audio Latency", value: "4.2ms Audio HAL", subtext: "Zero buffer overruns in stress test", type: "success" },
+      { label: "Active Workflows", value: "3 Workflows", subtext: "AAOS HAL, App Store Sandbox, Audio Sentinel", type: "neutral" },
+      { label: "Top Program Risk", value: "Store Sandbox Drift", subtext: "Isolated in private runtime container", type: "warning" }
+    ],
+    workflowsList: [
+      { id: "WF-AAOS-HAL", name: "Android Automotive Audio HAL Validation", status: "Active", isPrimary: true, passRate: "99.1%", sla: "99.9%" },
+      { id: "WF-APPSTORE", name: "In-Vehicle App Store Sandbox Verification", status: "Active", passRate: "97.8%", sla: "99.5%" },
+      { id: "WF-AUDIO-JITTER", name: "Audio Latency & Memory Profiling Sentinel", status: "Active", passRate: "98.5%", sla: "99.0%" }
+    ]
+  },
+  "bms-gen4": {
+    shortTitle: "BMS Gen4 Air-Gap",
+    shortIndicator: "Air-Gapped · 3 Workflows",
+    indicatorType: "success",
+    title: "Battery Management System Gen4 Air-Gap Pilot Program",
+    subtitle: "High-voltage air-gap CAN ingestion & thermal run-away predictive modeling on Turin H100 GPU",
+    statusBadge: "Gate: Test Track Validation",
+    metrics: [
+      { label: "Thermal Modeling", value: "99.8% Accuracy", subtext: "Predicts cell hotspots 14 min prior", type: "success" },
+      { label: "Safety Standard", value: "ASIL-D Level 4", subtext: "Dual-redundant high-voltage cutoff", type: "success" },
+      { label: "Active Workflows", value: "3 Workflows", subtext: "CAN Telemetry, Thermal Ingest, Inverter Safety", type: "neutral" },
+      { label: "Air-Gap Cluster", value: "Turin Node 01-08", subtext: "100% on-premise sovereign isolation", type: "success" }
+    ],
+    workflowsList: [
+      { id: "WF-BMS-CAN", name: "Air-Gapped High-Voltage CAN Ingestion Pipeline", status: "Active", isPrimary: true, passRate: "99.9%", sla: "99.99%" },
+      { id: "WF-THERMAL-RUN", name: "Cell Balancing & Thermal Runaway Neural Model", status: "Active", passRate: "98.7%", sla: "99.5%" },
+      { id: "WF-ASIL-D-BMS", name: "ISO 26262 ASIL-D Power Inverter Compliance", status: "Active", passRate: "99.6%", sla: "99.8%" }
+    ]
+  },
+  "maserati-adas": {
+    shortTitle: "Vision HAL Homologation",
+    shortIndicator: "UNECE R157 · 3 Workflows",
+    indicatorType: "neutral",
+    title: "Vision Sensor HAL v3.0 Homologation & Maserati ADAS Program",
+    subtitle: "Sensor HAL abstraction & automated camera/lidar rain & fog simulation for UNECE homologation",
+    statusBadge: "Gate: UNECE Validation",
+    metrics: [
+      { label: "Sensor Homologation", value: "UNECE R157 Pass", subtext: "Rain, snow & fog camera simulation", type: "success" },
+      { label: "LiDAR Benchmark", value: "120m Detection", subtext: "High-speed highway obstacle cutoff", type: "success" },
+      { label: "Active Workflows", value: "3 Workflows", subtext: "Sensor Sim, Weather Bench, MISRA Engine", type: "neutral" },
+      { label: "Top Program Risk", value: "Fog Glare Jitter", subtext: "Synthetic weather training active", type: "warning" }
+    ],
+    workflowsList: [
+      { id: "WF-UNECE-HAL", name: "Camera & LiDAR HAL Abstraction Simulation", status: "Active", isPrimary: true, passRate: "97.9%", sla: "99.5%" },
+      { id: "WF-RAIN-FOG", name: "Inclement Weather Perception Test Bench", status: "Active", passRate: "96.2%", sla: "98.5%" },
+      { id: "WF-AUTOSAR-MISRA", name: "AUTOSAR C++ MISRA Safety Code Generator", status: "Active", passRate: "99.8%", sla: "99.9%" }
+    ]
   }
 };
 
@@ -2062,7 +2227,7 @@ export const engineeringDrillDownLevelsData = {
     shortIndicator: "94.2% Governance Health",
     indicatorType: "success",
     title: "Enterprise Software & Platform Portfolios (4 Active)",
-    subtitle: "Global Multi-Portfolio Engineering Overview • Stellantis Platform Hub",
+    subtitle: "Global Multi-Portfolio Engineering Overview • TCS Platform Hub",
     statusBadge: "Tier 1 Enterprise Gate",
     metrics: [
       { label: "Governance Compliance", value: "94.2%", change: "▲ +2.4pts vs Q2", type: "success" },
@@ -2177,7 +2342,7 @@ export const engineeringDrillDownLevelsData = {
     shortIndicator: "Canary Health Confirmed",
     indicatorType: "success",
     title: "Live Execution Trace: RUN-20260913-FLEET-CANARY-882",
-    subtitle: "Atomic Verification Trace & Cryptographic Audit Proof • Stellantis Sovereign VPC",
+    subtitle: "Atomic Verification Trace & Cryptographic Audit Proof • TCS Sovereign VPC",
     statusBadge: "Status: VERIFIED",
     metrics: [
       { label: "Run Execution Time", value: "5.10s", subtext: "4 stages executed sequentially", type: "success" },
@@ -2446,7 +2611,7 @@ export const engineering52InboxItems = [
  * Governance Audit Matrix Data for Modal
  */
 export const engineeringGovernanceMatrixData = {
-  title: "Stellantis Enterprise AI Governance & Engineering Matrix",
+  title: "TCS Enterprise AI Governance & Engineering Matrix",
   version: "v4.2-CAIO-SDV • Active Enterprise Standards",
   gates: [
     {

@@ -378,44 +378,44 @@ export const engineeringDashboardData = {
 
   // 7. AI Cost and Model Consumption
   aiCostAndConsumption: {
-    monthlyBudget: "$180,000",
-    currentSpend: "$142,500",
-    budgetUtilization: "79.2%",
-    projectedEndMonthSpend: "$168,000",
-    costPerPullRequest: "$1.42",
-    costPerPrBaseline: "$3.80",
+    monthlyBudget: "$10,000",
+    currentSpend: "$7,650",
+    budgetUtilization: "76.5%",
+    projectedEndMonthSpend: "$9,100",
+    costPerPullRequest: "$0.09",
+    costPerPrBaseline: "$0.24",
     tokenCacheHitRate: "36.4%",
-    totalTokensConsumedM: "1,480M",
+    totalTokensConsumedM: "95M",
     modelBreakdown: [
       {
         modelName: "Claude 3.5 Sonnet Enterprise",
         provider: "Anthropic / AWS Bedrock",
-        tokensConsumed: "420M",
-        cost: "$68,400",
+        tokensConsumed: "26M",
+        cost: "$3,650",
         sharePct: 48,
         primaryUsage: "Architectural synthesis, complex refactoring, safety audit"
       },
       {
         modelName: "GPT-4o Enterprise",
-        provider: "Azure OpenAI Stellantis Tenant",
-        tokensConsumed: "310M",
-        cost: "$45,200",
+        provider: "Azure OpenAI TCS Tenant",
+        tokensConsumed: "20M",
+        cost: "$2,450",
         sharePct: 32,
         primaryUsage: "Requirements generation, documentation, code review assistant"
       },
       {
         modelName: "Mistral Large 2 (Private Cloud)",
         provider: "Private Mistral / Turin On-Prem",
-        tokensConsumed: "240M",
-        cost: "$17,400",
+        tokensConsumed: "16M",
+        cost: "$950",
         sharePct: 12,
         primaryUsage: "Proprietary CAN telemetry parsing, internal API queries"
       },
       {
         modelName: "DeepSeek Coder / CodeLlama 70B",
         provider: "Self-Hosted GPU Cluster (Turin)",
-        tokensConsumed: "510M",
-        cost: "$11,500",
+        tokensConsumed: "33M",
+        cost: "$600",
         sharePct: 8,
         primaryUsage: "Real-time IDE code completion, unit test boilerplates"
       }
@@ -796,7 +796,7 @@ export const engineeringExperienceData = {
       },
       limitations: "Lower multi-lingual documentation comprehension than Claude 3.5.",
       approvedUseCases: "Automated HIL regression log analysis, vehicle crash recorder decoding.",
-      dataRestrictions: "Restricted to internal Stellantis engineering networks.",
+      dataRestrictions: "Restricted to internal TCS engineering networks.",
       usagePolicies: "Floating license pool across all European vehicle plant engineering hubs.",
       subscribed: true,
       monthlyConsumptionTokens: "68,200,000",
@@ -804,7 +804,7 @@ export const engineeringExperienceData = {
     },
     {
       id: "MOD-04",
-      name: "OpenAI GPT-4o (Stellantis Private Tenant)",
+      name: "OpenAI GPT-4o (TCS Private Tenant)",
       version: "2024-08-06 Dedicated",
       provider: "OpenAI / Microsoft Azure FedRAMP",
       capability: "Multimodal Vision & Driver Monitoring Validation",
@@ -886,7 +886,7 @@ export const engineeringExperienceData = {
     {
       id: "MOD-07",
       name: "StarCoder2 15B (Embedded C)",
-      version: "Stellantis Quantized INT8",
+      version: "TCS Quantized INT8",
       provider: "BigCode / Micro-Edge Node",
       capability: "Ultra-Low Latency Embedded POSIX C Code Completion",
       modality: "Code",
@@ -1157,9 +1157,9 @@ export const engineeringExperienceData = {
       id: "TOOL-01",
       name: "GitHub Copilot Enterprise for Automotive",
       category: "Coding assistants",
-      description: "AI-powered paired programming extension fine-tuned on Stellantis POSIX SDV libraries and MISRA-C++ coding guidelines.",
+      description: "AI-powered paired programming extension fine-tuned on Enterprise POSIX SDV libraries and MISRA-C++ coding guidelines.",
       useCases: ["Real-time code synthesis", "Unit test scaffolding", "C++17/20 modernization"],
-      integrationRequirements: "VS Code / CLion plugin; Stellantis Okta SSO authentication; Private VPC egress proxy.",
+      integrationRequirements: "VS Code / CLion plugin; TCS Okta SSO authentication; Private VPC egress proxy.",
       licensingInfo: "Enterprise Tier ($39/user/month); 1,200 active enterprise seats allocated.",
       approvedProjectTypes: ["All Software-Defined Vehicle (SDV) Core Repositories"],
       securityClassification: "Confidential",
@@ -1308,11 +1308,11 @@ export const engineeringExperienceData = {
       useCases: ["Regulatory requirement traceability", "Auto-generating architecture specs from code", "Engineering QA chatbot"],
       integrationRequirements: "IBM DOORS NextGen REST API; Atlassian Confluence Enterprise; Qdrant Vector DB.",
       licensingInfo: "Corporate Enterprise License.",
-      approvedProjectTypes: ["All Stellantis Engineering Portfolios"],
+      approvedProjectTypes: ["All Enterprise Engineering Portfolios"],
       securityClassification: "Internal",
       dataHandlingRestrictions: "Strict role-based document access control; respect project ACLs in vector search.",
       supportOwner: "Knowledge Management & PMO (S. Fontana)",
-      subscriptionProcess: "Available to all Stellantis engineering employees by default.",
+      subscriptionProcess: "Available to all engineering employees by default.",
       usageMetrics: {
         activeUsers: 1450,
         adoptionRate: "92.0%",

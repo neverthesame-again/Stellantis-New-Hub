@@ -1,5 +1,6 @@
 import express from "express";
 import { engineeringDashboardData, engineeringWorkflowInbox, engineeringExperienceData } from "./mockData.js";
+import { initialFinOpsData } from "./finopsData.js";
 
 const router = express.Router();
 
@@ -18,12 +19,17 @@ const router = express.Router();
  * - POST /api/engineering/experience/agents/:id/subscribe
  * - POST /api/engineering/experience/tools/:id/subscribe
  * - POST /api/engineering/experience/subscriptions/:id/action
+ * - GET  /api/engineering/finops
+ * - POST /api/engineering/finops/alerts/:id/acknowledge
+ * - POST /api/engineering/finops/alerts/:id/resolve
+ * - POST /api/engineering/finops/optimizations/:id/apply
  */
 
 // In-memory state copies for interactive actions during server session
 let currentDashboardData = JSON.parse(JSON.stringify(engineeringDashboardData));
 let currentWorkflowItems = JSON.parse(JSON.stringify(engineeringWorkflowInbox));
 let currentExperienceData = JSON.parse(JSON.stringify(engineeringExperienceData));
+let currentFinOpsData = JSON.parse(JSON.stringify(initialFinOpsData));
 
 router.get("/status", (req, res) => {
   res.json({
@@ -302,11 +308,99 @@ router.post("/experience/subscriptions/:id/action", (req, res) => {
   }
 });
 
+// =========================================================
+// FINOPS & COST GOVERNANCE ENDPOINTS (FR-401 — FR-405)
+// =========================================================
+
+// GET /api/engineering/finops
+router.get("/finops", (req, res) => {
+  res.json({
+    success: true,
+    data: currentFinOpsData
+  });
+});
+
+// POST /api/engineering/finops/alerts/:id/acknowledge
+router.post("/finops/alerts/:id/acknowledge", (req, res) => {
+  const { id } = req.params;
+  const alert = currentFinOpsData.costAlerts.find(a => a.id === id);
+  if (!alert) {
+    return res.status(404).json({ success: false, message: `Alert ${id} not found.` });
+  }
+
+  alert.status = 'Acknowledged';
+  alert.acknowledgedBy = 'Alex (Chief AI Officer)';
+  alert.acknowledgedAt = new Date().toISOString();
+  currentFinOpsData.kpis.activeAlertsCount = Math.max(0, currentFinOpsData.kpis.activeAlertsCount - 1);
+
+  res.json({
+    success: true,
+    message: `Alert ${id} acknowledged.`,
+    data: alert
+  });
+});
+
+// POST /api/engineering/finops/alerts/:id/resolve
+router.post("/finops/alerts/:id/resolve", (req, res) => {
+  const { id } = req.params;
+  const { actionType, note } = req.body;
+  const alertIndex = currentFinOpsData.costAlerts.findIndex(a => a.id === id);
+  if (alertIndex === -1) {
+    return res.status(404).json({ success: false, message: `Alert ${id} not found.` });
+  }
+
+  const [resolved] = currentFinOpsData.costAlerts.splice(alertIndex, 1);
+  const auditEntry = {
+    id: resolved.id,
+    agentName: resolved.agentName,
+    workspace: resolved.workspace,
+    program: resolved.program,
+    estimatedCostImpact: resolved.estimatedCostImpact,
+    severity: resolved.severity,
+    actionTaken: `${actionType || 'Remediation Applied'}: ${note || resolved.recommendedAction}`,
+    closedAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' • Just now',
+    closedBy: 'Alex (Chief AI Officer)',
+    auditRef: `AUD-FINOPS-${Date.now().toString().slice(-4)}`
+  };
+
+  currentFinOpsData.alertAuditHistory.unshift(auditEntry);
+  currentFinOpsData.kpis.activeAlertsCount = Math.max(0, currentFinOpsData.kpis.activeAlertsCount - 1);
+
+  res.json({
+    success: true,
+    message: `Alert ${id} resolved and recorded in FinOps audit history.`,
+    data: auditEntry
+  });
+});
+
+// POST /api/engineering/finops/optimizations/:id/apply
+router.post("/finops/optimizations/:id/apply", (req, res) => {
+  const { id } = req.params;
+  const opt = currentFinOpsData.costOptimizations.find(o => o.id === id);
+  if (!opt) {
+    return res.status(404).json({ success: false, message: `Optimization ${id} not found.` });
+  }
+
+  opt.applied = true;
+  currentFinOpsData.kpis.cacheSavings = "$41,270";
+  currentFinOpsData.kpis.cacheHitRate = "42.8%";
+  currentFinOpsData.kpis.aiEfficiencyIndex = 90.2;
+  currentFinOpsData.kpis.efficiencyGrade = "A";
+  currentFinOpsData.kpis.pendingOptimizationsCount = Math.max(0, currentFinOpsData.kpis.pendingOptimizationsCount - 1);
+
+  res.json({
+    success: true,
+    message: `Optimization ${id} applied.`,
+    data: opt
+  });
+});
+
 // Reset data state endpoint for demos
 router.post("/dashboard/reset", (req, res) => {
   currentDashboardData = JSON.parse(JSON.stringify(engineeringDashboardData));
   currentWorkflowItems = JSON.parse(JSON.stringify(engineeringWorkflowInbox));
   currentExperienceData = JSON.parse(JSON.stringify(engineeringExperienceData));
+  currentFinOpsData = JSON.parse(JSON.stringify(initialFinOpsData));
   res.json({ success: true, message: "Engineering Leaders data reset to defaults." });
 });
 

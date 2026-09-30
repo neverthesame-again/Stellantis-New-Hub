@@ -21,7 +21,7 @@ function AuthenticatedApp() {
 
   const [theme, setTheme] = useState('light');
   const [activeTab, setActiveTab] = useState(() => {
-    return sessionStorage.getItem('stellantis_active_tab') || 'dashboard';
+    return sessionStorage.getItem('tcs_active_tab') || sessionStorage.getItem('stellantis_active_tab') || 'dashboard';
   });
 
   // Parse user's registered domains/roles
@@ -29,17 +29,17 @@ function AuthenticatedApp() {
   const allowedRoles = user?.role ? user.role.split(', ') : ['Head of AMS'];
 
   const [selectedDomain, setSelectedDomain] = useState(() => {
-    const saved = sessionStorage.getItem('stellantis_domain');
+    const saved = sessionStorage.getItem('tcs_domain') || sessionStorage.getItem('stellantis_domain');
     return saved && allowedDomains.includes(saved) ? saved : allowedDomains[0];
   });
   
   const [selectedRole, setSelectedRole] = useState(() => {
-    const saved = sessionStorage.getItem('stellantis_role');
+    const saved = sessionStorage.getItem('tcs_role') || sessionStorage.getItem('stellantis_role');
     return saved && allowedRoles.includes(saved) ? saved : allowedRoles[0];
   });
 
   const [activeSubTab, setActiveSubTab] = useState(() => {
-    return sessionStorage.getItem('stellantis_active_subtab') || defaultSubPage(selectedDomain);
+    return sessionStorage.getItem('tcs_active_subtab') || sessionStorage.getItem('stellantis_active_subtab') || defaultSubPage(selectedDomain);
   });
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
@@ -58,23 +58,23 @@ function AuthenticatedApp() {
   };
 
   useEffect(() => {
-    sessionStorage.setItem('stellantis_active_tab', activeTab);
+    sessionStorage.setItem('tcs_active_tab', activeTab);
   }, [activeTab]);
 
   useEffect(() => {
     if (activeSubTab) {
-      sessionStorage.setItem('stellantis_active_subtab', activeSubTab);
+      sessionStorage.setItem('tcs_active_subtab', activeSubTab);
     } else {
-      sessionStorage.removeItem('stellantis_active_subtab');
+      sessionStorage.removeItem('tcs_active_subtab');
     }
   }, [activeSubTab]);
 
   useEffect(() => {
-    sessionStorage.setItem('stellantis_domain', selectedDomain);
+    sessionStorage.setItem('tcs_domain', selectedDomain);
   }, [selectedDomain]);
 
   useEffect(() => {
-    sessionStorage.setItem('stellantis_role', selectedRole);
+    sessionStorage.setItem('tcs_role', selectedRole);
   }, [selectedRole]);
 
   // Toggle theme and update data-theme attribute on document root
@@ -119,7 +119,7 @@ function AuthenticatedApp() {
 
   return (
     <div className="app-container">
-      {/* Universal Stellantis Brand Header */}
+      {/* Universal TCS Brand Header */}
       <Header
         currentTheme={theme}
         toggleTheme={toggleTheme}

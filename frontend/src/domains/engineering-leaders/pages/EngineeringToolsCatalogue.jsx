@@ -397,7 +397,7 @@ export default function EngineeringToolsCatalogue({ tools = [], onToggleSubscrib
               <div style={{ background: 'var(--bg-surface-secondary)', padding: '10px', borderRadius: '6px' }}>
                 <div style={{ fontSize: '0.68rem', fontWeight: 700, color: 'var(--text-muted)' }}>DATA HANDLING & SOVEREIGN RESTRICTIONS</div>
                 <div style={{ fontSize: '0.76rem', color: 'var(--text-primary)', marginTop: '2px' }}>
-                  {selectedToolDetails.dataHandlingRestrictions || 'Processed inside Stellantis sovereign data boundary; zero external training.'}
+                  {selectedToolDetails.dataHandlingRestrictions || 'Processed inside TCS sovereign data boundary; zero external training.'}
                 </div>
               </div>
 

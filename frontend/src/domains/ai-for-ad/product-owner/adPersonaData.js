@@ -197,7 +197,7 @@ export const drillDownLevelsData = {
     shortIndicator: '91% Compliance',
     indicatorType: 'success',
     title: 'L2+ Autonomous Systems Portfolio',
-    subtitle: 'Enterprise Portfolio Operations • Stellantis Platform Hub',
+    subtitle: 'Enterprise Portfolio Operations • TCS Platform Hub',
     statusBadge: 'Tier 1 Portfolio',
     metrics: [
       { label: 'Governance Compliance', value: '91%', change: '▲ +3pts this quarter', type: 'success' },
@@ -295,7 +295,7 @@ export const drillDownLevelsData = {
     subtitle: 'Anthropic Foundation Model • Fine-Tuned on Automotive Engineering Taxonomies',
     statusBadge: 'Tool-Qualified',
     metrics: [
-      { label: 'Provider', value: 'Anthropic Gateway', subtext: 'Stellantis Private Sovereign VPC', type: 'neutral' },
+      { label: 'Provider', value: 'Anthropic Gateway', subtext: 'TCS Private Sovereign VPC', type: 'neutral' },
       { label: 'Risk Rating', value: 'Low Risk', subtext: 'ISO 26262 Tool Qualification Certified', type: 'success' },
       { label: 'Inference Engine', value: 'TensorRT / FP16', subtext: 'High-throughput enterprise runtime', type: 'success' },
       { label: 'Data Residency', value: 'EU Sovereign', subtext: 'Dedicated Frankfurt & Paris VPCs', type: 'neutral' }

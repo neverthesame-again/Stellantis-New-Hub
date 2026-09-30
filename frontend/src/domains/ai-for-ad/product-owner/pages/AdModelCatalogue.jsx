@@ -114,7 +114,7 @@ const INITIAL_MODELS = [
     usecases: [
       'Complex safety-case argument generation, ASIL-D hazard analysis, and regulatory dossier preparation.'
     ],
-    dataRestrictions: 'Approved under Stellantis Enterprise Privacy Shield.',
+    dataRestrictions: 'Approved under TCS Enterprise Privacy Shield.',
     policy: 'Access gated for Functional Safety and Systems Leads.'
   },
   {
@@ -190,7 +190,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Available',
     scope: 'Enterprise On-Prem',
-    desc: 'European sovereign frontier foundation model deployed on Stellantis internal Paris & Frankfurt datacenter clusters with complete zero-egress guarantee.',
+    desc: 'European sovereign frontier foundation model deployed on TCS internal Paris & Frankfurt datacenter clusters with complete zero-egress guarantee.',
     modality: 'Text • Sovereign On-Prem',
     latency: 'Ultra-Low (<300ms)',
     latencyMs: 280,
@@ -201,13 +201,13 @@ const INITIAL_MODELS = [
       'Requires internal network VPN or high-speed proving ground fiber.'
     ],
     benchmarks: [
-      { metric: 'Automotive C++ Code Review Accuracy', val: '93.1%', note: 'Internal Stellantis benchmark' },
+      { metric: 'Automotive C++ Code Review Accuracy', val: '93.1%', note: 'Internal TCS benchmark' },
       { metric: 'On-Premise Inference Latency', val: '280 ms', note: 'Hardware cluster mean' }
     ],
     usecases: [
       'Confidential telemetry analysis, internal AD-108 patch generation, and sovereign engineering sandbox.'
     ],
-    dataRestrictions: 'EU Sovereign On-Premise Only (Stellantis Private Data Center). Zero telemetry egress.',
+    dataRestrictions: 'EU Sovereign On-Premise Only (TCS Private Data Center). Zero telemetry egress.',
     policy: 'Pre-approved for all engineering tiers under standard enterprise license.'
   },
   {
@@ -221,7 +221,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Approved',
     scope: 'Simulation Bench Scope',
-    desc: 'Fine-tuned open architecture containerized inside Stellantis Private VPC for high-throughput Balocco proving ground simulation telemetry digestion.',
+    desc: 'Fine-tuned open architecture containerized inside TCS Private VPC for high-throughput Balocco proving ground simulation telemetry digestion.',
     modality: 'Text • Private VPC Container',
     latency: 'Ultra-Low (<200ms)',
     latencyMs: 185,
@@ -252,7 +252,7 @@ const INITIAL_MODELS = [
     risk: 'Low Risk',
     status: 'Approved',
     scope: 'Proving Ground Cluster',
-    desc: 'Open-weights mathematical reasoning model containerized on internal Stellantis GPU clusters for automated trajectory calculus, path planning proofs, and physics verification.',
+    desc: 'Open-weights mathematical reasoning model containerized on internal TCS GPU clusters for automated trajectory calculus, path planning proofs, and physics verification.',
     modality: 'Text • Sovereign On-Prem',
     latency: 'Medium (~650ms)',
     latencyMs: 650,
@@ -263,13 +263,13 @@ const INITIAL_MODELS = [
       'Requires private cluster GPU node allocation.'
     ],
     benchmarks: [
-      { metric: 'Trajectory Optimization Verification', val: '96.4%', note: 'Internal Stellantis benchmark' },
+      { metric: 'Trajectory Optimization Verification', val: '96.4%', note: 'Internal TCS benchmark' },
       { metric: 'Kinematic Constraint Proof Accuracy', val: '95.1%', note: 'Safety envelope benchmark' }
     ],
     usecases: [
       'Automated trajectory solver verification and kinematic constraint formal proofs.'
     ],
-    dataRestrictions: 'EU Sovereign On-Premise Only (Stellantis Private Data Center). Zero telemetry egress.',
+    dataRestrictions: 'EU Sovereign On-Premise Only (TCS Private Data Center). Zero telemetry egress.',
     policy: 'Approved for AD Controls and Trajectory Planning engineering squads.'
   },
   {
@@ -300,7 +300,7 @@ const INITIAL_MODELS = [
     usecases: [
       'Real-time camera telemetry triage, disengagement video frame captioning, and fast sensor diagnostics.'
     ],
-    dataRestrictions: 'Stellantis Enterprise Cloud Gateway with automatic PII scrubbing.',
+    dataRestrictions: 'TCS Enterprise Cloud Gateway with automatic PII scrubbing.',
     policy: 'Pre-approved for all Perception and Telemetry engineering workflows.'
   }
 ];

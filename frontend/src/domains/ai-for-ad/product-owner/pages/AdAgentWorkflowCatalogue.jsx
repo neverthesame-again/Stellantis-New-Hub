@@ -1432,7 +1432,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.78rem' }}>
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
-                Initiate onboarding for a new candidate agent or multi-agent orchestration pipeline under Stellantis AI Safety Board directives:
+                Initiate onboarding for a new candidate agent or multi-agent orchestration pipeline under TCS AI Safety Board directives:
               </p>
 
               <div>

@@ -83,9 +83,9 @@ export const RUNTIMES = [
     id: 'FOUNDRY',
     label: 'Azure AI Foundry',
     tag: 'Supported',
-    description: 'Azure AI Foundry agent service with Stellantis tenant isolation and content safety filters.',
+    description: 'Azure AI Foundry agent service with TCS tenant isolation and content safety filters.',
     scope: 'Documentation · Requirements copilots',
-    defaultBaseUrl: 'https://stellantis-ad.services.ai.azure.com/agents',
+    defaultBaseUrl: 'https://tcs-ad.services.ai.azure.com/agents',
     idLabel: 'Foundry Agent ID'
   },
   {
@@ -227,7 +227,7 @@ export function isEvaluationPassing(agent, evaluation, rules, threshold) {
 // Governance (F4)
 // ---------------------------------------------------------------------------
 export const GOVERNANCE_POLICIES = [
-  { id: 'p_rai', name: 'Responsible AI', standard: 'Stellantis AI Charter', mandatory: true, description: 'Purpose, owner and human-oversight path documented.' },
+  { id: 'p_rai', name: 'Responsible AI', standard: 'TCS AI Charter', mandatory: true, description: 'Purpose, owner and human-oversight path documented.' },
   { id: 'p_fusa', name: 'Functional Safety', standard: 'ISO 26262-8 §11', mandatory: true, description: 'Tool confidence level (TCL) assessed; safety score meets ASIL gate.' },
   { id: 'p_sotif', name: 'SOTIF', standard: 'ISO 21448', mandatory: true, description: 'Triggering-condition scenarios covered for perception and planning agents.' },
   { id: 'p_cyber', name: 'Cybersecurity', standard: 'ISO/SAE 21434 · UNECE R155', mandatory: true, description: 'Verified runtime, least-privilege tools, threat analysis on file.' },
@@ -386,7 +386,7 @@ export const SEED_AGENTS = [
     program: 'STLA Medium L2+ Platform', team: 'Functional Safety Office', owner: 'Dr. Katrin Müller', version: '1.0.0',
     purpose: 'Proposes hazardous events, ASIL ratings and safety goals from item definitions for review by FuSa engineers.',
     subDomain: 'Requirements & Safety', asil: 'D', stage: 6, operationalState: 'Onboarding', evalProfile: 94,
-    runtime: { type: 'FOUNDRY', baseUrl: 'https://stellantis-ad.services.ai.azure.com/agents', agentId: 'fdy-hara-01', healthUrl: '/health', status: 'connected', latencyMs: 83 },
+    runtime: { type: 'FOUNDRY', baseUrl: 'https://tcs-ad.services.ai.azure.com/agents', agentId: 'fdy-hara-01', healthUrl: '/health', status: 'connected', latencyMs: 83 },
     skills: ['sk_hara', 'sk_trace'], knowledge: ['ks_safety', 'ks_doors', 'ks_polarion'], tools: ['tl_polarion', 'tl_confluence'], workflows: ['wf_asil_review'],
     approver: 'Marco Rossi', governance: { status: 'pending', decidedBy: null, decidedAt: null, comment: '' },
     certificateId: null, evaluation: baseEval(94, { reqAccuracy: 95, groundedness: 94, hallucination: 96, safety: 95, scenarioCoverage: 90, traceability: 94, cost: 89, latency: 91 }),
@@ -397,7 +397,7 @@ export const SEED_AGENTS = [
     program: 'Release 4.3 Program', team: 'Simulation & Emulation Engineering Group', owner: 'Anna Keller', version: '0.3.2',
     purpose: 'Generates Euro NCAP 2026 and cut-in edge-case scenarios for SIL regression.',
     subDomain: 'Validation & HIL', asil: 'C', stage: 3, operationalState: 'Onboarding', evalProfile: 82,
-    runtime: { type: 'EXTERNAL', baseUrl: 'https://scenario-gen.ad-k8s.stellantis.internal', agentId: 'deploy/scenario-gen', healthUrl: '/healthz', status: 'connected', latencyMs: 124 },
+    runtime: { type: 'EXTERNAL', baseUrl: 'https://scenario-gen.ad-k8s.tcs.internal', agentId: 'deploy/scenario-gen', healthUrl: '/healthz', status: 'connected', latencyMs: 124 },
     skills: ['sk_openscenario'], knowledge: ['ks_scenarios', 'ks_ncap'], tools: ['tl_jenkins'], workflows: [],
     approver: '', governance: { status: 'not_submitted', decidedBy: null, decidedAt: null, comment: '' },
     certificateId: null, evaluation: { score: 81, dims: { reqAccuracy: 84, groundedness: 80, hallucination: 86, safety: 83, scenarioCoverage: 88, traceability: 76, cost: 79, latency: 72 }, lastRun: daysAgo(1), runs: 1, failed: true },
@@ -429,7 +429,7 @@ export const SEED_AGENTS = [
     program: 'Release 4.2 Program', team: 'AI for AD Product Operations', owner: 'Paolo Greco', version: '1.2.0',
     purpose: 'Scores supplier delivery risk from contract milestones, SDK release notes and quality escapes.',
     subDomain: 'Release & Operations', asil: 'QM', stage: 9, operationalState: 'Suspended', evalProfile: 85,
-    runtime: { type: 'FOUNDRY', baseUrl: 'https://stellantis-ad.services.ai.azure.com/agents', agentId: 'fdy-vendor-03', healthUrl: '/health', status: 'connected', latencyMs: 77 },
+    runtime: { type: 'FOUNDRY', baseUrl: 'https://tcs-ad.services.ai.azure.com/agents', agentId: 'fdy-vendor-03', healthUrl: '/health', status: 'connected', latencyMs: 77 },
     skills: ['sk_supplier'], knowledge: ['ks_polarion'], tools: ['tl_jira', 'tl_confluence'], workflows: ['wf_supplier'],
     approver: 'Carl Weber', governance: { status: 'approved', decidedBy: 'Carl Weber', decidedAt: daysAgo(150), comment: '' },
     certificateId: 'AD-CERT-2026-0041', evaluation: baseEval(85, { reqAccuracy: 86, groundedness: 85, hallucination: 90, safety: 86, scenarioCoverage: 80, traceability: 86, cost: 88, latency: 85 }),

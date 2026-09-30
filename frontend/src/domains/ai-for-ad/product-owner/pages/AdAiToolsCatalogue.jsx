@@ -70,7 +70,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Autonomous Driving, ADAS, and SDV Platform embedded programs.',
     dataRestrictions: 'EU Sovereign On-Premise telemetry; zero external model training. Code tokens processed in Frankfurt VPC.',
     ownerName: 'M. Rossi (Embedded Tooling Lead)',
-    ownerEmail: 'm.rossi@stellantis.com',
+    ownerEmail: 'm.rossi@tcs.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Team Lead Seat Approval (Pending Review)',
@@ -96,9 +96,9 @@ const TOOLS_DATA = [
     integrations: 'GitLab CI, Clang-Tidy plugin, QNX Neutrino toolchain, Jenkins Automotive.',
     licensing: 'Floating developer pool license (AD Embedded Core BU).',
     approvedProjects: 'All ASIL-C and ASIL-D autonomous driving software modules.',
-    dataRestrictions: 'All analysis executed on local build runners; no code snippet leaves Stellantis intranet.',
+    dataRestrictions: 'All analysis executed on local build runners; no code snippet leaves TCS intranet.',
     ownerName: 'L. Bianchi (Software Quality Lead)',
-    ownerEmail: 'l.bianchi@stellantis.com',
+    ownerEmail: 'l.bianchi@tcs.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Safety Manager Review (1-2 days)',
@@ -126,7 +126,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Next-Gen Perception R&D, Level 3 Highway Chauffeur programs.',
     dataRestrictions: 'Strictly restricted to authorized NVIDIA Orin target hardware sandbox environments.',
     ownerName: 'A. Novotny (Compute Optimization Lead)',
-    ownerEmail: 'a.novotny@stellantis.com',
+    ownerEmail: 'a.novotny@tcs.com',
     stepper: {
       step1: 'Complete (Captured via Portal)',
       step2: 'Compute Architecture Board Approval',
@@ -156,7 +156,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Safety-critical Autonomous Driving programs only (ASIL-B and above).',
     dataRestrictions: 'Raw telemetry and hardware test logs must remain within EU sovereign data centers per ISO 26262 traceability requirements.',
     ownerName: 'J. Fischer (Systems Engineering Tooling Lead)',
-    ownerEmail: 'j.fischer@stellantis.com',
+    ownerEmail: 'j.fischer@tcs.com',
     stepper: {
       step1: 'Complete (Captured via PM portal)',
       step2: 'Systems Engineering Approval (Capacity check on Rigs 1–4)',
@@ -184,7 +184,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All ASIL-D software projects across STLA Large & Medium platforms.',
     dataRestrictions: 'Test models and coverage archives stored in dedicated ISO 26262 audit vault.',
     ownerName: 'E. Becker (Software Safety & Verification Lead)',
-    ownerEmail: 'e.becker@stellantis.com',
+    ownerEmail: 'e.becker@tcs.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Verification Lead Approval',
@@ -212,7 +212,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Level 2+ and Level 3 Automated Driving programs.',
     dataRestrictions: 'Synthetic scenario assets cleared for open collaborative research and tier-1 vendor testing.',
     ownerName: 'D. Klein (Simulation & Virtual Verification Lead)',
-    ownerEmail: 'd.klein@stellantis.com',
+    ownerEmail: 'd.klein@tcs.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'Simulation Cluster Allocation Check',
@@ -240,9 +240,9 @@ const TOOLS_DATA = [
     integrations: 'Enterprise Architect REST sync, GitHub dependency graph, Bazel build graph analyzer.',
     licensing: 'Enterprise domain license (Global Software Architecture Office).',
     approvedProjects: 'All AUTOSAR Adaptive, SOA & SDV Architecture initiatives.',
-    dataRestrictions: 'Internal Stellantis network only; proprietary ECU architectural schematics.',
+    dataRestrictions: 'Internal TCS network only; proprietary ECU architectural schematics.',
     ownerName: 'C. Dupont (Global Architecture Office Lead)',
-    ownerEmail: 'c.dupont@stellantis.com',
+    ownerEmail: 'c.dupont@tcs.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Architecture Domain Review (Pending)',
@@ -270,7 +270,7 @@ const TOOLS_DATA = [
     approvedProjects: 'STLA Brain, STLA AutoDrive, and SmartCockpit programs.',
     dataRestrictions: 'Interface contracts restricted to internal vehicle network security groups.',
     ownerName: 'V. Laurent (Interface Governance Lead)',
-    ownerEmail: 'v.laurent@stellantis.com',
+    ownerEmail: 'v.laurent@tcs.com',
     stepper: {
       step1: 'Complete (Submitted)',
       step2: 'SOA Governance Board Sign-Off',
@@ -295,12 +295,12 @@ const TOOLS_DATA = [
       'Cryptographic signature validation and secure boot certificate check.',
       'Virtual ECU staging and automated deployment gate orchestration.'
     ],
-    integrations: 'GitHub Actions, Jenkins, Artifactory, Stellantis OTA Flash Server, HSM Key Vault.',
+    integrations: 'GitHub Actions, Jenkins, Artifactory, TCS OTA Flash Server, HSM Key Vault.',
     licensing: 'Central DevOps platform license (Free for all internal AD teams).',
     approvedProjects: 'All Vehicle Software Integration & OTA Flash Programs.',
     dataRestrictions: 'Firmware binaries strictly locked to EU Sovereign Artifact Registry.',
     ownerName: 'D. Weber (DevOps Platforms Core Lead)',
-    ownerEmail: 'd.weber@stellantis.com',
+    ownerEmail: 'd.weber@tcs.com',
     stepper: {
       step1: 'Complete (Automated)',
       step2: 'CI/CD Target Cluster Validation',
@@ -328,7 +328,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Autonomous Driving integration test benches and pre-series prototypes.',
     dataRestrictions: 'Firmware images decrypted inside secure hardware module at flash time.',
     ownerName: 'G. Morales (Hardware Bench Operations)',
-    ownerEmail: 'g.morales@stellantis.com',
+    ownerEmail: 'g.morales@tcs.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Lab Hardware Rig Assignment',
@@ -358,7 +358,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Production Vision, Radar, and Trajectory Planning AI models.',
     dataRestrictions: 'Compliant with UNECE R156 software update & model monitoring traceability.',
     ownerName: 'S. Mehta (MLOps Operations Lead)',
-    ownerEmail: 's.mehta@stellantis.com',
+    ownerEmail: 's.mehta@tcs.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Telemetry Ingest Validation',
@@ -386,7 +386,7 @@ const TOOLS_DATA = [
     approvedProjects: 'High-speed Ethernet and AD sensor bus validation programs.',
     dataRestrictions: 'Raw packet logs scrubbed of GPS locations and vehicle VIN identifiers.',
     ownerName: 'T. Richter (Vehicle Network Architecture Lead)',
-    ownerEmail: 't.richter@stellantis.com',
+    ownerEmail: 't.richter@tcs.com',
     stepper: {
       step1: 'Complete (Submitted)',
       step2: 'Network Security Audit',
@@ -416,7 +416,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Level 2+ and Level 3 Perception & Sensor Fusion R&D.',
     dataRestrictions: 'GDPR pedestrian facial/license-plate anonymization mandatory; restricted access boundary.',
     ownerName: 'L. Chen (Perception Data Engineering Lead)',
-    ownerEmail: 'l.chen@stellantis.com',
+    ownerEmail: 'l.chen@tcs.com',
     stepper: {
       step1: 'Complete (Logged)',
       step2: 'Data Protection & GDPR Compliance Review',
@@ -444,7 +444,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Level 3 Automated Highway Drive and Urban Pilot R&D.',
     dataRestrictions: 'Strict sovereign boundary enforcement; raw LIDAR point clouds cannot leave EU.',
     ownerName: 'H. Berg (LiDAR & Sensor Infrastructure Lead)',
-    ownerEmail: 'h.berg@stellantis.com',
+    ownerEmail: 'h.berg@tcs.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Storage Budget & Quota Sign-Off',
@@ -474,7 +474,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Legacy ECU platform porting, STLA Brain migration programs.',
     dataRestrictions: 'Source code remains strictly within isolated on-premise container runner.',
     ownerName: 'P. Becker (Embedded Core Modernization Lead)',
-    ownerEmail: 'p.becker@stellantis.com',
+    ownerEmail: 'p.becker@tcs.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'Legacy ECU Compatibility Review',
@@ -502,7 +502,7 @@ const TOOLS_DATA = [
     approvedProjects: 'Powertrain and Chassis Gateway migration to STLA Brain.',
     dataRestrictions: 'Proprietary ECU legacy firmware kept strictly on on-premise compilation servers.',
     ownerName: 'K. Lindholm (Core Architecture Migration)',
-    ownerEmail: 'k.lindholm@stellantis.com',
+    ownerEmail: 'k.lindholm@tcs.com',
     stepper: {
       step1: 'Complete (Auto-registered)',
       step2: 'Platform Engineering Assessment',
@@ -528,11 +528,11 @@ const TOOLS_DATA = [
       'Automated compliance audit readiness reports for ISO 26262 Part 3, 4, 6.'
     ],
     integrations: 'Confluence, Jira, PTC Integrity, Polarion ALM, SharePoint DMS.',
-    licensing: 'Stellantis Enterprise Knowledge Site License.',
+    licensing: 'TCS Enterprise Knowledge Site License.',
     approvedProjects: 'All Systems Engineering, NCAP & ISO 26262 programs.',
     dataRestrictions: 'Role-based access control (RBAC) enforced per safety classification tier.',
     ownerName: 'A. Kowalski (Engineering Knowledge Lead)',
-    ownerEmail: 'a.kowalski@stellantis.com',
+    ownerEmail: 'a.kowalski@tcs.com',
     stepper: {
       step1: 'Complete (Auto-verified)',
       step2: 'Department Scope Assignment',
@@ -556,11 +556,11 @@ const TOOLS_DATA = [
       'Instant audit-trail diffing between baseline releases.'
     ],
     integrations: 'Siemens Polarion ALM, IBM Rational DOORS, Jira Safety, Confluence.',
-    licensing: 'Enterprise Engineering Systems license (All Stellantis systems engineers).',
+    licensing: 'Enterprise Engineering Systems license (All TCS systems engineers).',
     approvedProjects: 'All active car programs with safety-relevant electronic systems.',
     dataRestrictions: 'Controlled safety documentation; export watermarking enforced.',
     ownerName: 'M. Fournier (Functional Safety Compliance Director)',
-    ownerEmail: 'm.fournier@stellantis.com',
+    ownerEmail: 'm.fournier@tcs.com',
     stepper: {
       step1: 'Complete (Logged)',
       step2: 'Project Safety Manager Endorsement',
@@ -590,7 +590,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All connected, software-defined vehicle (SDV) and ADAS ECU projects.',
     dataRestrictions: 'Scan results are strictly classified Confidential; access restricted to designated Security & Compliance role holders.',
     ownerName: 'R. Kapoor (Product Security Team Lead)',
-    ownerEmail: 'r.kapoor@stellantis.com',
+    ownerEmail: 'r.kapoor@tcs.com',
     stepper: {
       step1: 'Complete (Request Submitted)',
       step2: 'Security Team Review & Threat Assessment (In Progress)',
@@ -618,7 +618,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All connected vehicle architectures, Telematics Box (T-Box), and Gateway ECUs.',
     dataRestrictions: 'Vulnerability exploit payloads classified Secret; strictly sandboxed hardware rigs.',
     ownerName: 'N. Zhao (Cybersecurity Testing Lead)',
-    ownerEmail: 'n.zhao@stellantis.com',
+    ownerEmail: 'n.zhao@tcs.com',
     stepper: {
       step1: 'Complete (Captured)',
       step2: 'Chief Security Officer Authorization',
@@ -641,12 +641,12 @@ const TOOLS_DATA = [
       'Certificate expiry tracking and automated renewal for connected fleet PKI infrastructures.',
       'Zero-trust cryptographic gating for production software binary releases.'
     ],
-    integrations: 'HashiCorp Vault, Stellantis PKI Infrastructure, Lauterbach HSM debugger.',
+    integrations: 'HashiCorp Vault, TCS PKI Infrastructure, Lauterbach HSM debugger.',
     licensing: 'Central Security Infrastructure allocation.',
     approvedProjects: 'All vehicle ECUs implementing Secure Boot, SecOC, or OTA capabilities.',
     dataRestrictions: 'Cryptographic keys never exposed; only public certificates and validation attestations processed.',
     ownerName: 'O. Dubois (Vehicle Cryptography Lead)',
-    ownerEmail: 'o.dubois@stellantis.com',
+    ownerEmail: 'o.dubois@tcs.com',
     stepper: {
       step1: 'Complete (Recorded)',
       step2: 'PKI Security Group Approval',
@@ -676,7 +676,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Software & AD Product Backlog Management teams.',
     dataRestrictions: 'Internal confidential product backlogs and release roadmap milestones.',
     ownerName: 'E. Marchetti (Agile Product Operations Lead)',
-    ownerEmail: 'e.marchetti@stellantis.com',
+    ownerEmail: 'e.marchetti@tcs.com',
     stepper: {
       step1: 'Complete (PM Portal)',
       step2: 'Agile PM Lead Endorsement',
@@ -704,7 +704,7 @@ const TOOLS_DATA = [
     approvedProjects: 'All Autonomous Driving Release Programs (Release 4.2, Release 3.4).',
     dataRestrictions: 'Aggregated sprint analytics only; personal developer performance data scrubbed.',
     ownerName: 'M. Santoro (Product Delivery Director)',
-    ownerEmail: 'm.santoro@stellantis.com',
+    ownerEmail: 'm.santoro@tcs.com',
     stepper: {
       step1: 'Complete (Auto-logged)',
       step2: 'Program PM Lead Sign-Off',
@@ -811,13 +811,13 @@ export default function AdAiToolsCatalogue() {
 
   const handleCopyGuideSnippet = () => {
     if (!guideModalTool) return;
-    const snippet = `# Stellantis CI/CD Pipeline Integration: ${guideModalTool.title}
+    const snippet = `# TCS CI/CD Pipeline Integration: ${guideModalTool.title}
 # Environment: EU-Frankfurt Sovereign Cluster (ISO 26262 Gate)
 tool_integration:
   name: "${guideModalTool.title}"
   version: "${guideModalTool.edition}"
-  endpoint: "https://tools.ad.stellantis.internal/v1/${guideModalTool.id}/webhook"
-  auth_header: "Bearer \${STELLANTIS_TOOL_TOKEN}"
+  endpoint: "https://tools.ad.tcs.internal/v1/${guideModalTool.id}/webhook"
+  auth_header: "Bearer \${TCS_TOOL_TOKEN}"
   compliance_check:
     enabled: true
     block_on_violation: true
@@ -1297,7 +1297,7 @@ tool_integration:
               <div>
                 <h3 className="ad-tools-modal-title">{guideModalTool.title} Integration Guide</h3>
                 <span style={{ fontSize: '0.7rem', color: '#64748b' }}>
-                  Stellantis CI/CD Pipeline &amp; Webhook Setup
+                  TCS CI/CD Pipeline &amp; Webhook Setup
                 </span>
               </div>
               <button onClick={() => setGuideModalTool(null)} className="ad-tools-drawer-close">
@@ -1307,17 +1307,17 @@ tool_integration:
 
             <div className="ad-tools-modal-body">
               <div style={{ fontSize: '0.74rem', color: '#334155' }}>
-                Add the following configuration to your project&apos;s <code>.stellantis-ci.yml</code> or Bazel workspace configuration:
+                Add the following configuration to your project&apos;s <code>.tcs-ci.yml</code> or Bazel workspace configuration:
               </div>
 
               <div className="ad-tools-code-block">
-{`# Stellantis CI/CD Pipeline Integration: ${guideModalTool.title}
+{`# TCS CI/CD Pipeline Integration: ${guideModalTool.title}
 # Environment: EU-Frankfurt Sovereign Cluster (ISO 26262 Gate)
 tool_integration:
   name: "${guideModalTool.title}"
   version: "${guideModalTool.edition}"
-  endpoint: "https://tools.ad.stellantis.internal/v1/${guideModalTool.id}/webhook"
-  auth_header: "Bearer \${STELLANTIS_TOOL_TOKEN}"
+  endpoint: "https://tools.ad.tcs.internal/v1/${guideModalTool.id}/webhook"
+  auth_header: "Bearer \${TCS_TOOL_TOKEN}"
   compliance_check:
     enabled: true
     block_on_violation: true
@@ -1362,7 +1362,7 @@ tool_integration:
               <div>
                 <h3 className="ad-tools-modal-title">Propose New Engineering Tool</h3>
                 <span style={{ fontSize: '0.7rem', color: '#64748b' }}>
-                  Submit candidate software for Stellantis Automotive Toolchain onboarding
+                  Submit candidate software for TCS Automotive Toolchain onboarding
                 </span>
               </div>
               <button onClick={() => setIsNewToolModalOpen(false)} className="ad-tools-drawer-close">
@@ -1402,7 +1402,7 @@ tool_integration:
                 <label className="ad-tools-form-label">Vendor or Open-Source Origin</label>
                 <input
                   type="text"
-                  placeholder="e.g. Vector Informatik, NVIDIA, Internal Stellantis R&D"
+                  placeholder="e.g. Vector Informatik, NVIDIA, Internal TCS R&D"
                   value={newToolVendor}
                   onChange={(e) => setNewToolVendor(e.target.value)}
                   className="ad-tools-form-input"

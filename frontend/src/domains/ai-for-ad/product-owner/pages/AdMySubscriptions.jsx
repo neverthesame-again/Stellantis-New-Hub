@@ -299,7 +299,7 @@ const INITIAL_SUBSCRIPTIONS = [
     category: 'Governance',
     level: 'Enterprise',
     tagClass: 'ad-tag-enterprise',
-    scope: 'Stellantis Group-Wide Directive',
+    scope: 'TCS Group-Wide Directive',
     quotaReadout: 'EU Frankfurt On-Prem Sovereign Boundary',
     telemetry: 'Prohibits confidential vehicle telemetry egress to public clouds',
     status: 'Enforced • Corporate AI Safety',
@@ -335,7 +335,7 @@ const INITIAL_SUBSCRIPTIONS = [
     status: 'Live Sync • Weekly',
     isExpiring: false,
     burnPct: 87,
-    details: 'Executive compliance overview auditing ISO 26262, UNECE R157, and Stellantis standards.'
+    details: 'Executive compliance overview auditing ISO 26262, UNECE R157, and TCS standards.'
   },
   {
     id: 'sub-dash-3',
@@ -343,7 +343,7 @@ const INITIAL_SUBSCRIPTIONS = [
     category: 'Dashboard',
     level: 'Enterprise',
     tagClass: 'ad-tag-enterprise',
-    scope: 'Stellantis Central AI Office',
+    scope: 'TCS Central AI Office',
     quotaReadout: 'Group-wide compute telemetry',
     telemetry: 'Monthly token consumption, GPU cluster utilization, and cost quotas',
     status: 'Live Sync • Monthly',
@@ -958,7 +958,7 @@ export default function AdMySubscriptions() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.78rem' }}>
               <p style={{ margin: 0, color: 'var(--text-secondary)' }}>
-                Submit a capacity adjustment request to the Stellantis AI Governance Office:
+                Submit a capacity adjustment request to the TCS AI Governance Office:
               </p>
 
               <div>
