@@ -49,17 +49,18 @@ export const EXPERIENCE_SUBPAGES = {
   // AMS owns its sub-page list (journey order) in its own domain folder
   'AI for AMS': AMS_EXPERIENCE_SUBPAGES,
   'AI for AD': [
-    { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders },
-    { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '9' },
-    { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
-    { id: 'agents',        label: 'AI Studio',          icon: Bot,           badge: '8' },
-    { id: 'harness',      label: 'AI Harness',         icon: PlayCircle,    badge: '1' },
+    // { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders },
+    // { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '9' },
+    { id: 'agents',        label: 'Agent Studio',       icon: Bot,           badge: '8' },
+    { id: 'harness',       label: 'AI Harness',         icon: PlayCircle,    badge: '1' },
     { id: 'evaluation',    label: 'Evaluation Center',  icon: Gauge,         badge: '5' },
-    { id: 'governance',    label: 'Governance Center',  icon: Scale,         badge: '4' },
-    { id: 'knowledge',     label: 'Knowledge Fabric',   icon: Network,       badge: 'SDLC' },
+    { id: 'knowledge',     label: 'Knowledge Fabric',   icon: Network },
     { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '23' },
-    { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '20' }
+    { id: 'finops',        label: 'FinOps',             icon: DollarSign },
+    { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
+    { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '20' },
+    { id: 'governance',    label: 'Governance Center',  icon: Scale,         badge: '4' }
   ]
 };
 
-export const defaultSubPage = (domain) => EXPERIENCE_SUBPAGES[domain]?.[0]?.id || 'persona';
+export const defaultSubPage = (domain) => EXPERIENCE_SUBPAGES[domain]?.[0]?.id || 'agents';

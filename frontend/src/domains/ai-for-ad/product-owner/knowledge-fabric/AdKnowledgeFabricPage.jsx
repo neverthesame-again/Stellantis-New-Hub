@@ -144,7 +144,7 @@ export default function AdKnowledgeFabricPage() {
           </div>
           <div>
             <h2 className="ad-kg-page-title">
-              <span>AD SDLC Knowledge Fabric</span>
+              <span>Knowledge Fabric</span>
               <span className="st-badge badge-info" style={{ fontSize: '0.65rem' }}>ASPICE CL2 · ISO 26262</span>
             </h2>
             <p className="ad-kg-page-desc">

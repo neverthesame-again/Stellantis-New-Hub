@@ -32,11 +32,9 @@ import {
   Bell,
   BarChart3,
   Wrench,
-  Bot,
-  Wallet
+  Bot
 } from 'lucide-react';
 import '../adMySubscriptions.css';
-import AdSubscriptionFinOps from '../finops/AdSubscriptionFinOps';
 
 // 8 Categories specified in PRD §5.6
 const CATEGORIES = [
@@ -55,7 +53,7 @@ const CATEGORIES = [
 const LEVELS = ['All Levels', 'Individual', 'Team', 'Project', 'Portfolio', 'Enterprise'];
 
 // 20 Reused Ecosystem Subscriptions (Direct match to PRD checklist & Tabs 1–5)
-const INITIAL_SUBSCRIPTIONS = [
+export const INITIAL_SUBSCRIPTIONS = [
   // 1. MODELS (3)
   {
     id: 'sub-mod-1',
@@ -357,7 +355,6 @@ export default function AdMySubscriptions() {
   // Subscriptions Inventory State (supports live unsubscribe and renewal)
   const [subscriptionsList, setSubscriptionsList] = useState(INITIAL_SUBSCRIPTIONS);
   const [unsubscribedItem, setUnsubscribedItem] = useState(null);
-  const [view, setView] = useState('inventory');
 
   // Filters State
   const [activeCategory, setActiveCategory] = useState('all');
@@ -526,33 +523,19 @@ export default function AdMySubscriptions() {
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-            <div className="ad-subs-view-switch" role="tablist" aria-label="My Subscriptions view">
-              <button role="tab" aria-selected={view === 'inventory'} className={view === 'inventory' ? 'active' : ''} onClick={() => setView('inventory')}>
-                <Layers size={13} />
-                <span>Inventory</span>
-              </button>
-              <button role="tab" aria-selected={view === 'finops'} className={view === 'finops' ? 'active' : ''} onClick={() => setView('finops')}>
-                <Wallet size={13} />
-                <span>FinOps</span>
-                <span className="ad-subs-view-new">New</span>
-              </button>
-            </div>
-
-            {view === 'inventory' && (
-              <button
-                onClick={() => {
-                  setActiveCategory('all');
-                  setActiveLevel('All Levels');
-                  setSearchQuery('');
-                  showToast('Filters reset to view all active subscriptions');
-                }}
-                className="ad-btn-sub-action"
-                style={{ fontSize: '0.72rem', display: 'flex', alignItems: 'center', gap: '6px' }}
-              >
-                <RotateCcw size={13} />
-                <span>Reset View</span>
-              </button>
-            )}
+            <button
+              onClick={() => {
+                setActiveCategory('all');
+                setActiveLevel('All Levels');
+                setSearchQuery('');
+                showToast('Filters reset to view all active subscriptions');
+              }}
+              className="ad-btn-sub-action"
+              style={{ fontSize: '0.72rem', display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              <RotateCcw size={13} />
+              <span>Reset View</span>
+            </button>
           </div>
         </div>
 
@@ -583,15 +566,6 @@ export default function AdMySubscriptions() {
         </div>
       </div>
 
-      {view === 'finops' && (
-        <AdSubscriptionFinOps
-          subscriptions={subscriptionsList}
-          onInspect={setDrawerItem}
-          onNotify={showToast}
-        />
-      )}
-
-      {view === 'inventory' && (<>
       {/* Controls Bar: Category Chips, Level Filter & Search */}
       <div className="ad-subs-controls-bar">
         {/* Row 1: Category Filter Chips */}
@@ -771,7 +745,6 @@ export default function AdMySubscriptions() {
           ))}
         </div>
       )}
-      </>)}
 
       {/* ================================================================= */}
       {/* REAL-TIME TELEMETRY & USAGE SLIDE-OVER DRAWER                     */}
