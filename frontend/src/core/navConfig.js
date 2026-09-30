@@ -10,7 +10,9 @@ import {
   PlayCircle,
   Gauge,
   Scale,
-  Network
+  Network,
+  DollarSign,
+  ShieldAlert
 } from 'lucide-react';
 import { AMS_EXPERIENCE_SUBPAGES } from '../domains/ai-for-ams/navigation/amsRoutes.js';
 
@@ -31,6 +33,8 @@ export const INBOX_COUNTS = {
 const ENG_SUBPAGES = [
   { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders,       badge: '9' },
   { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '7' },
+  { id: 'finops',        label: 'FinOps and AI Cost', icon: DollarSign },
+  { id: 'governance',    label: 'Risk & Governance',  icon: ShieldAlert },
   { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
   { id: 'agents',        label: 'Agent & Workflows',  icon: Bot,           badge: '8' },
   { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '10' },
