@@ -5,8 +5,8 @@ import './auth.css';
 
 // ── Domain → Role mapping (mirrors WorkspaceBar)
 const DOMAIN_ROLE_MAP = {
-  'AI for AMS':          ['Head of AMS'],
   'Engineering Leader':  ['Chief AI Officer'],
+  'AI for AMS':          ['Head of AMS'],
   'AI for AD':           ['Product Owner'],
 };
 
@@ -75,9 +75,9 @@ function MultiSelectDropdown({ label, options, selectedValues, onChange, placeho
 
 // ── Feature cards (shorter text for register panel)
 const FEATURES = [
-  { icon: '💻', cls: 'icon-ad',    text: <><strong>AI for AD:</strong> Workspaces for Product Owner &amp; Developer</> },
+  { icon: '🛡️', cls: 'icon-infra', text: <><strong>Engineering Leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy</> },
   { icon: '🔧', cls: 'icon-ams',   text: <><strong>AI for AMS:</strong> Incident &amp; problem desks for Support Engineer &amp; Software Engineer</> },
-  { icon: '🛡️', cls: 'icon-infra', text: <><strong>Engineering Leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy</> }
+  { icon: '💻', cls: 'icon-ad',    text: <><strong>AI for AD:</strong> Workspaces for Product Owner &amp; Developer</> }
 ];
 
 // ── Pending Approval Screen (shown after successful registration)

@@ -5,8 +5,8 @@ import './auth.css';
 
 // ── Domain → Role mapping (mirrors WorkspaceBar)
 const DOMAIN_ROLE_MAP = {
-  'AI for AMS':          ['Head of AMS'],
   'Engineering Leader':  ['Chief AI Officer'],
+  'AI for AMS':          ['Head of AMS'],
   'AI for AD':           ['Product Owner'],
 };
 
@@ -14,9 +14,9 @@ const DOMAINS = Object.keys(DOMAIN_ROLE_MAP);
 
 const FEATURES = [
   {
-    icon: '💻',
-    cls: 'icon-ad',
-    text: <><strong>AI for AD:</strong> Workspaces for Product Owner, Developer featuring code synthesis, BDD stories.</>,
+    icon: '🛡️',
+    cls: 'icon-infra',
+    text: <><strong>Engineering Leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
   },
   {
     icon: '🔧',
@@ -24,9 +24,9 @@ const FEATURES = [
     text: <><strong>AI for AMS:</strong> Specialized desks for Support Engineer &amp; Software Engineer — powering ticket triage, RCA diagnostics, PRD generator &amp; SLA watch.</>,
   },
   {
-    icon: '🛡️',
-    cls: 'icon-infra',
-    text: <><strong>Engineering Leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
+    icon: '💻',
+    cls: 'icon-ad',
+    text: <><strong>AI for AD:</strong> Workspaces for Product Owner, Developer featuring code synthesis, BDD stories.</>,
   },
 ];
 
