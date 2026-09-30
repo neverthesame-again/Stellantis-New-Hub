@@ -24,12 +24,23 @@ function AuthenticatedApp() {
     return sessionStorage.getItem('tcs_active_tab') || sessionStorage.getItem('stellantis_active_tab') || 'dashboard';
   });
 
-  // Parse user's registered domains/roles
-  const allowedDomains = user?.domain ? user.domain.split(', ') : ['AI for AMS'];
-  const allowedRoles = user?.role ? user.role.split(', ') : ['Head of AMS'];
+  // Helper to normalize domain strings
+  const normalizeDomainName = (d) => {
+    if (!d) return '';
+    const trimmed = d.trim();
+    if (trimmed.toLowerCase().includes('engineering')) return 'Engineering Leader';
+    return trimmed;
+  };
+
+  // Parse user's registered domains/roles with normalized domain names
+  const allowedDomains = user?.domain
+    ? Array.from(new Set(user.domain.split(',').map(d => normalizeDomainName(d)).filter(Boolean)))
+    : ['AI for AMS'];
+  const allowedRoles = user?.role ? user.role.split(',').map(r => r.trim()).filter(Boolean) : ['Head of AMS'];
 
   const [selectedDomain, setSelectedDomain] = useState(() => {
-    const saved = sessionStorage.getItem('tcs_domain') || sessionStorage.getItem('stellantis_domain');
+    const rawSaved = sessionStorage.getItem('tcs_domain') || sessionStorage.getItem('stellantis_domain');
+    const saved = normalizeDomainName(rawSaved);
     return saved && allowedDomains.includes(saved) ? saved : allowedDomains[0];
   });
   

@@ -405,8 +405,17 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
     onRoleChange(role);
   };
 
+  const isDomainAllowed = (optVal) => {
+    return allowedDomains.some(d => {
+      if (!d) return false;
+      if (d === optVal) return true;
+      if (optVal === 'Engineering Leader' && d.toLowerCase().includes('engineering')) return true;
+      return false;
+    });
+  };
+
   // Filter available domains based on user's allowed domains
-  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value) || (opt.value === 'Engineering Leader' && allowedDomains.some(d => d.includes('Engineering'))));
+  const availableDomains = DOMAIN_OPTIONS.filter(opt => isDomainAllowed(opt.value));
   
   // Fallback to all if somehow allowedDomains is empty to prevent crashes
   const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;

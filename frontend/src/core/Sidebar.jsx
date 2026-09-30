@@ -19,7 +19,16 @@ export default function Sidebar({
 }) {
   const [experienceOpen, setExperienceOpen] = useState(true);
 
-  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value));
+  const isDomainAllowed = (optVal) => {
+    return allowedDomains.some(d => {
+      if (!d) return false;
+      if (d === optVal) return true;
+      if (optVal === 'Engineering Leader' && d.toLowerCase().includes('engineering')) return true;
+      return false;
+    });
+  };
+
+  const availableDomains = DOMAIN_OPTIONS.filter(opt => isDomainAllowed(opt.value));
   const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;
   // Roles specifically for the selected domain
   const domainRoles = DOMAIN_ROLE_MAP[selectedDomain] || [];
