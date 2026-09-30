@@ -30,7 +30,7 @@ app.use("/api/ad", adRouter);
 app.get("/api/health", (req, res) => {
   res.json({
     status: "healthy",
-    application: "AI-Native Engineering Operating Model Hub",
+    application: "TCS - AI-Native Engineering Operating Model Hub",
     activeDomains: [
       { id: "ai-for-ams", name: "AI for AMS", owner: "Tony", persona: "Tony - Head of AMS", path: "/api/ams" },
       { id: "engineering-leaders", name: "Engineering Leaders", owner: "Alex", persona: "Alex - Chief AI Officer", path: "/api/engineering" },
@@ -42,7 +42,7 @@ app.get("/api/health", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`====================================================`);
-  console.log(` AI-Native Engineering Operating Model Hub - Backend`);
+  console.log(` TCS - AI-Native Engineering Operating Model Hub - Backend`);
   console.log(` Server running on http://localhost:${PORT}`);
   console.log(` AMS Domain:         http://localhost:${PORT}/api/ams`);
   console.log(` Engineering Domain: http://localhost:${PORT}/api/engineering`);

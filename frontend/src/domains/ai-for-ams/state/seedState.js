@@ -27,8 +27,9 @@ import { SEED_PROGRAMMES, SEED_PROMPT_RULES } from './seed/opsSeed';
  * - v3: workflows carry their node graph; adds harness and workflow runs.
  * - v4: adds live incident responses (war room and RCA hand-off).
  * - v5: adds programmes, the active programme, paused agents and prompt rules.
+ * - v6: changes brownfield pipeline initiation requests to application enhancement requests.
  */
-export const AMS_STUDIO_SCHEMA_VERSION = 5;
+export const AMS_STUDIO_SCHEMA_VERSION = 6;
 
 /**
  * @typedef {Object} AmsAuditEntry

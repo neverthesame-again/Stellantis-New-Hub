@@ -102,7 +102,7 @@ function PendingApprovalScreen({ profile, onBackToLogin }) {
       <h2 className="auth-pending-title">Registration Submitted</h2>
 
       <p className="auth-pending-message">
-        Thank you for registering on the AI-Native Engineering Operating Model Hub. Your account is currently under review by the platform administrator.
+        Thank you for registering on the TCS - AI-Native Engineering Operating Model Hub. Your account is currently under review by the platform administrator.
         <br /><br />
         Please check back shortly — your workspace will be ready once access has been granted.
       </p>
@@ -143,19 +143,27 @@ export default function RegisterPage({ onNavigateToLogin }) {
   const [errorMsg, setErrorMsg]         = useState('');
   const [pendingProfile, setPendingProfile] = useState(null); // set → show pending screen
 
+  // Dynamic list of roles based on selected domains
+  const availableRoles = domains.length > 0
+    ? [...new Set(domains.flatMap(d => DOMAIN_ROLE_MAP[d] || []))]
+    : ALL_ROLES;
+
   // ── Auto-map roles and domains exactly
   const handleDomainChange = (newDomains) => {
     setDomains(newDomains);
     setErrorMsg('');
     
     // Auto-select corresponding roles
-    let newRoles = [];
+    let validRoles = [];
     newDomains.forEach(d => {
       if (DOMAIN_ROLE_MAP[d]) {
-        newRoles = [...newRoles, ...DOMAIN_ROLE_MAP[d]];
+        validRoles = [...validRoles, ...DOMAIN_ROLE_MAP[d]];
       }
     });
-    setRoles(newRoles);
+    setRoles(prevRoles => {
+      const retained = prevRoles.filter(r => validRoles.includes(r));
+      return retained.length > 0 ? retained : validRoles;
+    });
   };
 
   const handleRoleChange = (newRoles) => {
@@ -163,11 +171,11 @@ export default function RegisterPage({ onNavigateToLogin }) {
     setErrorMsg('');
     
     // Auto-select corresponding domains
-    let newDomains = [];
+    let newDomains = [...domains];
     Object.keys(DOMAIN_ROLE_MAP).forEach(d => {
       const domainRoles = DOMAIN_ROLE_MAP[d];
       if (domainRoles.some(r => newRoles.includes(r))) {
-        newDomains.push(d);
+        if (!newDomains.includes(d)) newDomains.push(d);
       }
     });
     setDomains(newDomains);
@@ -254,7 +262,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>AI-Native Engineering Operating Model Hub</span>
+              <span>TCS - AI-Native Engineering Operating Model Hub</span>
             </div>
             <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
             <p className="auth-left-subtext">
@@ -287,7 +295,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
         <div className="auth-left">
           <div className="auth-platform-badge">
             <div className="auth-platform-dot" />
-            <span>AI-Native Engineering Operating Model Hub</span>
+            <span>TCS - AI-Native Engineering Operating Model Hub</span>
           </div>
 
           <div>
@@ -309,7 +317,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
 
         {/* ── Right Panel ── */}
         <div className="auth-right">
-          <h2 className="auth-form-title">AI-Native Engineering Operating Model Hub</h2>
+          <h2 className="auth-form-title">TCS - AI-Native Engineering Operating Model Hub</h2>
           <p className="auth-form-subtitle">Create your account</p>
 
           {errorMsg && (
@@ -452,7 +460,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
             {/* Role */}
             <MultiSelectDropdown
               label="Roles"
-              options={ALL_ROLES}
+              options={availableRoles}
               selectedValues={roles}
               onChange={handleRoleChange}
               placeholder="Select Role(s)…"

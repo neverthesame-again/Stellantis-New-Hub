@@ -75,10 +75,10 @@ export default function WorkflowInbox() {
       color: '#8b5cf6'
     },
     { 
-      id: 'Brownfield pipeline initiation requests', 
-      label: 'Brownfield pipeline initiation requests', 
-      shortLabel: 'Brownfield Pipelines',
-      count: items.filter(i => i.type.toLowerCase().includes('brownfield')).length, 
+      id: 'Application enhancement requests', 
+      label: 'Application enhancement requests', 
+      shortLabel: 'Application Enhancements',
+      count: items.filter(i => i.type.toLowerCase().includes('enhancement') || i.type.toLowerCase().includes('brownfield')).length, 
       icon: RefreshCw,
       color: '#06b6d4'
     },
@@ -110,7 +110,12 @@ export default function WorkflowInbox() {
 
   const filteredItems = selectedType === 'All' 
     ? items 
-    : items.filter(i => i.type.toLowerCase().includes(selectedType.toLowerCase()));
+    : items.filter(i => {
+        if (selectedType === 'Application enhancement requests') {
+          return i.type.toLowerCase().includes('enhancement') || i.type.toLowerCase().includes('brownfield');
+        }
+        return i.type.toLowerCase().includes(selectedType.toLowerCase());
+      });
 
   // The selection always resolves to an item in the current filter: the chosen
   // one when it is visible, otherwise the first. Deriving it (rather than

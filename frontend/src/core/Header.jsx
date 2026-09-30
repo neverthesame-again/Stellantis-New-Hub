@@ -4,7 +4,7 @@ import { useAuth } from '../auth/AuthContext';
 
 const isLight = (theme) => theme === 'light';
 
-export default function Header({ currentTheme, toggleTheme, activePersona }) {
+export default function Header({ currentTheme, toggleTheme, activePersona, selectedDomain, selectedRole }) {
   const { user, logout } = useAuth();
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -60,7 +60,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
           letterSpacing: '-0.01em',
           userSelect: 'none'
         }}>
-          AI-Native Engineering Operating Model Hub
+          TCS - AI-Native Engineering Operating Model Hub
         </span>
       </div>
 
@@ -121,7 +121,7 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
             <div style={{ lineHeight: 1.2 }}>
               <div style={{ fontWeight: 700, fontSize: '0.85rem', color: nameColor }}>{user?.full_name || 'User'}</div>
               <div style={{ fontSize: '0.68rem', color: roleColor, whiteSpace: 'nowrap' }}>
-                {activePersona.role} • {activePersona.domain}
+                {(selectedRole || activePersona?.role)} • {(selectedDomain || activePersona?.domain)}
               </div>
             </div>
             <ChevronDown size={14} color={chevronColor} style={{ flexShrink: 0 }} />

@@ -134,12 +134,14 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
   const dropdownRef = useRef(null);
   const triggerRef = useRef(null);
   const [menuPos, setMenuPos] = useState({ top: 0, left: 0 });
+  const [triggerWidth, setTriggerWidth] = useState(240);
 
   // Recalculate menu position when opening (for fixed-position mode inside sidebar)
   useEffect(() => {
     if (isOpen && fullWidth && triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
       setMenuPos({ top: rect.bottom + 6, left: rect.left });
+      setTriggerWidth(rect.width);
     }
   }, [isOpen, fullWidth]);
 
@@ -170,9 +172,9 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
         position: 'fixed',
         top: `${menuPos.top}px`,
         left: `${menuPos.left}px`,
-        minWidth: '280px',
-        width: 'max-content',
-        maxWidth: '340px',
+        width: `${triggerWidth}px`,
+        minWidth: '220px',
+        maxWidth: '300px',
         boxSizing: 'border-box',
         background: 'var(--bg-surface-elevated)',
         border: '1px solid var(--border-color)',
@@ -199,19 +201,29 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
       };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+    <div style={{
+      display: 'flex',
+      flexDirection: fullWidth ? 'column' : 'row',
+      alignItems: fullWidth ? 'stretch' : 'center',
+      gap: fullWidth ? '4px' : '8px',
+      width: fullWidth ? '100%' : 'auto',
+      boxSizing: 'border-box'
+    }}>
       {label && (
         <label style={{
-          fontSize: '0.8rem',
+          fontSize: fullWidth ? '0.70rem' : '0.8rem',
           color: 'var(--text-muted)',
-          fontWeight: 600,
-          letterSpacing: '0.03em'
+          fontWeight: 700,
+          letterSpacing: fullWidth ? '0.06em' : '0.03em',
+          textTransform: fullWidth ? 'uppercase' : 'none',
+          userSelect: 'none',
+          paddingLeft: fullWidth ? '2px' : '0'
         }}>
           {label}
         </label>
       )}
 
-      <div ref={dropdownRef} style={{ position: 'relative' }}>
+      <div ref={dropdownRef} style={{ position: 'relative', width: fullWidth ? '100%' : 'auto' }}>
         {/* Trigger Button */}
         <button
           ref={triggerRef}
@@ -221,9 +233,11 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            gap: '10px',
-            minWidth: minWidth,
-            padding: '7px 12px 7px 12px',
+            gap: '8px',
+            width: fullWidth ? '100%' : 'auto',
+            minWidth: fullWidth ? '0' : minWidth,
+            boxSizing: 'border-box',
+            padding: '7px 11px',
             background: isOpen ? 'var(--bg-subtle)' : 'var(--bg-surface)',
             border: isOpen ? '1.5px solid var(--stellantis-action)' : '1.5px solid var(--border-color)',
             borderRadius: '9px',
@@ -246,13 +260,13 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
             }
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', minWidth: 0, flex: 1 }}>
             {SelectedIcon && (
               <SelectedIcon size={15} color="var(--stellantis-action)" style={{ flexShrink: 0 }} />
             )}
             <span style={{
-              fontSize: '0.85rem',
-              fontWeight: 700,
+              fontSize: '0.82rem',
+              fontWeight: 600,
               color: 'var(--text-primary)',
               whiteSpace: 'nowrap',
               overflow: 'hidden',
@@ -306,7 +320,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                     if (!isSelected) e.currentTarget.style.background = 'transparent';
                   }}
                 >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', overflow: 'hidden', minWidth: 0, flex: 1 }}>
                     {OptionIcon && (
                       <div style={{
                         width: '28px',
@@ -321,11 +335,14 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                         <OptionIcon size={15} color={isSelected ? 'var(--stellantis-action)' : 'var(--text-secondary)'} />
                       </div>
                     )}
-                    <div>
+                    <div style={{ overflow: 'hidden', minWidth: 0, flex: 1 }}>
                       <div style={{
                         fontWeight: isSelected ? 700 : 600,
                         fontSize: '0.84rem',
-                        color: isSelected ? 'var(--stellantis-action)' : 'var(--text-primary)'
+                        color: isSelected ? 'var(--stellantis-action)' : 'var(--text-primary)',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
                       }}>
                         {option.label}
                       </div>
@@ -333,7 +350,10 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
                         <div style={{
                           fontSize: '0.70rem',
                           color: 'var(--text-muted)',
-                          marginTop: '1px'
+                          marginTop: '1px',
+                          whiteSpace: 'nowrap',
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis'
                         }}>
                           {option.subtitle}
                         </div>

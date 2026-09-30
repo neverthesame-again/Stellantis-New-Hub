@@ -35,7 +35,12 @@ function AuthenticatedApp() {
   
   const [selectedRole, setSelectedRole] = useState(() => {
     const saved = sessionStorage.getItem('tcs_role') || sessionStorage.getItem('stellantis_role');
-    return saved && allowedRoles.includes(saved) ? saved : allowedRoles[0];
+    const validRolesForDomain = DOMAIN_ROLE_MAP[selectedDomain]?.map(opt => opt.value || opt) || [];
+    if (saved && validRolesForDomain.includes(saved) && allowedRoles.includes(saved)) {
+      return saved;
+    }
+    const matchingAllowed = allowedRoles.find(r => validRolesForDomain.includes(r));
+    return matchingAllowed || DOMAIN_PERSONA_MAP[selectedDomain]?.role || validRolesForDomain[0] || allowedRoles[0];
   });
 
   const [activeSubTab, setActiveSubTab] = useState(() => {
@@ -56,6 +61,17 @@ function AuthenticatedApp() {
       return !prev;
     });
   };
+
+  // Ensure selectedRole is always strictly aligned with selectedDomain
+  useEffect(() => {
+    const validRolesForDomain = DOMAIN_ROLE_MAP[selectedDomain]?.map(opt => opt.value || opt) || [];
+    if (validRolesForDomain.length > 0 && !validRolesForDomain.includes(selectedRole)) {
+      const fallbackRole = allowedRoles.find(r => validRolesForDomain.includes(r)) || DOMAIN_PERSONA_MAP[selectedDomain]?.role || validRolesForDomain[0];
+      if (fallbackRole) {
+        setSelectedRole(fallbackRole);
+      }
+    }
+  }, [selectedDomain, selectedRole, allowedRoles]);
 
   useEffect(() => {
     sessionStorage.setItem('tcs_active_tab', activeTab);
@@ -123,6 +139,8 @@ function AuthenticatedApp() {
       <Header
         currentTheme={theme}
         toggleTheme={toggleTheme}
+        selectedDomain={selectedDomain}
+        selectedRole={selectedRole}
         activePersona={currentPersona}
         onPersonaChange={handleDomainChange}
       />

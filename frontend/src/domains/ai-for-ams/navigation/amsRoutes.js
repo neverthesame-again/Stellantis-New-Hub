@@ -41,8 +41,8 @@ export const AMS_SUBPAGE = Object.freeze({
   HARNESS: 'harness',
   EVALUATE_APPROVE: 'evaluate-approve',
   KNOWLEDGE_FABRIC: 'knowledge-fabric',
-  MONITOR_FINOPS: 'monitor-finops',
-  MODELS_TOOLS: 'models-tools'
+  MODELS_TOOLS: 'models-tools',
+  MONITOR_FINOPS: 'monitor-finops'
 });
 
 /**
@@ -95,13 +95,6 @@ export const AMS_EXPERIENCE_SUBPAGES = Object.freeze([
     label: 'Knowledge Fabric',
     icon: Network,
     summary: 'See how incidents, services, changes, logs, known errors and runbooks connect — and which agents use them.',
-    nextStepHint: 'Watch running agents and what they cost.'
-  },
-  {
-    id: AMS_SUBPAGE.MONITOR_FINOPS,
-    label: 'Monitor & FinOps',
-    icon: Activity,
-    summary: 'Runtime health, AI spend and your active subscriptions in one place.',
     nextStepHint: 'Browse the approved models and tools agents can use.'
   },
   {
@@ -109,7 +102,14 @@ export const AMS_EXPERIENCE_SUBPAGES = Object.freeze([
     label: 'Models & Tools',
     icon: Library,
     summary: 'Approved AI models and tools available to AMS agents.',
+    nextStepHint: 'Watch running agents and what they cost.',
     badge: String(amsExperienceData.models.length + amsExperienceData.tools.length)
+  },
+  {
+    id: AMS_SUBPAGE.MONITOR_FINOPS,
+    label: 'Monitor & FinOps',
+    icon: Activity,
+    summary: 'Runtime health, AI spend and your active subscriptions in one place.'
   }
 ]);
 

@@ -275,8 +275,8 @@ export const amsWorkflowInbox = [
   },
   {
     id: "WF-INB-103",
-    title: "Brownfield Pipeline Initiation: Legacy Order Management Modernization",
-    type: "Brownfield pipeline initiation requests",
+    title: "Application Enhancement Request: Legacy Order Management Modernization",
+    type: "Application enhancement requests",
     priority: "P3",
     riskLevel: "Elevated",
     requestor: "Modernization Assistant (Agent-CodeLegacy-L2)",
@@ -293,7 +293,7 @@ export const amsWorkflowInbox = [
       pastExecutions: "Similar modernization successfully executed for Brazilian logistics gateway in Q2.",
       rollbackPlan: "Side-by-side canary proxy with 1% traffic shadow verification."
     },
-    aiRecommendation: "APPROVE PIPELINE RUN. Initiate brownfield scan and test synthesis in isolated staging sandbox.",
+    aiRecommendation: "APPROVE ENHANCEMENT RUN. Initiate application modernization scan and test synthesis in isolated staging sandbox.",
     decisionHistory: [
       { timestamp: "Sep 11, 09:00 AM", actor: "TechDebtScanner", action: "Calculated technical debt index: 82/100" },
       { timestamp: "Sep 11, 02:15 PM", actor: "Agent-CodeLegacy", action: "Synthesized containerization blueprint" }
