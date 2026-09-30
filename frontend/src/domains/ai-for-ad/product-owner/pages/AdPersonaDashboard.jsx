@@ -794,7 +794,7 @@ export default function AdPersonaDashboard({ initialLevel, onNavigateToInbox, on
               </table>
 
               <div className="ad-carve-out-alert">
-                <strong>Safety Governance Carve-Out Rule:</strong> In accordance with Stellantis Corporate Safety Guideline ST-SAF-401, no ASIL-D critical deviation may be sanctioned unilaterally by Product Management without formal counter-signature from Systems Safety Engineering.
+                <strong>Safety Governance Carve-Out Rule:</strong> In accordance with TCS Corporate Safety Guideline ST-SAF-401, no ASIL-D critical deviation may be sanctioned unilaterally by Product Management without formal counter-signature from Systems Safety Engineering.
               </div>
             </div>
 

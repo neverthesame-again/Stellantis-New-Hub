@@ -546,7 +546,7 @@ export default function AmsDashboard({ onNavigateToInbox, onNavigateToExperience
             </div>
 
             <p style={{ fontSize: '0.78rem', color: 'var(--text-muted)', margin: 0 }}>
-              Live health telemetry &amp; 30-day incident stability across Stellantis Tier-1 enterprise platforms.
+              Live health telemetry &amp; 30-day incident stability across enterprise Tier-1 platforms.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>

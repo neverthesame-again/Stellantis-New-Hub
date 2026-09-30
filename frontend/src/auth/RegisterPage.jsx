@@ -102,7 +102,7 @@ function PendingApprovalScreen({ profile, onBackToLogin }) {
       <h2 className="auth-pending-title">Registration Submitted</h2>
 
       <p className="auth-pending-message">
-        Thank you for registering on the Stellantis AI Platform. Your account is currently under review by the platform administrator.
+        Thank you for registering on the TCS Ai Operating Engineering Portal. Your account is currently under review by the platform administrator.
         <br /><br />
         Please check back shortly — your workspace will be ready once access has been granted.
       </p>
@@ -254,7 +254,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>Stellantis AI Platform</span>
+              <span>TCS Ai Operating Engineering Portal</span>
             </div>
             <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
             <p className="auth-left-subtext">
@@ -287,7 +287,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
         <div className="auth-left">
           <div className="auth-platform-badge">
             <div className="auth-platform-dot" />
-            <span>Stellantis AI Platform</span>
+            <span>TCS Ai Operating Engineering Portal</span>
           </div>
 
           <div>
@@ -309,7 +309,7 @@ export default function RegisterPage({ onNavigateToLogin }) {
 
         {/* ── Right Panel ── */}
         <div className="auth-right">
-          <h2 className="auth-form-title">Stellantis AI Platform</h2>
+          <h2 className="auth-form-title">TCS Ai Operating Engineering Portal</h2>
           <p className="auth-form-subtitle">Create your account</p>
 
           {errorMsg && (

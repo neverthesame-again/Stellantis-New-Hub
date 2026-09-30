@@ -82,7 +82,7 @@ export default function RuntimeSection({ index, runtime, live, isNew, configChan
       index={index}
       icon={Server}
       title="Runtime connection"
-      subtitle="Where the agent executes. The Stellantis AI platform brokers credentials and audit for every runtime."
+      subtitle="Where the agent executes. The TCS Ai Operating Engineering Portal brokers credentials and audit for every runtime."
       aside={!isNew && <span className={`ad-studio-badge ${meta.tone}`}>{meta.label}</span>}
     >
       <div className="ad-onb-runtime-grid" role="radiogroup" aria-label="Runtime">

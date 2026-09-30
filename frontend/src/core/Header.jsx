@@ -24,9 +24,6 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
   const headerBg        = light ? '#ffffff' : '#0e1e38';
   const headerBorder    = light ? '#e2e8f4' : '#1d3460';
   const headerShadow    = light ? '0 1px 6px rgba(14,30,56,0.08)' : '0 2px 12px rgba(6,13,28,0.50)';
-  const logoSrc         = light ? '/stellantis-light-1QxnmsD2.svg' : '/stellantis-dark-ww179IYK.svg';
-  const dividerColor    = light ? 'rgba(14,30,56,0.15)' : 'rgba(255,255,255,0.2)';
-  const subtitleColor   = light ? 'rgba(14,30,56,0.45)' : 'rgba(255,255,255,0.50)';
   const iconBtnBg       = light ? 'rgba(14,30,56,0.06)' : 'rgba(255,255,255,0.10)';
   const iconBtnBorder   = light ? 'rgba(14,30,56,0.12)' : 'rgba(255,255,255,0.15)';
   const iconBtnColor    = light ? '#0e1e38' : 'rgba(255,255,255,0.85)';
@@ -54,29 +51,16 @@ export default function Header({ currentTheme, toggleTheme, activePersona }) {
       transition: 'background 0.2s ease, box-shadow 0.2s ease'
     }}>
 
-      {/* ── Left: Stellantis Logo ── */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <img
-          src={logoSrc}
-          alt="Stellantis"
-          style={{
-            height: '24px',
-            width: 'auto',
-            objectFit: 'contain',
-            display: 'block',
-            userSelect: 'none'
-          }}
-        />
-
-        <div style={{ width: '1px', height: '22px', background: dividerColor }} />
+      {/* ── Left: Plain text branding (No Logo) ── */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
         <span style={{
-          fontSize: '0.70rem',
-          fontWeight: 600,
-          color: subtitleColor,
-          letterSpacing: '0.07em',
-          textTransform: 'uppercase'
+          fontSize: '1.05rem',
+          fontWeight: 700,
+          color: nameColor,
+          letterSpacing: '-0.01em',
+          userSelect: 'none'
         }}>
-          AI-Native Engineering Hub
+          TCS Ai Operating Engineering Portal
         </span>
       </div>
 

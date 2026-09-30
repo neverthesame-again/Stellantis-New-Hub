@@ -1,9 +1,9 @@
-# Stellantis — AI-Native Engineering Operating Model Hub
+# TCS Ai Operating Engineering Portal
 
 > POC | Multi-Persona React + Node.js Application | Conflict-Free Multi-Developer Architecture
 
 ## Overview
-A unified experience for governing, discovering, subscribing to, and operationalizing AI across software engineering and IT operations at Stellantis.
+A unified experience for governing, discovering, subscribing to, and operationalizing AI across software engineering and IT operations.
 
 ## Personas
 | Domain | Persona | Role |

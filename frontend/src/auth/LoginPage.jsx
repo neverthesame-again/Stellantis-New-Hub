@@ -244,6 +244,9 @@ export default function LoginPage({ onNavigateToRegister }) {
       await login(email.trim().toLowerCase(), password, domain, role);
       
       // Save selected domain & role to sessionStorage so App.jsx routes correctly
+      sessionStorage.setItem('tcs_domain', domain);
+      sessionStorage.setItem('tcs_role', role);
+      sessionStorage.setItem('tcs_active_tab', 'dashboard');
       sessionStorage.setItem('stellantis_domain', domain);
       sessionStorage.setItem('stellantis_role', role);
       sessionStorage.setItem('stellantis_active_tab', 'dashboard');
@@ -271,13 +274,13 @@ export default function LoginPage({ onNavigateToRegister }) {
           <div className="auth-left">
             <div className="auth-platform-badge">
               <div className="auth-platform-dot" />
-              <span>Stellantis AI Platform</span>
+              <span>TCS Ai Operating Engineering Portal</span>
             </div>
 
             <div>
               <h1 className="auth-left-headline">Welcome to the Future of Enterprise AI</h1>
               <p className="auth-left-subtext">
-                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across Stellantis Enterprise AI.
+                Sign in to access personalized AI workspaces and co-pilots tailored for your domain and role across TCS Ai Operating Engineering Portal.
               </p>
             </div>
 
@@ -293,7 +296,7 @@ export default function LoginPage({ onNavigateToRegister }) {
 
           {/* ── Right Panel ── */}
           <div className="auth-right">
-            <h2 className="auth-form-title">Stellantis AI Platform</h2>
+            <h2 className="auth-form-title">TCS Ai Operating Engineering Portal</h2>
             <p className="auth-form-subtitle">Sign in using your TCS credentials</p>
 
             {errorMsg && (

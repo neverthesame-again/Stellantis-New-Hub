@@ -76,7 +76,7 @@ export function executionPlaneNote(agent) {
   const label = runtimeLabel(agent.runtime?.type);
   if (agent.runtime?.type === 'SEL') return `Orchestration routes through ${label} execution plane via SEL Nexus automation-agents API`;
   if (agent.runtime?.type === 'BEDROCK') return `Orchestration routes through ${label} execution plane (EU-Frankfurt, Bedrock Guardrails)`;
-  if (agent.runtime?.type === 'FOUNDRY') return `Orchestration routes through ${label} execution plane (Stellantis tenant isolation)`;
+  if (agent.runtime?.type === 'FOUNDRY') return `Orchestration routes through ${label} execution plane (TCS tenant isolation)`;
   return `Orchestration routes through ${label} execution plane (${agent.runtime?.baseUrl || 'custom endpoint'})`;
 }
 

@@ -6,7 +6,9 @@ import {
   Bot,
   Wrench,
   BookmarkCheck,
-  CheckCircle2
+  CheckCircle2,
+  DollarSign,
+  ShieldAlert
 } from 'lucide-react';
 import EngineeringPersonaDashboard from './EngineeringPersonaDashboard';
 import EngineeringExpInbox from './EngineeringExpInbox';
@@ -14,6 +16,8 @@ import EngineeringModelCatalogue from './EngineeringModelCatalogue';
 import EngineeringAgentCatalogue from './EngineeringAgentCatalogue';
 import EngineeringToolsCatalogue from './EngineeringToolsCatalogue';
 import EngineeringSubscriptions from './EngineeringSubscriptions';
+import EngineeringFinOps from './EngineeringFinOps';
+import EngineeringGovernance from './EngineeringGovernance';
 import { engineeringExperienceData } from '../mockData.js';
 import '../engineeringExperience.css';
 
@@ -30,10 +34,26 @@ import '../engineeringExperience.css';
  * 5. 5.5 AI Tools Catalogue (10 Engineering Disciplines & Integration Specs)
  * 6. 5.6 My Subscriptions (Consolidated Subscriptions across 5 Grant Levels & 8 Entity Types)
  */
-export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
+export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTabChange, drillDownLevel: controlledLevel, contextPortfolio, contextProject }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const currentSubTab = activeSubTab || 'persona';
-  const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(null);
+  const [internalSubTab, setInternalSubTab] = useState('persona');
+
+  const activeSubTab = controlledSubTab || internalSubTab;
+  const setActiveSubTab = (tab) => {
+    setInternalSubTab(tab);
+    if (onSubTabChange) {
+      onSubTabChange(tab);
+    }
+  };
+
+  const [targetDrillDownLevel, setTargetDrillDownLevel] = useState(controlledLevel || 1);
+
+  useEffect(() => {
+    if (controlledLevel) {
+      setTargetDrillDownLevel(controlledLevel);
+    }
+  }, [controlledLevel]);
+
   const [toastMessage, setToastMessage] = useState(null);
 
   const showToast = (text) => {
@@ -53,12 +73,37 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       .catch((err) => {
         console.log('Backend not reached, using local engineering experience data', err);
       });
+
+    if (window.__STELLANTIS_TARGET_SUBTAB__) {
+      setActiveSubTab(window.__STELLANTIS_TARGET_SUBTAB__);
+    }
+
+    const handleGlobalNav = (e) => {
+      const { type, subTab, level } = e.detail || {};
+      const target = subTab || (
+        type === 'models' ? 'models' :
+        (type === 'agents' || type === 'workflows') ? 'agents' :
+        type === 'ai-tools' ? 'tools' :
+        type === 'policies' ? 'governance' :
+        type === 'subscriptions' ? 'subscriptions' :
+        'persona'
+      );
+      window.__STELLANTIS_TARGET_SUBTAB__ = target;
+      setActiveSubTab(target);
+      if (level) {
+        setTargetDrillDownLevel(level);
+      }
+    };
+    window.addEventListener('stellantis:nav-experience', handleGlobalNav);
+    return () => window.removeEventListener('stellantis:nav-experience', handleGlobalNav);
   }, []);
 
   // Peer-Level Sub-Tabs matching PRD Section 5
   const SUB_TABS = [
     { id: 'persona', label: 'Persona Dashboard', icon: Sliders, badge: '9' },
     { id: 'inbox', label: 'Workflow Inbox', icon: Inbox, badge: '7' },
+    { id: 'finops', label: 'FinOps and AI Cost', icon: DollarSign, badge: null },
+    { id: 'governance', label: 'Risk & Governance', icon: ShieldAlert, badge: null },
     { id: 'models', label: 'Model Catalogue', icon: Cpu, badge: '8' },
     { id: 'agents', label: 'Agent & Workflows', icon: Bot, badge: '8', title: 'Agent and Agentic Workflow Catalogue' },
     { id: 'tools', label: 'AI Tools Catalogue', icon: Wrench, badge: '10' },
@@ -302,27 +347,49 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
         </div>
       )}
 
-
+      {/* PEER-LEVEL SUB-TABS NAVIGATION BAR (Matches AI for AD Master Architecture) */}
+      <nav className="eng-exp-subtab-bar" aria-label="AI Experience Zone Subcategories">
+        {SUB_TABS.map((tab) => {
+          const isActive = activeSubTab === tab.id;
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveSubTab(tab.id)}
+              className={`eng-exp-subtab-btn ${isActive ? 'active' : ''}`}
+              title={tab.title || tab.label}
+            >
+              <Icon size={14} style={{ opacity: isActive ? 1 : 0.7, flexShrink: 0 }} />
+              <span className="eng-exp-subtab-text">{tab.label}</span>
+              {tab.badge && (
+                <span className="eng-exp-subtab-badge">{tab.badge}</span>
+              )}
+            </button>
+          );
+        })}
+      </nav>
 
       {/* =========================================================
           SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)
           ========================================================= */}
-      {currentSubTab === 'persona' && (
+      {activeSubTab === 'persona' && (
         <EngineeringPersonaDashboard
           initialLevel={targetDrillDownLevel}
-          onNavigateToInbox={() => { if (onSubTabChange) onSubTabChange('inbox'); }}
-          onNavigateToSubscriptions={() => { if (onSubTabChange) onSubTabChange('subscriptions'); }}
+          initialPortfolio={contextPortfolio}
+          initialProject={contextProject}
+          onNavigateToInbox={() => setActiveSubTab('inbox')}
+          onNavigateToSubscriptions={() => setActiveSubTab('subscriptions')}
         />
       )}
 
       {/* =========================================================
           SUB-TAB 2: 5.2 WORKFLOW INBOX (Dedicated Experience Zone Console)
           ========================================================= */}
-      {currentSubTab === 'inbox' && (
+      {activeSubTab === 'inbox' && (
         <EngineeringExpInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
-            if (onSubTabChange) onSubTabChange('persona');
+            setActiveSubTab('persona');
           }}
         />
       )}
@@ -330,7 +397,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 3: 5.3 MODEL CATALOGUE (8 Enterprise Models & Comparisons)
           ========================================================= */}
-      {currentSubTab === 'models' && (
+      {activeSubTab === 'models' && (
         <EngineeringModelCatalogue
           models={data.models}
           onToggleSubscription={handleToggleModelSubscription}
@@ -342,14 +409,10 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 4: 5.4 AGENT AND AGENTIC WORKFLOW CATALOGUE (8 Registered Agents)
           ========================================================= */}
-      {currentSubTab === 'agents' && (
+      {activeSubTab === 'agents' && (
         <EngineeringAgentCatalogue
           agents={data?.agents || engineeringExperienceData.agents}
           onSubscribeAgent={handleSubscribeAgent}
-          onInspectTrace={() => {
-            setTargetDrillDownLevel(6);
-            if (onSubTabChange) onSubTabChange('persona');
-          }}
           showToast={showToast}
         />
       )}
@@ -357,7 +420,7 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 5: 5.5 AI TOOLS CATALOGUE (10 Lifecycle Disciplines)
           ========================================================= */}
-      {currentSubTab === 'tools' && (
+      {activeSubTab === 'tools' && (
         <EngineeringToolsCatalogue
           tools={data?.tools || engineeringExperienceData.tools}
           onToggleSubscribeTool={handleToggleSubscribeTool}
@@ -368,12 +431,26 @@ export default function ExperienceZone({ activeSubTab, onSubTabChange }) {
       {/* =========================================================
           SUB-TAB 6: 5.6 MY SUBSCRIPTIONS (Consolidated Table across 5 Levels)
           ========================================================= */}
-      {currentSubTab === 'subscriptions' && (
+      {activeSubTab === 'subscriptions' && (
         <EngineeringSubscriptions
           subscriptions={data.mySubscriptions}
           onSubscriptionAction={handleSubscriptionAction}
           showToast={showToast}
         />
+      )}
+
+      {/* =========================================================
+          SUB-TAB 7: FINOPS & COST GOVERNANCE (FR-401 — FR-405)
+          ========================================================= */}
+      {activeSubTab === 'finops' && (
+        <EngineeringFinOps />
+      )}
+
+      {/* =========================================================
+          SUB-TAB 8: 8.4 RISK & GOVERNANCE
+          ========================================================= */}
+      {activeSubTab === 'governance' && (
+        <EngineeringGovernance />
       )}
     </div>
   );

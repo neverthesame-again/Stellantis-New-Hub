@@ -1026,7 +1026,7 @@ export default function AdPmWorkflowInbox({ onInspectLevel6 }) {
               <div className="ad-modal-notice-box-danger">
                 <AlertTriangle size={16} color="#ef4444" />
                 <div>
-                  This immediately halts the build pipeline in Jenkins / Stellantis CI until HIL Simulation Coverage reaches &ge;90%.
+                  This immediately halts the build pipeline in Jenkins / TCS CI until HIL Simulation Coverage reaches &ge;90%.
                 </div>
               </div>
             </div>

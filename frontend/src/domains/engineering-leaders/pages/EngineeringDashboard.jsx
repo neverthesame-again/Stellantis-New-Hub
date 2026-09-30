@@ -29,6 +29,7 @@ import {
   Briefcase
 } from 'lucide-react';
 import { engineeringDashboardData } from '../mockData.js';
+import EngineeringFinOps from './EngineeringFinOps.jsx';
 
 export default function EngineeringDashboard() {
   const [data, setData] = useState(engineeringDashboardData);
@@ -142,8 +143,7 @@ export default function EngineeringDashboard() {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    gap: '12px',
-    minWidth: 0
+    gap: '12px'
   };
 
   const cardScrollAreaStyle = {
@@ -229,10 +229,8 @@ export default function EngineeringDashboard() {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
-          gap: '12px',
-          width: '100%',
-          minWidth: 0
+          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+          gap: '12px'
         }}>
           {objectives.map((obj) => (
             <div
@@ -291,10 +289,8 @@ export default function EngineeringDashboard() {
       {/* ========================================================= */}
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
-        gap: '20px',
-        width: '100%',
-        minWidth: 0
+        gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))',
+        gap: '20px'
       }}>
 
         {/* --------------------------------------------------------- */}
@@ -794,6 +790,22 @@ export default function EngineeringDashboard() {
                 <div style={{ height: '100%', width: cost.budgetUtilization, background: 'var(--stellantis-action)', borderRadius: '3px' }} />
               </div>
             </div>
+
+            {/* Active FinOps Cost Alerts Banner */}
+            <div style={{
+              background: 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.25)',
+              borderRadius: '4px',
+              padding: '4px 8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontSize: '0.66rem',
+              marginBottom: '4px'
+            }}>
+              <span style={{ color: '#ef4444', fontWeight: 700 }}>4 Cost Alerts Active</span>
+              <span style={{ color: 'var(--text-secondary)' }}>+$10.4k impact</span>
+            </div>
           </div>
 
           {/* Scrollable Content Area: Models Breakdown */}
@@ -822,12 +834,6 @@ export default function EngineeringDashboard() {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Equal Footer */}
-          <div style={{ paddingTop: '8px', borderTop: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', fontSize: '0.72rem', color: 'var(--text-muted)' }}>
-            <span>Cost / PR: <strong>{cost.costPerPullRequest}</strong></span>
-            <span>Cache Hit: <strong>{cost.tokenCacheHitRate}</strong></span>
           </div>
         </div>
 

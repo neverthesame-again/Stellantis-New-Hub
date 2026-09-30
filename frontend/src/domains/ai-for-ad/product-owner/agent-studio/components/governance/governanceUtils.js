@@ -165,7 +165,7 @@ export const REGULATIONS = [
     id: 'gdpr',
     code: 'GDPR · Fleet Data Policy',
     title: 'Data Protection & Responsible AI',
-    owner: 'Stellantis Data Protection Office',
+    owner: 'TCS Data Protection Office',
     summary: 'Fleet and proving-ground telemetry may contain personal data — only anonymised or engineering data may be bound.',
     clauses: [
       'Fleet telemetry bound only with anonymisation attestation',

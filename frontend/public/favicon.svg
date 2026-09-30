@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="tcs-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1628" />
+      <stop offset="50%" stop-color="#142c54" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="tcs-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00d2ff" />
+      <stop offset="100%" stop-color="#3a7bd5" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#tcs-grad)" />
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5" />
+  <!-- Central TCS text & AI circuit dot -->
+  <text x="32" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">TCS</text>
+  <!-- Accent badge line for AI -->
+  <circle cx="21" cy="46" r="2.5" fill="#38bdf8" />
+  <line x1="24" y1="46" x2="40" y2="46" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+  <circle cx="43" cy="46" r="2.5" fill="#38bdf8" />
+</svg>

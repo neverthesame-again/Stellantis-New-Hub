@@ -42,7 +42,7 @@ export const RUNTIME_OPTIONS = Object.freeze([
     id: 'aws-bedrock',
     label: 'AWS Bedrock',
     shortLabel: 'Bedrock',
-    description: 'Bedrock Agents in the Stellantis AWS landing zone.'
+    description: 'Bedrock Agents in the TCS AWS landing zone.'
   },
   {
     id: 'azure-foundry',
