@@ -56,7 +56,7 @@ function AuthenticatedApp() {
 
   const [activeSubTab, setActiveSubTab] = useState(() => {
     const saved = sessionStorage.getItem('tcs_active_subtab') || sessionStorage.getItem('stellantis_active_subtab');
-    if (saved === 'persona' || saved === 'inbox') return 'finops';
+    if (saved === 'persona' || saved === 'inbox') return defaultSubPage(selectedDomain);
     return saved || defaultSubPage(selectedDomain);
   });
 

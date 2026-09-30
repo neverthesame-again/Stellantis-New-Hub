@@ -197,24 +197,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
   const [subscribedMap, setSubscribedMap] = useState({});
   const [showOnboardModal, setShowOnboardModal] = useState(false);
   const [localAgents, setLocalAgents] = useState([]);
-  const [harnessState, setHarnessState] = useState(() => {
-    const spec = AGENT_HARNESS_SPECS['AGT-01'];
-    return {
-      'AGT-01': {
-        running: false,
-        stepIndex: spec.steps.length,
-        progress: 100,
-        result: {
-          passed: spec.passed,
-          total: spec.total,
-          score: `${Math.round((spec.passed / spec.total) * 100)}%`,
-          latency: spec.latency,
-          steps: spec.steps,
-          stepLatencies: spec.stepLatencies
-        }
-      }
-    };
-  });
+  const [harnessState, setHarnessState] = useState({});
 
   const handleRunHarness = (agentId, agentName, e) => {
     if (e && e.stopPropagation) e.stopPropagation();

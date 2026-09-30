@@ -15,15 +15,15 @@ import EngineeringGovernance from './pages/EngineeringGovernance';
  */
 export default function EngineeringLeaderDomain({
   activeTab = 'dashboard',
-  activeSubTab = 'finops',
+  activeSubTab = 'agents',
   experienceSubTab,
   onSubTabChange,
   drillDownLevel = 1,
   contextPortfolio,
   contextProject
 }) {
-  const currentSubTab = activeSubTab || experienceSubTab || 'finops';
-  const resolvedSubTab = (currentSubTab === 'persona' || currentSubTab === 'inbox') ? 'finops' : currentSubTab;
+  const currentSubTab = activeSubTab || experienceSubTab || 'agents';
+  const resolvedSubTab = (currentSubTab === 'persona' || currentSubTab === 'inbox') ? 'agents' : currentSubTab;
 
   if (activeTab === 'dashboard') {
     return <EngineeringDashboard />;

@@ -29,16 +29,16 @@ import '../engineeringExperience.css';
  */
 export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTabChange, drillDownLevel: controlledLevel, contextPortfolio, contextProject }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const [internalSubTab, setInternalSubTab] = useState((controlledSubTab && controlledSubTab !== 'persona' && controlledSubTab !== 'inbox') ? controlledSubTab : 'finops');
+  const [internalSubTab, setInternalSubTab] = useState((controlledSubTab && controlledSubTab !== 'persona' && controlledSubTab !== 'inbox') ? controlledSubTab : 'agents');
 
   useEffect(() => {
     if (controlledSubTab) {
-      setInternalSubTab((controlledSubTab === 'persona' || controlledSubTab === 'inbox') ? 'finops' : controlledSubTab);
+      setInternalSubTab((controlledSubTab === 'persona' || controlledSubTab === 'inbox') ? 'agents' : controlledSubTab);
     }
   }, [controlledSubTab]);
 
   const rawSubTab = controlledSubTab || internalSubTab;
-  const activeSubTab = (rawSubTab === 'persona' || rawSubTab === 'inbox') ? 'finops' : rawSubTab;
+  const activeSubTab = (rawSubTab === 'persona' || rawSubTab === 'inbox') ? 'agents' : rawSubTab;
   const setActiveSubTab = (tab) => {
     setInternalSubTab(tab);
     if (onSubTabChange) {

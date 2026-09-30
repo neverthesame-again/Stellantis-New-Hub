@@ -34,13 +34,13 @@ export const INBOX_COUNTS = {
 const ENG_SUBPAGES = [
   // { id: 'persona',       label: 'Persona Dashboard',  icon: Sliders,       badge: '9' },
   // { id: 'inbox',         label: 'Workflow Inbox',     icon: Inbox,         badge: '7' },
-  { id: 'finops',        label: 'FinOps and AI Cost', icon: DollarSign },
-  { id: 'governance',    label: 'Risk & Governance',  icon: ShieldAlert },
   { id: 'agents',        label: 'Agent Studio',       icon: Bot,           badge: '8' },
-  { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
   { id: 'knowledge',     label: 'Knowledge Fabric',   icon: Network },
   { id: 'tools',         label: 'AI Tools Catalogue', icon: Wrench,        badge: '10' },
-  { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '14' }
+  { id: 'finops',        label: 'FinOps and AI Cost', icon: DollarSign },
+  { id: 'models',        label: 'Model Catalogue',    icon: Cpu,           badge: '8' },
+  { id: 'subscriptions', label: 'My Subscriptions',   icon: BookmarkCheck, badge: '14' },
+  { id: 'governance',    label: 'Risk & Governance',  icon: ShieldAlert }
 ];
 
 // AI Experience Zone sub-pages per domain — the first entry is the default
@@ -65,4 +65,4 @@ export const EXPERIENCE_SUBPAGES = {
   ]
 };
 
-export const defaultSubPage = (domain) => EXPERIENCE_SUBPAGES[domain]?.[0]?.id || (domain?.includes('Engineering') ? 'finops' : 'agents');
+export const defaultSubPage = (domain) => EXPERIENCE_SUBPAGES[domain]?.[0]?.id || 'agents';
