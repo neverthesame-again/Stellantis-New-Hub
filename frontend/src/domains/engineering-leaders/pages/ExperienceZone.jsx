@@ -15,7 +15,7 @@ import { engineeringExperienceData } from '../mockData.js';
 import '../engineeringExperience.css';
 
 /**
- * AI Experience Zone — Engineering Leaders
+ * AI Experience Zone — Engineering Leader
  * Persona: Alex — Chief AI Officer / Head of Software Engineering
  * Peer-Level Sub-Tabs Architecture for PRD Section 5 (5.1 - 5.6)
  * 
@@ -29,15 +29,16 @@ import '../engineeringExperience.css';
  */
 export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTabChange, drillDownLevel: controlledLevel, contextPortfolio, contextProject }) {
   const [data, setData] = useState(engineeringExperienceData);
-  const [internalSubTab, setInternalSubTab] = useState(controlledSubTab || 'persona');
+  const [internalSubTab, setInternalSubTab] = useState((controlledSubTab && controlledSubTab !== 'persona' && controlledSubTab !== 'inbox') ? controlledSubTab : 'finops');
 
   useEffect(() => {
     if (controlledSubTab) {
-      setInternalSubTab(controlledSubTab);
+      setInternalSubTab((controlledSubTab === 'persona' || controlledSubTab === 'inbox') ? 'finops' : controlledSubTab);
     }
   }, [controlledSubTab]);
 
-  const activeSubTab = controlledSubTab || internalSubTab;
+  const rawSubTab = controlledSubTab || internalSubTab;
+  const activeSubTab = (rawSubTab === 'persona' || rawSubTab === 'inbox') ? 'finops' : rawSubTab;
   const setActiveSubTab = (tab) => {
     setInternalSubTab(tab);
     if (onSubTabChange) {
@@ -337,9 +338,9 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
       )}
 
       {/* =========================================================
-          SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline)
+          SUB-TAB 1: 5.1 PERSONA DASHBOARD (Master Cockpit & 6-Level Pipeline) [COMMENTED OUT]
           ========================================================= */}
-      {activeSubTab === 'persona' && (
+      {/* {activeSubTab === 'persona' && (
         <EngineeringPersonaDashboard
           initialLevel={targetDrillDownLevel}
           initialPortfolio={contextPortfolio}
@@ -347,19 +348,19 @@ export default function ExperienceZone({ activeSubTab: controlledSubTab, onSubTa
           onNavigateToInbox={() => setActiveSubTab('inbox')}
           onNavigateToSubscriptions={() => setActiveSubTab('subscriptions')}
         />
-      )}
+      )} */}
 
       {/* =========================================================
-          SUB-TAB 2: 5.2 WORKFLOW INBOX (Dedicated Experience Zone Console)
+          SUB-TAB 2: 5.2 WORKFLOW INBOX (Dedicated Experience Zone Console) [COMMENTED OUT]
           ========================================================= */}
-      {activeSubTab === 'inbox' && (
+      {/* {activeSubTab === 'inbox' && (
         <EngineeringExpInbox
           onInspectLevel6={() => {
             setTargetDrillDownLevel(6);
             setActiveSubTab('persona');
           }}
         />
-      )}
+      )} */}
 
       {/* =========================================================
           SUB-TAB 3: 5.3 MODEL CATALOGUE (8 Enterprise Models & Comparisons)

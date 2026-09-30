@@ -1,5 +1,5 @@
 /**
- * Frontend Local Fallback Mock Data for Engineering Leaders Domain
+ * Frontend Local Fallback Mock Data for Engineering Leader Domain
  * Persona: Alex — Chief AI Officer / Head of Software Engineering
  * Single source of truth duplicate for offline resilience
  */
@@ -9,7 +9,7 @@ export const engineeringDashboardData = {
     name: "Alex",
     title: "Chief AI Officer & Head of Software Engineering",
     role: "Chief AI Officer",
-    domain: "Engineering leaders",
+    domain: "Engineering Leader",
     platform: "ENG-LEAD",
     shift: "Global Strategy | Active",
     shiftProgress: "85%",
@@ -518,7 +518,7 @@ export const engineeringDashboardData = {
 };
 
 /**
- * Workflow Inbox Items for Engineering Leaders
+ * Workflow Inbox Items for Engineering Leader
  * Persona: Alex — Chief AI Officer
  * Categories:
  * 1. New project approvals

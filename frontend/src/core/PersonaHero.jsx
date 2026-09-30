@@ -4,7 +4,8 @@ import { useAuth } from '../auth/AuthContext';
 
 export default function PersonaHero({ selectedDomain, selectedRole }) {
   const { user } = useAuth();
-  const persona = DOMAIN_PERSONA_MAP[selectedDomain] || DOMAIN_PERSONA_MAP['AI for AMS'];
+  const displayDomain = selectedDomain?.toLowerCase().includes('engineering') ? 'Engineering Leader' : selectedDomain;
+  const persona = DOMAIN_PERSONA_MAP[selectedDomain] || DOMAIN_PERSONA_MAP['Engineering Leader'] || DOMAIN_PERSONA_MAP['Engineering leaders'] || DOMAIN_PERSONA_MAP['AI for AMS'];
 
   return (
     <div style={{ marginBottom: '20px', width: '100%', minWidth: 0, boxSizing: 'border-box' }}>
@@ -35,7 +36,7 @@ export default function PersonaHero({ selectedDomain, selectedRole }) {
             gap: '8px',
             margin: 0
           }}>
-            <span>{selectedDomain}</span>
+            <span>{displayDomain}</span>
             <span style={{ color: 'var(--text-muted)' }}>•</span>
             <span>{selectedRole}</span>
           </h1>

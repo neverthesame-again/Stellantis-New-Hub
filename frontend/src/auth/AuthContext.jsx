@@ -63,7 +63,8 @@ export function AuthProvider({ children }) {
     }
 
     // Validate that the selected domain + role match the registered profile
-    if (!data.domain.includes(domain)) {
+    const normalizeDomain = (d) => (d || '').toLowerCase().replace(/leaders$/, 'leader').trim();
+    if (!data.domain.includes(domain) && !normalizeDomain(data.domain).includes(normalizeDomain(domain))) {
       throw new Error(`The selected domain does not match your registered account.`);
     }
     if (!data.role.includes(role)) {

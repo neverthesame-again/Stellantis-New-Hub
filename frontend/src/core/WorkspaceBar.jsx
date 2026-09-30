@@ -31,8 +31,28 @@ export const DOMAIN_PERSONA_MAP = {
       { label: 'AI RESOLUTION', value: '78%', color: '#10b981' }
     ]
   },
+  'Engineering Leader': {
+    domain: 'Engineering Leader',
+    role: 'Chief AI Officer',
+    userName: 'Alex',
+    avatarLetter: 'A',
+    subtitle: 'Enterprise AI Governance, Architecture Standards & Cross-Portfolio Model Strategy',
+    platform: 'ENG-LEAD',
+    shift: 'Global Strategy | Active',
+    shiftProgress: '85%',
+    infoChips: [
+      { label: '18 Model Subscriptions', dot: false, bg: 'var(--bg-subtle)', border: 'var(--border-color)', color: 'var(--text-primary)' },
+      { label: '6 Architecture Reviews In-Flight', dot: true, dotColor: '#3b82f6', bg: 'var(--badge-info-bg)', border: 'var(--badge-info-border)', color: 'var(--badge-info-text)' },
+      { label: 'Global Strategy Active', dot: true, dotColor: '#10b981', bg: 'var(--badge-success-bg)', border: 'var(--badge-success-border)', color: 'var(--badge-success-text)' }
+    ],
+    statusText: 'Enterprise Engineering Core - 18 Model Subscriptions - 6 Architecture Reviews in Flight',
+    kpis: [
+      { label: 'GOVERNANCE COMPLIANCE', value: '96.4%', color: 'var(--text-primary)' },
+      { label: 'MODEL ADOPTION', value: '84%', color: '#3b82f6' }
+    ]
+  },
   'Engineering leaders': {
-    domain: 'Engineering leaders',
+    domain: 'Engineering Leader',
     role: 'Chief AI Officer',
     userName: 'Alex',
     avatarLetter: 'A',
@@ -75,8 +95,8 @@ export const DOMAIN_PERSONA_MAP = {
 
 export const DOMAIN_OPTIONS = [
   {
-    value: 'Engineering leaders',
-    label: 'Engineering leaders',
+    value: 'Engineering Leader',
+    label: 'Engineering Leader',
     subtitle: 'Architecture & AI Governance',
     icon: Brain
   },
@@ -96,6 +116,14 @@ export const DOMAIN_OPTIONS = [
 
 // Domain-scoped roles — to add a new role, push into the relevant domain's array
 export const DOMAIN_ROLE_MAP = {
+  'Engineering Leader': [
+    {
+      value: 'Chief AI Officer',
+      label: 'Chief AI Officer',
+      subtitle: 'Alex • Architecture & Governance',
+      icon: ShieldCheck
+    }
+  ],
   'Engineering leaders': [
     {
       value: 'Chief AI Officer',
@@ -123,8 +151,10 @@ export const DOMAIN_ROLE_MAP = {
 };
 
 // Ensure both plural and singular forms resolve seamlessly
-DOMAIN_PERSONA_MAP['Engineering leader'] = DOMAIN_PERSONA_MAP['Engineering leaders'];
-DOMAIN_ROLE_MAP['Engineering leader'] = DOMAIN_ROLE_MAP['Engineering leaders'];
+DOMAIN_PERSONA_MAP['Engineering leader'] = DOMAIN_PERSONA_MAP['Engineering Leader'];
+DOMAIN_PERSONA_MAP['Engineering leaders'] = DOMAIN_PERSONA_MAP['Engineering Leader'];
+DOMAIN_ROLE_MAP['Engineering leader'] = DOMAIN_ROLE_MAP['Engineering Leader'];
+DOMAIN_ROLE_MAP['Engineering leaders'] = DOMAIN_ROLE_MAP['Engineering Leader'];
 
 /**
  * CustomSelect - Sleek, accessible, enterprise dropdown
@@ -164,7 +194,7 @@ export function CustomSelect({ label, value, onChange, options, minWidth = '180p
     };
   }, []);
 
-  const selectedOption = options.find((opt) => opt.value === value) || options[0];
+  const selectedOption = options.find((opt) => opt.value === value || (value?.includes('Engineering') && opt.value?.includes('Engineering'))) || options[0];
   const SelectedIcon = selectedOption?.icon;
 
   const menuStyle = fullWidth
@@ -376,7 +406,7 @@ export default function WorkspaceBar({ selectedDomain, onDomainChange, selectedR
   };
 
   // Filter available domains based on user's allowed domains
-  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value));
+  const availableDomains = DOMAIN_OPTIONS.filter(opt => allowedDomains.includes(opt.value) || (opt.value === 'Engineering Leader' && allowedDomains.some(d => d.includes('Engineering'))));
   
   // Fallback to all if somehow allowedDomains is empty to prevent crashes
   const displayDomains = availableDomains.length > 0 ? availableDomains : DOMAIN_OPTIONS;

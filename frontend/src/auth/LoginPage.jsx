@@ -6,7 +6,7 @@ import './auth.css';
 // ── Domain → Role mapping (mirrors WorkspaceBar)
 const DOMAIN_ROLE_MAP = {
   'AI for AMS':          ['Head of AMS'],
-  'Engineering leaders': ['Chief AI Officer'],
+  'Engineering Leader':  ['Chief AI Officer'],
   'AI for AD':           ['Product Owner'],
 };
 
@@ -26,7 +26,7 @@ const FEATURES = [
   {
     icon: '🛡️',
     cls: 'icon-infra',
-    text: <><strong>Engineering leaders:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
+    text: <><strong>Engineering Leader:</strong> Enterprise AI Governance, Architecture Standards &amp; Cross-Portfolio Model Strategy.</>,
   },
 ];
 

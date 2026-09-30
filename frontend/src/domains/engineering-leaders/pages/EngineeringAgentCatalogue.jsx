@@ -26,94 +26,134 @@ import {
 } from 'lucide-react';
 import { engineeringExperienceData } from '../mockData.js';
 
-// Automated Automotive Test Harness Profiles & Assertion Specs
+// Automated Automotive Test Harness Profiles & Assertion Specs (8 Deep Realistic Validation Stages)
 const AGENT_HARNESS_SPECS = {
   'AGT-01': {
     passed: 99,
     total: 100,
     latency: '285ms',
+    stepLatencies: ['28ms', '42ms', '31ms', '45ms', '52ms', '34ms', '27ms', '26ms'],
     steps: [
-      'Ingesting ArchiMate 3.1 & AUTOSAR metamodel contracts',
-      'Executing 100 EARB architecture rule assertions',
-      'Checking cyclic dependency & zonal interface constraints',
-      'Validating deterministic blueprint output serialization'
+      'Ingesting ArchiMate 3.1 & AUTOSAR Adaptive metamodel contracts',
+      'Parsing AST & resolving cross-zone microservice dependency graph',
+      'Checking cyclic dependency & zonal gateway interface constraints',
+      'Simulating SOME/IP RPC serialization & 15ms latency budget envelopes',
+      'Executing 100 EARB architectural invariant rule assertions',
+      'Verifying POSIX microkernel memory bounds & thread-safety isolation',
+      'Auditing cryptographic dual-key signatures & SHA-256 integrity hash',
+      'Validating deterministic blueprint output & generating compliance manifest'
     ]
   },
   'AGT-02': {
     passed: 100,
     total: 100,
     latency: '460ms',
+    stepLatencies: ['38ms', '55ms', '72ms', '64ms', '58ms', '61ms', '52ms', '60ms'],
     steps: [
-      'Ingesting ISO 26262 Part 6 ASIL-D safety invariants',
-      'Executing memory fault injection & pointer isolation tests',
-      'Auditing formal dual-key signature cryptographic hash',
-      'Certifying zero-tolerance ASIL-D production gate sign-off'
+      'Ingesting ISO 26262 Part 6 ASIL-D safety invariants & TSR contracts',
+      'Parsing AST control flow graphs & verifying worst-case execution time (WCET)',
+      'Injecting synthetic bit-flip, memory corruption & pointer isolation faults',
+      'Checking hardware watchdog timing matrices & 5ms heartbeat envelopes',
+      'Running SonarQube & Clang-Tidy MISRA C++:2023 zero-defect rule assertions',
+      'Auditing formal dual-key cryptographic safety signature & HMAC-SHA256 digest',
+      'Evaluating fail-operational safety state transitions under bus blackout simulation',
+      'Certifying zero-tolerance ASIL-D production release gate clearance'
     ]
   },
   'AGT-03': {
     passed: 97,
     total: 100,
     latency: '315ms',
+    stepLatencies: ['25ms', '48ms', '39ms', '41ms', '36ms', '54ms', '38ms', '34ms'],
     steps: [
-      'Parsing ARXML service contracts and SOME/IP bindings',
-      'Synthesizing C++17 adaptive AUTOSAR component skeletons',
-      'Running Clang-Tidy MISRA C++:2023 compliance matrix',
-      'Compiling GoogleTest assertions in sandboxed container'
+      'Parsing ARXML v4.4 schema definitions & SOME/IP service interface contracts',
+      'Synthesizing C++17 adaptive AUTOSAR component skeletons & proxy bindings',
+      'Running Clang-Tidy MISRA C++:2023 compliance matrix & static memory linter',
+      'Verifying ara::core and ara::com serialization & zero-copy IPC buffers',
+      'Executing thread-safety, mutex deadlock & reentrancy static assertions',
+      'Compiling GoogleTest & GMock assertion suites in isolated Turin container',
+      'Benchmarking cycle overhead & dynamic allocation bounds (< 250ns allocation floor)',
+      'Emitting signed CMake build targets, ARXML package artifacts & test coverage'
     ]
   },
   'AGT-04': {
     passed: 98,
     total: 100,
     latency: '390ms',
+    stepLatencies: ['32ms', '46ms', '51ms', '62ms', '59ms', '47ms', '45ms', '48ms'],
     steps: [
-      'Ingesting Vector CANoe HIL test bench digital traces',
-      'Isolating clock jitter & CAN bus arbitration drift',
-      'Generating dynamic CAPL assertion timing patches',
-      'Executing virtual dry-run regression verification'
+      'Ingesting Vector CANoe & dSPACE HIL test bench digital oscilloscope traces',
+      'Isolating CAN FD bus arbitration drift, clock jitter & transceiver delay',
+      'Correlating timing jitter anomalies against transient bus load spikes (> 85%)',
+      'Formulating dynamic CAPL assertion timing patches & tolerance envelopes',
+      'Simulating closed-loop virtual CANoe test bench playback under noise',
+      'Verifying zero false-positive regression escapes across 240 test suites',
+      'Packaging healed PyTest & CAPL test fixtures with versioned changelog',
+      'Committing verified test suite patch to HIL cluster continuous integration'
     ]
   },
   'AGT-05': {
     passed: 96,
     total: 100,
     latency: '420ms',
+    stepLatencies: ['45ms', '52ms', '61ms', '54ms', '58ms', '49ms', '53ms', '48ms'],
     steps: [
-      'Streaming 150k vehicle Kafka telemetry frames',
-      'Evaluating ECU memory volatility & DTC error distribution',
-      'Simulating canary vehicle blast radius & rollback conditions',
-      'Verifying automated rollout gate safety invariants'
+      'Streaming 150k live vehicle telemetry frames via multi-region Kafka cluster',
+      'Normalizing chassis CAN FD signals: steering angle, battery voltage & motor RPM',
+      'Evaluating ECU memory volatility, stack frame depth & DTC error distribution',
+      'Modeling blast radius threshold across 500-vehicle canary deployment cohort',
+      'Simulating automated rollback trigger conditions under simulated sensor blackout',
+      'Checking fleet battery thermal delta & BMS firmware stability invariants',
+      'Running Bayesian anomaly detection inference on fleet divergence metrics',
+      'Issuing cryptographic canary rollout gate clearance & executive notification'
     ]
   },
   'AGT-06': {
     passed: 94,
     total: 100,
     latency: '510ms',
+    stepLatencies: ['58ms', '64ms', '72ms', '69ms', '65ms', '68ms', '59ms', '55ms'],
     steps: [
-      'Parsing legacy Simulink block diagrams & Fortran routines',
-      'Translating state space equations to modern C++ classes',
-      'Running IEEE 754 float precision tolerance assertions',
-      'Benchmarking execution cycle time on Turin GPU nodes'
+      'Parsing legacy Fortran 90 routines & Simulink dynamic state-space blocks',
+      'Extracting differential equation matrices & thermodynamic thermal lookups',
+      'Translating mathematical routines into modern ISO C++20 modular templates',
+      'Running IEEE 754 double-precision parity assertions against Fortran gold standard',
+      'Enforcing fixed-point arithmetic bounds & zero dynamic heap allocation in fast loop',
+      'Benchmarking loop execution latency on Turin target ARM64 & x86_64 architectures',
+      'Executing automated SIMD vectorization & cache-locality optimization checks',
+      'Emitting verified C++20 powertrain mathematical library & parity validation proof'
     ]
   },
   'AGT-07': {
-    passed: 99,
+    passed: 100,
     total: 100,
     latency: '195ms',
+    stepLatencies: ['18ms', '24ms', '28ms', '22ms', '26ms', '25ms', '27ms', '25ms'],
     steps: [
-      'Ingesting 2.5 kHz high-speed CAN FD bus telemetry frames',
-      'Running temporal anomaly neural detection pipeline',
-      'Evaluating zero-day arbitration ID injection heuristics',
-      'Triggering ISO 21434 vehicle cybersecurity alarm audit'
+      'Ingesting raw chassis CAN bus capture dumps & vehicle telemetry payloads',
+      'Analyzing payload egress routing against Stellantis Data Boundary Directive #GOV-901',
+      'Scanning unmasked VIN, GPS geolocation & raw chassis frame identifiers',
+      'Detecting missing NeMo Sovereign Tokenizer privacy anonymization layer',
+      'Triggering SecOps egress policy violation intercept & critical risk alarm',
+      'Freezing outbound AWS S3 upload pipeline & revoking IAM credentials',
+      'Generating forensic security compliance audit record & CVE risk classification',
+      'Enforcing administrative quarantine lock & notifying Chief AI Officer cabinet'
     ]
   },
   'AGT-08': {
     passed: 98,
     total: 100,
     latency: '260ms',
+    stepLatencies: ['22ms', '34ms', '38ms', '29ms', '35ms', '31ms', '37ms', '34ms'],
     steps: [
-      'Ingesting inverter thermal dissipation & dyno curves',
-      'Running neural calibration gradient optimization loop',
-      'Validating PWM switching frequency safety envelope',
-      'Emitting verified A2L calibration map definitions'
+      'Loading legacy AUTOSAR 3.2 XML schema definitions from cold storage archive',
+      'Parsing ECU configuration description (ECUC) & flat port interface trees',
+      'Checking backward compatibility against legacy BSW (Basic Software) modules',
+      'Evaluating schema constraints against deprecated OSEK-OS kernel bindings',
+      'Detecting deprecated static memory partition limits & 16-bit CAN ID constraints',
+      'Running legacy regression assertion suite against archived 2022 test baseline',
+      'Generating migration mapping table targeting modern STLA Adaptive AUTOSAR',
+      'Emitting historical archive report & flagging deprecation sunset clearance'
     ]
   }
 };
@@ -124,16 +164,21 @@ const getHarnessSpec = (agentId) => {
   }
   const charCode = agentId ? agentId.charCodeAt(agentId.length - 1) : 0;
   const passed = 95 + (charCode % 6);
-  const latency = `${220 + ((charCode * 11) % 200)}ms`;
+  const latency = `${240 + ((charCode * 11) % 180)}ms`;
   return {
     passed,
     total: 100,
     latency,
+    stepLatencies: ['28ms', '35ms', '42ms', '38ms', '44ms', '31ms', '29ms', '33ms'],
     steps: [
-      'Initializing sandboxed ECU test environment & mock services',
-      'Generating synthetic automotive input vectors & boundary cases',
-      'Executing agentic reasoning pipeline & safety assertion checks',
-      'Finalizing performance benchmarks & compliance certificate'
+      'Initializing sandboxed ECU test environment & mock automotive service bus',
+      'Ingesting metamodel contracts, interface schemas & architectural constraints',
+      'Generating synthetic automotive input vectors & boundary condition matrices',
+      'Executing agentic reasoning pipeline & ISO/MISRA compliance rule assertions',
+      'Simulating real-time bus latency envelopes & memory safety bounds',
+      'Running cyclic dependency & cross-zone security integrity verification',
+      'Auditing formal dual-key cryptographic signatures & execution telemetry',
+      'Packaging verified automotive compliance manifest & test assertion report'
     ]
   };
 };
@@ -152,12 +197,34 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
   const [subscribedMap, setSubscribedMap] = useState({});
   const [showOnboardModal, setShowOnboardModal] = useState(false);
   const [localAgents, setLocalAgents] = useState([]);
-  const [harnessState, setHarnessState] = useState({});
+  const [harnessState, setHarnessState] = useState(() => {
+    const spec = AGENT_HARNESS_SPECS['AGT-01'];
+    return {
+      'AGT-01': {
+        running: false,
+        stepIndex: spec.steps.length,
+        progress: 100,
+        result: {
+          passed: spec.passed,
+          total: spec.total,
+          score: `${Math.round((spec.passed / spec.total) * 100)}%`,
+          latency: spec.latency,
+          steps: spec.steps,
+          stepLatencies: spec.stepLatencies
+        }
+      }
+    };
+  });
 
   const handleRunHarness = (agentId, agentName, e) => {
     if (e && e.stopPropagation) e.stopPropagation();
 
     const spec = getHarnessSpec(agentId);
+    const totalSteps = spec.steps.length;
+
+    // Allocate ~720ms per step so full execution takes ~6 seconds with realistic stage transitions
+    const stepDuration = 720;
+    const finalDelay = totalSteps * stepDuration + 300;
 
     // Automatic Step 1: Initializing
     setHarnessState(prev => ({
@@ -165,60 +232,34 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
       [agentId]: {
         running: true,
         stepIndex: 1,
-        totalSteps: spec.steps.length,
+        totalSteps,
         currentStepText: spec.steps[0],
-        progress: 25,
+        completedStepIndices: [],
+        progress: Math.round((1 / (totalSteps + 1)) * 100),
         result: null
       }
     }));
 
-    // Automatic Step 2: Ingesting & Generating
-    setTimeout(() => {
-      setHarnessState(prev => {
-        if (!prev[agentId]?.running) return prev;
-        return {
-          ...prev,
-          [agentId]: {
-            ...prev[agentId],
-            stepIndex: 2,
-            currentStepText: spec.steps[1],
-            progress: 50
-          }
-        };
-      });
-    }, 350);
-
-    // Automatic Step 3: Checking Constraints & MISRA Rules
-    setTimeout(() => {
-      setHarnessState(prev => {
-        if (!prev[agentId]?.running) return prev;
-        return {
-          ...prev,
-          [agentId]: {
-            ...prev[agentId],
-            stepIndex: 3,
-            currentStepText: spec.steps[2],
-            progress: 75
-          }
-        };
-      });
-    }, 700);
-
-    // Automatic Step 4: Finalizing Assertions & Compiling
-    setTimeout(() => {
-      setHarnessState(prev => {
-        if (!prev[agentId]?.running) return prev;
-        return {
-          ...prev,
-          [agentId]: {
-            ...prev[agentId],
-            stepIndex: 4,
-            currentStepText: spec.steps[3],
-            progress: 95
-          }
-        };
-      });
-    }, 1050);
+    // Sequential transitions for each intermediate step
+    for (let i = 1; i < totalSteps; i++) {
+      setTimeout(() => {
+        setHarnessState(prev => {
+          if (!prev[agentId]?.running) return prev;
+          const completed = [];
+          for (let c = 0; c < i; c++) completed.push(c);
+          return {
+            ...prev,
+            [agentId]: {
+              ...prev[agentId],
+              stepIndex: i + 1,
+              currentStepText: spec.steps[i],
+              completedStepIndices: completed,
+              progress: Math.round(((i + 1) / (totalSteps + 1)) * 100)
+            }
+          };
+        });
+      }, i * stepDuration);
+    }
 
     // Final Completion
     setTimeout(() => {
@@ -226,14 +267,16 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
         ...prev,
         [agentId]: {
           running: false,
-          stepIndex: 4,
+          stepIndex: totalSteps,
           progress: 100,
+          completedStepIndices: spec.steps.map((_, idx) => idx),
           result: {
             passed: spec.passed,
             total: spec.total,
             score: `${Math.round((spec.passed / spec.total) * 100)}%`,
             latency: spec.latency,
-            steps: spec.steps
+            steps: spec.steps,
+            stepLatencies: spec.stepLatencies || spec.steps.map((_, idx) => `${20 + ((idx * 17 + 7) % 35)}ms`)
           }
         }
       }));
@@ -241,7 +284,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
       if (showToast) {
         showToast(`Harness completed for "${agentName}": Passed ${spec.passed}/${spec.total} assertions in ${spec.latency}.`);
       }
-    }, 1400);
+    }, finalDelay);
   };
   const [onboardForm, setOnboardForm] = useState({
     name: '',
@@ -384,7 +427,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
         <div>
           <div style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--text-primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Bot size={18} color="var(--stellantis-action, #0284c7)" />
-            <span>Agent and Agentic Workflow Catalogue</span>
+            <span>Agent Studio</span>
             <span className="st-badge badge-info" style={{ fontSize: '0.65rem' }}>
               {agentsList.length} Autonomous Agents Registered
             </span>
@@ -609,7 +652,7 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                   background: 'rgba(2, 132, 199, 0.08)',
                   border: '1px solid rgba(2, 132, 199, 0.35)',
                   borderRadius: '6px',
-                  padding: '8px 10px',
+                  padding: '9px 10px',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '6px',
@@ -618,9 +661,9 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.70rem' }}>
                     <span style={{ color: '#0284c7', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <RotateCw size={11} className="animate-spin" />
-                      Step {harnessState[agent.id].stepIndex} of {harnessState[agent.id].totalSteps} Automated Verification
+                      Stage {harnessState[agent.id].stepIndex} of {harnessState[agent.id].totalSteps}: Automated Verification
                     </span>
-                    <span style={{ color: 'var(--text-muted)', fontWeight: 700, fontSize: '0.68rem' }}>
+                    <span style={{ color: '#0284c7', fontWeight: 700, fontSize: '0.68rem', fontFamily: 'monospace' }}>
                       {harnessState[agent.id].progress}%
                     </span>
                   </div>
@@ -631,12 +674,69 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                       width: `${harnessState[agent.id].progress}%`,
                       height: '100%',
                       background: 'linear-gradient(90deg, #0284c7, #38bdf8)',
-                      transition: 'width 0.3s ease'
+                      transition: 'width 0.4s ease'
                     }} />
                   </div>
 
-                  <div style={{ fontSize: '0.68rem', color: 'var(--text-secondary)', lineHeight: 1.3 }}>
-                    {harnessState[agent.id].currentStepText}...
+                  {/* Current Active Step */}
+                  <div style={{
+                    fontSize: '0.66rem',
+                    color: 'var(--text-primary)',
+                    background: 'rgba(2, 132, 199, 0.12)',
+                    padding: '4px 7px',
+                    borderRadius: '4px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    lineHeight: 1.25
+                  }}>
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      background: '#0284c7',
+                      boxShadow: '0 0 6px #0284c7',
+                      flexShrink: 0
+                    }} />
+                    <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                      <strong>Active:</strong> {harnessState[agent.id].currentStepText}...
+                    </span>
+                  </div>
+
+                  {/* Real-time live completed checklist */}
+                  <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '2px',
+                    maxHeight: '85px',
+                    overflowY: 'auto',
+                    paddingRight: '2px',
+                    fontSize: '0.62rem'
+                  }}>
+                    {getHarnessSpec(agent.id).steps.map((st, idx) => {
+                      const isDone = (harnessState[agent.id].completedStepIndices || []).includes(idx);
+                      const isCurrent = harnessState[agent.id].stepIndex === (idx + 1);
+                      if (!isDone && !isCurrent) return null;
+                      return (
+                        <div key={idx} style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                          color: isDone ? '#10b981' : '#0284c7',
+                          fontWeight: isCurrent ? 600 : 400
+                        }}>
+                          {isDone ? (
+                            <CheckCircle2 size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                          ) : (
+                            <RotateCw size={9} className="animate-spin" style={{ color: '#0284c7', flexShrink: 0 }} />
+                          )}
+                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                            Step {idx + 1}: {st} {isDone ? '(passed)' : '(evaluating...)'}
+                          </span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -647,10 +747,10 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                   background: 'rgba(16, 185, 129, 0.08)',
                   border: '1px solid rgba(16, 185, 129, 0.3)',
                   borderRadius: '6px',
-                  padding: '6px 10px',
+                  padding: '7px 10px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '5px',
+                  gap: '6px',
                   marginTop: '4px'
                 }}>
                   <div style={{
@@ -675,24 +775,60 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                     </span>
                   </div>
 
-                  {/* Automated steps breakdown */}
+                  {/* Automated steps breakdown with scroll / compact view */}
                   <div style={{
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '2px',
-                    paddingTop: '4px',
+                    gap: '3px',
+                    paddingTop: '5px',
                     borderTop: '1px dashed rgba(16, 185, 129, 0.25)',
                     fontSize: '0.64rem',
-                    color: 'var(--text-secondary)'
+                    color: 'var(--text-secondary)',
+                    maxHeight: '160px',
+                    overflowY: 'auto',
+                    paddingRight: '3px'
                   }}>
-                    {harnessState[agent.id].result.steps && harnessState[agent.id].result.steps.map((st, sIdx) => (
-                      <div key={sIdx} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <CheckCircle2 size={10} style={{ color: '#10b981', flexShrink: 0 }} />
-                        <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                          Step {sIdx + 1}: {st}
-                        </span>
-                      </div>
-                    ))}
+                    {harnessState[agent.id].result.steps && harnessState[agent.id].result.steps.map((st, sIdx) => {
+                      const lat = harnessState[agent.id].result.stepLatencies?.[sIdx];
+                      return (
+                        <div
+                          key={sIdx}
+                          title={`Step ${sIdx + 1}: ${st}${lat ? ` (${lat})` : ''}`}
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                            gap: '6px',
+                            lineHeight: 1.25,
+                            padding: '1px 0'
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '5px', minWidth: 0, flex: 1 }}>
+                            <CheckCircle2 size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                            <span style={{
+                              whiteSpace: 'nowrap',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis'
+                            }}>
+                              <strong style={{ color: 'var(--text-primary)', fontWeight: 600 }}>Step {sIdx + 1}:</strong> {st}
+                            </span>
+                          </div>
+                          {lat && (
+                            <span style={{
+                              flexShrink: 0,
+                              fontSize: '0.58rem',
+                              fontFamily: 'monospace',
+                              color: 'var(--text-muted)',
+                              background: 'rgba(0,0,0,0.04)',
+                              padding: '0 4px',
+                              borderRadius: '3px'
+                            }}>
+                              {lat}
+                            </span>
+                          )}
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
@@ -847,6 +983,40 @@ export default function EngineeringAgentCatalogue({ agents = [], onSubscribeAgen
                 <div style={{ fontSize: '0.76rem', color: 'var(--text-primary)', marginTop: '2px' }}>
                   {selectedAgentDetails.evaluationResults || '99.1% Pass Rate across 4,200 gate checks.'}
                 </div>
+                {harnessState[selectedAgentDetails.id]?.result && (
+                  <div style={{
+                    marginTop: '8px',
+                    padding: '8px',
+                    background: 'rgba(16, 185, 129, 0.08)',
+                    border: '1px solid rgba(16, 185, 129, 0.25)',
+                    borderRadius: '6px'
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                      <span style={{ fontSize: '0.70rem', fontWeight: 700, color: '#10b981', display: 'flex', alignItems: 'center', gap: '5px' }}>
+                        <CheckCircle2 size={12} /> Automated Test Harness: Passed {harnessState[selectedAgentDetails.id].result.passed}/{harnessState[selectedAgentDetails.id].result.total} Assertions
+                      </span>
+                      <span style={{ fontSize: '0.66rem', fontWeight: 700, color: 'var(--text-primary)', background: 'var(--bg-surface)', padding: '1px 6px', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
+                        ⚡ {harnessState[selectedAgentDetails.id].result.latency}
+                      </span>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', maxHeight: '140px', overflowY: 'auto', paddingRight: '2px' }}>
+                      {harnessState[selectedAgentDetails.id].result.steps.map((st, sIdx) => {
+                        const lat = harnessState[selectedAgentDetails.id].result.stepLatencies?.[sIdx];
+                        return (
+                          <div key={sIdx} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '6px', fontSize: '0.65rem', color: 'var(--text-secondary)' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '5px', minWidth: 0 }}>
+                              <CheckCircle2 size={10} style={{ color: '#10b981', flexShrink: 0 }} />
+                              <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                                <strong>Step {sIdx + 1}:</strong> {st}
+                              </span>
+                            </div>
+                            {lat && <span style={{ flexShrink: 0, fontFamily: 'monospace', fontSize: '0.60rem', color: 'var(--text-muted)' }}>{lat}</span>}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>

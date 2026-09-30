@@ -44,7 +44,9 @@ function AuthenticatedApp() {
   });
 
   const [activeSubTab, setActiveSubTab] = useState(() => {
-    return sessionStorage.getItem('tcs_active_subtab') || sessionStorage.getItem('stellantis_active_subtab') || defaultSubPage(selectedDomain);
+    const saved = sessionStorage.getItem('tcs_active_subtab') || sessionStorage.getItem('stellantis_active_subtab');
+    if (saved === 'persona' || saved === 'inbox') return 'finops';
+    return saved || defaultSubPage(selectedDomain);
   });
 
   const [sidebarCollapsed, setSidebarCollapsed] = useState(() => {
@@ -179,7 +181,7 @@ function AuthenticatedApp() {
             />
           )}
 
-          {(selectedDomain === 'Engineering leaders' || selectedDomain === 'Engineering leader') && (
+          {(selectedDomain === 'Engineering Leader' || selectedDomain === 'Engineering leaders' || selectedDomain === 'Engineering leader') && (
             <EngineeringLeadersDomain activeTab={activeTab} activeSubTab={activeSubTab} onSubTabChange={setActiveSubTab} />
           )}
 
