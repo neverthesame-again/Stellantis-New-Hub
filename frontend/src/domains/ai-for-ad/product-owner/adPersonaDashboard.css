@@ -171,6 +171,10 @@
   flex-direction: column;
   gap: 20px;
   animation: fadeIn 0.25s ease-in-out;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 @keyframes fadeIn {
@@ -195,13 +199,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 14px;
   padding: 10px 18px;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .ad-context-bar {
@@ -234,8 +240,8 @@
 .ad-context-dropdowns {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
 .ad-context-field {
@@ -345,13 +351,17 @@
    -------------------------------------------------------------------------- */
 .ad-computed-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1240px) {
+@media (max-width: 1440px) {
   .ad-computed-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -372,6 +382,9 @@
   gap: 10px;
   box-shadow: var(--shadow-sm);
   transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 [data-theme="dark"] .ad-computed-card {
@@ -396,6 +409,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .ad-computed-title-box {
@@ -664,19 +678,23 @@
 /* 6-Tier Operational Depth Pipeline (Replaces wasteful breadcrumbs) */
 .ad-depth-pipeline {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .ad-depth-pipeline {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 600px) {
   .ad-depth-pipeline {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -693,6 +711,8 @@
   transition: all 0.18s ease;
   position: relative;
   user-select: none;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .ad-depth-node:hover {

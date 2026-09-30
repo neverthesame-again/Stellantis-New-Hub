@@ -547,7 +547,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
           </div>
           <div className="ad-agents-header-text">
             <h2>
-              <span>Agent &amp; Agentic Workflow Catalogue</span>
+              <span>Agent Catalogue</span>
               <span className="st-badge badge-purple" style={{ fontSize: '0.68rem', fontFamily: 'monospace' }}>
                 {agentsList.length} Registered • {ALL_LIFECYCLES.map((s) => `${lifecycleCounts[s]} ${s}`).join(' • ')}
               </span>
@@ -922,7 +922,7 @@ export default function AdAgentWorkflowCatalogue({ onNavigateToInbox, onNavigate
                         Performance Passport
                       </button>
 
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         {agent.lifecycleStage === 'Active' && (
                           <>
                             <button
